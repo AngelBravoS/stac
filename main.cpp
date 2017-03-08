@@ -1,6 +1,9 @@
-#include <iostream>
+#include "cli.hpp"
 
-int main () {
-    std::cout << "Hola mundo." << std::endl;
+int main() {
+    CLI menu;
+    menu.introduccion();
+    menu.menuPrincipal();
+    menu.acercaDe();
     return 0;
     }

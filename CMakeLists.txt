@@ -6,23 +6,24 @@ set(lista_archivos
   main.cpp
   #Interfaz de linea de comandos, consiste en
   #el menu inicial y la gestion de los submenus
-  #cli.cpp
-  #textosMenu.cpp 
+  cli.cpp
+  textosMenuPrincipal.cpp
+  entradaYSalidaMatriz.cpp
   #Funciones matematicas basicas y avanzadas de cada tipo
-  #funcMate.cpp
-  #combinatoria.cpp
-  #matriz.cpp
-  #inteligenciArtificial.cpp	#
-  #distribucionesDiscretas.cpp #
+  funcMate.cpp
+  combinatoria.cpp
+  matriz.cpp
+  inteligenciArtificial.cpp
+  distribucionesDiscretas.cpp
   #Los submenus de cada tipo de operacion
-  #menUnaVariable.cpp
-  #menuDosVariables.cpp
-  #menuNVariables.cpp
-  #menuMatrices.cpp
-  #menuSinDatos.cpp
-  #menuCombinatoria.cpp 
-  #menuInteligenciArtificial.cpp
-  #menuDistribDiscretas.cpp
+  menUnaVariable.cpp
+  menuDosVariables.cpp
+  menuNVariables.cpp
+  menuMatrices.cpp
+  menuSinDatos.cpp
+  menuCombinatoria.cpp 
+  menuInteligenciArtificial.cpp
+  menuDistribDiscretas.cpp
 )
 
 #-march=amdfam10/core2/native
