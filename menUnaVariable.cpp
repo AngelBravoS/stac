@@ -1,13 +1,51 @@
 #include <iostream>
 #include "cli.hpp"
-#include "matriz.hpp"
+#include "vector.hpp"
 
 using namespace std;
 
 void CLI::menUnaVariable() {
-	//Vector x1;
-	//x1.recogerDatosVector();
-	//x1.crearVectorVacio();
-	//x1.editarVectorVacio();
-	//x1.mostrarVector();
-}
+	char eleccionCalculosVariableX, eligesArchivo;
+	Vector variableX;
+	cout << "¿Leer desde un archivo?" << endl;
+	cout << "s/n:";
+	cin >> eligesArchivo;
+	if ( eligesArchivo == 'n' ) {
+		variableX.recogerDatosVector();
+		variableX.crearVectorVacio();
+		variableX.editarVectorVacio();
+		variableX.mostrarVector();
+		cout << endl;
+		}
+	else {
+		variableX.leerArchivo();
+		}
+	do {
+		cout << "'1' medidas de tendencia central" << endl;
+		cout << "'2' medidas de dispersión" << endl;
+		cout << "'3' medidas de forma" << endl;
+		cout << "'4' muestreo aleatorio simple" << endl;
+		cout << "'5' muestreo con reposición" << endl;
+		cout << "'0' Salir." << endl;
+		cout << "> ";
+		cin >> eleccionCalculosVariableX;
+		switch ( eleccionCalculosVariableX ) {
+			case '1':
+
+				break;
+			case '2':
+
+				break;
+			case '3':
+
+				break;
+			case '4':
+
+				break;
+			case '5':
+
+				break;
+			}
+		}
+	while ( eleccionCalculosVariableX != '0' );
+	}

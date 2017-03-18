@@ -15,6 +15,7 @@ void CLI::setOpcion ( char opcionPrivada ) {
 void CLI::eleccion() {
     char eleccion;
     cin >> eleccion;
+	 //eleccion='1';
     setOpcion ( eleccion );
     }
 

@@ -9,9 +9,11 @@ set(lista_archivos
   cli.cpp
   textosMenuPrincipal.cpp
   entradaYSalidaMatriz.cpp
+  entradaYSalidaVector.cpp
   #Funciones matematicas basicas y avanzadas de cada tipo
   funcMate.cpp
   combinatoria.cpp
+  vector.cpp
   matriz.cpp
   inteligenciArtificial.cpp
   distribucionesDiscretas.cpp
