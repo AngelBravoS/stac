@@ -38,23 +38,23 @@ void Vector::recogerDatosVector() {
 	}
 
 void Vector::crearVectorVacio() {
-	vector = new int [getElementoVector()];
-	setVector( vector );
+	vector = new float [getElementoVector()];
+	setVector ( vector );
 	}
 
 void Vector::editarVectorVacio() {
-		for ( int i = 0; i < getElementoVector(); i++ ) {
+	for ( unsigned int i = 0; i < getElementoVector(); i++ ) {
 		cout << "Elemento " << i + 1  << ": ";
 		cin >> vector[i];
 		}
 	cout << endl;
 	}
-	
+
 void Vector::mostrarVector() {
 	cout << "la variable X es:" << endl;
 	cout << endl;
 	cout << "( ";
-	for ( int i = 0; i < getElementoVector(); i++ ) {
+	for ( unsigned int i = 0; i < getElementoVector(); i++ ) {
 		cout << vector[i] << " ";
 		}
 	cout << ")";
@@ -62,7 +62,7 @@ void Vector::mostrarVector() {
 	}
 
 void Vector::mostrarVectorResultado() {
-	for ( int i = 0; i < getElementoVector(); i++ ) {
+	for ( unsigned int i = 0; i < getElementoVector(); i++ ) {
 		cout << "( ";
 		cout << vectorResultado[i] << " ";
 		}

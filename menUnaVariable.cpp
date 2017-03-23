@@ -31,7 +31,12 @@ void CLI::menUnaVariable() {
 		cin >> eleccionCalculosVariableX;
 		switch ( eleccionCalculosVariableX ) {
 			case '1':
-
+				//medidasTendenciaCentral();
+				cout << "Medidas de tendencia central" << endl;
+				cout << "La media aritmética es: " << variableX.mediaAritmetica() << endl;
+				cout << "La media geométrica es: " << variableX.mediaGeometrica() << endl;
+				cout << "La media armónica es: " << variableX.mediaArmonica() << endl;
+				cout << "La media cuadrática es: " << variableX.mediaCuadratica() << endl;
 				break;
 			case '2':
 

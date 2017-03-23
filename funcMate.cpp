@@ -21,13 +21,13 @@ double factorial(double n) {
 	 }                          
 }
 
-double potencia(double numero, int potencia) {
+double potencia(double numero, unsigned short int  potencia) {
 	double temporal = numero;
 	if (potencia==0){
 		numero = 1;
 		}
 	else{
-		for (int x=1; x<potencia; x++) {
+		for (unsigned short int x=1; x<potencia; x++) {
 			numero=numero*temporal;
 		}
 	}

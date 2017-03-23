@@ -1,41 +1,42 @@
 #include "funcMate.hpp"
 
-typedef unsigned short int unShortInt;
+//typedef unsigned short int unShortInt;
+//Límite máximo en unsigned short int: 65535
 
-double permutaciones(unShortInt n){
+double permutaciones(unsigned short int n){
 	double resultado;
 	resultado=factorial(n);
 	return resultado;
 	}
 	                  
-double permutacionesRep(unShortInt m, unShortInt n, unShortInt numeroElementos){
+double permutacionesRep(unsigned short int m, unsigned short int n, unsigned short int numeroElementos){
 	double resultado = 1;
-	for (unShortInt i = 0; i < numeroElementos; i++ ) {
+	for (unsigned short int i = 0; i < numeroElementos; i++ ) {
 		resultado=resultado*factorial(n);
 	}
 	resultado=factorial(m)/resultado;
 	return resultado;
 	}
 
-double variaciones(unShortInt m, unShortInt n){
+double variaciones(unsigned short int m, unsigned short int n){
 	double resultado;
 	resultado=factorial(m)/factorial(m-n);
 	return resultado;
 	}
 	
-double variacionesRep(unShortInt m, unShortInt n){
+double variacionesRep(unsigned short int m, unsigned short int n){
 	double resultado;
 	resultado=potencia(m,n);
 	return resultado;
 	}
 
-double combinaciones(unShortInt m, unShortInt n){
+double combinaciones(unsigned short int m, unsigned short int n){
 	double resultado;
 	resultado=factorial(m)/(factorial(n)*factorial(m-n));
 	return resultado;
 	}
 	
-double combinacionesRep(unShortInt m, unShortInt n){
+double combinacionesRep(unsigned short int m, unsigned short int n){
 	double resultado;
 	unsigned int valorM=m;
 	valorM=valorM+(n-1);
