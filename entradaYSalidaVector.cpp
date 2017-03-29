@@ -34,7 +34,7 @@ void Vector::recogerDatosVector() {
 	cout << "Número de elementos: ";
 	cin >> n;
 	setElementoVector ( n );
-	cout << "la variable X es de " << getElementoVector() << " elementos" << endl;
+	//cout << "la variable X es de " << getElementoVector() << " elementos" << endl;
 	}
 
 void Vector::crearVectorVacio() {

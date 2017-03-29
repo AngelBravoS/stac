@@ -33,7 +33,7 @@ void CLI::menuMatrices() {
 					cout << "'1' Traza" << endl;
 					cout << "'2' Determinante" << endl;
 					cout << "'3' Matriz traspuesta" << endl;
-					cout << "'4' Matriz adjunta" << endl;
+					cout << "'4' Matriz adjunta xxxx GAUSS" << endl;
 					cout << "'5' Matriz inversa" << endl;
 					cout << "'6' Vectores y valores propios" << endl;
 					cout << "'7' Métodos numéricos" << endl;
@@ -51,8 +51,14 @@ void CLI::menuMatrices() {
 						case '2':
 							matrizA.mostrarMatriz();
 							cout << endl;
-							cout << "El determinante de la matriz A es: " <<
-							     matrizA.determinante() << endl;
+							if ( matrizA.getFila() != matrizA.getColumna() ) {
+								cout << "La matriz no es cuadrada. " << endl;
+								}
+							else {
+								cout << endl;
+								cout << "El determinante de la matriz A es: " <<
+								     matrizA.determinante() << endl;
+								}
 							break;
 						case '3':
 							matrizA.mostrarMatriz();
@@ -62,7 +68,11 @@ void CLI::menuMatrices() {
 							matrizA.mostrarMatrizResultado();
 							break;
 						case '4':
-							//matrizA.adjunta();
+							matrizA.mostrarMatriz();
+							cout << endl;
+							matrizA.gauss();
+							cout << "Gauss: " << endl;
+							matrizA.mostrarMatrizResultado();
 							break;
 						case '5':
 							matrizA.mostrarMatriz();

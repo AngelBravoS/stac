@@ -11,8 +11,8 @@ void Matriz::leerArchivo() {
 		cout << "Fichero leído" << endl;
 		recogerDatosMatriz();
 		crearMatrizVacia();
-		int n = getColumna();
-		int i = 0, j = 0;
+		unsigned int n = getColumna();
+		unsigned int i = 0, j = 0;
 		while ( !archivo.eof() ) {
 			archivo >> matriz[i][j];
 			j++; //avanza en la fila
@@ -34,7 +34,7 @@ void Matriz::guardarEnArchivo() {
 	}
 
 void Matriz::recogerDatosMatriz() {
-	int m, n;
+	unsigned int m, n;
 	cout << "Número de filas: ";
 	cin >> m;
 	setFila ( m );
@@ -45,16 +45,16 @@ void Matriz::recogerDatosMatriz() {
 	}
 
 void Matriz::crearMatrizVacia() {
-	matriz = new int *[getFila()];
-	for ( int i = 0; i < getFila(); i++ )     {
-		matriz[i] = new int[getColumna()];
+	matriz = new double *[getFila()];
+	for ( unsigned int i = 0; i < getFila(); i++ )     {
+		matriz[i] = new double [getColumna()];
 		}
 	setMatriz ( matriz );
 	}
 
 void Matriz::editarMatrizVacia() {
-	for ( int i = 0; i < getFila(); i++ ) {
-		for ( int j = 0; j < getColumna(); j++ ) {
+	for ( unsigned int i = 0; i < getFila(); i++ ) {
+		for ( unsigned int j = 0; j < getColumna(); j++ ) {
 			cout << "Elemento " << i + 1 << "," << j + 1 << ": ";
 			cin >> matriz[i][j];
 			}
@@ -65,9 +65,9 @@ void Matriz::editarMatrizVacia() {
 void Matriz::mostrarMatriz() {
 	cout << "la matriz es:" << endl;
 	cout << endl;
-	for ( int i = 0; i < getFila(); i++ ) {
+	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		cout << "( ";
-		for ( int j = 0; j < getColumna(); j++ ) {
+		for ( unsigned int j = 0; j < getColumna(); j++ ) {
 			cout << matriz[i][j] << " ";
 			}
 		cout << ")";
@@ -76,9 +76,9 @@ void Matriz::mostrarMatriz() {
 	}
 
 void Matriz::mostrarMatrizResultado() {
-	for ( int i = 0; i < getFila(); i++ ) {
+	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		cout << "( ";
-		for ( int j = 0; j < getColumna(); j++ ) {
+		for ( unsigned int j = 0; j < getColumna(); j++ ) {
 			cout << matrizResultado[i][j] << " ";
 			}
 		cout << ")";

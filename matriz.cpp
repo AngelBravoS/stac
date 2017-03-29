@@ -3,48 +3,48 @@
 
 using namespace std;
 
-int Matriz::getFila() {
+unsigned int Matriz::getFila() {
 	return fila;
 	}
 
-void Matriz::setFila ( int filaPublica ) {
+void Matriz::setFila ( unsigned int filaPublica ) {
 	fila = filaPublica;
 	}
 
-int Matriz::getColumna() {
+unsigned int Matriz::getColumna() {
 	return columna;
 	}
 
-void Matriz::setColumna ( int columnaPublica ) {
+void Matriz::setColumna ( unsigned int columnaPublica ) {
 	columna = columnaPublica;
 	}
 
-int Matriz::getMatriz() {
+double Matriz::getMatriz() {
 	return **matriz;
 	}
 
-void Matriz::setMatriz ( int **matrizPublica ) {
+void Matriz::setMatriz ( double **matrizPublica ) {
 	**matriz = **matrizPublica;
 	}
 
-int Matriz::getMatrizResultado() {
+double Matriz::getMatrizResultado() {
 	return **matrizResultado;
 	}
 
-void Matriz::setMatrizResultado ( int **matrizResultadoPublica ) {
+void Matriz::setMatrizResultado ( double **matrizResultadoPublica ) {
 	**matrizResultado = **matrizResultadoPublica;
 	}
 
-int Matriz::traza() {
-	int traza = 0;
-	for ( int i = 0; i < getFila(); i++ ) {
+double Matriz::traza() {
+	double traza = 0;
+	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		traza = traza + matriz[i][i];
 		}
 	return traza;
 	}
 
-int Matriz::determinante() {
-	int determinante = 0;
+double  Matriz::determinante() {
+	double determinante = 0;
 	switch ( getFila() ) {
 		case 1:
 			determinante = matriz[0][0];
@@ -68,12 +68,12 @@ int Matriz::determinante() {
 	}
 
 void Matriz::traspuesta() {
-	matrizResultado = new int *[getFila()];
-	for ( int i = 0; i < getFila(); i++ )     {
-		matrizResultado[i] = new int[getColumna()];
+	matrizResultado = new double *[getFila()];
+	for ( unsigned int i = 0; i < getFila(); i++ )     {
+		matrizResultado[i] = new double[getColumna()];
 		}
-	for ( int i = 0; i < getFila(); i++ ) {
-		for ( int j = 0; j < getColumna(); j++ ) {
+	for ( unsigned int i = 0; i < getFila(); i++ ) {
+		for ( unsigned int j = 0; j < getColumna(); j++ ) {
 			matrizResultado[i][j] = matriz[j][i];
 			}
 		}
@@ -104,23 +104,23 @@ void Matriz::triangular() {
 	}
 
 void Matriz::gauss() {
-	/*int n=getFila();
-	matrizResultado = new int*[getFila()];
-	for(int i=1;i<=n;i++){
-		if(matriz[i][i]!=0){
-			matrizResultado=1/matriz[i][i];
-			for(int j=1;j<=n+1;j++){
-				matriz[i][j]=matrizResultado*matriz[i][j];
-			}
-			for(int j=1;j<=n;j++){
-				if(j!=i){
-					matrizResultado=-matriz[j][i];
-					for(int k=1;k<=n+1;k++){
-						matriz[j][k]=matriz[j][k]+matrizResultado*matriz[i][k];
+	matrizResultado = new double *[getFila()];
+	for ( unsigned int i = 0; i < getFila(); i++ )     {
+		matrizResultado[i] = new double [getColumna()];
+		}
+	/*unsigned int n = getFila();
+	for ( unsigned int i = 0; i < n; i++ ) {
+		for ( unsigned int j = 0; j < n; j++ ) {
+			if ( j < i )
+				matriz[i][j] = 0;
+			else if ( j == i )
+				matriz[i][j] = 1;
+			else {
+				matriz[i][j] = a[i][j] / l[i][i];
+				for ( unsigned int k = 0; k < i; k++ ) {
+					matriz[i][j] = matriz[i][j] - ( ( l[i][k] * matriz[k][j] ) / l[i][i] );
 					}
 				}
-			}
-		}
-	}*/
+			}*/
 	setMatrizResultado ( matrizResultado );
 	}

@@ -31,24 +31,32 @@ void CLI::menUnaVariable() {
 		cin >> eleccionCalculosVariableX;
 		switch ( eleccionCalculosVariableX ) {
 			case '1':
-				//medidasTendenciaCentral();
+				//medidas de tendencia Central
 				cout << "Medidas de tendencia central" << endl;
 				cout << "La media aritmética es: " << variableX.mediaAritmetica() << endl;
 				cout << "La media geométrica es: " << variableX.mediaGeometrica() << endl;
 				cout << "La media armónica es: " << variableX.mediaArmonica() << endl;
 				cout << "La media cuadrática es: " << variableX.mediaCuadratica() << endl;
+				cout << endl;
 				break;
 			case '2':
-
+				//medidas de dispersión
+				cout << "Medidas de dispersión" << endl;
+				//cout << "Las diferencias respecto a la media son: " << variableX.difRespecMedia() << endl;
+				cout << "La varianza es: " << variableX.varianza() << endl;
+				cout << "La cuasivarianza es: " << variableX.cuasiVarianza() << endl;
+				cout << "La desviación típica es: " << variableX.desviacionTipica() << endl;
+				cout << "La cuasidesviación típica es: " << variableX.cuasiDesviacionTipica() << endl;
+				cout << endl;
 				break;
 			case '3':
-
+				cout << "Medidas de forma" << endl;
 				break;
 			case '4':
-
+				cout << "Muestreo aleatorio simple" << endl;
 				break;
 			case '5':
-
+				cout << "Muestreo con reposición" << endl;
 				break;
 			}
 		}

@@ -37,7 +37,7 @@ double  Vector::sumatoria ( unsigned short int exponente ) {
 	unsigned int n = getElementoVector();
 	double sumatoria = 0;
 	for ( unsigned int i = 0; i < n; i++ ) {
-		sumatoria = sumatoria + potencia ( vector[i], exponente );
+		sumatoria += potencia ( vector[i], exponente );
 		}
 	return sumatoria;
 	}
@@ -53,7 +53,7 @@ double Vector::mediaGeometrica() {
 	unsigned int n = getElementoVector();
 	double mediaGeometrica = 1;
 	for ( unsigned int i = 0; i < n; i++ ) {
-		mediaGeometrica = mediaGeometrica * vector[i];
+		mediaGeometrica *= vector[i];
 		}
 	mediaGeometrica = pow ( mediaGeometrica, 1.0 / n );
 	return mediaGeometrica;
@@ -63,7 +63,7 @@ double Vector::mediaArmonica() {
 	unsigned int n = getElementoVector();
 	double mediaArmonica = 0;
 	for ( unsigned int i = 0; i < n; i++ ) {
-		mediaArmonica = mediaArmonica + ( 1 / ( potencia ( vector[i], 1 ) ) );
+		mediaArmonica +=  1 / ( potencia ( vector[i], 1 )  );
 		}
 	mediaArmonica = ( n / mediaArmonica );
 	return mediaArmonica;
@@ -82,7 +82,7 @@ double Vector::difRespecMedia ( int exponente ) {
 	unsigned int n = getElementoVector();
 	double difRespecMedia = 0;
 	for ( unsigned int i = 0; i < n; i++ ) {
-		difRespecMedia = difRespecMedia + pow ( vector[i] - mediaAritmetica(), exponente );
+		difRespecMedia += pow ( vector[i] - mediaAritmetica(), exponente );
 		}
 	return difRespecMedia;
 	}
