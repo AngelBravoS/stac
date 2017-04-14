@@ -3,12 +3,12 @@ class Vector {
 		//Establecer = Set
 	public:
 		//-------- setters y getters --------
-		unsigned int getElementoVector();
-		void setElementoVector ( unsigned int elementoVectorPublico );
-		float getVector();
-		void setVector ( float *vectorPublico );
-		float getVectorResultado();
-		void setVectorResultado ( float *vectorPublico );
+		unsigned int getLongitudVector();
+		void setLongitudVector ( unsigned int longitudVectorPublico );
+		double getVector();
+		void setVector ( double *vectorPublico );
+		double getVectorResultado();
+		void setVectorResultado ( double vectorPublico );
 		//-------- trabajo con archivos --------
 		void leerArchivo();
 		void guardarEnArchivo();
@@ -18,6 +18,7 @@ class Vector {
 		void editarVectorVacio();
 		void mostrarVector();
 		void mostrarVectorResultado();
+		void destructorVector();
 		//-------- funciones matemáticas --------
 		double sumatoria ( short unsigned int exponente );
 		double mediaAritmetica();
@@ -31,8 +32,12 @@ class Vector {
 		double cuasiDesviacionTipica();
 		double momentos ( int exponente );
 		double coeficientePearson();
+		double coeficienteAsimetriaFisher();
+		double curtosis();
+		
 	private:
-		unsigned int elementoVector;
-		float *vector;
-		float *vectorResultado;
-	};
+		unsigned int longitudVector;
+		//Declaramos dos punteros en la pila
+		double *vector;
+		double *vectorResultado;
+};

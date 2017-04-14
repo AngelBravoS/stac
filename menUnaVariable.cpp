@@ -10,16 +10,15 @@ void CLI::menUnaVariable() {
 	cout << "¿Leer desde un archivo?" << endl;
 	cout << "s/n:";
 	cin >> eligesArchivo;
-	if ( eligesArchivo == 'n' ) {
+	if ( eligesArchivo == 's' ) {
+		variableX.leerArchivo();
+	} else {
 		variableX.recogerDatosVector();
 		variableX.crearVectorVacio();
 		variableX.editarVectorVacio();
 		variableX.mostrarVector();
 		cout << endl;
-		}
-	else {
-		variableX.leerArchivo();
-		}
+	}
 	do {
 		cout << "'1' medidas de tendencia central" << endl;
 		cout << "'2' medidas de dispersión" << endl;
@@ -29,24 +28,23 @@ void CLI::menUnaVariable() {
 		cout << "'0' Salir." << endl;
 		cout << "> ";
 		cin >> eleccionCalculosVariableX;
+		variableX.mostrarVector();
+		cout << endl;
 		switch ( eleccionCalculosVariableX ) {
 			case '1':
 				//medidas de tendencia Central
-				cout << "Medidas de tendencia central" << endl;
-				cout << "La media aritmética es: " << variableX.mediaAritmetica() << endl;
-				cout << "La media geométrica es: " << variableX.mediaGeometrica() << endl;
-				cout << "La media armónica es: " << variableX.mediaArmonica() << endl;
-				cout << "La media cuadrática es: " << variableX.mediaCuadratica() << endl;
+				cout << "Media aritmética = " << variableX.mediaAritmetica() << endl;
+				cout << "Media geométrica = " << variableX.mediaGeometrica() << endl;
+				cout << "Media armónica = " << variableX.mediaArmonica() << endl;
+				cout << "Media cuadrática = " << variableX.mediaCuadratica() << endl;
 				cout << endl;
 				break;
 			case '2':
-				//medidas de dispersión
-				cout << "Medidas de dispersión" << endl;
 				//cout << "Las diferencias respecto a la media son: " << variableX.difRespecMedia() << endl;
-				cout << "La varianza es: " << variableX.varianza() << endl;
-				cout << "La cuasivarianza es: " << variableX.cuasiVarianza() << endl;
-				cout << "La desviación típica es: " << variableX.desviacionTipica() << endl;
-				cout << "La cuasidesviación típica es: " << variableX.cuasiDesviacionTipica() << endl;
+				cout << "Varianza = " << variableX.varianza() << endl;
+				cout << "Cuasivarianza = " << variableX.cuasiVarianza() << endl;
+				cout << "Desviación típica = " << variableX.desviacionTipica() << endl;
+				cout << "Cuasidesviación típica = " << variableX.cuasiDesviacionTipica() << endl;
 				cout << endl;
 				break;
 			case '3':
@@ -58,7 +56,7 @@ void CLI::menUnaVariable() {
 			case '5':
 				cout << "Muestreo con reposición" << endl;
 				break;
-			}
 		}
-	while ( eleccionCalculosVariableX != '0' );
-	}
+	} while ( eleccionCalculosVariableX != '0' );
+	variableX.destructorVector();
+}

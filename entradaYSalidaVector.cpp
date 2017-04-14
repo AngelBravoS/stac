@@ -11,61 +11,66 @@ void Vector::leerArchivo() {
 		cout << "Fichero leído" << endl;
 		recogerDatosVector();
 		crearVectorVacio();
-		int n = getElementoVector();
+		int n = getLongitudVector();
 		for ( int i = 0; i < n; i++ ) {
 			archivo >> vector[i];
-			}
+		}
 		mostrarVector();
 		cout << endl;
 		archivo.close();
-		}
-	else cout << "Fichero inexistente" << endl;
+	} else {
+		cout << "Fichero inexistente" << endl;
 	}
+}
 
 void Vector::guardarEnArchivo() {
 	cout << "Estamos trabajando en ellouuu..." << endl;
 	ofstream archivoSalida ( "resultado.dat" );
 	//archivoSalida<<traza();
 	archivoSalida.close();
-	}
+}
 
 void Vector::recogerDatosVector() {
 	int n;
 	cout << "Número de elementos: ";
 	cin >> n;
-	setElementoVector ( n );
-	//cout << "la variable X es de " << getElementoVector() << " elementos" << endl;
-	}
+	setLongitudVector ( n );
+	//cout << "la variable X es de " << getLongitudVector() << " elementos" << endl;
+}
 
 void Vector::crearVectorVacio() {
-	vector = new float [getElementoVector()];
+	vector = new double [getLongitudVector()];
 	setVector ( vector );
-	}
+}
 
 void Vector::editarVectorVacio() {
-	for ( unsigned int i = 0; i < getElementoVector(); i++ ) {
+	for ( unsigned int i = 0; i < getLongitudVector(); i++ ) {
 		cout << "Elemento " << i + 1  << ": ";
 		cin >> vector[i];
-		}
-	cout << endl;
 	}
+	cout << endl;
+}
 
 void Vector::mostrarVector() {
 	cout << "la variable X es:" << endl;
 	cout << endl;
 	cout << "( ";
-	for ( unsigned int i = 0; i < getElementoVector(); i++ ) {
+	for ( unsigned int i = 0; i < getLongitudVector(); i++ ) {
 		cout << vector[i] << " ";
-		}
+	}
 	cout << ")";
 	cout << endl;
-	}
+}
 
 void Vector::mostrarVectorResultado() {
-	for ( unsigned int i = 0; i < getElementoVector(); i++ ) {
+	for ( unsigned int i = 0; i < getLongitudVector(); i++ ) {
 		cout << "( ";
 		cout << vectorResultado[i] << " ";
-		}
+	}
 	cout << ")";
 	cout << endl;
-	}
+}
+
+void Vector::destructorVector(){
+	delete vector;
+}

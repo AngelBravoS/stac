@@ -22,12 +22,11 @@ void CLI::menuMatrices() {
 					matrizA.recogerDatosMatriz();
 					matrizA.crearMatrizVacia();
 					matrizA.editarMatrizVacia();
-					matrizA.mostrarMatriz();
+					matrizA.mostrarMatrizOriginal();
 					cout << endl;
-					}
-				else {
+				} else {
 					matrizA.leerArchivo();
-					}
+				}
 				do {
 					cout << "Cálculos de una matriz" << endl;
 					cout << "'1' Traza" << endl;
@@ -35,7 +34,7 @@ void CLI::menuMatrices() {
 					cout << "'3' Matriz traspuesta" << endl;
 					cout << "'4' Matriz adjunta xxxx GAUSS" << endl;
 					cout << "'5' Matriz inversa" << endl;
-					cout << "'6' Vectores y valores propios" << endl;
+					cout << "'6' Descomposición LU" << endl;
 					cout << "'7' Métodos numéricos" << endl;
 					cout << "'0' Volver al menú anterior." << endl;
 					cout << "> ";
@@ -43,46 +42,50 @@ void CLI::menuMatrices() {
 					cout << endl;
 					switch ( eleccionCalculosMatriz ) {
 						case '1':
-							matrizA.mostrarMatriz();
+							matrizA.mostrarMatrizOriginal();
 							cout << endl;
 							cout << "La traza de la matriz A es: " <<
 							     matrizA.traza() << endl;
 							break;
 						case '2':
-							matrizA.mostrarMatriz();
+							matrizA.mostrarMatrizOriginal();
 							cout << endl;
 							if ( matrizA.getFila() != matrizA.getColumna() ) {
 								cout << "La matriz no es cuadrada. " << endl;
-								}
-							else {
-								cout << endl;
+							} else {
 								cout << "El determinante de la matriz A es: " <<
 								     matrizA.determinante() << endl;
-								}
+							}
 							break;
 						case '3':
-							matrizA.mostrarMatriz();
+							matrizA.mostrarMatrizOriginal();
 							cout << endl;
-							matrizA.traspuesta();
 							cout << "La matriz traspuesta de A es: " << endl;
-							matrizA.mostrarMatrizResultado();
+							matrizA.traspuesta();
+							matrizA.mostrarMatrizCopia();
+							cout << endl;
 							break;
 						case '4':
-							matrizA.mostrarMatriz();
+							matrizA.mostrarMatrizOriginal();
 							cout << endl;
+							cout << "La matriz A por Gauss es : " << endl;
 							matrizA.gauss();
-							cout << "Gauss: " << endl;
-							matrizA.mostrarMatrizResultado();
+							matrizA.mostrarMatrizCopia();
+							cout << endl;
 							break;
 						case '5':
-							matrizA.mostrarMatriz();
+							matrizA.mostrarMatrizOriginal();
 							cout << endl;
 							matrizA.inversa();
 							break;
 						case '6':
-							//matrizA.vectoresProp();
+							matrizA.mostrarMatrizOriginal();
+							cout << endl;
+							cout << "La matrices L y U son : " << endl;
+							matrizA.descomposicionLU();
+							cout << endl;
 							break;
-						}
+					}
 					/*if ( eleccionCalculosMatriz != '0' ) {
 						cout << "¿Copiar el resultado a un archivo?" << endl;
 						cout << "s/n:";
@@ -91,15 +94,14 @@ void CLI::menuMatrices() {
 					if ( eligesArchivo == 's' ) {
 						matrizA.guardarEnArchivo();
 						}*/
-					}
-				while ( eleccionCalculosMatriz != '0' );
+				} while ( eleccionCalculosMatriz != '0' );
 				break;
 			case '2':
 				Matriz matrizB;
 				matrizB.recogerDatosMatriz();
 				matrizB.crearMatrizVacia();
 				matrizB.editarMatrizVacia();
-				matrizB.mostrarMatriz();
+				matrizA.mostrarMatrizOriginal();
 				do {
 					cout << "Cálculos de dos matrices" << endl;
 					cout << "'1' Suma" << endl;
@@ -118,12 +120,10 @@ void CLI::menuMatrices() {
 						case '3':
 							//kronecker();
 							break;
-						}
-					cout << "¿Copiar el resultado a un archivo?" << endl;
 					}
-				while ( eleccionCalculosMatriz != '0' );
+					cout << "¿Copiar el resultado a un archivo?" << endl;
+				} while ( eleccionCalculosMatriz != '0' );
 				break;
-			}
 		}
-	while ( elegir1o2Matrices != '0' );
-	}
+	} while ( elegir1o2Matrices != '0' );
+}

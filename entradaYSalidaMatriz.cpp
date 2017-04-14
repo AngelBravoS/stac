@@ -18,20 +18,19 @@ void Matriz::leerArchivo() {
 			j++; //avanza en la fila
 			i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
 			j = j % n; //se asegura que esté entre 0 y N-1
-			}
-		mostrarMatriz();
+		}
+		mostrarMatrizOriginal();
 		cout << endl;
 		archivo.close();
-		}
-	else cout << "Fichero inexistente" << endl;
-	}
+	} else cout << "Fichero inexistente" << endl;
+}
 
 void Matriz::guardarEnArchivo() {
 	cout << "Estamos trabajando en ellouuu..." << endl;
-	ofstream archivoSalida("resultado.dat");
-	archivoSalida<<traza();
+	ofstream archivoSalida ( "resultado.dat" );
+	archivoSalida << traza();
 	archivoSalida.close();
-	}
+}
 
 void Matriz::recogerDatosMatriz() {
 	unsigned int m, n;
@@ -42,46 +41,54 @@ void Matriz::recogerDatosMatriz() {
 	cin >> n;
 	setColumna ( n );
 	cout << "la nueva matriz es de " << getFila() << "x" << getColumna() << endl;
-	}
+}
 
 void Matriz::crearMatrizVacia() {
 	matriz = new double *[getFila()];
 	for ( unsigned int i = 0; i < getFila(); i++ )     {
 		matriz[i] = new double [getColumna()];
-		}
-	setMatriz ( matriz );
 	}
+	setMatriz ( matriz );
+}
 
 void Matriz::editarMatrizVacia() {
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		for ( unsigned int j = 0; j < getColumna(); j++ ) {
 			cout << "Elemento " << i + 1 << "," << j + 1 << ": ";
 			cin >> matriz[i][j];
-			}
 		}
-	cout << endl;
 	}
+	cout << endl;
+}
 
-void Matriz::mostrarMatriz() {
+void Matriz::copiarMatriz() {
+	copiaDeMatriz = new double *[getFila()];
+	for ( unsigned int i = 0; i < getFila(); i++ )     {
+		copiaDeMatriz[i] = new double[getColumna()];
+	}
+}
+
+void Matriz::mostrarMatrizOriginal() {
 	cout << "la matriz es:" << endl;
 	cout << endl;
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		cout << "( ";
 		for ( unsigned int j = 0; j < getColumna(); j++ ) {
 			cout << matriz[i][j] << " ";
-			}
+		}
 		cout << ")";
 		cout << endl;
-		}
 	}
+}
 
-void Matriz::mostrarMatrizResultado() {
+void Matriz::mostrarMatrizCopia ( ) {
+	cout << endl;
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		cout << "( ";
 		for ( unsigned int j = 0; j < getColumna(); j++ ) {
-			cout << matrizResultado[i][j] << " ";
-			}
+			cout << copiaDeMatriz[i][j] << " ";
+		}
 		cout << ")";
 		cout << endl;
-		}
 	}
+}
