@@ -15,9 +15,9 @@ class CLI {
         void listadOpcionesPricipales();
         //-------- subfunciones de menu --------
         void menuPrincipal();
-        void menUnaVariable();
-        void menuDosVariables();
-        void menuNVariables();
+		  void menu1Var();
+        void menu2Var();
+        void menuNVar();
         void menuMatrices();
         void menuSinDatos();
         //-------- funciones especificas de cada submenu --------

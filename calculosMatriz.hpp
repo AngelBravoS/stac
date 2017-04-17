@@ -1,11 +1,9 @@
-class VectorBidimensional {
-		//Obtener = Get
-		//Establecer = Set
+class CalculosMatriz {
 	public:
 		//-------- setters y getters --------
 		unsigned int getFila();
 		void setFila ( unsigned int filaPublica );
-		unsigned int getElemento();
+		unsigned int getColumna();
 		void setColumna ( unsigned int columnaPublica );
 		double getMatriz();
 		void setMatriz ( double **matrizPublica );
@@ -31,7 +29,7 @@ class VectorBidimensional {
 		void descomposicionLU();
 	private:
 		unsigned int fila;
-		unsigned int elemento;
-		double **VectorBidimensional;
-		double **copiaDeVectorBidimensional;
+		unsigned int columna;
+		double **matriz;
+		double **copiaDeMatriz;
 	};

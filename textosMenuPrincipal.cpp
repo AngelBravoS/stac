@@ -21,7 +21,7 @@ void CLI::introduccion() {
 void CLI::acercaDe() {
 	cout << endl;
 	cout << "             ======================= " << endl;
-	cout << "               Versión alpha 0.5.0" << endl;
+	cout << "               Versión alpha 0.6.0" << endl;
 	cout << "                  Escrito en c++" << endl;
 	cout << "                Ángel Bravo Sáenz" << endl;
 	cout << "             ======================= " << endl;

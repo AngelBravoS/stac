@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void CLI::menuSinDatos(){
+void CLI::menuSinDatos() {
 	//cout << "Escribe: " << endl;
 	cout << "c Combinatoria." << endl;
 	cout << "i Inteligencia artificial."  << endl;
@@ -11,13 +11,13 @@ void CLI::menuSinDatos(){
 	cout << "0 Salir." << endl;
 	cout << ">";
 	eleccion();
-	switch (getOpcion()){
+	switch ( getOpcion() ) {
 		case 'c' :
 			menuCombinatoria();
 			break;
 		case 'i' :
 			menuInteligenciArtificial();
-			break;	
+			break;
 		case 'd' :
 			menuDistribDiscreta();
 			break;

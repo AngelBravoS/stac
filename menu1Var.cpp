@@ -1,12 +1,12 @@
 #include <iostream>
 #include "cli.hpp"
-#include "vector.hpp"
+#include "calculos1Var.hpp"
 
 using namespace std;
 
-void CLI::menUnaVariable() {
+void CLI::menu1Var() {
 	char eleccionCalculosVariableX, eligesArchivo;
-	Vector variableX;
+	Calculos1Var variableX;
 	cout << "¿Leer desde un archivo?" << endl;
 	cout << "s/n:";
 	cin >> eligesArchivo;

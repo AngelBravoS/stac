@@ -25,13 +25,13 @@ void CLI::menuPrincipal() {
     eleccion();
     switch ( getOpcion() ) {
         case '1' :
-            menUnaVariable();
+            menu1Var();
             break;
         case '2' :
-            menuDosVariables();
+            menu2Var();
             break;
         case 'n' :
-            menuNVariables();
+            menuNVar();
             break;
         case 'm' :
             menuMatrices();

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "cli.hpp"
-#include "matriz.hpp"
+#include "calculosMatriz.hpp"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ void CLI::menuMatrices() {
 		cin >> elegir1o2Matrices;
 		switch ( elegir1o2Matrices ) {
 			case '1':
-				Matriz matrizA;
+				CalculosMatriz matrizA;
 				cout << "¿Leer desde un archivo?" << endl;
 				cout << "s/n:";
 				cin >> eligesArchivo;
@@ -97,7 +97,7 @@ void CLI::menuMatrices() {
 				} while ( eleccionCalculosMatriz != '0' );
 				break;
 			case '2':
-				Matriz matrizB;
+				CalculosMatriz matrizB;
 				matrizB.recogerDatosMatriz();
 				matrizB.crearMatrizVacia();
 				matrizB.editarMatrizVacia();

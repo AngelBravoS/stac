@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "vector.hpp"
+#include "calculos1Var.hpp"
 #include "funcMate.hpp"
 
 //Límite máximo en unsigned short int: 65535
@@ -9,31 +9,31 @@
 using namespace std;
 typedef unsigned short int unShortInt;
 
-unsigned int Vector::getLongitudVector() {
+unsigned int Calculos1Var::getLongitudVector() {
 	return longitudVector;
 }
 
-void Vector::setLongitudVector ( unsigned int longitudVectorPublico ) {
+void Calculos1Var::setLongitudVector ( unsigned int longitudVectorPublico ) {
 	longitudVector = longitudVectorPublico;
 }
 
-double Vector::getVector() {
+double Calculos1Var::getVector() {
 	return *vector;
 }
 
-void Vector::setVector ( double *vectorPublico ) {
+void Calculos1Var::setVector ( double *vectorPublico ) {
 	*vector = *vectorPublico;
 }
 
-double Vector::getVectorResultado() {
+double Calculos1Var::getVectorResultado() {
 	return *vectorResultado;
 }
 
-void Vector::setVectorResultado ( double vectorResultadoPublico ) {
+void Calculos1Var::setVectorResultado ( double vectorResultadoPublico ) {
 	*vectorResultado = vectorResultadoPublico;
 }
 
-double  Vector::sumatoria ( unsigned short int exponente ) {
+double  Calculos1Var::sumatoria ( unsigned short int exponente ) {
 	unsigned int n = getLongitudVector();
 	double sumatoria = 0;
 	for ( unsigned int i = 0; i < n; i++ ) {
@@ -42,14 +42,14 @@ double  Vector::sumatoria ( unsigned short int exponente ) {
 	return sumatoria;
 }
 
-double  Vector::mediaAritmetica() {
+double  Calculos1Var::mediaAritmetica() {
 	unsigned int n = getLongitudVector();
 	double media = 0;
 	media = ( sumatoria ( 1 ) / n );
 	return media;
 }
 
-double Vector::mediaGeometrica() {
+double Calculos1Var::mediaGeometrica() {
 	unsigned int n = getLongitudVector();
 	double mediaGeometrica = 1;
 	for ( unsigned int i = 0; i < n; i++ ) {
@@ -59,7 +59,7 @@ double Vector::mediaGeometrica() {
 	return mediaGeometrica;
 }
 
-double Vector::mediaArmonica() {
+double Calculos1Var::mediaArmonica() {
 	unsigned int n = getLongitudVector();
 	double mediaArmonica = 0;
 	for ( unsigned int i = 0; i < n; i++ ) {
@@ -69,7 +69,7 @@ double Vector::mediaArmonica() {
 	return mediaArmonica;
 }
 
-double Vector::mediaCuadratica() {
+double Calculos1Var::mediaCuadratica() {
 	unsigned int n = getLongitudVector();
 	double mediaCuadratica;
 	mediaCuadratica = sumatoria ( 2 ) * ( 1.0 / n );
@@ -78,7 +78,7 @@ double Vector::mediaCuadratica() {
 }
 
 //Suma de diferencias respecto a la media con exponente
-double Vector::difRespecMedia ( int exponente ) {
+double Calculos1Var::difRespecMedia ( int exponente ) {
 	unsigned int n = getLongitudVector();
 	double difRespecMedia = 0;
 	for ( unsigned int i = 0; i < n; i++ ) {
@@ -87,53 +87,53 @@ double Vector::difRespecMedia ( int exponente ) {
 	return difRespecMedia;
 }
 
-double Vector::varianza() {
+double Calculos1Var::varianza() {
 	unsigned int n = getLongitudVector();
 	double varianza;
 	varianza = ( difRespecMedia ( 2 ) ) / n;
 	return varianza;
 }
 
-double Vector::cuasiVarianza() {
+double Calculos1Var::cuasiVarianza() {
 	unsigned int n = getLongitudVector();
 	double cuasiVarianza;
 	cuasiVarianza = ( difRespecMedia ( 2 ) ) / ( n - 1 );
 	return cuasiVarianza;
 }
 
-double Vector::desviacionTipica() {
+double Calculos1Var::desviacionTipica() {
 	double desviacionTipica;
 	desviacionTipica = sqrt ( varianza() );
 	return desviacionTipica;
 }
 
-double Vector::cuasiDesviacionTipica() {
+double Calculos1Var::cuasiDesviacionTipica() {
 	double cuasiDesviacionTipica;
 	cuasiDesviacionTipica = sqrt ( cuasiVarianza() );
 	return cuasiDesviacionTipica;
 }
 
-double Vector::momentos ( int exponente ) {
+double Calculos1Var::momentos ( int exponente ) {
 	unsigned int n = getLongitudVector();
 	double momentos;
 	momentos = difRespecMedia ( exponente ) / n;
 	return momentos;
 }
 
-double Vector::coeficientePearson() {
+double Calculos1Var::coeficientePearson() {
 	double coeficientePearson;
 	coeficientePearson = ( cuasiDesviacionTipica() / mediaAritmetica() );
 	return coeficientePearson;
 }
 
 //funciona MAAAAL
-double Vector::coeficienteAsimetriaFisher() {
+double Calculos1Var::coeficienteAsimetriaFisher() {
 	double coeficienteAsimetriaFisher;
 	coeficienteAsimetriaFisher = ( momentos ( 3 ) / pow ( cuasiDesviacionTipica(), 3 ) );
 	return coeficienteAsimetriaFisher;
 }
 
-double Vector::curtosis() {
+double Calculos1Var::curtosis() {
 	double curtosis;
 	int n =  getLongitudVector();
 	curtosis = ( ( difRespecMedia ( 4 ) / ( ( n - 1 ) * pow ( cuasiDesviacionTipica(), 4 ) ) ) );

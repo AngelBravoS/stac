@@ -1,10 +1,10 @@
 #include <iostream>
-#include "calculosMatriz.hpp"
+#include "calculosNVar.hpp"
 #include<fstream>
 
 using namespace std;
 
-void CalculosMatriz::leerArchivo() {
+void CalculosNVar::leerArchivo() {
 	fstream archivo;
 	archivo.open ( "datos.dat", ios::in | ios::binary );
 	if ( archivo.is_open() ) {
@@ -25,14 +25,14 @@ void CalculosMatriz::leerArchivo() {
 	} else cout << "Fichero inexistente" << endl;
 }
 
-void CalculosMatriz::guardarEnArchivo() {
+void CalculosNVar::guardarEnArchivo() {
 	cout << "Estamos trabajando en ellouuu..." << endl;
 	ofstream archivoSalida ( "resultado.dat" );
 	archivoSalida << traza();
 	archivoSalida.close();
 }
 
-void CalculosMatriz::recogerDatosMatriz() {
+void CalculosNVar::recogerDatosMatriz() {
 	unsigned int m, n;
 	cout << "Número de filas: ";
 	cin >> m;
@@ -43,7 +43,7 @@ void CalculosMatriz::recogerDatosMatriz() {
 	cout << "la nueva matriz es de " << getFila() << "x" << getColumna() << endl;
 }
 
-void CalculosMatriz::crearMatrizVacia() {
+void CalculosNVar::crearMatrizVacia() {
 	matriz = new double *[getFila()];
 	for ( unsigned int i = 0; i < getFila(); i++ )     {
 		matriz[i] = new double [getColumna()];
@@ -51,7 +51,7 @@ void CalculosMatriz::crearMatrizVacia() {
 	setMatriz ( matriz );
 }
 
-void CalculosMatriz::editarMatrizVacia() {
+void CalculosNVar::editarMatrizVacia() {
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		for ( unsigned int j = 0; j < getColumna(); j++ ) {
 			cout << "Elemento " << i + 1 << "," << j + 1 << ": ";
@@ -61,14 +61,14 @@ void CalculosMatriz::editarMatrizVacia() {
 	cout << endl;
 }
 
-void CalculosMatriz::copiarMatriz() {
+void CalculosNVar::copiarMatriz() {
 	copiaDeMatriz = new double *[getFila()];
 	for ( unsigned int i = 0; i < getFila(); i++ )     {
 		copiaDeMatriz[i] = new double[getColumna()];
 	}
 }
 
-void CalculosMatriz::mostrarMatrizOriginal() {
+void CalculosNVar::mostrarMatrizOriginal() {
 	cout << "la matriz es:" << endl;
 	cout << endl;
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
@@ -81,7 +81,7 @@ void CalculosMatriz::mostrarMatrizOriginal() {
 	}
 }
 
-void CalculosMatriz::mostrarMatrizCopia ( ) {
+void CalculosNVar::mostrarMatrizCopia ( ) {
 	cout << endl;
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		cout << "( ";

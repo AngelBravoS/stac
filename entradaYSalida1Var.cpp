@@ -1,10 +1,10 @@
 #include <iostream>
-#include "vector.hpp"
+#include "calculos1Var.hpp"
 #include<fstream>
 
 using namespace std;
 
-void Vector::leerArchivo() {
+void Calculos1Var::leerArchivo() {
 	fstream archivo;
 	archivo.open ( "datos.dat", ios::in | ios::binary );
 	if ( archivo.is_open() ) {
@@ -23,14 +23,14 @@ void Vector::leerArchivo() {
 	}
 }
 
-void Vector::guardarEnArchivo() {
+void Calculos1Var::guardarEnArchivo() {
 	cout << "Estamos trabajando en ellouuu..." << endl;
 	ofstream archivoSalida ( "resultado.dat" );
 	//archivoSalida<<traza();
 	archivoSalida.close();
 }
 
-void Vector::recogerDatosVector() {
+void Calculos1Var::recogerDatosVector() {
 	int n;
 	cout << "Número de elementos: ";
 	cin >> n;
@@ -38,12 +38,12 @@ void Vector::recogerDatosVector() {
 	//cout << "la variable X es de " << getLongitudVector() << " elementos" << endl;
 }
 
-void Vector::crearVectorVacio() {
+void Calculos1Var::crearVectorVacio() {
 	vector = new double [getLongitudVector()];
 	setVector ( vector );
 }
 
-void Vector::editarVectorVacio() {
+void Calculos1Var::editarVectorVacio() {
 	for ( unsigned int i = 0; i < getLongitudVector(); i++ ) {
 		cout << "Elemento " << i + 1  << ": ";
 		cin >> vector[i];
@@ -51,7 +51,7 @@ void Vector::editarVectorVacio() {
 	cout << endl;
 }
 
-void Vector::mostrarVector() {
+void Calculos1Var::mostrarVector() {
 	cout << "la variable X es:" << endl;
 	cout << endl;
 	cout << "( ";
@@ -62,7 +62,7 @@ void Vector::mostrarVector() {
 	cout << endl;
 }
 
-void Vector::mostrarVectorResultado() {
+void Calculos1Var::mostrarVectorResultado() {
 	for ( unsigned int i = 0; i < getLongitudVector(); i++ ) {
 		cout << "( ";
 		cout << vectorResultado[i] << " ";
@@ -71,6 +71,6 @@ void Vector::mostrarVectorResultado() {
 	cout << endl;
 }
 
-void Vector::destructorVector(){
+void Calculos1Var::destructorVector() {
 	delete vector;
 }

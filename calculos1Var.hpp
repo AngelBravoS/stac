@@ -1,4 +1,4 @@
-class Vector {
+class Calculos1Var {
 		//Obtener = Get
 		//Establecer = Set
 	public:

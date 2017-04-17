@@ -1,49 +1,49 @@
 #include <iostream>
-#include "matriz.hpp"
+#include "calculosMatriz.hpp"
 
 using namespace std;
 
-unsigned int Matriz::getFila() {
+unsigned int CalculosMatriz::getFila() {
 	return fila;
 }
 
-void Matriz::setFila ( unsigned int filaPublica ) {
+void CalculosMatriz::setFila ( unsigned int filaPublica ) {
 	fila = filaPublica;
 }
 
-unsigned int Matriz::getColumna() {
+unsigned int CalculosMatriz::getColumna() {
 	return columna;
 }
 
-void Matriz::setColumna ( unsigned int columnaPublica ) {
+void CalculosMatriz::setColumna ( unsigned int columnaPublica ) {
 	columna = columnaPublica;
 }
 
-double Matriz::getMatriz() {
+double CalculosMatriz::getMatriz() {
 	return **matriz;
 }
 
-void Matriz::setMatriz ( double **matrizPublica ) {
+void CalculosMatriz::setMatriz ( double **matrizPublica ) {
 	**matriz = **matrizPublica;
 }
 
-double Matriz::getMatrizCopia() {
+double CalculosMatriz::getMatrizCopia() {
 	return **copiaDeMatriz;
 }
 
-void Matriz::setMatrizCopia( double **copiaDeMatrizPublica ) {
+void CalculosMatriz::setMatrizCopia( double **copiaDeMatrizPublica ) {
 	**copiaDeMatriz = **copiaDeMatrizPublica;
 }
 
-double Matriz::traza() {
+double CalculosMatriz::traza() {
 	double traza = 0;
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
-		traza = traza + matriz[i][i];
+		traza += matriz[i][i];
 	}
 	return traza;
 }
 
-double  Matriz::determinante() {
+double  CalculosMatriz::determinante() {
 	double determinante = 0;
 	switch ( getFila() ) {
 		case 1:
@@ -67,7 +67,7 @@ double  Matriz::determinante() {
 	return determinante;
 }
 
-void Matriz::traspuesta() {
+void CalculosMatriz::traspuesta() {
 	copiarMatriz();
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		for ( unsigned int j = 0; j < getColumna(); j++ ) {
@@ -78,10 +78,10 @@ void Matriz::traspuesta() {
 	setMatrizCopia(copiaDeMatriz);
 }
 
-void Matriz::adjunta() {
+void CalculosMatriz::adjunta() {
 }
 
-void Matriz::inversa() {
+void CalculosMatriz::inversa() {
 	if ( determinante() != 0 ) {
 		cout << "La matriz tiene inversa" << endl;
 	} else {
@@ -89,7 +89,7 @@ void Matriz::inversa() {
 	}
 }
 
-void Matriz::triangular() {
+void CalculosMatriz::triangular() {
 	/*for ( int i = 1, i <= n, i++ ) {
 		if ( matriz[i, i] = 0 ) {
 			for ( j = i + 1, j <= n, j++ ) {
@@ -102,11 +102,11 @@ void Matriz::triangular() {
 		}*/
 }
 
-void Matriz::gauss() {
+void CalculosMatriz::gauss() {
 	copiarMatriz();
 }
 
-void Matriz::descomposicionLU() {
+void CalculosMatriz::descomposicionLU() {
 	unsigned int const n = getFila();
 	unsigned int i, j, k;
 	double matrizL [n][n];

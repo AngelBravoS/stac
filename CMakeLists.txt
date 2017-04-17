@@ -8,19 +8,22 @@ set(lista_archivos
   #el menu inicial y la gestion de los submenus
   cli.cpp
   textosMenuPrincipal.cpp
+  entradaYSalida1Var.cpp
+  entradaYSalida2Var.cpp
+  #entradaYSalidaNVar.cpp
   entradaYSalidaMatriz.cpp
-  entradaYSalidaVector.cpp
   #Funciones matematicas basicas y avanzadas de cada tipo
   funcMate.cpp
   combinatoria.cpp
-  vector.cpp
-  matriz.cpp
+  calculos1Var.cpp
+  calculos2Var.cpp
+  calculosMatriz.cpp
   inteligenciArtificial.cpp
   distribucionesDiscretas.cpp
   #Los submenus de cada tipo de operacion
-  menUnaVariable.cpp
-  menuDosVariables.cpp
-  menuNVariables.cpp
+  menu1Var.cpp
+  menu2Var.cpp
+  menuNVar.cpp
   menuMatrices.cpp
   menuSinDatos.cpp
   menuCombinatoria.cpp 
