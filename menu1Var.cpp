@@ -10,7 +10,7 @@ void CLI::menu1Var() {
 	cout << "¿Leer desde un archivo?" << endl;
 	cout << "s/n:";
 	cin >> eligesArchivo;
-	if ( eligesArchivo == 's' ) {
+	if ( eligesArchivo != 's' ) {
 		variableX.leerArchivo();
 	} else {
 		variableX.recogerDatosVector();

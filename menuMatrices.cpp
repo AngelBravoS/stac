@@ -18,7 +18,7 @@ void CLI::menuMatrices() {
 				cout << "¿Leer desde un archivo?" << endl;
 				cout << "s/n:";
 				cin >> eligesArchivo;
-				if ( eligesArchivo == 'n' ) {
+				if ( eligesArchivo != 's' ) {
 					matrizA.recogerDatosMatriz();
 					matrizA.crearMatrizVacia();
 					matrizA.editarMatrizVacia();

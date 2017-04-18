@@ -1,4 +1,4 @@
-#include "funcMate.hpp"
+#include "funcMatematicasBasicas.hpp"
 
 //typedef unsigned short int unShortInt;
 //Límite máximo en unsigned short int: 65535

@@ -1,4 +1,4 @@
-#include "funcMate.hpp"
+#include "funcMatematicasBasicas.hpp"
 //#include "distribuciones.hpp"
 #include <math.h>
 

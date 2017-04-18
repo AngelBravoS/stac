@@ -1,10 +1,42 @@
 #include <iostream>
-#include "calculosMatriz.hpp"
 #include<fstream>
+#include "funcionesDatosBasicas.hpp"
 
 using namespace std;
 
-void CalculosMatriz::leerArchivo() {
+unsigned int FuncionesDatosBasicas::getFila() {
+	return fila;
+}
+
+void FuncionesDatosBasicas::setFila ( unsigned int filaPublica ) {
+	fila = filaPublica;
+}
+
+unsigned int FuncionesDatosBasicas::getColumna() {
+	return columna;
+}
+
+void FuncionesDatosBasicas::setColumna ( unsigned int columnaPublica ) {
+	columna = columnaPublica;
+}
+
+double FuncionesDatosBasicas::getMatriz() {
+	return **matriz;
+}
+
+void FuncionesDatosBasicas::setMatriz ( double **matrizPublica ) {
+	**matriz = **matrizPublica;
+}
+
+double FuncionesDatosBasicas::getMatrizCopia() {
+	return **copiaDeMatriz;
+}
+
+void FuncionesDatosBasicas::setMatrizCopia( double **copiaDeMatrizPublica ) {
+	**copiaDeMatriz = **copiaDeMatrizPublica;
+}
+
+void FuncionesDatosBasicas::leerArchivo() {
 	fstream archivo;
 	archivo.open ( "datos.dat", ios::in | ios::binary );
 	if ( archivo.is_open() ) {
@@ -25,14 +57,14 @@ void CalculosMatriz::leerArchivo() {
 	} else cout << "Fichero inexistente" << endl;
 }
 
-void CalculosMatriz::guardarEnArchivo() {
+void FuncionesDatosBasicas::guardarEnArchivo() {
 	cout << "Estamos trabajando en ellouuu..." << endl;
 	ofstream archivoSalida ( "resultado.dat" );
-	archivoSalida << traza();
+	//archivoSalida << traza();
 	archivoSalida.close();
 }
 
-void CalculosMatriz::recogerDatosMatriz() {
+void FuncionesDatosBasicas::recogerDatosMatriz() {
 	unsigned int m, n;
 	cout << "Número de filas: ";
 	cin >> m;
@@ -43,7 +75,7 @@ void CalculosMatriz::recogerDatosMatriz() {
 	cout << "la nueva matriz es de " << getFila() << "x" << getColumna() << endl;
 }
 
-void CalculosMatriz::crearMatrizVacia() {
+void FuncionesDatosBasicas::crearMatrizVacia() {
 	matriz = new double *[getFila()];
 	for ( unsigned int i = 0; i < getFila(); i++ )     {
 		matriz[i] = new double [getColumna()];
@@ -51,7 +83,7 @@ void CalculosMatriz::crearMatrizVacia() {
 	setMatriz ( matriz );
 }
 
-void CalculosMatriz::editarMatrizVacia() {
+void FuncionesDatosBasicas::editarMatrizVacia() {
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		for ( unsigned int j = 0; j < getColumna(); j++ ) {
 			cout << "Elemento " << i + 1 << "," << j + 1 << ": ";
@@ -61,14 +93,14 @@ void CalculosMatriz::editarMatrizVacia() {
 	cout << endl;
 }
 
-void CalculosMatriz::copiarMatriz() {
+void FuncionesDatosBasicas::copiarMatriz() {
 	copiaDeMatriz = new double *[getFila()];
 	for ( unsigned int i = 0; i < getFila(); i++ )     {
 		copiaDeMatriz[i] = new double[getColumna()];
 	}
 }
 
-void CalculosMatriz::mostrarMatrizOriginal() {
+void FuncionesDatosBasicas::mostrarMatrizOriginal() {
 	cout << "la matriz es:" << endl;
 	cout << endl;
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
@@ -81,7 +113,7 @@ void CalculosMatriz::mostrarMatrizOriginal() {
 	}
 }
 
-void CalculosMatriz::mostrarMatrizCopia ( ) {
+void FuncionesDatosBasicas::mostrarMatrizCopia ( ) {
 	cout << endl;
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
 		cout << "( ";

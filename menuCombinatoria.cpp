@@ -1,6 +1,6 @@
 #include <iostream>
 #include "cli.hpp"
-#include "funcMate.hpp"
+#include "funcMatematicasBasicas.hpp"
 #include "combinatoria.hpp"
 
 using namespace std;

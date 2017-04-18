@@ -3,38 +3,6 @@
 
 using namespace std;
 
-unsigned int CalculosMatriz::getFila() {
-	return fila;
-}
-
-void CalculosMatriz::setFila ( unsigned int filaPublica ) {
-	fila = filaPublica;
-}
-
-unsigned int CalculosMatriz::getColumna() {
-	return columna;
-}
-
-void CalculosMatriz::setColumna ( unsigned int columnaPublica ) {
-	columna = columnaPublica;
-}
-
-double CalculosMatriz::getMatriz() {
-	return **matriz;
-}
-
-void CalculosMatriz::setMatriz ( double **matrizPublica ) {
-	**matriz = **matrizPublica;
-}
-
-double CalculosMatriz::getMatrizCopia() {
-	return **copiaDeMatriz;
-}
-
-void CalculosMatriz::setMatrizCopia( double **copiaDeMatrizPublica ) {
-	**copiaDeMatriz = **copiaDeMatrizPublica;
-}
-
 double CalculosMatriz::traza() {
 	double traza = 0;
 	for ( unsigned int i = 0; i < getFila(); i++ ) {
@@ -75,7 +43,7 @@ void CalculosMatriz::traspuesta() {
 		}
 	}
 	//mostrarMatriz ( copiaDeMatriz );
-	setMatrizCopia(copiaDeMatriz);
+	setMatrizCopia ( copiaDeMatriz );
 }
 
 void CalculosMatriz::adjunta() {

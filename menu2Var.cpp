@@ -10,13 +10,13 @@ void CLI::menu2Var() {
 	cout << "¿Leer desde un archivo?" << endl;
 	cout << "s/n:";
 	cin >> eligesArchivo;
-	if ( eligesArchivo == 's' ) {
+	if ( eligesArchivo != 's' ) {
 		variablesXeY.leerArchivo();
 	} else {
-		variablesXeY.recogerDatosVector();
-		variablesXeY.crearVectorVacio();
-		variablesXeY.editarVectorVacio();
-		variablesXeY.mostrarVectorOriginal();
+		variablesXeY.recogerDatosMatriz();
+		variablesXeY.crearMatrizVacia();
+		variablesXeY.editarMatrizVacia();
+		variablesXeY.mostrarMatrizOriginal();
 		cout << endl;
 	}
 	do {
@@ -25,7 +25,7 @@ void CLI::menu2Var() {
 		cout << "'0' Salir." << endl;
 		cout << "> ";
 		cin >> eleccionCalculosVariableXeY;
-		variablesXeY.mostrarVectorOriginal();
+		variablesXeY.mostrarMatrizOriginal();
 		cout << endl;
 		switch ( eleccionCalculosVariableXeY ) {
 			case '1':

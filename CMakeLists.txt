@@ -9,14 +9,15 @@ set(lista_archivos
   cli.cpp
   textosMenuPrincipal.cpp
   entradaYSalida1Var.cpp
-  entradaYSalida2Var.cpp
-  #entradaYSalidaNVar.cpp
-  entradaYSalidaMatriz.cpp
   #Funciones matematicas basicas y avanzadas de cada tipo
-  funcMate.cpp
+  #Comunes a todas las clases de variables
+  funcionesDatosBasicas.cpp
+  funcMatematicasBasicas.cpp
+  #Específicas
   combinatoria.cpp
   calculos1Var.cpp
   calculos2Var.cpp
+  calculosNVar.cpp
   calculosMatriz.cpp
   inteligenciArtificial.cpp
   distribucionesDiscretas.cpp

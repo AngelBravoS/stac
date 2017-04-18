@@ -1,45 +1,13 @@
 #include <iostream>
 #include <cmath>
 #include "calculosNVar.hpp"
-#include "funcMate.hpp"
+#include "funcMatematicasBasicas.hpp"
 
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
 using namespace std;
 typedef unsigned short int unShortInt;
-
-unsigned int CalculosNVar::getFila() {
-	return fila;
-}
-
-void CalculosNVar::setFila ( unsigned int filaPublica ) {
-	fila = filaPublica;
-}
-
-unsigned int CalculosNVar::getColumna() {
-	return columna;
-}
-
-void CalculosNVar::setColumna ( unsigned int columnaPublica ) {
-	columna = columnaPublica;
-}
-
-double CalculosNVar::getMatriz() {
-	return **matriz;
-}
-
-void CalculosNVar::setMatriz ( double **matrizPublica ) {
-	**matriz = **matrizPublica;
-}
-
-double CalculosNVar::getMatrizCopia() {
-	return **copiaDeMatriz;
-}
-
-void CalculosNVar::setMatrizCopia ( double **copiaDeMatrizPublica ) {
-	**copiaDeMatriz = **copiaDeMatrizPublica;
-}
 
 double  CalculosNVar::sumatoria ( int indiceVariable, unsigned short int exponente ) {
 	unsigned int n = getColumna();

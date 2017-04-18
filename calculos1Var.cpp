@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "calculos1Var.hpp"
-#include "funcMate.hpp"
+#include "funcMatematicasBasicas.hpp"
 
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
