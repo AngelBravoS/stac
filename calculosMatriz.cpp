@@ -12,6 +12,7 @@ double CalculosMatriz::traza() {
 }
 
 double  CalculosMatriz::determinante() {
+	unsigned int const n = getFila();
 	double determinante = 0;
 	switch ( getFila() ) {
 		case 1:
@@ -70,8 +71,24 @@ void CalculosMatriz::triangular() {
 		}*/
 }
 
+/*
+Si A11=0, se busca el primer coeficiente no nulo de la getColumna
+e intercambiamos fila.
+Si A11 =/= 0 para i = 2...n, mi1=-ai1/a11, así hacemos 0 todo elemento
+de la columna debajo del pivote
+*/
 void CalculosMatriz::gauss() {
+	unsigned int const n = getFila();
 	copiarMatriz();
+	for ( int i = 1; i < n; i++ ) {
+		if ( copiaDeMatriz[i][i] == 0 ) {
+			for ( int j = i + 1; j < n; j++ ) {
+			}
+		} else {
+			//copiaDeMatriz[i][j] =;
+		}
+	}
+	setMatrizCopia ( copiaDeMatriz );
 }
 
 void CalculosMatriz::descomposicionLU() {

@@ -13,7 +13,7 @@ void CLI::introduccion() {
 	cout << endl;
 	cout << "             ======================= " << endl;
 	cout << "             Programa de estadística" << endl;
-	cout << "                       STAC" << endl;
+	cout << "                      STAC" << endl;
 	cout << "             ======================= " << endl;
 	cout << endl;
 	}
@@ -21,7 +21,7 @@ void CLI::introduccion() {
 void CLI::acercaDe() {
 	cout << endl;
 	cout << "             ======================= " << endl;
-	cout << "               Versión alpha 0.6.0" << endl;
+	cout << "               Versión alpha 0.7.0" << endl;
 	cout << "                  Escrito en c++" << endl;
 	cout << "                Ángel Bravo Sáenz" << endl;
 	cout << "             ======================= " << endl;
@@ -35,6 +35,12 @@ void CLI::ayuda() {
 	cout << "	Resúmenes descriptivos:" << endl;
 	cout << "		Medidas de posición central,  " << endl;
 	cout << "		de dispersión, kurtosis, asimetría" << endl;
+	cout << "	Inferencia" << endl;
+	cout << "		Contrastes en poblaciones normales" << endl;
+	cout << "			Relativo a la media" << endl;
+	cout << "			Relativo a la varianza" << endl;
+	cout << "		Test de la Chi-Cuadrado" << endl;
+	cout << "		Test de la t de Student" << endl;
 	cout << "	Muestreo" << endl;
 
 	cout << "Análisis estadístico de dos variables:"  << endl;
@@ -42,8 +48,7 @@ void CLI::ayuda() {
 	cout << "	Independencia" << endl;
 	cout << "	Muestreo" << endl;
 
-
-	cout << "Análisis estadístico de n variables:" << endl;
+	cout << "Análisis estadístico de n-variables:" << endl;
 	cout << "	Análisis multivariante " << endl;
 
 	cout << "Cálculo matricial:" << endl;
@@ -60,8 +65,9 @@ void CLI::ayuda() {
 	cout << "		Multiplicar matrices" << endl;
 	cout << "		Kronecker" << endl;
 
-	cout << "Análisis que no requiere datos:" << endl;
+	cout << "Análisis que no requiere datos.:" << endl;
 	cout << "	Combinatoria" << endl;
+	cout << "	Distribuciones discretas de probabilidad" << endl;
 	cout << "	Inteligencia Artificial" << endl;
 	cout << "		Generador congruencial multiplicativo" << endl;
 	cout << "		Generador congruencia mixto" << endl;
@@ -70,12 +76,14 @@ void CLI::ayuda() {
 	}
 
 void CLI::listadOpcionesPricipales() {
-	cout << "Escribe: " << endl;
+	cout << "		  Menú principal" << endl;
+	cout << "             ======================= " << endl;
+	cout << endl;
 	cout << "'1' Análisis estadístico de una variable." << endl;
 	cout << "'2' Análisis estadístico de dos variables."  << endl;
-	cout << "'n' Análisis estadístico de n variables." << endl;
+	cout << "'n' Análisis estadístico de n-variables." << endl;
 	cout << "'m' Cálculo matricial." << endl;
-	cout << "'0' Análisis que no requiere datos." << endl;
+	cout << "'s' Análisis que no requiere datos." << endl;
 	cout << "'a' Ayuda." << endl;
-	cout << "Cualquier otra tecla para salir." << endl;
+	cout << "'0'  Salir." << endl;
 	}

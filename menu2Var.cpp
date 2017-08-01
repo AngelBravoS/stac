@@ -5,13 +5,13 @@
 using namespace std;
 
 void CLI::menu2Var() {
-	char eleccionCalculosVariableXeY, eligesArchivo;
+	char eleccionNivel2, eligesArchivo;
 	Calculos2Var variablesXeY;
 	cout << "¿Leer desde un archivo?" << endl;
 	cout << "s/n:";
 	cin >> eligesArchivo;
-	if ( eligesArchivo != 's' ) {
-		variablesXeY.leerArchivo();
+	if ( eligesArchivo == 's' ) {
+		variablesXeY.leerMatrizArchivo();
 	} else {
 		variablesXeY.recogerDatosMatriz();
 		variablesXeY.crearMatrizVacia();
@@ -24,10 +24,10 @@ void CLI::menu2Var() {
 		cout << "'2' medidas de dispersión" << endl;
 		cout << "'0' Salir." << endl;
 		cout << "> ";
-		cin >> eleccionCalculosVariableXeY;
+		cin >> eleccionNivel2;
 		variablesXeY.mostrarMatrizOriginal();
 		cout << endl;
-		switch ( eleccionCalculosVariableXeY ) {
+		switch ( eleccionNivel2 ) {
 			case '1':
 				//medidas de tendencia Central
 				cout << "Media aritmética de X = " << variablesXeY.mediaAritmetica(0) << endl;
@@ -48,6 +48,6 @@ void CLI::menu2Var() {
 				cout << endl;
 				break;
 		}
-	} while ( eleccionCalculosVariableXeY != '0' );
+	} while ( eleccionNivel2 != '0' );
 	//variablesXeY.destructorVector();
 }

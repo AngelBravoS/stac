@@ -4,6 +4,96 @@
 
 using namespace std;
 
+// Funciones de un vector
+
+unsigned int FuncionesDatosBasicas::getLongitudVector() {
+	return longitudVector;
+}
+
+void FuncionesDatosBasicas::setLongitudVector ( unsigned int longitudVectorPublico ) {
+	longitudVector = longitudVectorPublico;
+}
+
+double FuncionesDatosBasicas::getVector() {
+	return *vector;
+}
+
+void FuncionesDatosBasicas::setVector ( double *vectorPublico ) {
+	*vector = *vectorPublico;
+}
+
+double FuncionesDatosBasicas::getVectorResultado() {
+	return *vectorResultado;
+}
+
+void FuncionesDatosBasicas::setVectorResultado ( double vectorResultadoPublico ) {
+	*vectorResultado = vectorResultadoPublico;
+}
+
+void FuncionesDatosBasicas::leerVectorArchivo() {
+	fstream archivo;
+	archivo.open ( "datosVector.dat", ios::in | ios::binary );
+	if ( archivo.is_open() ) {
+		cout << "Fichero leído" << endl;
+		recogerDatosVector();
+		crearVectorVacio();
+		int n = getLongitudVector();
+		for ( int i = 0; i < n; i++ ) {
+			archivo >> vector[i];
+		}
+		archivo.close();
+	} else {
+		cout << "Fichero inexistente" << endl;
+	}
+}
+
+void FuncionesDatosBasicas::recogerDatosVector() {
+	int n;
+	cout << "Número de elementos: ";
+	cin >> n;
+	setLongitudVector ( n );
+	//cout << "la variable X es de " << getLongitudVector() << " elementos" << endl;
+}
+
+void FuncionesDatosBasicas::crearVectorVacio() {
+	vector = new double [getLongitudVector()];
+	setVector ( vector );
+}
+
+void FuncionesDatosBasicas::editarVectorVacio() {
+	for ( unsigned int i = 0; i < getLongitudVector(); i++ ) {
+		cout << "Elemento " << i + 1  << ": ";
+		cin >> vector[i];
+	}
+	cout << endl;
+}
+
+void FuncionesDatosBasicas::mostrarVector() {
+	cout << "la variable X es:" << endl;
+	cout << endl;
+	cout << "( ";
+	for ( unsigned int i = 0; i < getLongitudVector(); i++ ) {
+		cout << vector[i] << " ";
+	}
+	cout << ")";
+	cout << endl;
+}
+
+void FuncionesDatosBasicas::mostrarVectorResultado() {
+	for ( unsigned int i = 0; i < getLongitudVector(); i++ ) {
+		cout << "( ";
+		cout << vectorResultado[i] << " ";
+	}
+	cout << ")";
+	cout << endl;
+}
+
+void FuncionesDatosBasicas::destructorVector() {
+	delete vector;
+}
+
+// Funciones de una matriz
+
 unsigned int FuncionesDatosBasicas::getFila() {
 	return fila;
 }
@@ -36,9 +126,9 @@ void FuncionesDatosBasicas::setMatrizCopia( double **copiaDeMatrizPublica ) {
 	**copiaDeMatriz = **copiaDeMatrizPublica;
 }
 
-void FuncionesDatosBasicas::leerArchivo() {
+void FuncionesDatosBasicas::leerMatrizArchivo() {
 	fstream archivo;
-	archivo.open ( "datos.dat", ios::in | ios::binary );
+	archivo.open ( "datosMatriz.dat", ios::in | ios::binary );
 	if ( archivo.is_open() ) {
 		cout << "Fichero leído" << endl;
 		recogerDatosMatriz();

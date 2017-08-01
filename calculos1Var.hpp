@@ -1,25 +1,12 @@
-class Calculos1Var {
+#include "funcionesDatosBasicas.hpp"
+#include "funcMatematicasBasicas.hpp"
+
+class Calculos1Var : public FuncionesDatosBasicas {
 		//Obtener = Get
 		//Establecer = Set
 	public:
-		//-------- setters y getters --------
-		unsigned int getLongitudVector();
-		void setLongitudVector ( unsigned int longitudVectorPublico );
-		double getVector();
-		void setVector ( double *vectorPublico );
-		double getVectorResultado();
-		void setVectorResultado ( double vectorPublico );
-		//-------- trabajo con archivos --------
-		void leerArchivo();
-		void guardarEnArchivo();
-		//-------- funciones de vectores --------
-		void recogerDatosVector();
-		void crearVectorVacio();
-		void editarVectorVacio();
-		void mostrarVector();
-		void mostrarVectorResultado();
-		void destructorVector();
-		//-------- funciones matemáticas --------
+	
+		//========  funciones de estadística descriptiva ======== 
 		double sumatoria ( short unsigned int exponente );
 		double mediaAritmetica();
 		double mediaGeometrica() ;
@@ -34,10 +21,26 @@ class Calculos1Var {
 		double coeficientePearson();
 		double coeficienteAsimetriaFisher();
 		double curtosis();
+		double norma();
+						
+		//========  funciones de muestreo ======== 
 		
-	private:
-		unsigned int longitudVector;
-		//Declaramos dos punteros en la pila
-		double *vector;
-		double *vectorResultado;
+		
+		
+		//======== funciones de inferencia ======== 
+		//-------- Contrastes en poblaciones normales --------
+		//-------- de una muestra. Relativo a la media--------
+		double media1MuestraSigmaConocida();
+		double media1MuestraSigmaDesconocida();
+		//-------- relativo a la varianza --------
+		double var1MuestraMuConocida();
+		double var1MuestraMuDesconocida();
+		//-------- Aplicaciones del test de razón --------
+		//-------- de verosimilitudes --------
+		//-------- Test de Chi-cuadrado sobre Sigma^2--------
+		double testChiMuConocida();
+		double testChiMuDesconocida();
+		//-------- Test t Student sobre mu --------
+		double testStudentVarConocida();
+		double testStudentVarDesconocida();
 };

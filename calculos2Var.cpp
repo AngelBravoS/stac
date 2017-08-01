@@ -13,11 +13,10 @@
 double Calculos2Var::sumatoria2Var ( int variableX, int variableY, int exponenteX, int exponenteY ) {
 	double sumatoria2Variables = 0;
 	unsigned int n = getColumna();
-	for ( int i = 0; i < n; i++ ) {
+	for (unsigned int i = 0; i < n; i++ ) {
 		sumatoria2Variables += pow ( matriz[variableX][i], exponenteX ) * pow ( matriz[variableY][i], exponenteY );
 	}
 	return sumatoria2Variables;
-	
 }
 
 double Calculos2Var::covarianza() {
@@ -34,15 +33,13 @@ double Calculos2Var::coeficienteCorrelacion() {
 	return coeficienteCorrelacion;
 }
 
-
-/*
-double Calculos2Var::distanciaEuclidea ( int i, int j ) {
+double Calculos2Var::distanciaEuclidea() {
 	double distanciaEuclidea = 0;
-	for ( byte x = 0; x < 3; x++ ) {
-		distanciaEuclidea = Math.pow ( ( vector[i][j] - vector[i][j + x] ), 2 )
-		                    + Math.pow ( ( vector[i + x][j] - vector[i + x][j + x] ), 2 );
-	}
-	System.out.println ( distanciaEuclidea );
+	/*
+	unsigned int n = getColumna();
+	for (unsigned int x = 0; x < n; x++ ) {
+		distanciaEuclidea = pow ( ( matriz[i][j] - matriz[i][j + x] ), 2 )
+		                    + pow ( ( matriz[i + x][j] - matriz[i + x][j + x] ), 2 );
+	}*/
 	return distanciaEuclidea;
 }
-*/

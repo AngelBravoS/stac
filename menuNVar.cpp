@@ -1,6 +1,6 @@
 #include <iostream>
 #include "cli.hpp"
-#include "calculosMatriz.hpp"
+#include "calculosNVar.hpp"
 
 using namespace std;
 

@@ -21,12 +21,10 @@ class CLI {
         void menuMatrices();
         void menuSinDatos();
         //-------- funciones especificas de cada submenu --------
+        void menuInferencia();
         void menuCombinatoria();
         void menuInteligenciArtificial();
         void menuDistribDiscreta();
-
-        //void menuIntro();
-        //void recogerDatosMatriz();
     private:
         char opcion;
     };

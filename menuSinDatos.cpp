@@ -5,20 +5,21 @@ using namespace std;
 
 void CLI::menuSinDatos() {
 	//cout << "Escribe: " << endl;
-	cout << "c Combinatoria." << endl;
-	cout << "i Inteligencia artificial."  << endl;
-	cout << "d Distribuciones de probabilidad discretas." << endl;
-	cout << "0 Salir." << endl;
+	char eleccionNivel2;
+	cout << "'1' Combinatoria." << endl;
+	cout << "'2' Inteligencia artificial."  << endl;
+	cout << "'3' Distribuciones de probabilidad discretas." << endl;
+	cout << "'0' Salir." << endl;
 	cout << ">";
-	eleccion();
-	switch ( getOpcion() ) {
-		case 'c' :
+	cin >> eleccionNivel2;
+	switch ( eleccionNivel2 ) {
+		case '1' :
 			menuCombinatoria();
 			break;
-		case 'i' :
+		case '2' :
 			menuInteligenciArtificial();
 			break;
-		case 'd' :
+		case '3' :
 			menuDistribDiscreta();
 			break;
 	}

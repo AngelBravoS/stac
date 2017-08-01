@@ -9,7 +9,7 @@ void CLI::menuMatrices() {
 	do {
 		cout << "'1' Cálculos con una matriz" << endl;
 		cout << "'2' Cálculos con dos matrices" << endl;
-		cout << "'0' Salir." << endl;
+		cout << "'0' Salir al menú principal." << endl;
 		cout << "> ";
 		cin >> elegir1o2Matrices;
 		switch ( elegir1o2Matrices ) {
@@ -18,24 +18,25 @@ void CLI::menuMatrices() {
 				cout << "¿Leer desde un archivo?" << endl;
 				cout << "s/n:";
 				cin >> eligesArchivo;
-				if ( eligesArchivo != 's' ) {
+				if ( eligesArchivo == 's' ) {
+					matrizA.leerMatrizArchivo();
+				} else {
 					matrizA.recogerDatosMatriz();
 					matrizA.crearMatrizVacia();
 					matrizA.editarMatrizVacia();
 					matrizA.mostrarMatrizOriginal();
 					cout << endl;
-				} else {
-					matrizA.leerArchivo();
 				}
 				do {
 					cout << "Cálculos de una matriz" << endl;
 					cout << "'1' Traza" << endl;
 					cout << "'2' Determinante" << endl;
 					cout << "'3' Matriz traspuesta" << endl;
-					cout << "'4' Matriz adjunta xxxx GAUSS" << endl;
-					cout << "'5' Matriz inversa" << endl;
-					cout << "'6' Descomposición LU" << endl;
-					cout << "'7' Métodos numéricos" << endl;
+					cout << "'4' Método de Gauss" << endl;
+					cout << "'5' Matriz adjunta" << endl;
+					cout << "'6' Matriz inversa" << endl;
+					cout << "'7' Descomposición LU" << endl;
+					cout << "'8' Métodos numéricos" << endl;
 					cout << "'0' Volver al menú anterior." << endl;
 					cout << "> ";
 					cin >> eleccionCalculosMatriz;
@@ -75,14 +76,27 @@ void CLI::menuMatrices() {
 							break;
 						case '5':
 							matrizA.mostrarMatrizOriginal();
+							cout << "La matriz adjunta de A es: " << endl;
+							cout << endl;
+							matrizA.adjunta();
+							break;
+						case '6':
+							matrizA.mostrarMatrizOriginal();
+							cout << "La matriz inversa de A es: " << endl;
 							cout << endl;
 							matrizA.inversa();
 							break;
-						case '6':
+						case '7':
 							matrizA.mostrarMatrizOriginal();
 							cout << endl;
 							cout << "La matrices L y U son : " << endl;
 							matrizA.descomposicionLU();
+							cout << endl;
+							break;
+						case '8':
+							matrizA.mostrarMatrizOriginal();
+							cout << endl;
+							cout << "Métodos numéricos aún no disponibles : " << endl;
 							cout << endl;
 							break;
 					}

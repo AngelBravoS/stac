@@ -9,30 +9,6 @@
 using namespace std;
 typedef unsigned short int unShortInt;
 
-unsigned int Calculos1Var::getLongitudVector() {
-	return longitudVector;
-}
-
-void Calculos1Var::setLongitudVector ( unsigned int longitudVectorPublico ) {
-	longitudVector = longitudVectorPublico;
-}
-
-double Calculos1Var::getVector() {
-	return *vector;
-}
-
-void Calculos1Var::setVector ( double *vectorPublico ) {
-	*vector = *vectorPublico;
-}
-
-double Calculos1Var::getVectorResultado() {
-	return *vectorResultado;
-}
-
-void Calculos1Var::setVectorResultado ( double vectorResultadoPublico ) {
-	*vectorResultado = vectorResultadoPublico;
-}
-
 double  Calculos1Var::sumatoria ( unsigned short int exponente ) {
 	unsigned int n = getLongitudVector();
 	double sumatoria = 0;
@@ -141,6 +117,13 @@ double Calculos1Var::curtosis() {
 	return curtosis;
 }
 
+double Calculos1Var::norma() {
+	double norma = 0;
+	norma+=sumatoria(2);
+	norma=sqrt(norma);
+	return norma;
+}
+
 /*
 	// Método Quicksort y opción de Arrays.sort(vectorOrdenado);
 	// con import java.util.Arrays; habilitado
@@ -162,3 +145,52 @@ double Calculos1Var::curtosis() {
     void Vector::moda() {
     }
 }*/
+
+double Calculos1Var::media1MuestraSigmaConocida(){
+	double resultado = 0;
+	cout << "ok."<<endl;
+	return resultado;
+	
+}
+
+double Calculos1Var::media1MuestraSigmaDesconocida(){
+	double resultado = 0;
+	return resultado;
+	
+}
+	
+double Calculos1Var::var1MuestraMuConocida(){
+	double resultado = 0;
+	return resultado;
+	
+}
+	
+double Calculos1Var::var1MuestraMuDesconocida(){
+	double resultado = 0;
+	return resultado;
+	
+}
+	
+double Calculos1Var::testChiMuConocida(){
+	double resultado = 0;
+	return resultado;
+	
+}
+	
+double Calculos1Var::testChiMuDesconocida(){
+	double resultado = 0;
+	return resultado;
+	
+}
+
+double Calculos1Var::testStudentVarConocida(){
+	double resultado = 0;
+	return resultado;
+	
+}
+
+double Calculos1Var::testStudentVarDesconocida(){
+	double resultado = 0;
+	return resultado;
+	
+}

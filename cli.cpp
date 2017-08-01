@@ -1,48 +1,52 @@
 //CLI => Command Line Interface.
 #include "cli.hpp"
 #include <iostream>
+#include "calculos1Var.hpp"
 
 using namespace std;
 
 char CLI::getOpcion() {
-    return opcion;
-    }
+	return opcion;
+}
 
 void CLI::setOpcion ( char opcionPrivada ) {
-    opcion = opcionPrivada;
-    }
+	opcion = opcionPrivada;
+}
 
 void CLI::eleccion() {
-    char eleccion;
-    cin >> eleccion;
-	 //eleccion='1';
-    setOpcion ( eleccion );
-    }
+	char opcionElegida;
+	cin >> opcionElegida;
+	//eleccion='1';
+	setOpcion ( opcionElegida );
+}
 
 void CLI::menuPrincipal() {
-    listadOpcionesPricipales();
-    cout << "> ";
-    eleccion();
-    switch ( getOpcion() ) {
-        case '1' :
-            menu1Var();
-            break;
-        case '2' :
-            menu2Var();
-            break;
-        case 'n' :
-            menuNVar();
-            break;
-        case 'm' :
-            menuMatrices();
-            break;
-        case 'a' :
-            ayuda();
-            break;
-        case '0' :
-            menuSinDatos();
-            break;
-        default :
-            break;
-        }
-    }
+	do {
+		listadOpcionesPricipales();
+		cout << "> ";
+		eleccion();
+		switch ( getOpcion() ) {
+			case '1' :
+				menu1Var();
+				break;
+			case '2' :
+				menu2Var();
+				break;
+			case 'n' :
+				menuNVar();
+				break;
+			case 'm' :
+				menuMatrices();
+				break;
+			case 'a' :
+				ayuda();
+				break;
+			case 's' :
+				menuSinDatos();
+				break;
+			default :
+				break;
+		}
+	}
+		while ( getOpcion() != '0' );
+}

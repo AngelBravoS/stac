@@ -8,16 +8,16 @@ using namespace std;
 void CLI::menuCombinatoria() {
 	unsigned short int m, n, cantidadn;
 	double resultado;
-	char seleccion1, seleccion2;
+	char eleccionNivel2, eleccionNivel3;
 	cout << "¿(p)ermutaciones, (v)ariaciones o (c)ombinaciones?." << endl;
 	cout << "> ";
-	cin >> seleccion1;
+	cin >> eleccionNivel2;
 	cout << "¿Repetición? (s)í/(n)o" << endl;
 	cout << "> ";
-	cin >> seleccion2;
-	switch ( seleccion1 ) {
+	cin >> eleccionNivel3;
+	switch ( eleccionNivel2 ) {
 		case 'p':
-			switch ( seleccion2 ) {
+			switch ( eleccionNivel3 ) {
 				case 's':
 					cout << "Permutaciones con repetición " << endl;
 					cout << "============================ " << endl;
@@ -54,7 +54,7 @@ void CLI::menuCombinatoria() {
 
 			break;
 		case 'v':
-			switch ( seleccion2 ) {
+			switch ( eleccionNivel3 ) {
 				case 's':
 					cout << "Variaciones con repetición " << endl;
 					cout << "============================ " << endl;
@@ -88,7 +88,7 @@ void CLI::menuCombinatoria() {
 
 			break;
 		case 'c':
-			switch ( seleccion2 ) {
+			switch ( eleccionNivel3 ) {
 				case 's':
 					cout << "Combinaciones con repetición " << endl;
 					cout << "============================ " << endl;

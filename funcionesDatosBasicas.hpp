@@ -3,6 +3,21 @@ class FuncionesDatosBasicas {
 		//Establecer = Set
 	public:
 		//-------- setters y getters --------
+		unsigned int getLongitudVector();
+		void setLongitudVector ( unsigned int longitudVectorPublico );
+		double getVector();
+		void setVector ( double *vectorPublico );
+		double getVectorResultado();
+		void setVectorResultado ( double vectorPublico );
+		//-------- funciones de vectores --------
+		void recogerDatosVector();
+		void crearVectorVacio();
+		void editarVectorVacio();
+		void mostrarVector();
+		void mostrarVectorResultado();
+		void destructorVector();		
+		
+		//-------- setters y getters --------
 		unsigned int getFila();
 		void setFila ( unsigned int filaPublica );
 		unsigned int getColumna();
@@ -12,7 +27,8 @@ class FuncionesDatosBasicas {
 		double getMatrizCopia();
 		void setMatrizCopia ( double **copiaDeMatrizPublica );
 		//-------- trabajo con archivos --------
-		void leerArchivo();
+		void leerMatrizArchivo();
+		void leerVectorArchivo();
 		void guardarEnArchivo();
 		//-------- funciones de la matriz de datos --------
 		void recogerDatosMatriz();
@@ -21,7 +37,13 @@ class FuncionesDatosBasicas {
 		void mostrarMatrizOriginal ();
 		void mostrarMatrizCopia ();
 		void copiarMatriz();
+
 	protected:
+		
+		unsigned int longitudVector;
+		double *vector;
+		double *vectorResultado;
+		
 		unsigned int fila;
 		unsigned int columna;
 		double **matriz;
