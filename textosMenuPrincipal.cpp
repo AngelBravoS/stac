@@ -4,86 +4,86 @@
 using namespace std;
 
 void CLI::hasElegido() {
-	cout << endl;
-	cout << "has elegido: " << getOpcion() << endl;
-	cout << endl;
+	cout << '\n';
+	cout << "has elegido: " << getOpcion() << '\n';
+	cout << '\n';
 	}
 
 void CLI::introduccion() {
-	cout << endl;
-	cout << "             ======================= " << endl;
-	cout << "             Programa de estadística" << endl;
-	cout << "                      STAC" << endl;
-	cout << "             ======================= " << endl;
-	cout << endl;
+	cout << '\n';
+	cout << "             ======================= " << '\n';
+	cout << "             Programa de estadística" << '\n';
+	cout << "                      STAC" << '\n';
+	cout << "             ======================= " << '\n';
+	cout << '\n';
 	}
 
 void CLI::acercaDe() {
-	cout << endl;
-	cout << "             ======================= " << endl;
-	cout << "               Versión alpha 0.7.0" << endl;
-	cout << "                  Escrito en c++" << endl;
-	cout << "                Ángel Bravo Sáenz" << endl;
-	cout << "             ======================= " << endl;
-	cout << endl;
+	cout << '\n';
+	cout << "             ======================= " << '\n';
+	cout << "               Versión alpha 0.7.1" << '\n';
+	cout << "                  Escrito en c++" << '\n';
+	cout << "                Ángel Bravo Sáenz" << '\n';
+	cout << "             ======================= " << '\n';
+	cout << '\n';
 	}
 
 void CLI::ayuda() {
-	cout << "                      Ayuda" << endl;
-	cout << "-------------------------------------------------" << endl;
-	cout << "Análisis estadístico de una variable:" << endl;
-	cout << "	Resúmenes descriptivos:" << endl;
-	cout << "		Medidas de posición central,  " << endl;
-	cout << "		de dispersión, kurtosis, asimetría" << endl;
-	cout << "	Inferencia" << endl;
-	cout << "		Contrastes en poblaciones normales" << endl;
-	cout << "			Relativo a la media" << endl;
-	cout << "			Relativo a la varianza" << endl;
-	cout << "		Test de la Chi-Cuadrado" << endl;
-	cout << "		Test de la t de Student" << endl;
-	cout << "	Muestreo" << endl;
+	cout << "                      Ayuda" << '\n';
+	cout << "-------------------------------------------------" << '\n';
+	cout << "Análisis estadístico de una variable:" << '\n';
+	cout << "	Resúmenes descriptivos:" << '\n';
+	cout << "		Medidas de posición central,  " << '\n';
+	cout << "		de dispersión, kurtosis, asimetría" << '\n';
+	cout << "	Inferencia" << '\n';
+	cout << "		Contrastes en poblaciones normales" << '\n';
+	cout << "			Relativo a la media" << '\n';
+	cout << "			Relativo a la varianza" << '\n';
+	cout << "		Test de la Chi-Cuadrado" << '\n';
+	cout << "		Test de la t de Student" << '\n';
+	cout << "	Muestreo" << '\n';
 
-	cout << "Análisis estadístico de dos variables:"  << endl;
-	cout << "	Rectas de regresión" << endl;
-	cout << "	Independencia" << endl;
-	cout << "	Muestreo" << endl;
+	cout << "Análisis estadístico de dos variables:"  << '\n';
+	cout << "	Rectas de regresión" << '\n';
+	cout << "	Independencia" << '\n';
+	cout << "	Muestreo" << '\n';
 
-	cout << "Análisis estadístico de n-variables:" << endl;
-	cout << "	Análisis multivariante " << endl;
+	cout << "Análisis estadístico de n-variables:" << '\n';
+	cout << "	Análisis multivariante " << '\n';
 
-	cout << "Cálculo matricial:" << endl;
-	cout << "	De una matriz" << endl;
-	cout << "		Traza" << endl;
-	cout << "		Determinante" << endl;
-	cout << "		Matriz traspuesta" << endl;
-	cout << "		Matriz adjunta" << endl;
-	cout << "		Matriz inversa" << endl;
-	cout << "		Vectores y valores propios" << endl;
-	cout << "		Gauss" << endl;
-	cout << "	De dos matrices" << endl;
-	cout << "		Sumar matrices" << endl;
-	cout << "		Multiplicar matrices" << endl;
-	cout << "		Kronecker" << endl;
+	cout << "Cálculo matricial:" << '\n';
+	cout << "	De una matriz" << '\n';
+	cout << "		Traza" << '\n';
+	cout << "		Determinante" << '\n';
+	cout << "		Matriz traspuesta" << '\n';
+	cout << "		Matriz adjunta" << '\n';
+	cout << "		Matriz inversa" << '\n';
+	cout << "		Vectores y valores propios" << '\n';
+	cout << "		Gauss" << '\n';
+	cout << "	De dos matrices" << '\n';
+	cout << "		Sumar matrices" << '\n';
+	cout << "		Multiplicar matrices" << '\n';
+	cout << "		Kronecker" << '\n';
 
-	cout << "Análisis que no requiere datos.:" << endl;
-	cout << "	Combinatoria" << endl;
-	cout << "	Distribuciones discretas de probabilidad" << endl;
-	cout << "	Inteligencia Artificial" << endl;
-	cout << "		Generador congruencial multiplicativo" << endl;
-	cout << "		Generador congruencia mixto" << endl;
-	cout << "	Distribuciones discretas de probabilidad" << endl;
-	cout << endl;
+	cout << "Análisis que no requiere datos:" << '\n';
+	cout << "	Combinatoria" << '\n';
+	cout << "	Distribuciones discretas de probabilidad" << '\n';
+	cout << "	Inteligencia Artificial" << '\n';
+	cout << "		Generador congruencial multiplicativo" << '\n';
+	cout << "		Generador congruencia mixto" << '\n';
+	cout << "	Distribuciones discretas de probabilidad" << '\n';
+	cout << '\n';
 	}
 
 void CLI::listadOpcionesPricipales() {
-	cout << "		  Menú principal" << endl;
-	cout << "             ======================= " << endl;
-	cout << endl;
-	cout << "'1' Análisis estadístico de una variable." << endl;
-	cout << "'2' Análisis estadístico de dos variables."  << endl;
-	cout << "'n' Análisis estadístico de n-variables." << endl;
-	cout << "'m' Cálculo matricial." << endl;
-	cout << "'s' Análisis que no requiere datos." << endl;
-	cout << "'a' Ayuda." << endl;
-	cout << "'0'  Salir." << endl;
+	cout << "		  Menú principal" << '\n';
+	cout << "             ======================= " << '\n';
+	cout << '\n';
+	cout << "'1' Análisis estadístico de una variable." << '\n';
+	cout << "'2' Análisis estadístico de dos variables."  << '\n';
+	cout << "'n' Análisis estadístico de n-variables." << '\n';
+	cout << "'m' Cálculo matricial." << '\n';
+	cout << "'s' Análisis que no requiere datos." << '\n';
+	cout << "'a' Ayuda." << '\n';
+	cout << "'0'  Salir." << '\n';
 	}

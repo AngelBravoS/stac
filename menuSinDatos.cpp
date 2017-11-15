@@ -4,13 +4,13 @@
 using namespace std;
 
 void CLI::menuSinDatos() {
-	//cout << "Escribe: " << endl;
+	//cout << "Escribe: " << '\n';
 	char eleccionNivel2;
-	cout << "'1' Combinatoria." << endl;
-	cout << "'2' Inteligencia artificial."  << endl;
-	cout << "'3' Distribuciones de probabilidad discretas." << endl;
-	cout << "'0' Salir." << endl;
-	cout << ">";
+	cout << "'1' Combinatoria." << '\n';
+	cout << "'2' Inteligencia artificial."  << '\n';
+	cout << "'3' Distribuciones de probabilidad discretas." << '\n';
+	cout << "'0' Salir." << '\n';
+	cout << "> ";
 	cin >> eleccionNivel2;
 	switch ( eleccionNivel2 ) {
 		case '1' :

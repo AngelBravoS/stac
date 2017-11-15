@@ -5,7 +5,7 @@ using namespace std;
 
 double CalculosMatriz::traza() {
 	double traza = 0;
-	for ( unsigned int i = 0; i < getFila(); i++ ) {
+	for(unsigned int i = 0; i < getFila(); i++) {
 		traza += matriz[i][i];
 	}
 	return traza;
@@ -14,7 +14,7 @@ double CalculosMatriz::traza() {
 double  CalculosMatriz::determinante() {
 	unsigned int const n = getFila();
 	double determinante = 0;
-	switch ( getFila() ) {
+	switch(getFila()) {
 		case 1:
 			determinante = matriz[0][0];
 			break;
@@ -22,12 +22,12 @@ double  CalculosMatriz::determinante() {
 			determinante = matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0];
 			break;
 		case 3://por sarrus
-			determinante = ( matriz[0][0] * matriz[1][1] * matriz[2][2] +
-			                 matriz[0][2] * matriz[1][0] * matriz[2][1] +
-			                 matriz[0][1] * matriz[1][2] * matriz[2][0] ) -
-			               ( matriz[0][2] * matriz[1][1] * matriz[2][0] +
-			                 matriz[0][1] * matriz[1][0] * matriz[2][2] +
-			                 matriz[0][0] * matriz[1][2] * matriz[2][1] );
+			determinante = (matriz[0][0] * matriz[1][1] * matriz[2][2] +
+			                matriz[0][2] * matriz[1][0] * matriz[2][1] +
+			                matriz[0][1] * matriz[1][2] * matriz[2][0]) -
+			               (matriz[0][2] * matriz[1][1] * matriz[2][0] +
+			                matriz[0][1] * matriz[1][0] * matriz[2][2] +
+			                matriz[0][0] * matriz[1][2] * matriz[2][1]);
 			break;
 		default :
 			cout << "Determinantes de orden >3 aún no disponible." << endl;
@@ -38,20 +38,20 @@ double  CalculosMatriz::determinante() {
 
 void CalculosMatriz::traspuesta() {
 	copiarMatriz();
-	for ( unsigned int i = 0; i < getFila(); i++ ) {
-		for ( unsigned int j = 0; j < getColumna(); j++ ) {
+	for(unsigned int i = 0; i < getFila(); i++) {
+		for(unsigned int j = 0; j < getColumna(); j++) {
 			copiaDeMatriz[i][j] = matriz[j][i];
 		}
 	}
 	//mostrarMatriz ( copiaDeMatriz );
-	setMatrizCopia ( copiaDeMatriz );
+	setMatrizCopia(copiaDeMatriz);
 }
 
 void CalculosMatriz::adjunta() {
 }
 
 void CalculosMatriz::inversa() {
-	if ( determinante() != 0 ) {
+	if(determinante() != 0) {
 		cout << "La matriz tiene inversa" << endl;
 	} else {
 		cout << "La matriz no tiene inversa" << endl;
@@ -80,15 +80,15 @@ de la columna debajo del pivote
 void CalculosMatriz::gauss() {
 	unsigned int const n = getFila();
 	copiarMatriz();
-	for ( int i = 1; i < n; i++ ) {
-		if ( copiaDeMatriz[i][i] == 0 ) {
-			for ( int j = i + 1; j < n; j++ ) {
+	for(int i = 1; i < n; i++) {
+		if(copiaDeMatriz[i][i] == 0) {
+			for(int j = i + 1; j < n; j++) {
 			}
 		} else {
 			//copiaDeMatriz[i][j] =;
 		}
 	}
-	setMatrizCopia ( copiaDeMatriz );
+	setMatrizCopia(copiaDeMatriz);
 }
 
 void CalculosMatriz::descomposicionLU() {
@@ -96,41 +96,41 @@ void CalculosMatriz::descomposicionLU() {
 	unsigned int i, j, k;
 	double matrizL [n][n];
 	double matrizU [n][n];
-	for ( i = 0; i < n; i++ ) {
-		for ( j = 0; j < n; j++ ) {
-			if ( j < i ) {
+	for(i = 0; i < n; i++) {
+		for(j = 0; j < n; j++) {
+			if(j < i) {
 				matrizL[j][i] = 0;
 			} else {
 				matrizL [j][i] = matriz [j][i];
-				for ( k = 0; k < i; k++ ) {
-					matrizL [j][i] -= ( matrizL [j][k] * matrizU [k][i] );
+				for(k = 0; k < i; k++) {
+					matrizL [j][i] -= (matrizL [j][k] * matrizU [k][i]);
 				}
 			}
 		}
-		for ( j = 0; j < n; j++ ) {
-			if ( j < i ) {
+		for(j = 0; j < n; j++) {
+			if(j < i) {
 				matrizU [i][j] = 0;
-			} else if ( j == i ) {
+			} else if(j == i) {
 				matrizU [i][j] = 1;
 			} else {
 				matrizU [i][j] = matriz[i][j] / matrizL [i][i];
-				for ( k = 0; k < i; k++ ) {
-					matrizU [i][j] -= ( ( matrizL [i][k] * matrizU [k][j] ) / matrizL [i][i] );
+				for(k = 0; k < i; k++) {
+					matrizU [i][j] -= ((matrizL [i][k] * matrizU [k][j]) / matrizL [i][i]);
 				}
 			}
 		}
 	}
 	copiarMatriz();
-	for ( i = 0; i < n; i++ ) {
-		for ( j = 0; j < n; j++ ) {
+	for(i = 0; i < n; i++) {
+		for(j = 0; j < n; j++) {
 			copiaDeMatriz[i][j] = matrizL[i][j];
 		}
 	}
-	mostrarMatrizCopia ( );
-	for ( i = 0; i < n; i++ ) {
-		for ( j = 0; j < n; j++ ) {
+	mostrarMatrizCopia();
+	for(i = 0; i < n; i++) {
+		for(j = 0; j < n; j++) {
 			copiaDeMatriz[i][j] = matrizU[i][j];
 		}
 	}
-	mostrarMatrizCopia ( );
+	mostrarMatrizCopia();
 }

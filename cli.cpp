@@ -9,7 +9,7 @@ char CLI::getOpcion() {
 	return opcion;
 }
 
-void CLI::setOpcion ( char opcionPrivada ) {
+void CLI::setOpcion(char opcionPrivada) {
 	opcion = opcionPrivada;
 }
 
@@ -17,7 +17,7 @@ void CLI::eleccion() {
 	char opcionElegida;
 	cin >> opcionElegida;
 	//eleccion='1';
-	setOpcion ( opcionElegida );
+	setOpcion(opcionElegida);
 }
 
 void CLI::menuPrincipal() {
@@ -25,7 +25,7 @@ void CLI::menuPrincipal() {
 		listadOpcionesPricipales();
 		cout << "> ";
 		eleccion();
-		switch ( getOpcion() ) {
+		switch(getOpcion()) {
 			case '1' :
 				menu1Var();
 				break;
@@ -44,9 +44,9 @@ void CLI::menuPrincipal() {
 			case 's' :
 				menuSinDatos();
 				break;
-			default :
-				break;
+			//default :
+			//	ayuda();
+			//	break;
 		}
-	}
-		while ( getOpcion() != '0' );
+	} while(getOpcion() != '0');
 }

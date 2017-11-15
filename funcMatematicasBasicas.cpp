@@ -10,35 +10,41 @@
     return sumatoria;
 }*/
 
-double factorial ( double n ) {
-	if ( n == 0 ) {
+double factorial(double n) {
+	if(n == 0) {
 		// Aseguramos que tenga salida siempre
 		return 1;
 	} else {
 		// Caso general
-		return  n * factorial ( n - 1 );
+		return  n * factorial(n - 1);
 	}
 }
 
-double potencia ( double numero, unsigned short int  potencia ) {
+double potencia(double numero, unsigned short int  potencia) {
 	double temporal = numero;
-	if ( potencia == 0 ) {
+	if(potencia == 0) {
 		numero = 1;
 	} else {
-		for ( unsigned short int x = 1; x < potencia; x++ ) {
+		for(unsigned short int x = 1; x < potencia; x++) {
 			numero *= temporal;
 		}
 	}
 	return numero;
 }
 
-double binomio ( double a, double b ) {
+double binomio(double n, double k) {
 	double resultado;
-	resultado = factorial ( a ) / ( factorial ( b ) * factorial ( a - b ) );
+	if(k==0) {
+		resultado = 1;
+	} else if(n == 0) {
+		resultado = 0;
+	} else {
+		resultado = factorial(n)/(factorial(k)*factorial(n-k));
+	}
 	return resultado;
 }
 
-unsigned long long int convierteDoubleEnInt ( double doble ) {
-	unsigned long long int valorEntero = static_cast<unsigned long long int> ( doble );
+unsigned long long int convierteDoubleEnInt(double doble) {
+	unsigned long long int valorEntero = static_cast<unsigned long long int>(doble);
 	return valorEntero;
 }
