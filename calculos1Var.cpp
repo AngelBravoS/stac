@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cmath>
 #include "calculos1Var.hpp"
-#include "funcMatematicasBasicas.hpp"
 
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
@@ -148,7 +147,7 @@ double Calculos1Var::norma() {
 
 double Calculos1Var::media1MuestraSigmaConocida() {
 	double resultado = 0;
-	cout << "ok."<<endl;
+	std::cout << "ok."<<endl;
 	return resultado;
 
 }

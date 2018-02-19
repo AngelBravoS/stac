@@ -1,9 +1,9 @@
-#include "funcionesDatosBasicas.hpp"
+#include "funcDatosBasicas.hpp"
 
-class CalculosNVar : public FuncionesDatosBasicas {
+class CalculosNVar : public FuncDatosBasicas {
 
 	public:
-		//-------- funciones matemáticas n-dimensionales --------
+		//========  funciones de estadística descriptiva ======== 
 		double sumatoria ( int indiceVariable, short unsigned int exponente );
 		double mediaAritmetica ( int indiceVariable );
 		double mediaGeometrica ( int indiceVariable ) ;
@@ -19,4 +19,7 @@ class CalculosNVar : public FuncionesDatosBasicas {
 		double coeficienteAsimetriaFisher ( int indiceVariable );
 		double curtosis ( int indiceVariable );
 		double covarianza ( int indiceVariable );
+		//========  funciones de tablas de contingencia ========
+		
+		
 };

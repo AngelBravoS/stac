@@ -1,9 +1,6 @@
 //CLI => Command Line Interface.
 #include "cli.hpp"
 #include <iostream>
-#include "calculos1Var.hpp"
-
-using namespace std;
 
 char CLI::getOpcion() {
 	return opcion;
@@ -15,7 +12,7 @@ void CLI::setOpcion(char opcionPrivada) {
 
 void CLI::eleccion() {
 	char opcionElegida;
-	cin >> opcionElegida;
+	std::cin >> opcionElegida;
 	//eleccion='1';
 	setOpcion(opcionElegida);
 }
@@ -23,7 +20,7 @@ void CLI::eleccion() {
 void CLI::menuPrincipal() {
 	do {
 		listadOpcionesPricipales();
-		cout << "> ";
+		std::cout << "> ";
 		eleccion();
 		switch(getOpcion()) {
 			case '1' :
@@ -44,9 +41,6 @@ void CLI::menuPrincipal() {
 			case 's' :
 				menuSinDatos();
 				break;
-			//default :
-			//	ayuda();
-			//	break;
 		}
 	} while(getOpcion() != '0');
 }

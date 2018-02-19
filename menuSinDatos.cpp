@@ -1,23 +1,20 @@
 #include <iostream>
 #include "cli.hpp"
 
-using namespace std;
-
 void CLI::menuSinDatos() {
-	//cout << "Escribe: " << '\n';
 	char eleccionNivel2;
-	cout << "'1' Combinatoria." << '\n';
-	cout << "'2' Inteligencia artificial."  << '\n';
-	cout << "'3' Distribuciones de probabilidad discretas." << '\n';
-	cout << "'0' Salir." << '\n';
-	cout << "> ";
-	cin >> eleccionNivel2;
+	std::cout << "'1' Combinatoria." << '\n';
+	std::cout << "'2' Inteligencia artificial."  << '\n';
+	std::cout << "'3' Distribuciones de probabilidad discretas." << '\n';
+	std::cout << "'0' Salir." << '\n';
+	std::cout << "> ";
+	std::cin >> eleccionNivel2;
 	switch ( eleccionNivel2 ) {
 		case '1' :
 			menuCombinatoria();
 			break;
 		case '2' :
-			menuInteligenciArtificial();
+			menuIA();
 			break;
 		case '3' :
 			menuDistribDiscreta();

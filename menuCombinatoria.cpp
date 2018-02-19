@@ -3,52 +3,50 @@
 #include "funcMatematicasBasicas.hpp"
 #include "combinatoria.hpp"
 
-using namespace std;
-
 void CLI::menuCombinatoria() {
 	unsigned short int m, n, cantidadn;
 	double resultado;
 	char eleccionNivel2, eleccionNivel3;
-	cout << "¿(p)ermutaciones, (v)ariaciones o (c)ombinaciones?." << '\n';
-	cout << "> ";
-	cin >> eleccionNivel2;
-	cout << "¿Repetición? (s)í/(n)o" << '\n';
-	cout << "> ";
-	cin >> eleccionNivel3;
+	std::cout << "¿(p)ermutaciones, (v)ariaciones o (c)ombinaciones?." << '\n';
+	std::cout << "> ";
+	std::cin >> eleccionNivel2;
+	std::cout << "¿Repetición? (s)í/(n)o" << '\n';
+	std::cout << "> ";
+	std::cin >> eleccionNivel3;
 	switch(eleccionNivel2) {
 		case 'p':
 			switch(eleccionNivel3) {
 				case 's':
-					cout << "Permutaciones con repetición " << '\n';
-					cout << "============================ " << '\n';
-					cout << "" << '\n';
-					cout << "Valor de m -> ";
-					cin >> m;
-					cout << "Cantidad de n diferentes -> ";
-					cin >> cantidadn;
+					std::cout << "Permutaciones con repetición " << '\n';
+					std::cout << "============================ " << '\n';
+					std::cout << "" << '\n';
+					std::cout << "Valor de m -> ";
+					std::cin >> m;
+					std::cout << "Cantidad de n diferentes -> ";
+					std::cin >> cantidadn;
 					resultado = 1;
 					for(unsigned short int i = 0; i < cantidadn; i++) {
-						cout << "Introducir valor de n" << (i + 1) << " " << "=> ";
-						cin >> n;
+						std::cout << "Introducir valor de n" << (i + 1) << " " << "=> ";
+						std::cin >> n;
 						resultado = resultado * factorial(n);
 					}
 					resultado = int (convierteDoubleEnInt((factorial(m) / resultado)));
-					cout << "" << '\n';
-					cout << "              m! " << '\n';
-					cout << "PRm,n = -------------- = " << resultado << '\n';
-					cout << "         n1!*n2!..nK! " << '\n';
-					cout << "" << '\n';
+					std::cout << "" << '\n';
+					std::cout << "              m! " << '\n';
+					std::cout << "PRm,n = -------------- = " << resultado << '\n';
+					std::cout << "         n1!*n2!..nK! " << '\n';
+					std::cout << "" << '\n';
 					break;
 
 				case 'n':
-					cout << "Permutaciones sin repetición " << '\n';
-					cout << "============================ " << '\n';
-					cout << "" << '\n';
-					cout << "Valor de n -> ";
-					cin >> n;
+					std::cout << "Permutaciones sin repetición " << '\n';
+					std::cout << "============================ " << '\n';
+					std::cout << "" << '\n';
+					std::cout << "Valor de n -> ";
+					std::cin >> n;
 					resultado = int (convierteDoubleEnInt(permutaciones(n)));
-					cout << "" << '\n';
-					cout << "Pn = n! = " << resultado << '\n';
+					std::cout << "" << '\n';
+					std::cout << "Pn = n! = " << resultado << '\n';
 					break;
 			}
 
@@ -56,33 +54,33 @@ void CLI::menuCombinatoria() {
 		case 'v':
 			switch(eleccionNivel3) {
 				case 's':
-					cout << "Variaciones con repetición " << '\n';
-					cout << "============================ " << '\n';
-					cout << "" << '\n';
-					cout << "Valor de m -> ";
-					cin >> m;
-					cout << "Valor de n -> ";
-					cin >> n;
+					std::cout << "Variaciones con repetición " << '\n';
+					std::cout << "============================ " << '\n';
+					std::cout << "" << '\n';
+					std::cout << "Valor de m -> ";
+					std::cin >> m;
+					std::cout << "Valor de n -> ";
+					std::cin >> n;
 					resultado = int (convierteDoubleEnInt(variacionesRep(m, n)));
-					cout << "" << '\n';
-					cout << "         n" << '\n';
-					cout << "VRm,n = m = " <<  resultado << '\n';;
+					std::cout << "" << '\n';
+					std::cout << "         n" << '\n';
+					std::cout << "VRm,n = m = " <<  resultado << '\n';;
 					break;
 
 				case 'n':
-					cout << "Variaciones sin repetición " << '\n';
-					cout << "============================ " << '\n';
-					cout << "" << '\n';
-					cout << "valor de m -> ";
-					cin >> m;
-					cout << "valor de n -> ";
-					cin >> n;
+					std::cout << "Variaciones sin repetición " << '\n';
+					std::cout << "============================ " << '\n';
+					std::cout << "" << '\n';
+					std::cout << "valor de m -> ";
+					std::cin >> m;
+					std::cout << "valor de n -> ";
+					std::cin >> n;
 					resultado = int (convierteDoubleEnInt(variaciones(m, n)));
-					cout << "" << '\n';
-					cout << "           m! " << '\n';
-					cout << "Vm,n = ---------- = " << resultado << '\n';
-					cout << "         (m-n)! " << '\n';
-					cout << "" << '\n';
+					std::cout << "" << '\n';
+					std::cout << "           m! " << '\n';
+					std::cout << "Vm,n = ---------- = " << resultado << '\n';
+					std::cout << "         (m-n)! " << '\n';
+					std::cout << "" << '\n';
 					break;
 			}
 
@@ -90,35 +88,35 @@ void CLI::menuCombinatoria() {
 		case 'c':
 			switch(eleccionNivel3) {
 				case 's':
-					cout << "Combinaciones con repetición " << '\n';
-					cout << "============================ " << '\n';
-					cout << "" << '\n';
-					cout << "Valor de m -> ";
-					cin >> m;
-					cout << "Valor de n -> ";
-					cin >> n;
+					std::cout << "Combinaciones con repetición " << '\n';
+					std::cout << "============================ " << '\n';
+					std::cout << "" << '\n';
+					std::cout << "Valor de m -> ";
+					std::cin >> m;
+					std::cout << "Valor de n -> ";
+					std::cin >> n;
 					resultado = int (convierteDoubleEnInt(combinacionesRep(m, n)));
-					cout << "" << '\n';
-					cout << "         (m + n-1) " << '\n';
-					cout << "CRm,n =  (       ) = " << resultado << '\n';
-					cout << "         (   n   ) " << '\n';
-					cout << "" << '\n';
+					std::cout << "" << '\n';
+					std::cout << "         (m + n-1) " << '\n';
+					std::cout << "CRm,n =  (       ) = " << resultado << '\n';
+					std::cout << "         (   n   ) " << '\n';
+					std::cout << "" << '\n';
 					break;
 
 				case 'n':
-					cout << "Combinaciones sin repetición " << '\n';
-					cout << "============================ " << '\n';
-					cout << "" << '\n';
-					cout << "Valor de m -> ";
-					cin >> m;
-					cout << "Valor de n -> ";
-					cin >> n;
+					std::cout << "Combinaciones sin repetición " << '\n';
+					std::cout << "============================ " << '\n';
+					std::cout << "" << '\n';
+					std::cout << "Valor de m -> ";
+					std::cin >> m;
+					std::cout << "Valor de n -> ";
+					std::cin >> n;
 					resultado = int (convierteDoubleEnInt(combinaciones(m, n)));
-					cout << "" << '\n';
-					cout << "        (m)        m! " << '\n';
-					cout << "Cm,n =  ( ) = ---------- = " <<  resultado << '\n';
-					cout << "        (n)     n!(m-n)! " << '\n';
-					cout << "" << '\n';
+					std::cout << "" << '\n';
+					std::cout << "        (m)        m! " << '\n';
+					std::cout << "Cm,n =  ( ) = ---------- = " <<  resultado << '\n';
+					std::cout << "        (n)     n!(m-n)! " << '\n';
+					std::cout << "" << '\n';
 					break;
 			}
 			break;

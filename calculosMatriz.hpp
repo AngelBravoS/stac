@@ -3,7 +3,7 @@
 class CalculosMatriz : public CalculosNVar {
 
 	public:
-		//-------- funciones de matrices --------
+		//========  funciones matriciales ======== 
 		double traza();
 		double determinante();
 		void traspuesta();
@@ -12,4 +12,5 @@ class CalculosMatriz : public CalculosNVar {
 		void inversa();
 		void gauss();
 		void descomposicionLU();
+		void multiplicarMat();
 };

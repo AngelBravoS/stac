@@ -123,6 +123,141 @@ stac/fast:
 	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/build
 .PHONY : stac/fast
 
+calculos1Var.o: calculos1Var.cpp.o
+
+.PHONY : calculos1Var.o
+
+# target to build an object file
+calculos1Var.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos1Var.cpp.o
+.PHONY : calculos1Var.cpp.o
+
+calculos1Var.i: calculos1Var.cpp.i
+
+.PHONY : calculos1Var.i
+
+# target to preprocess a source file
+calculos1Var.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos1Var.cpp.i
+.PHONY : calculos1Var.cpp.i
+
+calculos1Var.s: calculos1Var.cpp.s
+
+.PHONY : calculos1Var.s
+
+# target to generate assembly for a file
+calculos1Var.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos1Var.cpp.s
+.PHONY : calculos1Var.cpp.s
+
+calculos2Var.o: calculos2Var.cpp.o
+
+.PHONY : calculos2Var.o
+
+# target to build an object file
+calculos2Var.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos2Var.cpp.o
+.PHONY : calculos2Var.cpp.o
+
+calculos2Var.i: calculos2Var.cpp.i
+
+.PHONY : calculos2Var.i
+
+# target to preprocess a source file
+calculos2Var.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos2Var.cpp.i
+.PHONY : calculos2Var.cpp.i
+
+calculos2Var.s: calculos2Var.cpp.s
+
+.PHONY : calculos2Var.s
+
+# target to generate assembly for a file
+calculos2Var.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos2Var.cpp.s
+.PHONY : calculos2Var.cpp.s
+
+calculosIA.o: calculosIA.cpp.o
+
+.PHONY : calculosIA.o
+
+# target to build an object file
+calculosIA.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosIA.cpp.o
+.PHONY : calculosIA.cpp.o
+
+calculosIA.i: calculosIA.cpp.i
+
+.PHONY : calculosIA.i
+
+# target to preprocess a source file
+calculosIA.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosIA.cpp.i
+.PHONY : calculosIA.cpp.i
+
+calculosIA.s: calculosIA.cpp.s
+
+.PHONY : calculosIA.s
+
+# target to generate assembly for a file
+calculosIA.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosIA.cpp.s
+.PHONY : calculosIA.cpp.s
+
+calculosMatriz.o: calculosMatriz.cpp.o
+
+.PHONY : calculosMatriz.o
+
+# target to build an object file
+calculosMatriz.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosMatriz.cpp.o
+.PHONY : calculosMatriz.cpp.o
+
+calculosMatriz.i: calculosMatriz.cpp.i
+
+.PHONY : calculosMatriz.i
+
+# target to preprocess a source file
+calculosMatriz.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosMatriz.cpp.i
+.PHONY : calculosMatriz.cpp.i
+
+calculosMatriz.s: calculosMatriz.cpp.s
+
+.PHONY : calculosMatriz.s
+
+# target to generate assembly for a file
+calculosMatriz.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosMatriz.cpp.s
+.PHONY : calculosMatriz.cpp.s
+
+calculosNVar.o: calculosNVar.cpp.o
+
+.PHONY : calculosNVar.o
+
+# target to build an object file
+calculosNVar.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosNVar.cpp.o
+.PHONY : calculosNVar.cpp.o
+
+calculosNVar.i: calculosNVar.cpp.i
+
+.PHONY : calculosNVar.i
+
+# target to preprocess a source file
+calculosNVar.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosNVar.cpp.i
+.PHONY : calculosNVar.cpp.i
+
+calculosNVar.s: calculosNVar.cpp.s
+
+.PHONY : calculosNVar.s
+
+# target to generate assembly for a file
+calculosNVar.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosNVar.cpp.s
+.PHONY : calculosNVar.cpp.s
+
 cli.o: cli.cpp.o
 
 .PHONY : cli.o
@@ -204,86 +339,59 @@ distribucionesDiscretas.cpp.s:
 	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/distribucionesDiscretas.cpp.s
 .PHONY : distribucionesDiscretas.cpp.s
 
-entradaYSalidaMatriz.o: entradaYSalidaMatriz.cpp.o
+funcDatosBasicas.o: funcDatosBasicas.cpp.o
 
-.PHONY : entradaYSalidaMatriz.o
-
-# target to build an object file
-entradaYSalidaMatriz.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/entradaYSalidaMatriz.cpp.o
-.PHONY : entradaYSalidaMatriz.cpp.o
-
-entradaYSalidaMatriz.i: entradaYSalidaMatriz.cpp.i
-
-.PHONY : entradaYSalidaMatriz.i
-
-# target to preprocess a source file
-entradaYSalidaMatriz.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/entradaYSalidaMatriz.cpp.i
-.PHONY : entradaYSalidaMatriz.cpp.i
-
-entradaYSalidaMatriz.s: entradaYSalidaMatriz.cpp.s
-
-.PHONY : entradaYSalidaMatriz.s
-
-# target to generate assembly for a file
-entradaYSalidaMatriz.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/entradaYSalidaMatriz.cpp.s
-.PHONY : entradaYSalidaMatriz.cpp.s
-
-funcMate.o: funcMate.cpp.o
-
-.PHONY : funcMate.o
+.PHONY : funcDatosBasicas.o
 
 # target to build an object file
-funcMate.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcMate.cpp.o
-.PHONY : funcMate.cpp.o
+funcDatosBasicas.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcDatosBasicas.cpp.o
+.PHONY : funcDatosBasicas.cpp.o
 
-funcMate.i: funcMate.cpp.i
+funcDatosBasicas.i: funcDatosBasicas.cpp.i
 
-.PHONY : funcMate.i
+.PHONY : funcDatosBasicas.i
 
 # target to preprocess a source file
-funcMate.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcMate.cpp.i
-.PHONY : funcMate.cpp.i
+funcDatosBasicas.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcDatosBasicas.cpp.i
+.PHONY : funcDatosBasicas.cpp.i
 
-funcMate.s: funcMate.cpp.s
+funcDatosBasicas.s: funcDatosBasicas.cpp.s
 
-.PHONY : funcMate.s
+.PHONY : funcDatosBasicas.s
 
 # target to generate assembly for a file
-funcMate.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcMate.cpp.s
-.PHONY : funcMate.cpp.s
+funcDatosBasicas.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcDatosBasicas.cpp.s
+.PHONY : funcDatosBasicas.cpp.s
 
-inteligenciArtificial.o: inteligenciArtificial.cpp.o
+funcMatematicasBasicas.o: funcMatematicasBasicas.cpp.o
 
-.PHONY : inteligenciArtificial.o
+.PHONY : funcMatematicasBasicas.o
 
 # target to build an object file
-inteligenciArtificial.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/inteligenciArtificial.cpp.o
-.PHONY : inteligenciArtificial.cpp.o
+funcMatematicasBasicas.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcMatematicasBasicas.cpp.o
+.PHONY : funcMatematicasBasicas.cpp.o
 
-inteligenciArtificial.i: inteligenciArtificial.cpp.i
+funcMatematicasBasicas.i: funcMatematicasBasicas.cpp.i
 
-.PHONY : inteligenciArtificial.i
+.PHONY : funcMatematicasBasicas.i
 
 # target to preprocess a source file
-inteligenciArtificial.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/inteligenciArtificial.cpp.i
-.PHONY : inteligenciArtificial.cpp.i
+funcMatematicasBasicas.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcMatematicasBasicas.cpp.i
+.PHONY : funcMatematicasBasicas.cpp.i
 
-inteligenciArtificial.s: inteligenciArtificial.cpp.s
+funcMatematicasBasicas.s: funcMatematicasBasicas.cpp.s
 
-.PHONY : inteligenciArtificial.s
+.PHONY : funcMatematicasBasicas.s
 
 # target to generate assembly for a file
-inteligenciArtificial.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/inteligenciArtificial.cpp.s
-.PHONY : inteligenciArtificial.cpp.s
+funcMatematicasBasicas.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcMatematicasBasicas.cpp.s
+.PHONY : funcMatematicasBasicas.cpp.s
 
 main.o: main.cpp.o
 
@@ -312,59 +420,59 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-matriz.o: matriz.cpp.o
+menu1Var.o: menu1Var.cpp.o
 
-.PHONY : matriz.o
-
-# target to build an object file
-matriz.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/matriz.cpp.o
-.PHONY : matriz.cpp.o
-
-matriz.i: matriz.cpp.i
-
-.PHONY : matriz.i
-
-# target to preprocess a source file
-matriz.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/matriz.cpp.i
-.PHONY : matriz.cpp.i
-
-matriz.s: matriz.cpp.s
-
-.PHONY : matriz.s
-
-# target to generate assembly for a file
-matriz.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/matriz.cpp.s
-.PHONY : matriz.cpp.s
-
-menUnaVariable.o: menUnaVariable.cpp.o
-
-.PHONY : menUnaVariable.o
+.PHONY : menu1Var.o
 
 # target to build an object file
-menUnaVariable.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menUnaVariable.cpp.o
-.PHONY : menUnaVariable.cpp.o
+menu1Var.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu1Var.cpp.o
+.PHONY : menu1Var.cpp.o
 
-menUnaVariable.i: menUnaVariable.cpp.i
+menu1Var.i: menu1Var.cpp.i
 
-.PHONY : menUnaVariable.i
+.PHONY : menu1Var.i
 
 # target to preprocess a source file
-menUnaVariable.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menUnaVariable.cpp.i
-.PHONY : menUnaVariable.cpp.i
+menu1Var.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu1Var.cpp.i
+.PHONY : menu1Var.cpp.i
 
-menUnaVariable.s: menUnaVariable.cpp.s
+menu1Var.s: menu1Var.cpp.s
 
-.PHONY : menUnaVariable.s
+.PHONY : menu1Var.s
 
 # target to generate assembly for a file
-menUnaVariable.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menUnaVariable.cpp.s
-.PHONY : menUnaVariable.cpp.s
+menu1Var.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu1Var.cpp.s
+.PHONY : menu1Var.cpp.s
+
+menu2Var.o: menu2Var.cpp.o
+
+.PHONY : menu2Var.o
+
+# target to build an object file
+menu2Var.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu2Var.cpp.o
+.PHONY : menu2Var.cpp.o
+
+menu2Var.i: menu2Var.cpp.i
+
+.PHONY : menu2Var.i
+
+# target to preprocess a source file
+menu2Var.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu2Var.cpp.i
+.PHONY : menu2Var.cpp.i
+
+menu2Var.s: menu2Var.cpp.s
+
+.PHONY : menu2Var.s
+
+# target to generate assembly for a file
+menu2Var.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu2Var.cpp.s
+.PHONY : menu2Var.cpp.s
 
 menuCombinatoria.o: menuCombinatoria.cpp.o
 
@@ -420,59 +528,32 @@ menuDistribDiscretas.cpp.s:
 	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuDistribDiscretas.cpp.s
 .PHONY : menuDistribDiscretas.cpp.s
 
-menuDosVariables.o: menuDosVariables.cpp.o
+menuIA.o: menuIA.cpp.o
 
-.PHONY : menuDosVariables.o
-
-# target to build an object file
-menuDosVariables.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuDosVariables.cpp.o
-.PHONY : menuDosVariables.cpp.o
-
-menuDosVariables.i: menuDosVariables.cpp.i
-
-.PHONY : menuDosVariables.i
-
-# target to preprocess a source file
-menuDosVariables.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuDosVariables.cpp.i
-.PHONY : menuDosVariables.cpp.i
-
-menuDosVariables.s: menuDosVariables.cpp.s
-
-.PHONY : menuDosVariables.s
-
-# target to generate assembly for a file
-menuDosVariables.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuDosVariables.cpp.s
-.PHONY : menuDosVariables.cpp.s
-
-menuInteligenciArtificial.o: menuInteligenciArtificial.cpp.o
-
-.PHONY : menuInteligenciArtificial.o
+.PHONY : menuIA.o
 
 # target to build an object file
-menuInteligenciArtificial.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuInteligenciArtificial.cpp.o
-.PHONY : menuInteligenciArtificial.cpp.o
+menuIA.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuIA.cpp.o
+.PHONY : menuIA.cpp.o
 
-menuInteligenciArtificial.i: menuInteligenciArtificial.cpp.i
+menuIA.i: menuIA.cpp.i
 
-.PHONY : menuInteligenciArtificial.i
+.PHONY : menuIA.i
 
 # target to preprocess a source file
-menuInteligenciArtificial.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuInteligenciArtificial.cpp.i
-.PHONY : menuInteligenciArtificial.cpp.i
+menuIA.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuIA.cpp.i
+.PHONY : menuIA.cpp.i
 
-menuInteligenciArtificial.s: menuInteligenciArtificial.cpp.s
+menuIA.s: menuIA.cpp.s
 
-.PHONY : menuInteligenciArtificial.s
+.PHONY : menuIA.s
 
 # target to generate assembly for a file
-menuInteligenciArtificial.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuInteligenciArtificial.cpp.s
-.PHONY : menuInteligenciArtificial.cpp.s
+menuIA.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuIA.cpp.s
+.PHONY : menuIA.cpp.s
 
 menuMatrices.o: menuMatrices.cpp.o
 
@@ -501,32 +582,32 @@ menuMatrices.cpp.s:
 	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuMatrices.cpp.s
 .PHONY : menuMatrices.cpp.s
 
-menuNVariables.o: menuNVariables.cpp.o
+menuNVar.o: menuNVar.cpp.o
 
-.PHONY : menuNVariables.o
+.PHONY : menuNVar.o
 
 # target to build an object file
-menuNVariables.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuNVariables.cpp.o
-.PHONY : menuNVariables.cpp.o
+menuNVar.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuNVar.cpp.o
+.PHONY : menuNVar.cpp.o
 
-menuNVariables.i: menuNVariables.cpp.i
+menuNVar.i: menuNVar.cpp.i
 
-.PHONY : menuNVariables.i
+.PHONY : menuNVar.i
 
 # target to preprocess a source file
-menuNVariables.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuNVariables.cpp.i
-.PHONY : menuNVariables.cpp.i
+menuNVar.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuNVar.cpp.i
+.PHONY : menuNVar.cpp.i
 
-menuNVariables.s: menuNVariables.cpp.s
+menuNVar.s: menuNVar.cpp.s
 
-.PHONY : menuNVariables.s
+.PHONY : menuNVar.s
 
 # target to generate assembly for a file
-menuNVariables.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuNVariables.cpp.s
-.PHONY : menuNVariables.cpp.s
+menuNVar.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuNVar.cpp.s
+.PHONY : menuNVar.cpp.s
 
 menuSinDatos.o: menuSinDatos.cpp.o
 
@@ -555,32 +636,59 @@ menuSinDatos.cpp.s:
 	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuSinDatos.cpp.s
 .PHONY : menuSinDatos.cpp.s
 
-textosMenuPrincipal.o: textosMenuPrincipal.cpp.o
+menuTablasCont.o: menuTablasCont.cpp.o
 
-.PHONY : textosMenuPrincipal.o
+.PHONY : menuTablasCont.o
 
 # target to build an object file
-textosMenuPrincipal.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/textosMenuPrincipal.cpp.o
-.PHONY : textosMenuPrincipal.cpp.o
+menuTablasCont.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuTablasCont.cpp.o
+.PHONY : menuTablasCont.cpp.o
 
-textosMenuPrincipal.i: textosMenuPrincipal.cpp.i
+menuTablasCont.i: menuTablasCont.cpp.i
 
-.PHONY : textosMenuPrincipal.i
+.PHONY : menuTablasCont.i
 
 # target to preprocess a source file
-textosMenuPrincipal.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/textosMenuPrincipal.cpp.i
-.PHONY : textosMenuPrincipal.cpp.i
+menuTablasCont.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuTablasCont.cpp.i
+.PHONY : menuTablasCont.cpp.i
 
-textosMenuPrincipal.s: textosMenuPrincipal.cpp.s
+menuTablasCont.s: menuTablasCont.cpp.s
 
-.PHONY : textosMenuPrincipal.s
+.PHONY : menuTablasCont.s
 
 # target to generate assembly for a file
-textosMenuPrincipal.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/textosMenuPrincipal.cpp.s
-.PHONY : textosMenuPrincipal.cpp.s
+menuTablasCont.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuTablasCont.cpp.s
+.PHONY : menuTablasCont.cpp.s
+
+textosMenus.o: textosMenus.cpp.o
+
+.PHONY : textosMenus.o
+
+# target to build an object file
+textosMenus.cpp.o:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/textosMenus.cpp.o
+.PHONY : textosMenus.cpp.o
+
+textosMenus.i: textosMenus.cpp.i
+
+.PHONY : textosMenus.i
+
+# target to preprocess a source file
+textosMenus.cpp.i:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/textosMenus.cpp.i
+.PHONY : textosMenus.cpp.i
+
+textosMenus.s: textosMenus.cpp.s
+
+.PHONY : textosMenus.s
+
+# target to generate assembly for a file
+textosMenus.cpp.s:
+	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/textosMenus.cpp.s
+.PHONY : textosMenus.cpp.s
 
 # Help Target
 help:
@@ -591,6 +699,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... stac"
+	@echo "... calculos1Var.o"
+	@echo "... calculos1Var.i"
+	@echo "... calculos1Var.s"
+	@echo "... calculos2Var.o"
+	@echo "... calculos2Var.i"
+	@echo "... calculos2Var.s"
+	@echo "... calculosIA.o"
+	@echo "... calculosIA.i"
+	@echo "... calculosIA.s"
+	@echo "... calculosMatriz.o"
+	@echo "... calculosMatriz.i"
+	@echo "... calculosMatriz.s"
+	@echo "... calculosNVar.o"
+	@echo "... calculosNVar.i"
+	@echo "... calculosNVar.s"
 	@echo "... cli.o"
 	@echo "... cli.i"
 	@echo "... cli.s"
@@ -600,48 +723,45 @@ help:
 	@echo "... distribucionesDiscretas.o"
 	@echo "... distribucionesDiscretas.i"
 	@echo "... distribucionesDiscretas.s"
-	@echo "... entradaYSalidaMatriz.o"
-	@echo "... entradaYSalidaMatriz.i"
-	@echo "... entradaYSalidaMatriz.s"
-	@echo "... funcMate.o"
-	@echo "... funcMate.i"
-	@echo "... funcMate.s"
-	@echo "... inteligenciArtificial.o"
-	@echo "... inteligenciArtificial.i"
-	@echo "... inteligenciArtificial.s"
+	@echo "... funcDatosBasicas.o"
+	@echo "... funcDatosBasicas.i"
+	@echo "... funcDatosBasicas.s"
+	@echo "... funcMatematicasBasicas.o"
+	@echo "... funcMatematicasBasicas.i"
+	@echo "... funcMatematicasBasicas.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... matriz.o"
-	@echo "... matriz.i"
-	@echo "... matriz.s"
-	@echo "... menUnaVariable.o"
-	@echo "... menUnaVariable.i"
-	@echo "... menUnaVariable.s"
+	@echo "... menu1Var.o"
+	@echo "... menu1Var.i"
+	@echo "... menu1Var.s"
+	@echo "... menu2Var.o"
+	@echo "... menu2Var.i"
+	@echo "... menu2Var.s"
 	@echo "... menuCombinatoria.o"
 	@echo "... menuCombinatoria.i"
 	@echo "... menuCombinatoria.s"
 	@echo "... menuDistribDiscretas.o"
 	@echo "... menuDistribDiscretas.i"
 	@echo "... menuDistribDiscretas.s"
-	@echo "... menuDosVariables.o"
-	@echo "... menuDosVariables.i"
-	@echo "... menuDosVariables.s"
-	@echo "... menuInteligenciArtificial.o"
-	@echo "... menuInteligenciArtificial.i"
-	@echo "... menuInteligenciArtificial.s"
+	@echo "... menuIA.o"
+	@echo "... menuIA.i"
+	@echo "... menuIA.s"
 	@echo "... menuMatrices.o"
 	@echo "... menuMatrices.i"
 	@echo "... menuMatrices.s"
-	@echo "... menuNVariables.o"
-	@echo "... menuNVariables.i"
-	@echo "... menuNVariables.s"
+	@echo "... menuNVar.o"
+	@echo "... menuNVar.i"
+	@echo "... menuNVar.s"
 	@echo "... menuSinDatos.o"
 	@echo "... menuSinDatos.i"
 	@echo "... menuSinDatos.s"
-	@echo "... textosMenuPrincipal.o"
-	@echo "... textosMenuPrincipal.i"
-	@echo "... textosMenuPrincipal.s"
+	@echo "... menuTablasCont.o"
+	@echo "... menuTablasCont.i"
+	@echo "... menuTablasCont.s"
+	@echo "... textosMenus.o"
+	@echo "... textosMenus.i"
+	@echo "... textosMenus.s"
 .PHONY : help
 
 

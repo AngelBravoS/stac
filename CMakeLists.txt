@@ -7,18 +7,18 @@ set(lista_archivos
   #Interfaz de linea de comandos, consiste en
   #el menu inicial y la gestion de los submenus
   cli.cpp
-  textosMenuPrincipal.cpp
+  textosMenus.cpp
   #Funciones matematicas basicas y avanzadas de cada tipo
   #Comunes a todas las clases de variables
-  funcionesDatosBasicas.cpp
+  funcDatosBasicas.cpp
   funcMatematicasBasicas.cpp
   #Específicas
   calculos1Var.cpp
   calculos2Var.cpp
+  calculosIA.cpp
   calculosNVar.cpp
   calculosMatriz.cpp
   combinatoria.cpp 
-  inteligenciArtificial.cpp
   distribucionesDiscretas.cpp
   #Los submenus de cada tipo de operacion
   menu1Var.cpp
@@ -27,14 +27,19 @@ set(lista_archivos
   menuMatrices.cpp
   menuSinDatos.cpp
   menuCombinatoria.cpp
-  menuInteligenciArtificial.cpp
+  menuIA.cpp
   menuDistribDiscretas.cpp
+  menuTablasCont.cpp
 )
+
+#Debug/Release
+
+set(CMAKE_BUILD_TYPE Debug)
 
 #-march=amdfam10/core2/native
 
-set(CMAKE_CXX_FLAGS "-ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -g -march=native -std=gnu++14")
+set(CMAKE_CXX_FLAGS "-ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=native -std=gnu++14")
 
-set(CMAKE_CXX_FLAGS_DEBUG " -O0 -ggdb3 -DDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG " -ggdb3 -DDEBUG")
 
 add_executable(stac ${lista_archivos})

@@ -30,7 +30,7 @@ double  CalculosMatriz::determinante() {
 			                matriz[0][0] * matriz[1][2] * matriz[2][1]);
 			break;
 		default :
-			cout << "Determinantes de orden >3 aún no disponible." << endl;
+			std::cout << "Determinantes de orden >3 aún no disponible." << endl;
 			break;
 	}
 	return determinante;
@@ -52,9 +52,9 @@ void CalculosMatriz::adjunta() {
 
 void CalculosMatriz::inversa() {
 	if(determinante() != 0) {
-		cout << "La matriz tiene inversa" << endl;
+		std::cout << "La matriz tiene inversa" << endl;
 	} else {
-		cout << "La matriz no tiene inversa" << endl;
+		std::cout << "La matriz no tiene inversa" << endl;
 	}
 }
 
@@ -134,3 +134,31 @@ void CalculosMatriz::descomposicionLU() {
 	}
 	mostrarMatrizCopia();
 }
+
+void CalculosMatriz::multiplicarMat() {
+	crearMatrizVacia();
+	for(unsigned int i = 0; i < getFila(); i++) {
+		for(unsigned int j = 0; j < getColumna(); j++) {
+			copiaDeMatriz[i][j] = matriz[j][i];
+		}
+	}
+	//mostrarMatriz ( copiaDeMatriz );
+	setMatrizCopia(copiaDeMatriz);
+}
+
+
+/*
+(*---procedimiento para multiplicar matrices---*)	
+
+Procedure MultiplicarMat(m1,m2: Matriz; var resul:Matriz);
+	Var 
+		i,j,k:1 .. W;
+	Begin
+		for i:=1 to dimension do
+		for j:=1 to dimension do
+		begin
+			resul[i,j]:=0;
+			for k:=1 to dimension do
+			resul[i,j]:=resul[i,j]+m1[i,k]*m2[k,j];
+		end;
+	End;	(*MultiplicarMat*)*/

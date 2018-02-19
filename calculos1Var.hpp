@@ -1,7 +1,7 @@
-#include "funcionesDatosBasicas.hpp"
+#include "funcDatosBasicas.hpp"
 #include "funcMatematicasBasicas.hpp"
 
-class Calculos1Var : public FuncionesDatosBasicas {
+class Calculos1Var : public FuncDatosBasicas {
 		//Obtener = Get
 		//Establecer = Set
 	public:

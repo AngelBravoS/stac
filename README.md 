@@ -1,0 +1,36 @@
+# README #
+
+This README would normally document whatever steps are necessary to get your application up and running.
+
+### ABOUT ###
+
+Stac es un programa en línea de comandos de cálculo estadístico avanzado -o eso intenta ser-. No soy programador ni ingeniero, sólo un estadístico que trata de aprender un lenguaje de programación y algunas de sus herramientas (c++, gcc, gdb, Git, Kdevelop, cmake...) aplicando lo que aprendí en mi carrera de estadística. Aprender es por tanto el fin de este proyecto, aunque espero que poco a poco se irá haciendo más complejo y útil, no trato de revolucionar el mundo...todavía.
+
+Stac is a command line program for advanced statistics -or is that trying to be-. I am not a programmer or engineer, just a statistician who tries to learn a programming language and some of its tools (c++, gcc, gdb, Git, Kdevelop, cmake...) by applying what I learned in my statistics career. Learning is therefore the end of this project, although I hope that little by little it will become more complex and useful, although I don't try to revolutionize the world... yet.
+
+Features
+
+### Getting started ###
+
+* Summary of set up
+* Configuration
+* Dependencies
+* Database configuration
+* How to run tests
+* Deployment instructions
+
+### Contribution ###
+
+De momento, es sólo un proyecto unipersonal de aprendizaje.
+
+At the moment, it is just a one-man learning project.
+
+### Credits ###
+
+Creado y mantenido por Ángel Bravo Sáenz.
+
+Created and maintained by Ángel Bravo Sáenz.
+
+### License ###
+
+
