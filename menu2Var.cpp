@@ -28,17 +28,17 @@ void CLI::menu2Var() {
 		switch(eleccionNivel2) {
 			case '1':
 				//medidas de tendencia Central
-				std::cout << "Media aritmética de X = " << variablesXeY.mediaAritmetica(0) << '\n';
-				std::cout << "Media aritmética de Y = " << variablesXeY.mediaAritmetica(1) << '\n';
-				std::cout << "Sumatoria de X = " << variablesXeY.sumatoria(0,1) << '\n';
-				std::cout << "Sumatoria de Y = " << variablesXeY.sumatoria(1,1) << '\n';
+				std::cout << "Media aritmética de X = " << variablesXeY.calculoMediaAritmetica(0) << '\n';
+				std::cout << "Media aritmética de Y = " << variablesXeY.calculoMediaAritmetica(1) << '\n';
+				std::cout << "Sumatoria de X = " << variablesXeY.calculoSumatoria(0,1) << '\n';
+				std::cout << "Sumatoria de Y = " << variablesXeY.calculoSumatoria(1,1) << '\n';
 				std::cout << "Sumatoria de X e Y = " << variablesXeY.sumatoria2Var(0,1,1,1) << '\n';
 				std::cout << '\n';
 				break;
 			case '2':
 				//std::cout << "Las diferencias respecto a la media son: " << variablesXeY.difRespecMedia() << endl;
-				std::cout << "Varianza de X = " << variablesXeY.varianza(0) << '\n';
-				std::cout << "Varianza de Y = " << variablesXeY.varianza(1) << '\n';
+				std::cout << "Varianza de X = " << variablesXeY.calculoVarianza(0) << '\n';
+				std::cout << "Varianza de Y = " << variablesXeY.calculoVarianza(1) << '\n';
 				std::cout << "Desviación típica de X = " << variablesXeY.desviacionTipica(0) << '\n';
 				std::cout << "Desviación típica de Y = " << variablesXeY.desviacionTipica(1) << '\n';
 				std::cout << "Covarianza de X e Y = " << variablesXeY.covarianza() << '\n';

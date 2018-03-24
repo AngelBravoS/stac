@@ -9,23 +9,31 @@
 using namespace std;
 typedef unsigned short int unShortInt;
 
-double  CalculosNVar::sumatoria(int indiceVariable, unsigned short int exponente) {
-	unsigned int n = getColumna();
-	double sumatoria = 0;
-	for(unsigned int j = 0; j < n; j++) {
-		sumatoria += potencia(matriz[indiceVariable][j], exponente);
-	}
+double CalculosNVar::getSumatoria() {
 	return sumatoria;
-}
+	}
 
-double  CalculosNVar::mediaAritmetica(int indiceVariable) {
+void CalculosNVar::setSumatoria ( double sumatoriaPublica ) {
+	sumatoria = sumatoriaPublica;
+	}	
+
+double  CalculosNVar::calculoSumatoria(int indiceVariable, unsigned short int exponente) {
 	unsigned int n = getColumna();
-	double media = 0;
-	media = (sumatoria(indiceVariable, 1) / n);
-	return media;
+	double resultado = 0;
+	for(unsigned int j = 0; j < n; j++) {
+		resultado += potencia(matriz[indiceVariable][j], exponente);
+	}
+	return resultado;
 }
 
-double CalculosNVar::mediaGeometrica(int indiceVariable) {
+double  CalculosNVar::calculoMediaAritmetica(int indiceVariable) {
+	unsigned int n = getColumna();
+	double resultado = 0;
+	resultado = (calculoSumatoria(indiceVariable, 1) / n);
+	return resultado;
+}
+
+double CalculosNVar::calculoMediaGeometrica(int indiceVariable) {
 	unsigned int n = getColumna();
 	double mediaGeometrica = 1;
 	for(unsigned int j = 0; j < n; j++) {
@@ -35,7 +43,7 @@ double CalculosNVar::mediaGeometrica(int indiceVariable) {
 	return mediaGeometrica;
 }
 
-double CalculosNVar::mediaArmonica(int indiceVariable) {
+double CalculosNVar::calculoMediaArmonica(int indiceVariable) {
 	unsigned int n = getColumna();
 	double mediaArmonica = 0;
 	for(unsigned int j = 0; j < n; j++) {
@@ -45,10 +53,10 @@ double CalculosNVar::mediaArmonica(int indiceVariable) {
 	return mediaArmonica;
 }
 
-double CalculosNVar::mediaCuadratica(int indiceVariable) {
+double CalculosNVar::calculoMediaCuadratica(int indiceVariable) {
 	unsigned int n = getColumna();
 	double mediaCuadratica;
-	mediaCuadratica = sumatoria(indiceVariable, 2) * (1.0 / n);
+	mediaCuadratica = calculoSumatoria(indiceVariable, 2) * (1.0 / n);
 	mediaCuadratica = sqrt(mediaCuadratica);
 	return mediaCuadratica;
 }
@@ -58,34 +66,34 @@ double CalculosNVar::difRespecMedia(int indiceVariable, int exponente) {
 	unsigned int n = getColumna();
 	double difRespecMedia = 0;
 	for(unsigned int j = 0; j < n; j++) {
-		difRespecMedia += pow(matriz[indiceVariable][j] - mediaAritmetica(indiceVariable), exponente);
+		difRespecMedia += pow(matriz[indiceVariable][j] - calculoMediaAritmetica(indiceVariable), exponente);
 	}
 	return difRespecMedia;
 }
 
-double CalculosNVar::varianza(int indiceVariable) {
+double CalculosNVar::calculoVarianza(int indiceVariable) {
 	unsigned int n = getColumna();
-	double varianza;
-	varianza = (difRespecMedia(indiceVariable, 2)) / n;
-	return varianza;
+	double resultado;
+	resultado = (difRespecMedia(indiceVariable, 2)) / n;
+	return resultado;
 }
 
-double CalculosNVar::cuasiVarianza(int indiceVariable) {
+double CalculosNVar::calculoCuasiVarianza(int indiceVariable) {
 	unsigned int n = getColumna();
-	double cuasiVarianza;
-	cuasiVarianza = (difRespecMedia(indiceVariable, 2)) / (n - 1);
-	return cuasiVarianza;
+	double resultado;
+	resultado = (difRespecMedia(indiceVariable, 2)) / (n - 1);
+	return resultado;
 }
 
 double CalculosNVar::desviacionTipica(int indiceVariable) {
 	double desviacionTipica;
-	desviacionTipica = sqrt(varianza(indiceVariable));
+	desviacionTipica = sqrt(calculoVarianza(indiceVariable));
 	return desviacionTipica;
 }
 
 double CalculosNVar::cuasiDesviacionTipica(int indiceVariable) {
 	double cuasiDesviacionTipica;
-	cuasiDesviacionTipica = sqrt(cuasiVarianza(indiceVariable));
+	cuasiDesviacionTipica = sqrt(calculoCuasiVarianza(indiceVariable));
 	return cuasiDesviacionTipica;
 }
 
@@ -98,7 +106,7 @@ double CalculosNVar::momentos(int indiceVariable, int exponente) {
 
 double CalculosNVar::coeficientePearson(int indiceVariable) {
 	double coeficientePearson;
-	coeficientePearson = cuasiDesviacionTipica(indiceVariable) / mediaAritmetica(indiceVariable);
+	coeficientePearson = cuasiDesviacionTipica(indiceVariable) / calculoMediaAritmetica(indiceVariable);
 	return coeficientePearson;
 }
 

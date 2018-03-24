@@ -20,6 +20,8 @@ class CLI {
         void menu2Var();
         void menuNVar();
         void menuMatrices();
+        void menuMuestreo();
+        //void crearDatosMuestra();
         void menuSinDatos();
 		  void menuTablasCont();
         //======== funciones especificas de cada submenu ======== 

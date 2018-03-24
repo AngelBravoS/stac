@@ -44,7 +44,7 @@ double binomio(double n, double k) {
 	return resultado;
 }
 
-unsigned long long int convierteDoubleEnInt(double doble) {
-	unsigned long long int valorEntero = static_cast<unsigned long long int>(doble);
+unsigned int convierteDoubleEnInt(double doble) {
+	unsigned int valorEntero = static_cast<unsigned int>(doble);
 	return valorEntero;
 }

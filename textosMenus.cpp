@@ -13,6 +13,7 @@ void CLI::introduccion() {
 	std::cout << "             ║           STAC           ║" << '\n';	
 	std::cout << "             ║        Estadística       ║" << '\n';
 	std::cout << "             ║   en línea de comandos   ║" << '\n';
+	std::cout << "             ║    Versión alpha 0.7.3   ║" << '\n';	
 	std::cout << "             ╚══════════════════════════╝" << '\n';
 	std::cout << '\n';
 	}
@@ -20,7 +21,7 @@ void CLI::introduccion() {
 void CLI::acercaDe() {
 	std::cout << '\n';
 	std::cout << "             ╔══════════════════════════╗" << '\n';
-	std::cout << "             ║    Versión alpha 0.7.2   ║" << '\n';
+	std::cout << "             ║    Versión alpha 0.7.3   ║" << '\n';
 	std::cout << "             ║       Escrito en c++     ║" << '\n';
 	std::cout << "             ║     Ángel Bravo Sáenz    ║" << '\n';
 	std::cout << "             ╚══════════════════════════╝" << '\n';
@@ -40,17 +41,15 @@ void CLI::ayuda() {
 	std::cout << "			Relativo a la varianza" << '\n';
 	std::cout << "		Test de la Chi-Cuadrado" << '\n';
 	std::cout << "		Test de la t de Student" << '\n';
-	std::cout << "	Muestreo" << '\n';
 
 	std::cout << "Análisis estadístico de dos variables:"  << '\n';
 	std::cout << "	Rectas de regresión" << '\n';
 	std::cout << "	Independencia" << '\n';
-	std::cout << "	Muestreo" << '\n';
 
 	std::cout << "Análisis estadístico de n-variables:" << '\n';
 	std::cout << "	Análisis multivariante " << '\n';
 
-	std::cout << "Cálculo matricial:" << '\n';
+	std::cout << "Cálculo álgebra matricial:" << '\n';
 	std::cout << "	De una matriz" << '\n';
 	std::cout << "		Traza" << '\n';
 	std::cout << "		Determinante" << '\n';
@@ -63,6 +62,13 @@ void CLI::ayuda() {
 	std::cout << "		Sumar matrices" << '\n';
 	std::cout << "		Multiplicar matrices" << '\n';
 	std::cout << "		Kronecker" << '\n';
+
+	std::cout << "Muestreo:" << '\n';
+	std::cout << "	aleatorio simple (MAS)" << '\n';
+	std::cout << "	con reemplazo y probabilidades iguales" << '\n';
+	std::cout << "	sin reemplazo y probabilidades desiguales" << '\n';
+	std::cout << "	con reemplazo y probabilidades desiguales" << '\n';
+	std::cout << '\n';
 
 	std::cout << "Análisis que no requiere datos:" << '\n';
 	std::cout << "	Combinatoria" << '\n';
@@ -81,8 +87,9 @@ void CLI::listadOpcionesPricipales() {
 	std::cout << "'1' Análisis estadístico de una variable." << '\n';
 	std::cout << "'2' Análisis estadístico de dos variables."  << '\n';
 	std::cout << "'n' Análisis estadístico de n-variables." << '\n';
-	std::cout << "'m' Cálculo matricial." << '\n';
+	std::cout << "'a' Álgebra matricial." << '\n';
+	std::cout << "'m' Muestreo." << '\n';
 	std::cout << "'s' Análisis que no requiere datos." << '\n';
-	std::cout << "'a' Ayuda." << '\n';
+	std::cout << "'h' Ayuda." << '\n';
 	std::cout << "'0'  Salir." << '\n';
 	}

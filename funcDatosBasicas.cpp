@@ -20,12 +20,12 @@ void FuncDatosBasicas::setVector(double *vectorPublico) {
 	*vector = *vectorPublico;
 }
 
-double FuncDatosBasicas::getVectorResultado() {
-	return *vectorResultado;
+double FuncDatosBasicas::getVectorCopia() {
+	return *vectorCopia;
 }
 
-void FuncDatosBasicas::setVectorResultado(double vectorResultadoPublico) {
-	*vectorResultado = vectorResultadoPublico;
+void FuncDatosBasicas::setVectorCopia(double vectorCopiaPublico) {
+	*vectorCopia = vectorCopiaPublico;
 }
 
 void FuncDatosBasicas::leerVectorArchivo() {
@@ -33,6 +33,7 @@ void FuncDatosBasicas::leerVectorArchivo() {
 	archivo.open("vector.dat", std::ios::in | std::ios::binary);
 	if(archivo.is_open()) {
 		std::cout << "Fichero leído" << '\n';
+		std::cout << "Número de elementos: ";
 		numElementosVector();
 		crearVectorVacio();
 		int n = getLongitudVector();
@@ -47,10 +48,8 @@ void FuncDatosBasicas::leerVectorArchivo() {
 
 void FuncDatosBasicas::numElementosVector() {
 	int n;
-	std::cout << "Número de elementos: ";
 	std::cin >> n;
 	setLongitudVector(n);
-	//std::cout << "la variable X es de " << getLongitudVector() << " elementos" << endl;
 }
 
 void FuncDatosBasicas::crearVectorVacio() {
@@ -73,12 +72,20 @@ void FuncDatosBasicas::mostrarVector() {
 	}
 	std::cout << ")";
 	std::cout << '\n';
+	
 }
 
-void FuncDatosBasicas::mostrarVectorResultado() {
+void FuncDatosBasicas::copiarvector() {
+	vectorCopia = new double [getLongitudVector()];
+	for(unsigned int i = 0; i < getLongitudVector(); i++)     {
+		vectorCopia[i] = vector[i];
+	}
+}
+
+void FuncDatosBasicas::mostrarVectorCopia() {
+	std::cout << "( ";
 	for(unsigned int i = 0; i < getLongitudVector(); i++) {
-		std::cout << "( ";
-		std::cout << vectorResultado[i] << " ";
+		std::cout << vectorCopia[i] << " ";
 	}
 	std::cout << ")";
 	std::cout << '\n';
@@ -86,6 +93,10 @@ void FuncDatosBasicas::mostrarVectorResultado() {
 
 void FuncDatosBasicas::destructorVector() {
 	delete vector;
+}
+
+void FuncDatosBasicas::destructorVectorCopia() {
+	delete vectorCopia;
 }
 
 //======== funciones de matrices ========
@@ -187,7 +198,7 @@ void FuncDatosBasicas::copiarMatriz() {
 }
 
 void FuncDatosBasicas::mostrarMatrizOriginal() {
-	std::cout << "la matriz es:" << '\n';
+	//std::cout << "la matriz es:" << '\n';
 	std::cout << '\n';
 	for(unsigned int i = 0; i < getFila(); i++) {
 		std::cout << "( ";

@@ -18,6 +18,7 @@ set(lista_archivos
   calculosIA.cpp
   calculosNVar.cpp
   calculosMatriz.cpp
+  calculosMuestreo.cpp
   combinatoria.cpp 
   distribucionesDiscretas.cpp
   #Los submenus de cada tipo de operacion
@@ -25,6 +26,7 @@ set(lista_archivos
   menu2Var.cpp
   menuNVar.cpp
   menuMatrices.cpp
+  menuMuestreo.cpp
   menuSinDatos.cpp
   menuCombinatoria.cpp
   menuIA.cpp

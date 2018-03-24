@@ -32,10 +32,13 @@ void CLI::menuPrincipal() {
 			case 'n' :
 				menuNVar();
 				break;
-			case 'm' :
+			case 'a' :
 				menuMatrices();
 				break;
-			case 'a' :
+			case 'm' :
+				menuMuestreo();
+				break;
+			case 'h' :
 				ayuda();
 				break;
 			case 's' :

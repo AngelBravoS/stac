@@ -28,6 +28,7 @@ void CLI::menu1Var() {
 	if(eligesArchivo == 's') {
 		variableX.leerVectorArchivo();
 	} else {
+		std::cout << "Número de elementos: ";
 		variableX.numElementosVector();
 		variableX.crearVectorVacio();
 		variableX.editarVectorVacio();

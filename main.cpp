@@ -4,6 +4,6 @@ int main() {
 	CLI menu;
 	menu.introduccion();
 	menu.menuPrincipal();
-	menu.acercaDe();
+	//menu.acercaDe();
 	return 0;
 }

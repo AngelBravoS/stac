@@ -7,15 +7,17 @@ class FuncDatosBasicas {
 		void setLongitudVector ( unsigned int longitudVectorPublico );
 		double getVector();
 		void setVector ( double *vectorPublico );
-		double getVectorResultado();
-		void setVectorResultado ( double vectorPublico );
+		double getVectorCopia();
+		void setVectorCopia ( double vectorCopiaPublico );
 		//======== funciones de vectores ======== 
 		void numElementosVector();
 		void crearVectorVacio();
 		void editarVectorVacio();
 		void mostrarVector();
-		void mostrarVectorResultado();
-		void destructorVector();		
+		void copiarvector();
+		void mostrarVectorCopia();
+		void destructorVector();
+		void destructorVectorCopia();		
 		
 		//======== setters y getters ======== 
 		unsigned int getFila();
@@ -42,7 +44,7 @@ class FuncDatosBasicas {
 		
 		unsigned int longitudVector;
 		double *vector;
-		double *vectorResultado;
+		double *vectorCopia;
 		
 		unsigned int fila;
 		unsigned int columna;
