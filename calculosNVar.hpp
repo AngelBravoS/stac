@@ -28,7 +28,6 @@ class CalculosNVar : public FuncDatosBasicas {
 		
 				
 	protected:
-
 		double sumatoria;
 		double media;
 		double varianza;

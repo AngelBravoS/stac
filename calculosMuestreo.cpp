@@ -6,20 +6,20 @@
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
-bool CalculosMuestreo::getSiDatosEstanAgrupados() {
-	return siDatosAgrupados;
+bool CalculosMuestreo::getDatosEstanAgrupados() {
+	return datosAgrupados;
 }
 
-void CalculosMuestreo::setSiDatosEstanAgrupados(bool siDatosAgrupadosPublico) {
-	siDatosAgrupados = siDatosAgrupadosPublico;
+void CalculosMuestreo::setDatosEstanAgrupados(bool datosAgrupadosPublico) {
+	datosAgrupados = datosAgrupadosPublico;
 }
 
-bool CalculosMuestreo::getSiLeeArchivo() {
-	return siLeeArchivo;
+bool CalculosMuestreo::getLeeArchivo() {
+	return leeArchivo;
 }
 
-void CalculosMuestreo::setSiLeeArchivo(bool siLeeArchivoPublico) {
-	siLeeArchivo = siLeeArchivoPublico;
+void CalculosMuestreo::setLeeArchivo(bool leeArchivoPublico) {
+	leeArchivo = leeArchivoPublico;
 }
 
 int CalculosMuestreo::getTipoMuestreo() {
@@ -103,7 +103,7 @@ void CalculosMuestreo::calculoXi2() {
 
 void CalculosMuestreo::leerDatosArchivo() {
 	std::fstream archivo;
-	if(siDatosAgrupados == true) {
+	if(datosAgrupados == true) {
 		archivo.open("matriz.dat", std::ios::in | std::ios::binary);
 		if(archivo.is_open()) {
 			std::cout << "Fichero leído" << '\n';
@@ -147,10 +147,10 @@ void CalculosMuestreo::crearDatosMuestra() {
 	case '1' :
 	case '2' :
 		setFila(2);
-		if(siLeeArchivo == true) {
+		if(leeArchivo == true) {
 			leerDatosArchivo();
 			desagrupar();
-		}	else if(siDatosAgrupados == true) {
+		}	else if(datosAgrupados == true) {
 			crearMatrizVacia();
 			editarMatrizVacia();
 			desagrupar();
@@ -162,7 +162,7 @@ void CalculosMuestreo::crearDatosMuestra() {
 	case '3' :
 	case '4' :
 		setFila(2);
-		if(siDatosAgrupados == true) {
+		if(datosAgrupados == true) {
 			std::cout << "Tamaño de la muestra: ";
 			numElementosVector();
 			setColumna(getLongitudVector());
@@ -170,7 +170,7 @@ void CalculosMuestreo::crearDatosMuestra() {
 			editarMatrizVacia();
 			desagrupar();
 		} else {
-			if(siLeeArchivo == true) {
+			if(leeArchivo == true) {
 				leerVectorArchivo();
 				setColumna(getLongitudVector());
 			} else {

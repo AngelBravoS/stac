@@ -25,14 +25,14 @@ void CLI::menuMuestreo() {
 	std::cout << "s/n:";
 	std::cin >> respuestaElegirArchivo;
 	if(respuestaElegirArchivo == 's') {
-		muestreo.setSiLeeArchivo(true);
+		muestreo.setLeeArchivo(true);
 	} else {
-		muestreo.setSiLeeArchivo(false);
+		muestreo.setLeeArchivo(false);
 	}
 	if(respuestaDatosAgrupados == 's') {
-		muestreo.setSiDatosEstanAgrupados(true);
+		muestreo.setDatosEstanAgrupados(true);
 	} else {
-		muestreo.setSiDatosEstanAgrupados(false);
+		muestreo.setDatosEstanAgrupados(false);
 	}	
 	//muestreo.establecerOrigenDatos();
 	muestreo.crearDatosMuestra();
