@@ -10,14 +10,15 @@ set(lista_archivos
   textosMenus.cpp
   #Funciones matematicas basicas y avanzadas de cada tipo
   #Comunes a todas las clases de variables
-  funcDatosBasicas.cpp
+  vector.cpp
+  matriz.cpp
   funcMatematicasBasicas.cpp
   #Específicas
   calculos1Var.cpp
   calculos2Var.cpp
   calculosIA.cpp
   calculosNVar.cpp
-  calculosMatriz.cpp
+  calculosAlgebra.cpp
   calculosMuestreo.cpp
   combinatoria.cpp 
   distribucionesDiscretas.cpp
@@ -25,8 +26,8 @@ set(lista_archivos
   menu1Var.cpp
   menu2Var.cpp
   menuNVar.cpp
-  menuMatrices.cpp
-  menuMuestreo.cpp
+  menuAlgebra.cpp
+  muestreo.cpp
   menuSinDatos.cpp
   menuCombinatoria.cpp
   menuIA.cpp
@@ -44,4 +45,4 @@ set(CMAKE_CXX_FLAGS "-ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual 
 
 set(CMAKE_CXX_FLAGS_DEBUG " -ggdb3 -DDEBUG")
 
-add_executable(stac ${lista_archivos})
+add_executable(stacPruebas ${lista_archivos})

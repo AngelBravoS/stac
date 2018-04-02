@@ -20,48 +20,32 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "funcMatematicasBasicas.hpp"
-
-//typedef unsigned short int unShortInt;
-//Límite máximo en unsigned short int: 65535
-
-double permutaciones(unsigned short int n) {
-	double resultado;
-	resultado = factorial(n);
-	return resultado;
-}
-
-double permutacionesRep(unsigned short int m, unsigned short int n, unsigned short int numeroElementos) {
-	double resultado = 1;
-	for(unsigned short int i = 0; i < numeroElementos; i++) {
-		resultado *= factorial(n);
-	}
-	resultado = factorial(m) / resultado;
-	return resultado;
-}
-
-double variaciones(unsigned short int m, unsigned short int n) {
-	double resultado;
-	resultado = factorial(m) / factorial(m - n);
-	return resultado;
-}
-
-double variacionesRep(unsigned short int m, unsigned short int n) {
-	double resultado;
-	resultado = potencia(m, n);
-	return resultado;
-}
-
-double combinaciones(unsigned short int m, unsigned short int n) {
-	double resultado;
-	resultado = factorial(m) / (factorial(n) * factorial(m - n));
-	return resultado;
-}
-
-double combinacionesRep(unsigned short int m, unsigned short int n) {
-	double resultado;
-	unsigned int valorM = m;
-	valorM = valorM + (n - 1);
-	resultado = (factorial(valorM)) / (factorial(n) * factorial(valorM - n));
-	return resultado;
-}
+class Vector {
+		//Obtener = Get
+		//Establecer = Set
+	public:
+		//======== setters y getters ======== 
+		unsigned int getLongitudVector();
+		void setLongitudVector ( unsigned int longitudVectorPublico );
+		double getVector();
+		void setVector ( double *vectorPublico );
+		double getVectorCopia();
+		void setVectorCopia ( double vectorCopiaPublico );
+		//======== funciones de vectores ======== 
+		void numElementosVector();
+		void crearVectorVacio();
+		void editarVectorVacio();
+		void mostrarVector();
+		void copiarvector();
+		void mostrarVectorCopia();
+		void destructorVector();
+		void destructorVectorCopia();		
+		//======== trabajo con archivos ======== 
+		void leerVectorArchivo();
+		void guardarEnArchivo();
+	protected:
+		
+		unsigned int longitudVector;
+		double *vector;
+		double *vectorCopia;
+};

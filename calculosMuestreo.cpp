@@ -1,3 +1,25 @@
+/***************************************************************************														*
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
+ *   angelbravosaenz@gmail.com  															*
+ *																									*
+ *   This file is part of Stac.                                            *
+ *                                                                         *
+ *   Stac is free software; you can redistribute it and/or modify          *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   Stac is distributed in the hope that it will be useful,               *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with Stac; if not, write to the                                 *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include <iostream>
 #include <cmath>
 #include<fstream>
@@ -6,12 +28,20 @@
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
-bool CalculosMuestreo::getDatosEstanAgrupados() {
-	return datosAgrupados;
+char CalculosMuestreo::getTipoMuestreo() {
+	return tipoMuestreo;
 }
 
-void CalculosMuestreo::setDatosEstanAgrupados(bool datosAgrupadosPublico) {
-	datosAgrupados = datosAgrupadosPublico;
+void CalculosMuestreo::setTipoMuestreo(char tipoMuestreoPublico) {
+	tipoMuestreo = tipoMuestreoPublico;
+}
+
+bool CalculosMuestreo::getAgrupados() {
+	return agrupados;
+}
+
+void CalculosMuestreo::setAgrupados(bool agrupadosPublico) {
+	agrupados = agrupadosPublico;
 }
 
 bool CalculosMuestreo::getLeeArchivo() {
@@ -22,12 +52,28 @@ void CalculosMuestreo::setLeeArchivo(bool leeArchivoPublico) {
 	leeArchivo = leeArchivoPublico;
 }
 
-int CalculosMuestreo::getTipoMuestreo() {
-	return tipoMuestreoElegido;
+bool CalculosMuestreo::getReemplazo() {
+	return reemplazo;
 }
 
-void CalculosMuestreo::setTipoMuestreo(int tipoMuestreoPublico) {
-	tipoMuestreoElegido = tipoMuestreoPublico;
+void CalculosMuestreo::setReemplazo(bool reemplazoPublico) {
+	reemplazo = reemplazoPublico;
+}
+
+bool CalculosMuestreo::getProbIguales() {
+	return probIguales;
+}
+
+void CalculosMuestreo::setProbIguales(bool probIgualesPublico) {
+	probIguales = probIgualesPublico;
+}
+
+bool CalculosMuestreo::getMismoTamanyo() {
+	return mismoTamanyo;
+}
+
+void CalculosMuestreo::setMismoTamanyo(bool mismoTamanyoPublico) {
+	mismoTamanyo = mismoTamanyoPublico;
 }
 
 double CalculosMuestreo::getSumatoriaXi() {
@@ -54,62 +100,76 @@ void CalculosMuestreo::setMedia(double mediaPublica) {
 	media = mediaPublica;
 }
 
-void CalculosMuestreo::leerVectorArchivo() {
-	std::fstream archivo;
-	archivo.open("vector.dat", std::ios::in | std::ios::binary);
-	if(archivo.is_open()) {
-		std::cout << "Fichero leído" << '\n';
-		crearVectorVacio();
-		int n = getLongitudVector();
-		for(int i = 0; i < n; i++) {
-			archivo >> vector[i];
+void CalculosMuestreo::editarMatrizVacia() {
+	for(unsigned int i = 0; i < getFila(); i++) {
+		for(unsigned int j = 0; j < getColumna(); j++) {
+			std::cout << "Elemento " << i + 1 << "," << j + 1 << ": ";
+			std::cin >> matriz[i][j];
 		}
-		archivo.close();
-	} else {
-		std::cout << "Fichero inexistente" << '\n';
 	}
+	std::cout << '\n';
 }
 
+
 void CalculosMuestreo::desagrupar() {
-	mostrarMatrizOriginal();
 	double n;
 	int x = 0; //entender por qué así funciona.
-	double sumYi = calculoSumatoria(1, 1);
-	setLongitudVector(convierteDoubleEnInt(sumYi));
-	crearVectorVacio();
+	double totalElementos = calculoSumatoria(1, 1);
+	setFilaB(getFila());
+	setColumnaB(convierteDoubleEnInt(totalElementos));
+	crearMatrizVaciaB();
 	for(unsigned int j = 0; j < getColumna(); j++) {
 		n = matriz[1][j];
 		for(unsigned int i = 0; i < n; i++) {
-			vector[x] = matriz[0][j];
+			matrizB[0][x] = matriz[0][j];
 			x++;
 		}
 	}
-	setColumna(getLongitudVector());
+	// incluir operador ternario para Probabilidades desiguales
+	for(unsigned int k = 0; k < totalElementos; k++) {
+		matrizB[1][k] = 1;
+		matrizB[2][k] = 1 / totalElementos;
+		matrizB[3][k] = matrizB[0][k] * matrizB[1][k];
+		matrizB[4][k] = matrizB[3][k] * matrizB[3][k];
+	}
+	std::cout << "matrices no mostradas en la versión final" << '\n';
+	mostrarMatriz();
+	mostrarMatrizB();
 }
 
-
-void CalculosMuestreo::calculoXi() {
+// añade ∑Xi Y ∑Xi2
+void CalculosMuestreo::incorporarXiYXi2() {
+	int i = getFila();
 	for(unsigned int j = 0; j < getColumna(); j++) {
-		matriz[0][j] = vector[j];
+		matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
+		matriz[i - 1][j] = matriz[i-2][j] * matriz[i-2][j];
 	}
 }
 
-void CalculosMuestreo::calculoXi2() {
+//inútil
+/*
+void CalculosMuestreo::calculoXi() {
 	int i = getFila();
 	for(unsigned int j = 0; j < getColumna(); j++) {
 		matriz[i - 1][j] = matriz[0][j] * matriz[0][j];
 	}
 }
 
-void CalculosMuestreo::leerDatosArchivo() {
+//inútil
+void CalculosMuestreo::calculoXi2() {
+	int i = getFila();
+	for(unsigned int j = 0; j < getColumna(); j++) {
+		matriz[i - 1][j] = matriz[0][j] * matriz[0][j];
+	}
+}*/
+
+void CalculosMuestreo::leerDatosDesdeArchivo() {
 	std::fstream archivo;
-	if(datosAgrupados == true) {
-		archivo.open("matriz.dat", std::ios::in | std::ios::binary);
-		if(archivo.is_open()) {
-			std::cout << "Fichero leído" << '\n';
-			setFila(2);
-			crearMatrizVacia();
-			unsigned int n = getColumna();
+	archivo.open("datos.dat", std::ios::in | std::ios::binary);
+	int n = getFila();
+	double prob = (double) n;
+	if(agrupados == true) {
+		if(probIguales == true) { // Probabilidades iguales y datos agrupados
 			unsigned int i = 0, j = 0;
 			while(!archivo.eof()) {
 				archivo >> matriz[i][j];
@@ -117,84 +177,44 @@ void CalculosMuestreo::leerDatosArchivo() {
 				i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
 				j = j % n; //se asegura que esté entre 0 y N-1
 			}
-			mostrarMatrizOriginal();
-			std::cout << '\n';
-			archivo.close();
-		} else std::cout << "Fichero inexistente" << '\n';
+			for(int k = 0; k < n; k++) {
+				matriz[2][k] = 1 / prob;
+			}
+			desagrupar();
+		} else {// Probabilidades desiguales y datos agrupados
+			unsigned int i = 0, j = 0;
+			while(!archivo.eof()) {
+				archivo >> matriz[i][j];
+				j++; //avanza en la fila
+				i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
+				j = j % n; //se asegura que esté entre 0 y N-1
+			}
+			desagrupar();
+		}
 	} else {
-		archivo.open("vector.dat", std::ios::in | std::ios::binary);
-		if(archivo.is_open()) {
-			std::cout << "Fichero leído" << '\n';
-			crearVectorVacio();
-			int n = getLongitudVector();
-			for(int i = 0; i < n; i++) {
-				archivo >> vector[i];
+		if(probIguales == true) { //Probabilidades iguales y datos desagrupados
+			for(int j = 0; j < n; j++) {
+				archivo >> matriz[0][j];
+				matriz[1][j] = 1;
+				matriz[2][j] = 1 / prob;
 			}
-			archivo.close();
-		} else {
-			std::cout << "Fichero inexistente" << '\n';
-		}
-	}
-}
-
-void CalculosMuestreo::crearDatosMuestra() {
-	int tipoMuestreo = getTipoMuestreo();
-	std::cout << "Tamaño de la muestra: ";
-	numElementosVector();
-	setColumna(getLongitudVector());
-
-	switch(tipoMuestreo) {
-	case '1' :
-	case '2' :
-		setFila(2);
-		if(leeArchivo == true) {
-			leerDatosArchivo();
-			desagrupar();
-		}	else if(datosAgrupados == true) {
-			crearMatrizVacia();
-			editarMatrizVacia();
-			desagrupar();
-		}	else {
-			crearVectorVacio();
-			editarVectorVacio();
-		}
-		break;
-	case '3' :
-	case '4' :
-		setFila(2);
-		if(datosAgrupados == true) {
-			std::cout << "Tamaño de la muestra: ";
-			numElementosVector();
-			setColumna(getLongitudVector());
-			crearMatrizVacia();
-			editarMatrizVacia();
-			desagrupar();
-		} else {
-			if(leeArchivo == true) {
-				leerVectorArchivo();
-				setColumna(getLongitudVector());
-			} else {
-				std::cout << "Tamaño de la muestra: ";
-				numElementosVector();
-				setColumna(getLongitudVector());
-				crearVectorVacio();
-				editarVectorVacio();
-				//mostrarVector();
+		} else { // Probabilidades desiguales y datos desagrupados => leer directamente
+			unsigned int i = 0, j = 0;
+			while(!archivo.eof()) {
+				archivo >> matriz[i][j];
+				j++; //avanza en la fila
+				i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
+				j = j % n; //se asegura que esté entre 0 y N-1
 			}
 		}
-		//mostrarDatosMuestra();
-		break;
 	}
+	archivo.close();
 }
 
-void CalculosMuestreo::mostrarDatosMuestra() {
-	//std::cout << '\n';
-	std::cout << "Tabla de datos:" << '\n';
-	crearMatrizVacia();
-	calculoXi();
-	calculoXi2();
-	mostrarMatrizOriginal();
+void CalculosMuestreo::leerDatosDesdeTeclado() {
+	for(unsigned int j = 0; j < getColumna(); j++) {
+		std::cout << "Elemento " << j + 1 << " de la muestra: ";
+		std::cin >> matriz[0][j];
+	}
 	std::cout << '\n';
 }
-
-

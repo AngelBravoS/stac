@@ -1,9 +1,31 @@
+/***************************************************************************														*
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
+ *   angelbravosaenz@gmail.com  															*
+ *																									*
+ *   This file is part of Stac.                                            *
+ *                                                                         *
+ *   Stac is free software; you can redistribute it and/or modify          *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   Stac is distributed in the hope that it will be useful,               *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with Stac; if not, write to the                                 *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include <iostream>
-#include "calculosMatriz.hpp"
+#include "calculosAlgebra.hpp"
 
 using namespace std;
 
-double CalculosMatriz::traza() {
+double CalculosAlgebra::traza() {
 	double traza = 0;
 	for(unsigned int i = 0; i < getFila(); i++) {
 		traza += matriz[i][i];
@@ -11,7 +33,7 @@ double CalculosMatriz::traza() {
 	return traza;
 }
 
-double  CalculosMatriz::determinante() {
+double  CalculosAlgebra::determinante() {
 	unsigned int const n = getFila();
 	double determinante = 0;
 	switch(getFila()) {
@@ -36,21 +58,21 @@ double  CalculosMatriz::determinante() {
 	return determinante;
 }
 
-void CalculosMatriz::traspuesta() {
+void CalculosAlgebra::traspuesta() {
 	copiarMatriz();
 	for(unsigned int i = 0; i < getFila(); i++) {
 		for(unsigned int j = 0; j < getColumna(); j++) {
-			copiaDeMatriz[i][j] = matriz[j][i];
+			matrizB[i][j] = matriz[j][i];
 		}
 	}
 	//mostrarMatriz ( copiaDeMatriz );
-	setMatrizCopia(copiaDeMatriz);
+	setMatrizB(matrizB);
 }
 
-void CalculosMatriz::adjunta() {
+void CalculosAlgebra::adjunta() {
 }
 
-void CalculosMatriz::inversa() {
+void CalculosAlgebra::inversa() {
 	if(determinante() != 0) {
 		std::cout << "La matriz tiene inversa" << endl;
 	} else {
@@ -58,7 +80,7 @@ void CalculosMatriz::inversa() {
 	}
 }
 
-void CalculosMatriz::triangular() {
+void CalculosAlgebra::triangular() {
 	/*for ( int i = 1, i <= n, i++ ) {
 		if ( matriz[i, i] = 0 ) {
 			for ( j = i + 1, j <= n, j++ ) {
@@ -77,21 +99,21 @@ e intercambiamos fila.
 Si A11 =/= 0 para i = 2...n, mi1=-ai1/a11, así hacemos 0 todo elemento
 de la columna debajo del pivote
 */
-void CalculosMatriz::gauss() {
+void CalculosAlgebra::gauss() {
 	unsigned int const n = getFila();
 	copiarMatriz();
 	for(int i = 1; i < n; i++) {
-		if(copiaDeMatriz[i][i] == 0) {
+		if(matrizB[i][i] == 0) {
 			for(int j = i + 1; j < n; j++) {
 			}
 		} else {
 			//copiaDeMatriz[i][j] =;
 		}
 	}
-	setMatrizCopia(copiaDeMatriz);
+	setMatrizB(matrizB);
 }
 
-void CalculosMatriz::descomposicionLU() {
+void CalculosAlgebra::descomposicionLU() {
 	unsigned int const n = getFila();
 	unsigned int i, j, k;
 	double matrizL [n][n];
@@ -123,27 +145,27 @@ void CalculosMatriz::descomposicionLU() {
 	copiarMatriz();
 	for(i = 0; i < n; i++) {
 		for(j = 0; j < n; j++) {
-			copiaDeMatriz[i][j] = matrizL[i][j];
+			matrizB[i][j] = matrizL[i][j];
 		}
 	}
-	mostrarMatrizCopia();
+	mostrarMatrizB();
 	for(i = 0; i < n; i++) {
 		for(j = 0; j < n; j++) {
-			copiaDeMatriz[i][j] = matrizU[i][j];
+			matrizB[i][j] = matrizU[i][j];
 		}
 	}
-	mostrarMatrizCopia();
+	mostrarMatrizB();
 }
 
-void CalculosMatriz::multiplicarMat() {
+void CalculosAlgebra::multiplicarMat() {
 	crearMatrizVacia();
 	for(unsigned int i = 0; i < getFila(); i++) {
 		for(unsigned int j = 0; j < getColumna(); j++) {
-			copiaDeMatriz[i][j] = matriz[j][i];
+			matrizB[i][j] = matriz[j][i];
 		}
 	}
 	//mostrarMatriz ( copiaDeMatriz );
-	setMatrizCopia(copiaDeMatriz);
+	setMatrizB(matrizB);
 }
 
 

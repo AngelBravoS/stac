@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named stac
+# Target rules for targets named stacPruebas
 
 # Build rule for target.
-stac: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 stac
-.PHONY : stac
+stacPruebas: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 stacPruebas
+.PHONY : stacPruebas
 
 # fast build rule for target.
-stac/fast:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/build
-.PHONY : stac/fast
+stacPruebas/fast:
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/build
+.PHONY : stacPruebas/fast
 
 calculos1Var.o: calculos1Var.cpp.o
 
@@ -129,7 +129,7 @@ calculos1Var.o: calculos1Var.cpp.o
 
 # target to build an object file
 calculos1Var.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos1Var.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculos1Var.cpp.o
 .PHONY : calculos1Var.cpp.o
 
 calculos1Var.i: calculos1Var.cpp.i
@@ -138,7 +138,7 @@ calculos1Var.i: calculos1Var.cpp.i
 
 # target to preprocess a source file
 calculos1Var.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos1Var.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculos1Var.cpp.i
 .PHONY : calculos1Var.cpp.i
 
 calculos1Var.s: calculos1Var.cpp.s
@@ -147,7 +147,7 @@ calculos1Var.s: calculos1Var.cpp.s
 
 # target to generate assembly for a file
 calculos1Var.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos1Var.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculos1Var.cpp.s
 .PHONY : calculos1Var.cpp.s
 
 calculos2Var.o: calculos2Var.cpp.o
@@ -156,7 +156,7 @@ calculos2Var.o: calculos2Var.cpp.o
 
 # target to build an object file
 calculos2Var.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos2Var.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculos2Var.cpp.o
 .PHONY : calculos2Var.cpp.o
 
 calculos2Var.i: calculos2Var.cpp.i
@@ -165,7 +165,7 @@ calculos2Var.i: calculos2Var.cpp.i
 
 # target to preprocess a source file
 calculos2Var.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos2Var.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculos2Var.cpp.i
 .PHONY : calculos2Var.cpp.i
 
 calculos2Var.s: calculos2Var.cpp.s
@@ -174,7 +174,7 @@ calculos2Var.s: calculos2Var.cpp.s
 
 # target to generate assembly for a file
 calculos2Var.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculos2Var.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculos2Var.cpp.s
 .PHONY : calculos2Var.cpp.s
 
 calculosIA.o: calculosIA.cpp.o
@@ -183,7 +183,7 @@ calculosIA.o: calculosIA.cpp.o
 
 # target to build an object file
 calculosIA.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosIA.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosIA.cpp.o
 .PHONY : calculosIA.cpp.o
 
 calculosIA.i: calculosIA.cpp.i
@@ -192,7 +192,7 @@ calculosIA.i: calculosIA.cpp.i
 
 # target to preprocess a source file
 calculosIA.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosIA.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosIA.cpp.i
 .PHONY : calculosIA.cpp.i
 
 calculosIA.s: calculosIA.cpp.s
@@ -201,7 +201,7 @@ calculosIA.s: calculosIA.cpp.s
 
 # target to generate assembly for a file
 calculosIA.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosIA.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosIA.cpp.s
 .PHONY : calculosIA.cpp.s
 
 calculosMatriz.o: calculosMatriz.cpp.o
@@ -210,7 +210,7 @@ calculosMatriz.o: calculosMatriz.cpp.o
 
 # target to build an object file
 calculosMatriz.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosMatriz.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosMatriz.cpp.o
 .PHONY : calculosMatriz.cpp.o
 
 calculosMatriz.i: calculosMatriz.cpp.i
@@ -219,7 +219,7 @@ calculosMatriz.i: calculosMatriz.cpp.i
 
 # target to preprocess a source file
 calculosMatriz.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosMatriz.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosMatriz.cpp.i
 .PHONY : calculosMatriz.cpp.i
 
 calculosMatriz.s: calculosMatriz.cpp.s
@@ -228,8 +228,35 @@ calculosMatriz.s: calculosMatriz.cpp.s
 
 # target to generate assembly for a file
 calculosMatriz.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosMatriz.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosMatriz.cpp.s
 .PHONY : calculosMatriz.cpp.s
+
+calculosMuestreo.o: calculosMuestreo.cpp.o
+
+.PHONY : calculosMuestreo.o
+
+# target to build an object file
+calculosMuestreo.cpp.o:
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosMuestreo.cpp.o
+.PHONY : calculosMuestreo.cpp.o
+
+calculosMuestreo.i: calculosMuestreo.cpp.i
+
+.PHONY : calculosMuestreo.i
+
+# target to preprocess a source file
+calculosMuestreo.cpp.i:
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosMuestreo.cpp.i
+.PHONY : calculosMuestreo.cpp.i
+
+calculosMuestreo.s: calculosMuestreo.cpp.s
+
+.PHONY : calculosMuestreo.s
+
+# target to generate assembly for a file
+calculosMuestreo.cpp.s:
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosMuestreo.cpp.s
+.PHONY : calculosMuestreo.cpp.s
 
 calculosNVar.o: calculosNVar.cpp.o
 
@@ -237,7 +264,7 @@ calculosNVar.o: calculosNVar.cpp.o
 
 # target to build an object file
 calculosNVar.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosNVar.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosNVar.cpp.o
 .PHONY : calculosNVar.cpp.o
 
 calculosNVar.i: calculosNVar.cpp.i
@@ -246,7 +273,7 @@ calculosNVar.i: calculosNVar.cpp.i
 
 # target to preprocess a source file
 calculosNVar.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosNVar.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosNVar.cpp.i
 .PHONY : calculosNVar.cpp.i
 
 calculosNVar.s: calculosNVar.cpp.s
@@ -255,7 +282,7 @@ calculosNVar.s: calculosNVar.cpp.s
 
 # target to generate assembly for a file
 calculosNVar.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/calculosNVar.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/calculosNVar.cpp.s
 .PHONY : calculosNVar.cpp.s
 
 cli.o: cli.cpp.o
@@ -264,7 +291,7 @@ cli.o: cli.cpp.o
 
 # target to build an object file
 cli.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/cli.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/cli.cpp.o
 .PHONY : cli.cpp.o
 
 cli.i: cli.cpp.i
@@ -273,7 +300,7 @@ cli.i: cli.cpp.i
 
 # target to preprocess a source file
 cli.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/cli.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/cli.cpp.i
 .PHONY : cli.cpp.i
 
 cli.s: cli.cpp.s
@@ -282,7 +309,7 @@ cli.s: cli.cpp.s
 
 # target to generate assembly for a file
 cli.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/cli.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/cli.cpp.s
 .PHONY : cli.cpp.s
 
 combinatoria.o: combinatoria.cpp.o
@@ -291,7 +318,7 @@ combinatoria.o: combinatoria.cpp.o
 
 # target to build an object file
 combinatoria.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/combinatoria.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/combinatoria.cpp.o
 .PHONY : combinatoria.cpp.o
 
 combinatoria.i: combinatoria.cpp.i
@@ -300,7 +327,7 @@ combinatoria.i: combinatoria.cpp.i
 
 # target to preprocess a source file
 combinatoria.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/combinatoria.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/combinatoria.cpp.i
 .PHONY : combinatoria.cpp.i
 
 combinatoria.s: combinatoria.cpp.s
@@ -309,7 +336,7 @@ combinatoria.s: combinatoria.cpp.s
 
 # target to generate assembly for a file
 combinatoria.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/combinatoria.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/combinatoria.cpp.s
 .PHONY : combinatoria.cpp.s
 
 distribucionesDiscretas.o: distribucionesDiscretas.cpp.o
@@ -318,7 +345,7 @@ distribucionesDiscretas.o: distribucionesDiscretas.cpp.o
 
 # target to build an object file
 distribucionesDiscretas.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/distribucionesDiscretas.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/distribucionesDiscretas.cpp.o
 .PHONY : distribucionesDiscretas.cpp.o
 
 distribucionesDiscretas.i: distribucionesDiscretas.cpp.i
@@ -327,7 +354,7 @@ distribucionesDiscretas.i: distribucionesDiscretas.cpp.i
 
 # target to preprocess a source file
 distribucionesDiscretas.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/distribucionesDiscretas.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/distribucionesDiscretas.cpp.i
 .PHONY : distribucionesDiscretas.cpp.i
 
 distribucionesDiscretas.s: distribucionesDiscretas.cpp.s
@@ -336,7 +363,7 @@ distribucionesDiscretas.s: distribucionesDiscretas.cpp.s
 
 # target to generate assembly for a file
 distribucionesDiscretas.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/distribucionesDiscretas.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/distribucionesDiscretas.cpp.s
 .PHONY : distribucionesDiscretas.cpp.s
 
 funcDatosBasicas.o: funcDatosBasicas.cpp.o
@@ -345,7 +372,7 @@ funcDatosBasicas.o: funcDatosBasicas.cpp.o
 
 # target to build an object file
 funcDatosBasicas.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcDatosBasicas.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/funcDatosBasicas.cpp.o
 .PHONY : funcDatosBasicas.cpp.o
 
 funcDatosBasicas.i: funcDatosBasicas.cpp.i
@@ -354,7 +381,7 @@ funcDatosBasicas.i: funcDatosBasicas.cpp.i
 
 # target to preprocess a source file
 funcDatosBasicas.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcDatosBasicas.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/funcDatosBasicas.cpp.i
 .PHONY : funcDatosBasicas.cpp.i
 
 funcDatosBasicas.s: funcDatosBasicas.cpp.s
@@ -363,7 +390,7 @@ funcDatosBasicas.s: funcDatosBasicas.cpp.s
 
 # target to generate assembly for a file
 funcDatosBasicas.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcDatosBasicas.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/funcDatosBasicas.cpp.s
 .PHONY : funcDatosBasicas.cpp.s
 
 funcMatematicasBasicas.o: funcMatematicasBasicas.cpp.o
@@ -372,7 +399,7 @@ funcMatematicasBasicas.o: funcMatematicasBasicas.cpp.o
 
 # target to build an object file
 funcMatematicasBasicas.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcMatematicasBasicas.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/funcMatematicasBasicas.cpp.o
 .PHONY : funcMatematicasBasicas.cpp.o
 
 funcMatematicasBasicas.i: funcMatematicasBasicas.cpp.i
@@ -381,7 +408,7 @@ funcMatematicasBasicas.i: funcMatematicasBasicas.cpp.i
 
 # target to preprocess a source file
 funcMatematicasBasicas.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcMatematicasBasicas.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/funcMatematicasBasicas.cpp.i
 .PHONY : funcMatematicasBasicas.cpp.i
 
 funcMatematicasBasicas.s: funcMatematicasBasicas.cpp.s
@@ -390,7 +417,7 @@ funcMatematicasBasicas.s: funcMatematicasBasicas.cpp.s
 
 # target to generate assembly for a file
 funcMatematicasBasicas.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/funcMatematicasBasicas.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/funcMatematicasBasicas.cpp.s
 .PHONY : funcMatematicasBasicas.cpp.s
 
 main.o: main.cpp.o
@@ -399,7 +426,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -408,7 +435,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -417,7 +444,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 menu1Var.o: menu1Var.cpp.o
@@ -426,7 +453,7 @@ menu1Var.o: menu1Var.cpp.o
 
 # target to build an object file
 menu1Var.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu1Var.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menu1Var.cpp.o
 .PHONY : menu1Var.cpp.o
 
 menu1Var.i: menu1Var.cpp.i
@@ -435,7 +462,7 @@ menu1Var.i: menu1Var.cpp.i
 
 # target to preprocess a source file
 menu1Var.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu1Var.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menu1Var.cpp.i
 .PHONY : menu1Var.cpp.i
 
 menu1Var.s: menu1Var.cpp.s
@@ -444,7 +471,7 @@ menu1Var.s: menu1Var.cpp.s
 
 # target to generate assembly for a file
 menu1Var.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu1Var.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menu1Var.cpp.s
 .PHONY : menu1Var.cpp.s
 
 menu2Var.o: menu2Var.cpp.o
@@ -453,7 +480,7 @@ menu2Var.o: menu2Var.cpp.o
 
 # target to build an object file
 menu2Var.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu2Var.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menu2Var.cpp.o
 .PHONY : menu2Var.cpp.o
 
 menu2Var.i: menu2Var.cpp.i
@@ -462,7 +489,7 @@ menu2Var.i: menu2Var.cpp.i
 
 # target to preprocess a source file
 menu2Var.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu2Var.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menu2Var.cpp.i
 .PHONY : menu2Var.cpp.i
 
 menu2Var.s: menu2Var.cpp.s
@@ -471,7 +498,7 @@ menu2Var.s: menu2Var.cpp.s
 
 # target to generate assembly for a file
 menu2Var.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menu2Var.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menu2Var.cpp.s
 .PHONY : menu2Var.cpp.s
 
 menuCombinatoria.o: menuCombinatoria.cpp.o
@@ -480,7 +507,7 @@ menuCombinatoria.o: menuCombinatoria.cpp.o
 
 # target to build an object file
 menuCombinatoria.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuCombinatoria.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuCombinatoria.cpp.o
 .PHONY : menuCombinatoria.cpp.o
 
 menuCombinatoria.i: menuCombinatoria.cpp.i
@@ -489,7 +516,7 @@ menuCombinatoria.i: menuCombinatoria.cpp.i
 
 # target to preprocess a source file
 menuCombinatoria.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuCombinatoria.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuCombinatoria.cpp.i
 .PHONY : menuCombinatoria.cpp.i
 
 menuCombinatoria.s: menuCombinatoria.cpp.s
@@ -498,7 +525,7 @@ menuCombinatoria.s: menuCombinatoria.cpp.s
 
 # target to generate assembly for a file
 menuCombinatoria.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuCombinatoria.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuCombinatoria.cpp.s
 .PHONY : menuCombinatoria.cpp.s
 
 menuDistribDiscretas.o: menuDistribDiscretas.cpp.o
@@ -507,7 +534,7 @@ menuDistribDiscretas.o: menuDistribDiscretas.cpp.o
 
 # target to build an object file
 menuDistribDiscretas.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuDistribDiscretas.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuDistribDiscretas.cpp.o
 .PHONY : menuDistribDiscretas.cpp.o
 
 menuDistribDiscretas.i: menuDistribDiscretas.cpp.i
@@ -516,7 +543,7 @@ menuDistribDiscretas.i: menuDistribDiscretas.cpp.i
 
 # target to preprocess a source file
 menuDistribDiscretas.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuDistribDiscretas.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuDistribDiscretas.cpp.i
 .PHONY : menuDistribDiscretas.cpp.i
 
 menuDistribDiscretas.s: menuDistribDiscretas.cpp.s
@@ -525,7 +552,7 @@ menuDistribDiscretas.s: menuDistribDiscretas.cpp.s
 
 # target to generate assembly for a file
 menuDistribDiscretas.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuDistribDiscretas.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuDistribDiscretas.cpp.s
 .PHONY : menuDistribDiscretas.cpp.s
 
 menuIA.o: menuIA.cpp.o
@@ -534,7 +561,7 @@ menuIA.o: menuIA.cpp.o
 
 # target to build an object file
 menuIA.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuIA.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuIA.cpp.o
 .PHONY : menuIA.cpp.o
 
 menuIA.i: menuIA.cpp.i
@@ -543,7 +570,7 @@ menuIA.i: menuIA.cpp.i
 
 # target to preprocess a source file
 menuIA.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuIA.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuIA.cpp.i
 .PHONY : menuIA.cpp.i
 
 menuIA.s: menuIA.cpp.s
@@ -552,7 +579,7 @@ menuIA.s: menuIA.cpp.s
 
 # target to generate assembly for a file
 menuIA.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuIA.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuIA.cpp.s
 .PHONY : menuIA.cpp.s
 
 menuMatrices.o: menuMatrices.cpp.o
@@ -561,7 +588,7 @@ menuMatrices.o: menuMatrices.cpp.o
 
 # target to build an object file
 menuMatrices.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuMatrices.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuMatrices.cpp.o
 .PHONY : menuMatrices.cpp.o
 
 menuMatrices.i: menuMatrices.cpp.i
@@ -570,7 +597,7 @@ menuMatrices.i: menuMatrices.cpp.i
 
 # target to preprocess a source file
 menuMatrices.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuMatrices.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuMatrices.cpp.i
 .PHONY : menuMatrices.cpp.i
 
 menuMatrices.s: menuMatrices.cpp.s
@@ -579,7 +606,7 @@ menuMatrices.s: menuMatrices.cpp.s
 
 # target to generate assembly for a file
 menuMatrices.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuMatrices.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuMatrices.cpp.s
 .PHONY : menuMatrices.cpp.s
 
 menuNVar.o: menuNVar.cpp.o
@@ -588,7 +615,7 @@ menuNVar.o: menuNVar.cpp.o
 
 # target to build an object file
 menuNVar.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuNVar.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuNVar.cpp.o
 .PHONY : menuNVar.cpp.o
 
 menuNVar.i: menuNVar.cpp.i
@@ -597,7 +624,7 @@ menuNVar.i: menuNVar.cpp.i
 
 # target to preprocess a source file
 menuNVar.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuNVar.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuNVar.cpp.i
 .PHONY : menuNVar.cpp.i
 
 menuNVar.s: menuNVar.cpp.s
@@ -606,7 +633,7 @@ menuNVar.s: menuNVar.cpp.s
 
 # target to generate assembly for a file
 menuNVar.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuNVar.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuNVar.cpp.s
 .PHONY : menuNVar.cpp.s
 
 menuSinDatos.o: menuSinDatos.cpp.o
@@ -615,7 +642,7 @@ menuSinDatos.o: menuSinDatos.cpp.o
 
 # target to build an object file
 menuSinDatos.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuSinDatos.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuSinDatos.cpp.o
 .PHONY : menuSinDatos.cpp.o
 
 menuSinDatos.i: menuSinDatos.cpp.i
@@ -624,7 +651,7 @@ menuSinDatos.i: menuSinDatos.cpp.i
 
 # target to preprocess a source file
 menuSinDatos.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuSinDatos.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuSinDatos.cpp.i
 .PHONY : menuSinDatos.cpp.i
 
 menuSinDatos.s: menuSinDatos.cpp.s
@@ -633,7 +660,7 @@ menuSinDatos.s: menuSinDatos.cpp.s
 
 # target to generate assembly for a file
 menuSinDatos.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuSinDatos.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuSinDatos.cpp.s
 .PHONY : menuSinDatos.cpp.s
 
 menuTablasCont.o: menuTablasCont.cpp.o
@@ -642,7 +669,7 @@ menuTablasCont.o: menuTablasCont.cpp.o
 
 # target to build an object file
 menuTablasCont.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuTablasCont.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuTablasCont.cpp.o
 .PHONY : menuTablasCont.cpp.o
 
 menuTablasCont.i: menuTablasCont.cpp.i
@@ -651,7 +678,7 @@ menuTablasCont.i: menuTablasCont.cpp.i
 
 # target to preprocess a source file
 menuTablasCont.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuTablasCont.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuTablasCont.cpp.i
 .PHONY : menuTablasCont.cpp.i
 
 menuTablasCont.s: menuTablasCont.cpp.s
@@ -660,8 +687,35 @@ menuTablasCont.s: menuTablasCont.cpp.s
 
 # target to generate assembly for a file
 menuTablasCont.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/menuTablasCont.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/menuTablasCont.cpp.s
 .PHONY : menuTablasCont.cpp.s
+
+muestreo.o: muestreo.cpp.o
+
+.PHONY : muestreo.o
+
+# target to build an object file
+muestreo.cpp.o:
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/muestreo.cpp.o
+.PHONY : muestreo.cpp.o
+
+muestreo.i: muestreo.cpp.i
+
+.PHONY : muestreo.i
+
+# target to preprocess a source file
+muestreo.cpp.i:
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/muestreo.cpp.i
+.PHONY : muestreo.cpp.i
+
+muestreo.s: muestreo.cpp.s
+
+.PHONY : muestreo.s
+
+# target to generate assembly for a file
+muestreo.cpp.s:
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/muestreo.cpp.s
+.PHONY : muestreo.cpp.s
 
 textosMenus.o: textosMenus.cpp.o
 
@@ -669,7 +723,7 @@ textosMenus.o: textosMenus.cpp.o
 
 # target to build an object file
 textosMenus.cpp.o:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/textosMenus.cpp.o
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/textosMenus.cpp.o
 .PHONY : textosMenus.cpp.o
 
 textosMenus.i: textosMenus.cpp.i
@@ -678,7 +732,7 @@ textosMenus.i: textosMenus.cpp.i
 
 # target to preprocess a source file
 textosMenus.cpp.i:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/textosMenus.cpp.i
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/textosMenus.cpp.i
 .PHONY : textosMenus.cpp.i
 
 textosMenus.s: textosMenus.cpp.s
@@ -687,7 +741,7 @@ textosMenus.s: textosMenus.cpp.s
 
 # target to generate assembly for a file
 textosMenus.cpp.s:
-	$(MAKE) -f CMakeFiles/stac.dir/build.make CMakeFiles/stac.dir/textosMenus.cpp.s
+	$(MAKE) -f CMakeFiles/stacPruebas.dir/build.make CMakeFiles/stacPruebas.dir/textosMenus.cpp.s
 .PHONY : textosMenus.cpp.s
 
 # Help Target
@@ -698,7 +752,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... stac"
+	@echo "... stacPruebas"
 	@echo "... calculos1Var.o"
 	@echo "... calculos1Var.i"
 	@echo "... calculos1Var.s"
@@ -711,6 +765,9 @@ help:
 	@echo "... calculosMatriz.o"
 	@echo "... calculosMatriz.i"
 	@echo "... calculosMatriz.s"
+	@echo "... calculosMuestreo.o"
+	@echo "... calculosMuestreo.i"
+	@echo "... calculosMuestreo.s"
 	@echo "... calculosNVar.o"
 	@echo "... calculosNVar.i"
 	@echo "... calculosNVar.s"
@@ -759,6 +816,9 @@ help:
 	@echo "... menuTablasCont.o"
 	@echo "... menuTablasCont.i"
 	@echo "... menuTablasCont.s"
+	@echo "... muestreo.o"
+	@echo "... muestreo.i"
+	@echo "... muestreo.s"
 	@echo "... textosMenus.o"
 	@echo "... textosMenus.i"
 	@echo "... textosMenus.s"

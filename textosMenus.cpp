@@ -1,3 +1,25 @@
+/***************************************************************************														*
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
+ *   angelbravosaenz@gmail.com  															*
+ *																									*
+ *   This file is part of Stac.                                            *
+ *                                                                         *
+ *   Stac is free software; you can redistribute it and/or modify          *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   Stac is distributed in the hope that it will be useful,               *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with Stac; if not, write to the                                 *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include "cli.hpp"
 #include <iostream>
 
@@ -13,7 +35,8 @@ void CLI::introduccion() {
 	std::cout << "             ║           STAC           ║" << '\n';	
 	std::cout << "             ║        Estadística       ║" << '\n';
 	std::cout << "             ║   en línea de comandos   ║" << '\n';
-	std::cout << "             ║    Versión alpha 0.7.3   ║" << '\n';	
+	std::cout << "             ║    Versión alpha 0.7.4   ║" << '\n';	
+	std::cout << "             ║     Rama ''pruebas''     ║" << '\n';		
 	std::cout << "             ╚══════════════════════════╝" << '\n';
 	std::cout << '\n';
 	}
@@ -21,7 +44,7 @@ void CLI::introduccion() {
 void CLI::acercaDe() {
 	std::cout << '\n';
 	std::cout << "             ╔══════════════════════════╗" << '\n';
-	std::cout << "             ║    Versión alpha 0.7.3   ║" << '\n';
+	std::cout << "             ║    Versión alpha 0.7.4   ║" << '\n';
 	std::cout << "             ║       Escrito en c++     ║" << '\n';
 	std::cout << "             ║     Ángel Bravo Sáenz    ║" << '\n';
 	std::cout << "             ╚══════════════════════════╝" << '\n';
@@ -93,3 +116,18 @@ void CLI::listadOpcionesPricipales() {
 	std::cout << "'h' Ayuda." << '\n';
 	std::cout << "'0'  Salir." << '\n';
 	}
+
+void CLI::listadOpcionesMuestreo() {	
+	std::cout << '\n';
+	std::cout << "Selecciona el tipo de muestreo:" << '\n';
+	std::cout << "'1' MAS (Sin reemplazo y probabilidades iguales)" << '\n';
+	std::cout << "'2' Con reemplazo y probabilidades iguales"  << '\n';
+	std::cout << "'3' Sin reemplazo y probabilidades desiguales." << '\n';
+	std::cout << "'4' Con reemplazo y probabilidades desiguales"  << '\n';
+	std::cout << "'5' Muestreo sistemático" << '\n';
+	std::cout << "'6' Métodos indirectos de estimación" << '\n';	
+	std::cout << "'7' Muestreo estratificado" << '\n';
+	std::cout << "'8' Muestreo por conglomerados" << '\n';
+	std::cout << "'0' Salir." << '\n';
+	std::cout << "> ";
+}

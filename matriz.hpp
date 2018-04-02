@@ -19,49 +19,42 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+ 
+class Matriz {
+		//Obtener = Get
+		//Establecer = Set
+	public:
+		//======== setters y getters ======== 
+		unsigned int getFila();
+		void setFila ( unsigned int filaPublica );
+		unsigned int getColumna();
+		void setColumna ( unsigned int columnaPublica );
+		unsigned int getFilaB();
+		void setFilaB ( unsigned int filaPublicaB );
+		unsigned int getColumnaB();
+		void setColumnaB ( unsigned int columnaPublicaB );
+		double getMatriz();
+		void setMatriz ( double **matrizPublica );
+		double getMatrizB();
+		void setMatrizB ( double **matrizBPublica );
+		//======== trabajo con archivos ======== 
+		void leerMatrizArchivo();
+		void leerVectorArchivo();
+		void guardarEnArchivo();
+		//======== funciones de la matriz de datos ======== 
+		void setDimensionMatriz();
+		void crearMatrizVacia();
+		void crearMatrizVaciaB();
+		void editarMatrizVacia();
+		void mostrarMatriz ();
+		void mostrarMatrizB ();
+		void copiarDimensionMatriz();
+		void copiarMatriz();
 
-#include "funcMatematicasBasicas.hpp"
-
-//typedef unsigned short int unShortInt;
-//Límite máximo en unsigned short int: 65535
-
-double permutaciones(unsigned short int n) {
-	double resultado;
-	resultado = factorial(n);
-	return resultado;
-}
-
-double permutacionesRep(unsigned short int m, unsigned short int n, unsigned short int numeroElementos) {
-	double resultado = 1;
-	for(unsigned short int i = 0; i < numeroElementos; i++) {
-		resultado *= factorial(n);
-	}
-	resultado = factorial(m) / resultado;
-	return resultado;
-}
-
-double variaciones(unsigned short int m, unsigned short int n) {
-	double resultado;
-	resultado = factorial(m) / factorial(m - n);
-	return resultado;
-}
-
-double variacionesRep(unsigned short int m, unsigned short int n) {
-	double resultado;
-	resultado = potencia(m, n);
-	return resultado;
-}
-
-double combinaciones(unsigned short int m, unsigned short int n) {
-	double resultado;
-	resultado = factorial(m) / (factorial(n) * factorial(m - n));
-	return resultado;
-}
-
-double combinacionesRep(unsigned short int m, unsigned short int n) {
-	double resultado;
-	unsigned int valorM = m;
-	valorM = valorM + (n - 1);
-	resultado = (factorial(valorM)) / (factorial(n) * factorial(valorM - n));
-	return resultado;
-}
+	protected:
+		
+		unsigned int fila, filaB;
+		unsigned int columna, columnaB;
+		double **matriz;
+		double **matrizB;
+};
