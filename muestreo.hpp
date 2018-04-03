@@ -31,13 +31,10 @@ class Muestreo : public CLI {
 		CalculosMuestreo muestra;
 		//========  funciones de muestreo ======== 
 		void menuMuestreo();
-		//void crearMuestra(char respuestaTipoMuestreo, bool respuestaAgrupados, bool respuestaArchivo, bool respuestaReemplazo, bool respuestaProbIguales, bool respuestaMismoTamanyo);
 		void definirTipoMuestreo();
 		void recogerDatosMuestra();
 		void mostrarDatosMuestra();
 		void verificarArchivo();
-		//void leerDatosDesdeArchivo();
 	protected:
 		bool archivoValido;
-
 };

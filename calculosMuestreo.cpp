@@ -110,7 +110,6 @@ void CalculosMuestreo::editarMatrizVacia() {
 	std::cout << '\n';
 }
 
-
 void CalculosMuestreo::desagrupar() {
 	double n;
 	int x = 0; //entender por qué así funciona.
@@ -142,31 +141,14 @@ void CalculosMuestreo::incorporarXiYXi2() {
 	int i = getFila();
 	for(unsigned int j = 0; j < getColumna(); j++) {
 		matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
-		matriz[i - 1][j] = matriz[i-2][j] * matriz[i-2][j];
+		matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
 	}
 }
-
-//inútil
-/*
-void CalculosMuestreo::calculoXi() {
-	int i = getFila();
-	for(unsigned int j = 0; j < getColumna(); j++) {
-		matriz[i - 1][j] = matriz[0][j] * matriz[0][j];
-	}
-}
-
-//inútil
-void CalculosMuestreo::calculoXi2() {
-	int i = getFila();
-	for(unsigned int j = 0; j < getColumna(); j++) {
-		matriz[i - 1][j] = matriz[0][j] * matriz[0][j];
-	}
-}*/
 
 void CalculosMuestreo::leerDatosDesdeArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
-	int n = getFila();
+	int n = getColumna();
 	double prob = (double) n;
 	if(agrupados == true) {
 		if(probIguales == true) { // Probabilidades iguales y datos agrupados
@@ -212,9 +194,31 @@ void CalculosMuestreo::leerDatosDesdeArchivo() {
 }
 
 void CalculosMuestreo::leerDatosDesdeTeclado() {
+	int n = getColumna();
+	double prob = (double) n;
 	for(unsigned int j = 0; j < getColumna(); j++) {
 		std::cout << "Elemento " << j + 1 << " de la muestra: ";
 		std::cin >> matriz[0][j];
 	}
-	std::cout << '\n';
+	if(agrupados == true) {
+			for(unsigned int j = 0; j < getColumna(); j++) {
+				std::cout << "Nº de veces que el elemento " << j + 1 << " de la muestra aparece en ella: ";
+				std::cin >> matriz[1][j];
+		}
+		desagrupar();
+	} else {
+		for(unsigned int j = 0; j < getColumna(); j++) {
+			matriz[1][j] = 1;
+		}
+	}
+	if(probIguales == true) {
+		for(unsigned int j = 0; j < getColumna(); j++) {
+			matriz[2][j] = 1 / prob;
+		}
+	} else {
+		for(unsigned int j = 0; j < getColumna(); j++) {
+					std::cout << "Probabilidad del elemento " << j + 1 << " de la muestra: ";
+					std::cin >> matriz[2][j];
+				}
+	}
 }

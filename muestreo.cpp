@@ -26,7 +26,6 @@
 
 void Muestreo::menuMuestreo() {
 	char respuesta;
-	//bool respuestaAgrupados = false, respuestaMismoTamanyo = false, respuestaArchivo = false;
    listadOpcionesMuestreo();
 	std::cin >> respuesta;
 	muestra.setTipoMuestreo(respuesta);
