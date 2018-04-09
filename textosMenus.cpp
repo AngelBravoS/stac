@@ -25,7 +25,7 @@
 
 void CLI::hasElegido() {
 	std::cout << '\n';
-	std::cout << "has elegido: " << getOpcion() << '\n';
+	std::cout << "has elegido: " << getOpcionSeleccionada() << '\n';
 	std::cout << '\n';
 	}
 
@@ -129,5 +129,13 @@ void CLI::listadOpcionesMuestreo() {
 	std::cout << "'7' Muestreo estratificado" << '\n';
 	std::cout << "'8' Muestreo por conglomerados" << '\n';
 	std::cout << "'0' Salir." << '\n';
+	std::cout << "> ";
+}
+
+void CLI::listadOpciones1Variable() {	
+	std::cout << '\n';
+	std::cout << "'1' Medidas descriptivas básicas" << '\n';
+	std::cout << "'2' Inferencia" << '\n';
+	std::cout << "'0' Volver al menú principal" << '\n';
 	std::cout << "> ";
 }

@@ -201,9 +201,9 @@ void CalculosMuestreo::leerDatosDesdeTeclado() {
 		std::cin >> matriz[0][j];
 	}
 	if(agrupados == true) {
-			for(unsigned int j = 0; j < getColumna(); j++) {
-				std::cout << "Nº de veces que el elemento " << j + 1 << " de la muestra aparece en ella: ";
-				std::cin >> matriz[1][j];
+		for(unsigned int j = 0; j < getColumna(); j++) {
+			std::cout << "Nº de veces que el elemento " << j + 1 << " de la muestra aparece en ella: ";
+			std::cin >> matriz[1][j];
 		}
 		desagrupar();
 	} else {
@@ -217,8 +217,8 @@ void CalculosMuestreo::leerDatosDesdeTeclado() {
 		}
 	} else {
 		for(unsigned int j = 0; j < getColumna(); j++) {
-					std::cout << "Probabilidad del elemento " << j + 1 << " de la muestra: ";
-					std::cin >> matriz[2][j];
-				}
+			std::cout << "Probabilidad del elemento " << j + 1 << " de la muestra: ";
+			std::cin >> matriz[2][j];
+		}
 	}
 }

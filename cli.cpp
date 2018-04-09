@@ -21,23 +21,25 @@
  ***************************************************************************/
  
 //CLI => Command Line Interface.
-//#include "cli.hpp"
-#include "muestreo.hpp"
+#include "cli.hpp"
+#include "menu1Var.hpp"
+#include "menu2Var.hpp"
+#include "menuMuestreo.hpp"
 #include <iostream>
 
-char CLI::getOpcion() {
-	return opcion;
+char CLI::getOpcionSeleccionada() {
+	return respuestaUsuario;
 }
 
-void CLI::setOpcion(char opcionPrivada) {
-	opcion = opcionPrivada;
+void CLI::setOpcionSeleccionada(char respuestaUsuarioPublica) {
+	respuestaUsuario = respuestaUsuarioPublica;
 }
 
 void CLI::eleccion() {
 	char opcionElegida;
 	std::cin >> opcionElegida;
 	//eleccion='1';
-	setOpcion(opcionElegida);
+	setOpcionSeleccionada(opcionElegida);
 }
 
 void CLI::menuPrincipal() {
@@ -45,12 +47,14 @@ void CLI::menuPrincipal() {
 		listadOpcionesPricipales();
 		std::cout << "> ";
 		eleccion();
-		switch(getOpcion()) {
+		switch(getOpcionSeleccionada()) {
 			case '1' :
-				menu1Var();
+				Menu1Var variableX;
+				variableX.menuSecundario();
 				break;
 			case '2' :
-				menu2Var();
+				Menu2Var variableXeY;
+				variableX.menuSecundario();
 				break;
 			case 'n' :
 				menuNVar();
@@ -59,7 +63,7 @@ void CLI::menuPrincipal() {
 				menuAlgebra();
 				break;
 			case 'm' :
-				Muestreo muestra;
+				MenuMuestreo muestra;
 				muestra.menuMuestreo();
 				muestra.definirTipoMuestreo();
 				muestra.recogerDatosMuestra();
@@ -72,5 +76,5 @@ void CLI::menuPrincipal() {
 				menuSinDatos();
 				break;
 		}
-	} while(getOpcion() != '0');
+	} while(getOpcionSeleccionada() != '0');
 }

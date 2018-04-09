@@ -27,7 +27,7 @@ set(lista_archivos
   menu2Var.cpp
   menuNVar.cpp
   menuAlgebra.cpp
-  muestreo.cpp
+  menuMuestreo.cpp
   menuSinDatos.cpp
   menuCombinatoria.cpp
   menuIA.cpp

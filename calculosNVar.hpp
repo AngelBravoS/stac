@@ -20,6 +20,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef _CALCULOSNVAR_HPP_
+#define _CALCULOSNVAR_HPP_
+
 #include "matriz.hpp"
 
 class CalculosNVar : public Matriz {
@@ -55,3 +58,5 @@ class CalculosNVar : public Matriz {
 		double varianza;
 		double cuasiVarianza;
 };
+
+#endif /* _MATRIZ_HPP_ */

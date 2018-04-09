@@ -32,7 +32,7 @@ void CLI::menuIA() {
 	std::cout << "Escribe m para el generador congruencial multiplicativo." << '\n';
 	std::cout << "> ";
 	eleccion();
-	switch(getOpcion()) {
+	switch(getOpcionSeleccionada()) {
 	case 'x':
 		std::cout << "valor de a = ";
 		std::cin >> a;

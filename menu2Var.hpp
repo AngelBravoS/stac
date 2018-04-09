@@ -20,47 +20,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _MATRIZ_HPP_
-#define _MATRIZ_HPP_
+#include "cli.hpp"
+#include "calculos2Var.hpp"
+#include<fstream>
 
-class Matriz {
+class Menu2Var : public CLI {
 		//Obtener = Get
 		//Establecer = Set
 	public:
-		//======== setters y getters ======== 
-		unsigned int getFila();
-		void setFila ( unsigned int filaPublica );
-		unsigned int getColumna();
-		void setColumna ( unsigned int columnaPublica );
-		unsigned int getFilaB();
-		void setFilaB ( unsigned int filaPublicaB );
-		unsigned int getColumnaB();
-		void setColumnaB ( unsigned int columnaPublicaB );
-		double getMatriz();
-		void setMatriz ( double **matrizPublica );
-		double getMatrizB();
-		void setMatrizB ( double **matrizBPublica );
-		//======== trabajo con archivos ======== 
-		void leerMatrizArchivo();
-		void leerVectorArchivo();
-		void guardarEnArchivo();
-		//======== funciones de la matriz de datos ======== 
-		void setDimensionMatriz();
-		void crearMatrizVacia();
-		void crearMatrizVaciaB();
-		void editarMatrizVacia();
-		void mostrarMatriz ();
-		void mostrarMatrizB ();
-		void copiarDimensionMatriz();
-		void copiarMatriz();
-
+		Calculos2Var variableXeY;
+		//========  funciones de muestreo ======== 
+		void menuSecundario();
+		//void definirTipoMuestreo();
+		//void recogerDatosMuestra();
+		//void mostrarDatosMuestra();
+		void verificarArchivo();
 	protected:
-		
-		unsigned int fila, filaB;
-		unsigned int columna, columnaB;
-		double **matriz;
-		double **matrizB;
-		bool leerDesdeArchivo;
+		bool archivoValido;
 };
-
-#endif /* _MATRIZ_HPP_ */

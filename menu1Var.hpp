@@ -19,21 +19,21 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
-#include "cli.hpp"
-#include<fstream>
-#include "calculosMuestreo.hpp"
 
-class Muestreo : public CLI {
+#include "cli.hpp"
+#include "calculos1Var.hpp"
+#include<fstream>
+
+class Menu1Var : public CLI {
 		//Obtener = Get
 		//Establecer = Set
 	public:
-		CalculosMuestreo muestra;
+		Calculos1Var variableX;
 		//========  funciones de muestreo ======== 
-		void menuMuestreo();
-		void definirTipoMuestreo();
-		void recogerDatosMuestra();
-		void mostrarDatosMuestra();
+		void menuSecundario();
+		//void definirTipoMuestreo();
+		//void recogerDatosMuestra();
+		//void mostrarDatosMuestra();
 		void verificarArchivo();
 	protected:
 		bool archivoValido;

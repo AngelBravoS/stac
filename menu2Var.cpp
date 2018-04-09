@@ -21,10 +21,9 @@
  ***************************************************************************/
 
 #include <iostream>
-#include "cli.hpp"
-#include "calculos2Var.hpp"
+#include "menu2Var.hpp"
 
-void CLI::menu2Var() {
+void Menu2Var::menuSecundario() {
 	char eleccionNivel2, eligesArchivo;
 	Calculos2Var variablesXeY;
 	std::cout << "¿Leer desde un archivo?" << '\n';

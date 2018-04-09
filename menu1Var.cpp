@@ -21,29 +21,12 @@
  ***************************************************************************/
 
 #include <iostream>
-#include "cli.hpp"
-#include "calculos1Var.hpp"
+#include "menu1Var.hpp"
 
-//return objeto
-/*void CLI::iniciarVector() {
-	char eligesArchivo;
-	Calculos1Var variableX;
-	std::cout << "¿Leer desde un archivo?" << '\n';
-	std::cout << "s/n:";
-	std::cin >> eligesArchivo;
-	if(eligesArchivo == 's') {
-		variableX.leerVectorArchivo();
-	} else {
-		std::cout << "Número de elementos: ";
-		variableX.numElementosVector();
-		variableX.crearVectorVacio();
-		variableX.editarVectorVacio();
-	}
-}*/
-
-void CLI::menu1Var() {
+void Menu1Var::menuSecundario() {
 	char eligesArchivo, eleccionNivel2, eleccionNivel3, eleccionNivel4;
-	Calculos1Var variableX;
+	listadOpciones1Variable();
+	//Calculos1Var variableX;
 	std::cout << "¿Leer desde un archivo?" << '\n';
 	std::cout << "s/n:";
 	std::cin >> eligesArchivo;
@@ -58,12 +41,7 @@ void CLI::menu1Var() {
 	do {
 		std::cout << "Vector:" << '\n';
 		variableX.mostrarVector();
-		std::cout << '\n';
-		std::cout << "'1' Medidas descriptivas básicas" << '\n';
-		std::cout << "'2' Muestreo" << '\n';
-		std::cout << "'3' Inferencia" << '\n';
-		std::cout << "'0' Volver al menú principal" << '\n';
-		std::cout << "> ";
+		listadOpciones1Variable();
 		std::cin >> eleccionNivel2;
 		switch(eleccionNivel2) {
 		case '1':
@@ -85,9 +63,6 @@ void CLI::menu1Var() {
 			std::cout << '\n';
 			break;
 		case '2':
-			std::cout << "Muestreo aleatorio simple" << '\n';
-			break;
-		case '3':
 			do {
 				std::cout << "Contrastes en poblaciones normales" << '\n';
 				std::cout << "'1' Relativo a la media" << '\n';

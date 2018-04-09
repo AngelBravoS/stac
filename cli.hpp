@@ -1,7 +1,7 @@
 /***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -21,45 +21,49 @@
  ***************************************************************************/
 
 // command-line interface (CLI)
+#ifndef _CLI_HPP_
+#define _CLI_HPP_
 
 class CLI {
-        //Obtener = Get
-        //Establecer = Set
-    public:
-        //======== setters y getters ======== 
-        char getOpcion();
-        void setOpcion ( char opcion );
-        //======== funciones de menu ======== 
-        void introduccion();
-        void acercaDe();
-        void ayuda();
-        void eleccion();
-        void hasElegido();
-        void listadOpcionesPricipales();
-		  void listadOpcionesMuestreo();
-        //======== subfunciones de menu ======== 
-        void menuPrincipal();
-		  void menu1Var();
-        void menu2Var();
-        void menuNVar();
-        void menuAlgebra();
-        //void menuMuestreo();
-        //void crearDatosMuestra();
-        void menuSinDatos();
-		  void menuTablasCont();
-        //======== funciones especificas de cada submenu ======== 
-        void menuInferencia();
-        void menuCombinatoria();
-        void menuIA();
-        void menuDistribDiscreta();
-		  //======== Entrada/Salida vectores ========
-		  //void iniciarVector();
-		  //void numElementosVector();
-		  //======== Menús ========
-		  void textOpcionesMenu1Var();
-    private:
-        char opcion;
-    };
+		//Obtener = Get
+		//Establecer = Set
+	public:
+		//======== setters y getters ========
+		char getOpcionSeleccionada();
+		void setOpcionSeleccionada(char respuestaUsuarioPublica);
+		//======== funciones de menu ========
+		void introduccion();
+		void acercaDe();
+		void ayuda();
+		void eleccion();
+		void hasElegido();
+		//======== subfunciones de menu ========
+		void menuPrincipal();
+		//void menu1Var();
+		//void menu2Var();
+		void menuNVar();
+		void menuAlgebra();
+		//void menuMuestreo();
+		//void crearDatosMuestra();
+		void menuSinDatos();
+		void menuTablasCont();
+		//======== funciones especificas de cada submenu ========
+		void menuInferencia();
+		void menuCombinatoria();
+		void menuIA();
+		void menuDistribDiscreta();
+		//======== Entrada/Salida vectores ========
+		//void iniciarVector();
+		//void numElementosVector();
+		//======== Textos de menús ========
+		void listadOpcionesPricipales();
+		void listadOpcionesMuestreo();
+		void listadOpciones1Variable();
 
+	protected:
+		char respuestaUsuario;
+};
+
+#endif /* _CLI_HPP_ */
 
 

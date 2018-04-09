@@ -21,14 +21,12 @@
  ***************************************************************************/
 
 //CLI => Command Line Interface.
-#include "muestreo.hpp"
 #include <iostream>
+#include "menuMuestreo.hpp"
 
-void Muestreo::menuMuestreo() {
-	char respuesta;
+void MenuMuestreo::menuMuestreo() {
    listadOpcionesMuestreo();
-	std::cin >> respuesta;
-	muestra.setTipoMuestreo(respuesta);
+	eleccion();
 	std::cout << '\n';
 	switch(muestra.getTipoMuestreo()) {
 		case '1' :
@@ -50,21 +48,21 @@ void Muestreo::menuMuestreo() {
 		case '8' :
 			std::cout << "¿Los conglomerados tienen el mismo tamaño?" << '\n';
 			std::cout << "s/n:";
-			std::cin >> respuesta;
-			if (respuesta == 's'){muestra.setMismoTamanyo(true);} else {muestra.setMismoTamanyo(false);}
+			eleccion();
+			if (getOpcionSeleccionada() == 's'){muestra.setMismoTamanyo(true);} else {muestra.setMismoTamanyo(false);}
 			break;
 	}
 	std::cout << "¿Los datos se leerán desde un archivo?" << '\n';
 	std::cout << "s/n:";
-	std::cin >> respuesta;
-	if (respuesta == 's'){muestra.setLeeArchivo(true);} else {muestra.setLeeArchivo(false);}
+	eleccion();
+	if (getOpcionSeleccionada() == 's'){muestra.setLeeArchivo(true);} else {muestra.setLeeArchivo(false);}
 	std::cout << "¿Están agrupados?" << '\n';
 	std::cout << "s/n:";
-	std::cin >> respuesta;
-	if (respuesta == 's'){muestra.setAgrupados(true);} else {muestra.setAgrupados(false);}
+	eleccion();
+	if (getOpcionSeleccionada() == 's'){muestra.setAgrupados(true);} else {muestra.setAgrupados(false);}
 }
 
-void Muestreo::definirTipoMuestreo() {	
+void MenuMuestreo::definirTipoMuestreo() {	
 	int n;
 	if(muestra.getAgrupados() == true) {
 		std::cout << "Número de datos distintos que contiene la muestra: ";
@@ -75,7 +73,7 @@ void Muestreo::definirTipoMuestreo() {
 	muestra.setColumna(n);
 }
 
-void Muestreo::recogerDatosMuestra() {
+void MenuMuestreo::recogerDatosMuestra() {
 	muestra.setFila(5);
 	muestra.crearMatrizVacia();
 	switch(muestra.getTipoMuestreo()) {
@@ -101,7 +99,7 @@ void Muestreo::recogerDatosMuestra() {
 	}
 }
 
-void Muestreo::mostrarDatosMuestra() {
+void MenuMuestreo::mostrarDatosMuestra() {
 	std::cout << '\n';
 	std::cout << "Tabla de datos:" << '\n';
 	muestra.mostrarMatriz();
@@ -115,7 +113,7 @@ void Muestreo::mostrarDatosMuestra() {
 	std::cout << '\n';
 }
 
-void Muestreo::verificarArchivo() {
+void MenuMuestreo::verificarArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
 	if(archivo.is_open()) {

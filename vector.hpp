@@ -48,4 +48,5 @@ class Vector {
 		unsigned int longitudVector;
 		double *vector;
 		double *vectorCopia;
+		bool leerDesdeArchivo;
 };
