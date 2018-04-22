@@ -21,16 +21,19 @@
  ***************************************************************************/
 
 #include <iostream>
-#include "cli.hpp"
-#include "calculosIA.hpp"
+#include "menuIA.hpp"
 
-void CLI::menuIA() {
-	unsigned short int a, b, X0;
-	unsigned int m;
+void MenuIA::periodo() {
+
+}
+
+void MenuIA::menuSecundario() {
+	unsigned int a, b, Xo, Xn, m;
 	CalculosIA secuencia;
 	std::cout << "Escribe x para el generador congruencial mixto." << '\n';
 	std::cout << "Escribe m para el generador congruencial multiplicativo." << '\n';
 	std::cout << "> ";
+	unsigned int i = 1;
 	eleccion();
 	switch(getOpcionSeleccionada()) {
 	case 'x':
@@ -41,13 +44,27 @@ void CLI::menuIA() {
 		std::cout << "valor de m = ";
 		std::cin >> m;
 		std::cout << "valor de Xo = ";
-		std::cin >> X0;
-		if(m <= a || m <= b)
+		std::cin >> Xo;
+		if(m <= a || m <= b) {
 			std::cout << "secuencia no válida (m > a,b).";
-		else {
+			exit(-1);
+		} else {
 			std::cout << "Para a = " << a << ", b = " << b << ", m = "
-			     << m << ", y Xo = " << X0 << ", el resultado es:" << '\n';
-			secuencia.crearSecuenciaMixto(a, b, m, X0);
+			          << m << ", y Xo = " << Xo << ", el resultado es:" << '\n';
+			std::cout << "(" << secuencia.congruencialMixto(a, b, m, Xo);
+			//crea el primer valor X1 para usarlo como referencia
+			//mientras no coincida con el siguiente sigue calculando
+			Xn = secuencia.congruencialMixto(a, b, m, Xo);
+			while(Xo != Xn) {
+				std::cout << " " << secuencia.congruencialMixto(a, b, m, Xn);
+				Xn = secuencia.congruencialMixto(a, b, m, Xn);
+				i++;
+			}
+			std::cout << ")" << '\n';
+			std::cout << "El período de la secuencia es " << i << '\n';
+			if(i == m) {
+				std::cout << "Es de período completo" << '\n';
+			}
 		}
 		break;
 	case 'm':
@@ -56,12 +73,24 @@ void CLI::menuIA() {
 		std::cout << "valor de m = ";
 		std::cin >> m;
 		std::cout << "valor de Xo = ";
-		std::cin >> X0;
+		std::cin >> Xo;
 		std::cout << "Para a = " << a << ", m = " << m << ", y Xo = "
-		     << X0 << ", el resultado es:" << '\n';
-		secuencia.crearSecuenciaMultip(a, m, X0);
+		          << Xo << ", el resultado es:" << '\n';
+		std::cout << "(" << secuencia.congruencialMultip(a, m, Xo);
+		//crea el primer valor X1 para usarlo como referencia
+		//mientras no coincida con el siguiente sigue calculando
+		Xn = secuencia.congruencialMultip(a, m, Xo);
+		i = 1;
+		while(Xo != Xn) {
+			std::cout << " " << secuencia.congruencialMultip(a, m, Xn);
+			Xn = secuencia.congruencialMultip(a, m, Xn);
+			i++;
+		}
+		std::cout << " " << secuencia.congruencialMultip(a, m, Xn);
+		Xn = secuencia.congruencialMultip(a, m, Xn);
+		i++;
+		std::cout << ")" << '\n';
+		std::cout << "El período de la secuencia es " << i << '\n';
 		break;
 	}
-	std::cout << "El período de la secuencia es " << secuencia.getLongitudVector() << '\n';
-	std::cout << '\n';
 }

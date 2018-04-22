@@ -50,7 +50,7 @@ class CLI {
 		//======== funciones especificas de cada submenu ========
 		void menuInferencia();
 		void menuCombinatoria();
-		void menuIA();
+		//void menuIA();
 		void menuDistribDiscreta();
 		//======== Entrada/Salida vectores ========
 		//void iniciarVector();

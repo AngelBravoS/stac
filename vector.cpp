@@ -26,21 +26,7 @@
 
 //======== funciones de vectores ========
 
-unsigned int  Vector::getLongitudVector() {
-	return longitudVector;
-}
-
-void Vector::setLongitudVector(unsigned int longitudVectorPublico) {
-	longitudVector = longitudVectorPublico;
-}
-
-double Vector::getVector() {
-	return *vector;
-}
-
-void Vector::setVector(double *vectorPublico) {
-	*vector = *vectorPublico;
-}
+Vector::Vector() {}
 
 double Vector::getVectorCopia() {
 	return *vectorCopia;
@@ -50,37 +36,49 @@ void Vector::setVectorCopia(double vectorCopiaPublico) {
 	*vectorCopia = vectorCopiaPublico;
 }
 
-void Vector::leerVectorArchivo() {
+void Vector::leerArchivo() {
 	std::fstream archivo;
 	archivo.open("vector.dat", std::ios::in | std::ios::binary);
-	if(archivo.is_open()) {
-		std::cout << "Fichero leído" << '\n';
-		std::cout << "Número de elementos: ";
-		numElementosVector();
 		crearVectorVacio();
-		int n = getLongitudVector();
-		for(int i = 0; i < n; i++) {
+		for(unsigned int i = 0; i < longitudVector; i++) {
 			archivo >> vector[i];
 		}
 		archivo.close();
+}
+
+void Vector::verificarArchivo() {
+	std::fstream archivo;
+	archivo.open("datos.dat", std::ios::in | std::ios::binary);
+	if(archivo.is_open()) {
+		std::cout << "Fichero leído" << '\n';
 	} else {
 		std::cout << "Fichero inexistente" << '\n';
+		exit(-1);
+	}
+	archivo.close();
+}
+
+void Vector::leerTeclado() {
+	crearVectorVacio();
+	editarVectorVacio();
+}
+
+void Vector::desdeDondeLeeVector() {
+	if(leerDesdeArchivo == true) {
+		verificarArchivo();
+		leerArchivo();
+	} else {
+		leerTeclado();
 	}
 }
 
-void Vector::numElementosVector() {
-	int n;
-	std::cin >> n;
-	setLongitudVector(n);
-}
-
 void Vector::crearVectorVacio() {
-	vector = new double [getLongitudVector()];
-	setVector(vector);
+	vector = new double [longitudVector];
+	//setVector(vector);
 }
 
 void Vector::editarVectorVacio() {
-	for(unsigned int i = 0; i < getLongitudVector(); i++) {
+	for(unsigned int i = 0; i < longitudVector; i++) {
 		std::cout << "Elemento " << i + 1  << ": ";
 		std::cin >> vector[i];
 	}
@@ -89,14 +87,14 @@ void Vector::editarVectorVacio() {
 
 void Vector::mostrarVector() {
 	std::cout << "( ";
-	for(unsigned int i = 0; i < getLongitudVector(); i++) {
+	for(unsigned int i = 0; i < longitudVector; i++) {
 		std::cout << vector[i] << " ";
 	}
 	std::cout << ")";
 	std::cout << '\n';
-	
-}
 
+}
+/*
 void Vector::copiarvector() {
 	vectorCopia = new double [getLongitudVector()];
 	for(unsigned int i = 0; i < getLongitudVector(); i++)     {
@@ -112,7 +110,7 @@ void Vector::mostrarVectorCopia() {
 	std::cout << ")";
 	std::cout << '\n';
 }
-
+*/
 void Vector::destructorVector() {
 	delete vector;
 }

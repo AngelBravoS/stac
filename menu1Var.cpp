@@ -23,43 +23,50 @@
 #include <iostream>
 #include "menu1Var.hpp"
 
-void Menu1Var::menuSecundario() {
-	char eligesArchivo, eleccionNivel2, eleccionNivel3, eleccionNivel4;
-	listadOpciones1Variable();
-	//Calculos1Var variableX;
+unsigned int Menu1Var::tamanoVector(){
+	unsigned int tamano;
+	std::cout << "Tamaño del vector: ";
+	std::cin >> tamano;
+	return  tamano;
+}
+
+bool Menu1Var::desdeArchivoOTeclado() {
+	char opcion;
+	bool eligesArchivo;
 	std::cout << "¿Leer desde un archivo?" << '\n';
 	std::cout << "s/n:";
-	std::cin >> eligesArchivo;
-	if(eligesArchivo == 's') {
-		variableX.leerVectorArchivo();
-	} else {
-		std::cout << "Número de elementos: ";
-		variableX.numElementosVector();
-		variableX.crearVectorVacio();
-		variableX.editarVectorVacio();
-	}
+	std::cin >> opcion;
+	opcion == 's'? eligesArchivo = true: eligesArchivo = false;
+	return eligesArchivo;
+}
+
+void Menu1Var::menuSecundario() {
+	char eleccionNivel2, eleccionNivel3, eleccionNivel4;
+	Calculos1Var variable (desdeArchivoOTeclado(), tamanoVector());
+	variable.desdeDondeLeeVector();
 	do {
 		std::cout << "Vector:" << '\n';
-		variableX.mostrarVector();
+		variable.mostrarVector();
 		listadOpciones1Variable();
 		std::cin >> eleccionNivel2;
 		switch(eleccionNivel2) {
 		case '1':
+			std::cout << '\n';
 			std::cout << "Medidas de tendencia central" << '\n';
-			std::cout << "Media aritmética = " << variableX.mediaAritmetica() << '\n';
-			std::cout << "Media geométrica = " << variableX.mediaGeometrica() << '\n';
-			std::cout << "Media armónica = " << variableX.mediaArmonica() << '\n';
-			std::cout << "Media cuadrática = " << variableX.mediaCuadratica() << '\n';
+			std::cout << "Media aritmética = " << variable.mediaAritmetica() << '\n';
+			std::cout << "Media geométrica = " << variable.mediaGeometrica() << '\n';
+			std::cout << "Media armónica = " << variable.mediaArmonica() << '\n';
+			std::cout << "Media cuadrática = " << variable.mediaCuadratica() << '\n';
 			std::cout << '\n';
 			std::cout << "Medidas de dispersión" << '\n';
 			//std::cout << "Las diferencias respecto a la media son: " << variableX.difRespecMedia() << endl;
-			std::cout << "Varianza = " << variableX.varianza() << '\n';
-			std::cout << "Cuasivarianza = " << variableX.cuasiVarianza() << '\n';
-			std::cout << "Desviación típica = " << variableX.desviacionTipica() << '\n';
-			std::cout << "Cuasidesviación típica = " << variableX.cuasiDesviacionTipica() << '\n';
+			std::cout << "Varianza = " << variable.varianza() << '\n';
+			std::cout << "Cuasivarianza = " << variable.cuasiVarianza() << '\n';
+			std::cout << "Desviación típica = " << variable.desviacionTipica() << '\n';
+			std::cout << "Cuasidesviación típica = " << variable.cuasiDesviacionTipica() << '\n';
 			std::cout << '\n';
 			std::cout << "Medidas de forma" << '\n';
-			std::cout << "Norma = " << variableX.norma() << '\n';
+			std::cout << "Norma = " << variable.norma() << '\n';
 			std::cout << '\n';
 			break;
 		case '2':
@@ -83,10 +90,10 @@ void Menu1Var::menuSecundario() {
 						switch(eleccionNivel4) {
 						case '1':
 							std::cout << "Sigma conocida" << '\n';
-							variableX.media1MuestraSigmaConocida();
+							variable.media1MuestraSigmaConocida();
 							break;
 						case '2':
-							variableX.media1MuestraSigmaDesconocida();
+							variable.media1MuestraSigmaDesconocida();
 							break;
 						}
 					} while(eleccionNivel4 != '0');
@@ -100,10 +107,10 @@ void Menu1Var::menuSecundario() {
 						std::cin >> eleccionNivel4;
 						switch(eleccionNivel4) {
 						case '1':
-							variableX.var1MuestraMuConocida();
+							variable.var1MuestraMuConocida();
 							break;
 						case '2':
-							variableX.var1MuestraMuDesconocida();
+							variable.var1MuestraMuDesconocida();
 							break;
 						}
 					} while(eleccionNivel4 != '0');
@@ -113,7 +120,7 @@ void Menu1Var::menuSecundario() {
 			break;
 		}
 	} while(eleccionNivel2 != '0');
-	variableX.destructorVector();
+	variable.destructorVector();
 }
 
 

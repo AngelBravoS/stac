@@ -21,14 +21,14 @@
  ***************************************************************************/
 
 class Vector {
-		//Obtener = Get
-		//Establecer = Set
 	public:
+		//======== constructor ======== 
+		Vector();
 		//======== setters y getters ======== 
-		unsigned int getLongitudVector();
+		/*unsigned int getLongitudVector();
 		void setLongitudVector ( unsigned int longitudVectorPublico );
 		double getVector();
-		void setVector ( double *vectorPublico );
+		void setVector ( double *vectorPublico );*/
 		double getVectorCopia();
 		void setVectorCopia ( double vectorCopiaPublico );
 		//======== funciones de vectores ======== 
@@ -40,13 +40,15 @@ class Vector {
 		void mostrarVectorCopia();
 		void destructorVector();
 		void destructorVectorCopia();		
-		//======== trabajo con archivos ======== 
-		void leerVectorArchivo();
+		//======== entrada/salida ======== 
+		void desdeDondeLeeVector();
+		void verificarArchivo();
+		void leerArchivo();
+		void leerTeclado();
 		void guardarEnArchivo();
 	protected:
-		
 		unsigned int longitudVector;
+		bool leerDesdeArchivo;
 		double *vector;
 		double *vectorCopia;
-		bool leerDesdeArchivo;
 };

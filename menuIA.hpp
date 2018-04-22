@@ -19,62 +19,20 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
-//CLI => Command Line Interface.
+
 #include "cli.hpp"
-#include "menu1Var.hpp"
-#include "menu2Var.hpp"
-#include "menuMuestreo.hpp"
-#include <iostream>
+#include "calculosIA.hpp"
+#include<fstream>
 
-char CLI::getOpcionSeleccionada() {
-	return respuestaUsuario;
-}
-
-void CLI::setOpcionSeleccionada(char respuestaUsuarioPublica) {
-	respuestaUsuario = respuestaUsuarioPublica;
-}
-
-void CLI::eleccion() {
-	char opcionElegida;
-	std::cin >> opcionElegida;
-	//eleccion='1';
-	setOpcionSeleccionada(opcionElegida);
-}
-
-void CLI::menuPrincipal() {
-	do {
-		listadOpcionesPricipales();
-		std::cout << "> ";
-		eleccion();
-		switch(getOpcionSeleccionada()) {
-			case '1' :
-				Menu1Var univariante;
-				univariante.menuSecundario();
-				break;
-			case '2' :
-				Menu2Var bivariante;
-				bivariante.menuSecundario();
-				break;
-			case 'n' :
-				menuNVar();
-				break;
-			case 'a' :
-				menuAlgebra();
-				break;
-			case 'm' :
-				MenuMuestreo muestreo;
-				muestreo.menuSecundario();
-				muestreo.definirTipoMuestreo();
-				muestreo.recogerDatosMuestra();
-				muestreo.mostrarDatosMuestra();
-				break;
-			case 'h' :
-				ayuda();
-				break;
-			case 's' :
-				menuSinDatos();
-				break;
-		}
-	} while(getOpcionSeleccionada() != '0');
-}
+class MenuIA : public CLI {
+	public:
+		CalculosIA ia (bool, unsigned int);
+		//========  funciones de muestreo ======== 
+		void menuSecundario();
+		void periodo();
+		unsigned int tamanoVector();
+		bool desdeArchivoOTeclado();
+		void verificarArchivo();
+	protected:
+		bool archivoValido;
+};

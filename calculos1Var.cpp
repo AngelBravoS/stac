@@ -30,8 +30,13 @@
 using namespace std;
 typedef unsigned short int unShortInt;
 
+Calculos1Var::Calculos1Var (bool archivo, unsigned int tamano){
+	leerDesdeArchivo = archivo;
+	longitudVector = tamano;
+}
+
 double  Calculos1Var::sumatoria(unsigned short int exponente) {
-	unsigned int n = getLongitudVector();
+	unsigned int n = longitudVector;
 	double sumatoria = 0;
 	for(unsigned int i = 0; i < n; i++) {
 		sumatoria += potencia(vector[i], exponente);
@@ -40,14 +45,14 @@ double  Calculos1Var::sumatoria(unsigned short int exponente) {
 }
 
 double  Calculos1Var::mediaAritmetica() {
-	unsigned int n = getLongitudVector();
+	unsigned int n = longitudVector;
 	double media = 0;
 	media = (sumatoria(1) / n);
 	return media;
 }
 
 double Calculos1Var::mediaGeometrica() {
-	unsigned int n = getLongitudVector();
+	unsigned int n = longitudVector;
 	double mediaGeometrica = 1;
 	for(unsigned int i = 0; i < n; i++) {
 		mediaGeometrica *= vector[i];
@@ -57,7 +62,7 @@ double Calculos1Var::mediaGeometrica() {
 }
 
 double Calculos1Var::mediaArmonica() {
-	unsigned int n = getLongitudVector();
+	unsigned int n = longitudVector;
 	double mediaArmonica = 0;
 	for(unsigned int i = 0; i < n; i++) {
 		mediaArmonica +=  1 / (potencia(vector[i], 1));
@@ -67,7 +72,7 @@ double Calculos1Var::mediaArmonica() {
 }
 
 double Calculos1Var::mediaCuadratica() {
-	unsigned int n = getLongitudVector();
+	unsigned int n = longitudVector;
 	double mediaCuadratica;
 	mediaCuadratica = sumatoria(2) * (1.0 / n);
 	mediaCuadratica = sqrt(mediaCuadratica);
@@ -76,7 +81,7 @@ double Calculos1Var::mediaCuadratica() {
 
 //Suma de diferencias respecto a la media con exponente
 double Calculos1Var::difRespecMedia(int exponente) {
-	unsigned int n = getLongitudVector();
+	unsigned int n = longitudVector;
 	double difRespecMedia = 0;
 	for(unsigned int i = 0; i < n; i++) {
 		difRespecMedia += pow(vector[i] - mediaAritmetica(), exponente);
@@ -85,14 +90,14 @@ double Calculos1Var::difRespecMedia(int exponente) {
 }
 
 double Calculos1Var::varianza() {
-	unsigned int n = getLongitudVector();
+	unsigned int n = longitudVector;
 	double varianza;
 	varianza = (difRespecMedia(2)) / n;
 	return varianza;
 }
 
 double Calculos1Var::cuasiVarianza() {
-	unsigned int n = getLongitudVector();
+	unsigned int n = longitudVector;
 	double cuasiVarianza;
 	cuasiVarianza = (difRespecMedia(2)) / (n - 1);
 	return cuasiVarianza;
@@ -111,7 +116,7 @@ double Calculos1Var::cuasiDesviacionTipica() {
 }
 
 double Calculos1Var::momentos(int exponente) {
-	unsigned int n = getLongitudVector();
+	unsigned int n = longitudVector;
 	double momentos;
 	momentos = difRespecMedia(exponente) / n;
 	return momentos;
@@ -132,7 +137,7 @@ double Calculos1Var::coeficienteAsimetriaFisher() {
 
 double Calculos1Var::curtosis() {
 	double curtosis;
-	int n =  getLongitudVector();
+	int n =  longitudVector;
 	curtosis = ((difRespecMedia(4) / ((n - 1) * pow(cuasiDesviacionTipica(), 4))));
 	//curtosis = curtosis -3;
 	return curtosis;

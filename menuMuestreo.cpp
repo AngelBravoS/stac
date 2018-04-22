@@ -24,10 +24,12 @@
 #include <iostream>
 #include "menuMuestreo.hpp"
 
-void MenuMuestreo::menuMuestreo() {
-   listadOpcionesMuestreo();
-	eleccion();
+void MenuMuestreo::menuSecundario() {
+   char respuesta;
+	listadOpcionesMuestreo();
+	std::cin >> respuesta;
 	std::cout << '\n';
+	muestra.setTipoMuestreo(respuesta);
 	switch(muestra.getTipoMuestreo()) {
 		case '1' :
 			muestra.setReemplazo(false);
@@ -106,10 +108,10 @@ void MenuMuestreo::mostrarDatosMuestra() {
 	std::cout << '\n';
 	muestra.setSumatoriaXi(muestra.calculoSumatoria(0, 1));
 	muestra.setSumatoriaXi2(muestra.calculoSumatoria(0, 2));
-	muestra.setMedia(muestra.calculoMediaAritmetica(0));
+	//muestra.setMedia(muestra.calculoMediaAritmetica(0));
 	std::cout << "∑Xi = " << muestra.getSumatoriaXi();
 	std::cout << ", ∑Xi^2 = " << muestra.getSumatoriaXi2();
-	std::cout << ", media  = " << muestra.getMedia() << '\n';
+	//std::cout << ", media  = " << muestra.getMedia() << '\n';
 	std::cout << '\n';
 }
 

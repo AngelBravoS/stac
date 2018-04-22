@@ -92,13 +92,14 @@ void CalculosMuestreo::setSumatoriaXi2(double sumatoriaXi2Publica) {
 	sumatoriaXi2 = sumatoriaXi2Publica;
 }
 
+/*
 double CalculosMuestreo::getMedia() {
 	return media;
 }
 
 void CalculosMuestreo::setMedia(double mediaPublica) {
 	media = mediaPublica;
-}
+}*/
 
 void CalculosMuestreo::editarMatrizVacia() {
 	for(unsigned int i = 0; i < getFila(); i++) {
@@ -221,4 +222,20 @@ void CalculosMuestreo::leerDatosDesdeTeclado() {
 			std::cin >> matriz[2][j];
 		}
 	}
+}
+
+void CalculosMuestreo::calculoIC() {
+
+}
+
+void CalculosMuestreo::varianzaEstimador() {
+
+}
+
+void CalculosMuestreo::estimadorVarianza() {
+
+}
+
+void CalculosMuestreo::calculoEstimador() {
+
 }

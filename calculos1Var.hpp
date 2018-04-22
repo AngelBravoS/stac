@@ -24,10 +24,9 @@
 #include "funcMatematicasBasicas.hpp"
 
 class Calculos1Var : public Vector {
-		//Obtener = Get
-		//Establecer = Set
 	public:
-	
+		//======== constructor ======== 
+		Calculos1Var (bool leerArchivo, unsigned int longitudVector);
 		//========  funciones de estadística descriptiva ======== 
 		double sumatoria ( short unsigned int exponente );
 		double mediaAritmetica();
@@ -44,11 +43,6 @@ class Calculos1Var : public Vector {
 		double coeficienteAsimetriaFisher();
 		double curtosis();
 		double norma();
-						
-		//========  funciones de muestreo ======== 
-		
-		
-		
 		//======== funciones de inferencia ======== 
 		//-------- Contrastes en poblaciones normales --------
 		//-------- de una muestra. Relativo a la media--------

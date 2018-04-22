@@ -30,7 +30,7 @@ class MenuMuestreo : public CLI {
 	public:
 		CalculosMuestreo muestra;
 		//========  funciones de muestreo ======== 
-		void menuMuestreo();
+		void menuSecundario();
 		void definirTipoMuestreo();
 		void recogerDatosMuestra();
 		void mostrarDatosMuestra();

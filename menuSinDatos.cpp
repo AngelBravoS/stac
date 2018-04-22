@@ -22,6 +22,7 @@
 
 #include <iostream>
 #include "cli.hpp"
+#include "menuIA.hpp"
 
 void CLI::menuSinDatos() {
 	char eleccionNivel2;
@@ -36,7 +37,8 @@ void CLI::menuSinDatos() {
 			menuCombinatoria();
 			break;
 		case '2' :
-			menuIA();
+			MenuIA ia;
+			ia.menuSecundario();
 			break;
 		case '3' :
 			menuDistribDiscreta();

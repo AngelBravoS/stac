@@ -35,13 +35,11 @@ class CalculosMuestreo : public CalculosNVar {
 		bool getAgrupados();
 		void setAgrupados ( bool agrupadosPublico );
 		
-		
 		bool getLeeArchivo();
 		void setLeeArchivo(bool leeArchivoPublico);		
 		
 		bool getReemplazo();
-		void setReemplazo ( bool reemplazoPublico );
-		
+		void setReemplazo ( bool reemplazoPublico );		
 		
 		bool getProbIguales();
 		void setProbIguales(bool probIgualesPublico);
@@ -53,16 +51,31 @@ class CalculosMuestreo : public CalculosNVar {
 		void setSumatoriaXi ( double SumatoriaXiPublica );	
 		double getSumatoriaXi2();
 		void setSumatoriaXi2 ( double SumatoriaXi2Publica );	
-		double getMedia();
-		void setMedia ( double mediaPublica );
+		
+		double getEstimador();
+		void setEstimador ( double estimadorPublico );
+		
+		double getVarianzaDelEstimador();
+		void setVarianzaDelEstimador ( double varianzaDelEstimadorPublica );
+		
+		double getEstimadorDeLaVarianza();
+		void setEstimadorDeLaVarianza ( double estimadorDeLaVarianzaPublico );
+		
 		void editarMatrizVacia();
 
 		//========  funciones de muestreo ======== 
-		void calculoXi2();
-		void calculoXi();
+
 		void leerDatosDesdeTeclado();
 		void leerDatosDesdeArchivo();
 		void desagrupar();
+		
+		void calculoXi2();
+		void calculoXi();
+		void calculoEstimador();
+		void calculoIC();
+		void varianzaEstimador();		
+		void estimadorVarianza();
+		
 		void incorporarXiYXi2();
 		
 	protected:
@@ -71,7 +84,7 @@ class CalculosMuestreo : public CalculosNVar {
 		char tipoMuestreo;
 		double sumatoriaXi;
 		double sumatoriaXi2;
-		double media;
-		double varianza;
-		double cuasiVarianza;
+		double estimador;
+		double varianzaDelEstimador;
+		double estimadorDeLaVarianza;
 };
