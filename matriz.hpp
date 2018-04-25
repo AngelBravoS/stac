@@ -27,22 +27,18 @@ class Matriz {
 		//Obtener = Get
 		//Establecer = Set
 	public:
+		//======== constructor ======== 
+		Matriz();
 		//======== setters y getters ======== 
-		unsigned int getFila();
-		void setFila ( unsigned int filaPublica );
-		unsigned int getColumna();
-		void setColumna ( unsigned int columnaPublica );
-		unsigned int getFilaB();
-		void setFilaB ( unsigned int filaPublicaB );
-		unsigned int getColumnaB();
-		void setColumnaB ( unsigned int columnaPublicaB );
 		double getMatriz();
 		void setMatriz ( double **matrizPublica );
 		double getMatrizB();
 		void setMatrizB ( double **matrizBPublica );
-		//======== trabajo con archivos ======== 
-		void leerMatrizArchivo();
-		void leerVectorArchivo();
+		//======== entrada/salida ========  
+		void desdeDondeLeeMatriz();
+		void verificarArchivo();
+		void leerDatosDesdeArchivo();
+		void leerDatosDesdeTeclado();
 		void guardarEnArchivo();
 		//======== funciones de la matriz de datos ======== 
 		void setDimensionMatriz();

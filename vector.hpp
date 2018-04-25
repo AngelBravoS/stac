@@ -20,15 +20,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef _VECTOR_HPP_
+#define _VECTOR_HPP_
+
 class Vector {
 	public:
 		//======== constructor ======== 
 		Vector();
 		//======== setters y getters ======== 
-		/*unsigned int getLongitudVector();
-		void setLongitudVector ( unsigned int longitudVectorPublico );
-		double getVector();
-		void setVector ( double *vectorPublico );*/
 		double getVectorCopia();
 		void setVectorCopia ( double vectorCopiaPublico );
 		//======== funciones de vectores ======== 
@@ -52,3 +51,5 @@ class Vector {
 		double *vector;
 		double *vectorCopia;
 };
+
+#endif /* _VECTOR_HPP_ */

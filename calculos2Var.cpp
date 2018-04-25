@@ -1,4 +1,4 @@
-/***************************************************************************														*
+/***************************************************************************
  *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
  *   angelbravosaenz@gmail.com  															*
  *																									*
@@ -28,13 +28,19 @@
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
+Calculos2Var::Calculos2Var (bool archivo, unsigned int longitudFila, unsigned int longitudColumna){
+	leerDesdeArchivo = archivo;
+	fila = longitudFila;
+	columna = longitudColumna;
+}
+
 //-----Pide un exponente para poder hacer cosumatorias de cuadrados, cubos, etc, sin necesitar otro método-----//
 //-----recibe el exponente de cada variable así como su índice dentro de la matriz (0, 1, 2...)-----//
 //-----como las dos variables tienen la misma longitud (vector[0].length = vector[1].length) y solo hay que indicar
 //-----una de ellas, se elige la primera.
 double Calculos2Var::sumatoria2Var(int variableX, int variableY, int exponenteX, int exponenteY) {
 	double sumatoria2Variables = 0;
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	for(unsigned int i = 0; i < n; i++) {
 		sumatoria2Variables += pow(matriz[variableX][i], exponenteX) * pow(matriz[variableY][i], exponenteY);
 	}
@@ -42,7 +48,7 @@ double Calculos2Var::sumatoria2Var(int variableX, int variableY, int exponenteX,
 }
 
 double Calculos2Var::covarianza() {
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	double covarianza = 0;
 	covarianza += (sumatoria2Var(0, 1, 1, 1));
 	covarianza = (covarianza / n) - (calculoMediaAritmetica(0) * calculoMediaAritmetica(1));

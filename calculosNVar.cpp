@@ -40,7 +40,7 @@ void CalculosNVar::setSumatoria ( double sumatoriaPublica ) {
 	}	
 
 double  CalculosNVar::calculoSumatoria(int indiceVariable, unsigned short int exponente) {
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	double resultado = 0;
 	for(unsigned int j = 0; j < n; j++) {
 		resultado += potencia(matriz[indiceVariable][j], exponente);
@@ -49,14 +49,14 @@ double  CalculosNVar::calculoSumatoria(int indiceVariable, unsigned short int ex
 }
 
 double  CalculosNVar::calculoMediaAritmetica(int indiceVariable) {
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	double resultado = 0;
 	resultado = (calculoSumatoria(indiceVariable, 1) / n);
 	return resultado;
 }
 
 double CalculosNVar::calculoMediaGeometrica(int indiceVariable) {
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	double mediaGeometrica = 1;
 	for(unsigned int j = 0; j < n; j++) {
 		mediaGeometrica *= matriz[indiceVariable][j];
@@ -66,7 +66,7 @@ double CalculosNVar::calculoMediaGeometrica(int indiceVariable) {
 }
 
 double CalculosNVar::calculoMediaArmonica(int indiceVariable) {
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	double mediaArmonica = 0;
 	for(unsigned int j = 0; j < n; j++) {
 		mediaArmonica +=  1 / (potencia(matriz[indiceVariable][j], 1));
@@ -76,7 +76,7 @@ double CalculosNVar::calculoMediaArmonica(int indiceVariable) {
 }
 
 double CalculosNVar::calculoMediaCuadratica(int indiceVariable) {
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	double mediaCuadratica;
 	mediaCuadratica = calculoSumatoria(indiceVariable, 2) * (1.0 / n);
 	mediaCuadratica = sqrt(mediaCuadratica);
@@ -85,7 +85,7 @@ double CalculosNVar::calculoMediaCuadratica(int indiceVariable) {
 
 //Suma de diferencias respecto a la media con exponente
 double CalculosNVar::difRespecMedia(int indiceVariable, int exponente) {
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	double difRespecMedia = 0;
 	for(unsigned int j = 0; j < n; j++) {
 		difRespecMedia += pow(matriz[indiceVariable][j] - calculoMediaAritmetica(indiceVariable), exponente);
@@ -94,14 +94,14 @@ double CalculosNVar::difRespecMedia(int indiceVariable, int exponente) {
 }
 
 double CalculosNVar::calculoVarianza(int indiceVariable) {
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	double resultado;
 	resultado = (difRespecMedia(indiceVariable, 2)) / n;
 	return resultado;
 }
 
 double CalculosNVar::calculoCuasiVarianza(int indiceVariable) {
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	double resultado;
 	resultado = (difRespecMedia(indiceVariable, 2)) / (n - 1);
 	return resultado;
@@ -120,7 +120,7 @@ double CalculosNVar::cuasiDesviacionTipica(int indiceVariable) {
 }
 
 double CalculosNVar::momentos(int indiceVariable, int exponente) {
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	double momentos;
 	momentos = difRespecMedia(indiceVariable, exponente) / n;
 	return momentos;
@@ -141,7 +141,7 @@ double CalculosNVar::coeficienteAsimetriaFisher(int indiceVariable) {
 
 double CalculosNVar::curtosis(int indiceVariable) {
 	double curtosis;
-	unsigned int n = getColumna();
+	unsigned int n = columna;
 	curtosis = ((difRespecMedia(indiceVariable, 4) / ((n - 1) * pow(cuasiDesviacionTipica(indiceVariable), 4))));
 	//curtosis = curtosis -3;
 	return curtosis;

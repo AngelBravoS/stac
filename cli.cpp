@@ -24,6 +24,7 @@
 #include "cli.hpp"
 #include "menu1Var.hpp"
 #include "menu2Var.hpp"
+#include "menuAlgebra.hpp"
 #include "menuMuestreo.hpp"
 #include <iostream>
 
@@ -48,33 +49,69 @@ void CLI::menuPrincipal() {
 		std::cout << "> ";
 		eleccion();
 		switch(getOpcionSeleccionada()) {
-			case '1' :
+			case '1' : {
 				Menu1Var univariante;
 				univariante.menuSecundario();
 				break;
-			case '2' :
+			}
+			case '2' : {
 				Menu2Var bivariante;
 				bivariante.menuSecundario();
 				break;
-			case 'n' :
+			}
+			case 'n' : {
 				menuNVar();
 				break;
-			case 'a' :
-				menuAlgebra();
+			}
+			case 'a' : {
+				MenuAlgebra matriz;
+				matriz.menuSecundario();
 				break;
-			case 'm' :
+			}
+			case 'm' : {
 				MenuMuestreo muestreo;
 				muestreo.menuSecundario();
-				muestreo.definirTipoMuestreo();
-				muestreo.recogerDatosMuestra();
-				muestreo.mostrarDatosMuestra();
 				break;
-			case 'h' :
+			}
+			case 'h' : {
 				ayuda();
 				break;
-			case 's' :
+			}
+			case 's' : {
 				menuSinDatos();
 				break;
+			}
 		}
 	} while(getOpcionSeleccionada() != '0');
+}
+
+unsigned int CLI::tamanoVector(){
+	unsigned int tamano;
+	std::cout << "Tamaño del vector: ";
+	std::cin >> tamano;
+	return  tamano;
+}
+
+unsigned int CLI::tamanoFila() {
+	unsigned int fila;
+	std::cout << "Número de filas: ";
+	std::cin >> fila;
+	return fila;
+}
+
+unsigned int CLI::tamanoColumna() {
+	unsigned int col;
+	std::cout << "Número de columnas: ";
+	std::cin >> col;
+	return col;
+}
+
+bool CLI::desdeArchivoOTeclado() {
+	char opcion;
+	bool eligesArchivo;
+	std::cout << "¿Leer desde un archivo?" << '\n';
+	std::cout << "s/n:";
+	std::cin >> opcion;
+	opcion == 's'? eligesArchivo = true: eligesArchivo = false;
+	return eligesArchivo;
 }

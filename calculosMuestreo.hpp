@@ -27,25 +27,9 @@ class CalculosMuestreo : public CalculosNVar {
 		//Obtener = Get
 		//Establecer = Set
 	public:
+		CalculosMuestreo(bool archivo, char muestreo, unsigned int longitudFila, unsigned int longitudColumna, bool datosAgrupados);
+		
 		//========  funciones de muestreo ======== 
-		
-		char getTipoMuestreo();
-		void setTipoMuestreo ( char tipoMuestreoPublico );			
-		
-		bool getAgrupados();
-		void setAgrupados ( bool agrupadosPublico );
-		
-		bool getLeeArchivo();
-		void setLeeArchivo(bool leeArchivoPublico);		
-		
-		bool getReemplazo();
-		void setReemplazo ( bool reemplazoPublico );		
-		
-		bool getProbIguales();
-		void setProbIguales(bool probIgualesPublico);
-		
-		bool getMismoTamanyo();
-		void setMismoTamanyo(bool mismoTamanyoPublico);	
 	
 		double getSumatoriaXi();
 		void setSumatoriaXi ( double SumatoriaXiPublica );	
@@ -65,8 +49,10 @@ class CalculosMuestreo : public CalculosNVar {
 
 		//========  funciones de muestreo ======== 
 
+		void desdeDondeLeeMatriz();
 		void leerDatosDesdeTeclado();
 		void leerDatosDesdeArchivo();
+		void asignar();
 		void desagrupar();
 		
 		void calculoXi2();
@@ -80,7 +66,8 @@ class CalculosMuestreo : public CalculosNVar {
 		
 	protected:
 
-		bool agrupados, leeArchivo, reemplazo, probIguales, mismoTamanyo;
+		bool agrupados, reemplazo, probIguales, mismoTamanyo;
+		//bool leeArchivo;
 		char tipoMuestreo;
 		double sumatoriaXi;
 		double sumatoriaXi2;

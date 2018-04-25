@@ -20,14 +20,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef _CALCULOS2VAR_HPP_
+#define _CALCULOS2VAR_HPP_
+
+
 #include "calculosNVar.hpp"
 
 class Calculos2Var : public CalculosNVar {
-
 	public:
+		//======== constructor ======== 
+		Calculos2Var(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
 		//-------- funciones especificas de 2 variables --------
 		double sumatoria2Var ( int variableX, int variableY, int exponenteX, int exponenteY );
 		double covarianza();
 		double coeficienteCorrelacion();
 		double distanciaEuclidea();
 };
+
+#endif /* _CALCULOS2VAR_HPP_ */

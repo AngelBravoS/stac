@@ -24,49 +24,46 @@
 #include "menu2Var.hpp"
 
 void Menu2Var::menuSecundario() {
-	char eleccionNivel2, eligesArchivo;
-	Calculos2Var variablesXeY;
-	std::cout << "¿Leer desde un archivo?" << '\n';
-	std::cout << "s/n:";
-	std::cin >> eligesArchivo;
-	if(eligesArchivo == 's') {
-		variablesXeY.leerMatrizArchivo();
-	} else {
-		variablesXeY.setDimensionMatriz();
-		variablesXeY.crearMatrizVacia();
-		variablesXeY.editarMatrizVacia();
-		variablesXeY.mostrarMatriz();
-		std::cout << '\n';
-	}
+	char eleccionNivel2;
+	Calculos2Var variables(desdeArchivoOTeclado(), 2, tamanoColumna());
+	variables.desdeDondeLeeMatriz();
 	do {
 		std::cout << "'1' medias y sumatorias" << '\n';
 		std::cout << "'2' medidas de dispersión" << '\n';
 		std::cout << "'0' Salir." << '\n';
 		std::cout << "> ";
 		std::cin >> eleccionNivel2;
-		variablesXeY.mostrarMatriz();
+		variables.mostrarMatriz();
 		std::cout << '\n';
 		switch(eleccionNivel2) {
 			case '1':
 				//medidas de tendencia Central
-				std::cout << "Media aritmética de X = " << variablesXeY.calculoMediaAritmetica(0) << '\n';
-				std::cout << "Media aritmética de Y = " << variablesXeY.calculoMediaAritmetica(1) << '\n';
-				std::cout << "Sumatoria de X = " << variablesXeY.calculoSumatoria(0,1) << '\n';
-				std::cout << "Sumatoria de Y = " << variablesXeY.calculoSumatoria(1,1) << '\n';
-				std::cout << "Sumatoria de X e Y = " << variablesXeY.sumatoria2Var(0,1,1,1) << '\n';
+				std::cout << "Media aritmética de X = " << variables.calculoMediaAritmetica(0) << '\n';
+				std::cout << "Media aritmética de Y = " << variables.calculoMediaAritmetica(1) << '\n';
+				std::cout << "Sumatoria de X = " << variables.calculoSumatoria(0,1) << '\n';
+				std::cout << "Sumatoria de Y = " << variables.calculoSumatoria(1,1) << '\n';
+				std::cout << "Sumatoria de X e Y = " << variables.sumatoria2Var(0,1,1,1) << '\n';
 				std::cout << '\n';
 				break;
 			case '2':
 				//std::cout << "Las diferencias respecto a la media son: " << variablesXeY.difRespecMedia() << endl;
-				std::cout << "Varianza de X = " << variablesXeY.calculoVarianza(0) << '\n';
-				std::cout << "Varianza de Y = " << variablesXeY.calculoVarianza(1) << '\n';
-				std::cout << "Desviación típica de X = " << variablesXeY.desviacionTipica(0) << '\n';
-				std::cout << "Desviación típica de Y = " << variablesXeY.desviacionTipica(1) << '\n';
-				std::cout << "Covarianza de X e Y = " << variablesXeY.covarianza() << '\n';
-				std::cout << "Coeficiente de correlación de X e Y =  " << variablesXeY.coeficienteCorrelacion() << '\n';
+				std::cout << "Varianza de X = " << variables.calculoVarianza(0) << '\n';
+				std::cout << "Varianza de Y = " << variables.calculoVarianza(1) << '\n';
+				std::cout << "Desviación típica de X = " << variables.desviacionTipica(0) << '\n';
+				std::cout << "Desviación típica de Y = " << variables.desviacionTipica(1) << '\n';
+				std::cout << "Covarianza de X e Y = " << variables.covarianza() << '\n';
+				std::cout << "Coeficiente de correlación de X e Y =  " << variables.coeficienteCorrelacion() << '\n';
 				std::cout << '\n';
 				break;
 		}
 	} while(eleccionNivel2 != '0');
-	//variablesXeY.destructorVector();
+	//variables.destructorVector();
 }
+
+unsigned int Menu2Var::tamanoColumna() {
+	unsigned int col;
+	std::cout << "Número de elementos de cada variable: ";
+	std::cin >> col;
+	return col;
+}
+

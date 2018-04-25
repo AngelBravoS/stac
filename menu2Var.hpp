@@ -20,6 +20,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef _MENU2VAR_HPP_
+#define _MENU2VAR_HPP_
+
 #include "cli.hpp"
 #include "calculos2Var.hpp"
 #include<fstream>
@@ -28,13 +31,10 @@ class Menu2Var : public CLI {
 		//Obtener = Get
 		//Establecer = Set
 	public:
-		Calculos2Var variableXeY;
+		//Calculos2Var variableXeY(bool, unsigned int, unsigned int);
 		//========  funciones de muestreo ======== 
 		void menuSecundario();
-		//void definirTipoMuestreo();
-		//void recogerDatosMuestra();
-		//void mostrarDatosMuestra();
-		void verificarArchivo();
-	protected:
-		bool archivoValido;
+		unsigned int tamanoColumna();
 };
+
+#endif /* _MENU2VAR_HPP_ */

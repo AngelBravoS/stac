@@ -23,23 +23,6 @@
 #include <iostream>
 #include "menu1Var.hpp"
 
-unsigned int Menu1Var::tamanoVector(){
-	unsigned int tamano;
-	std::cout << "Tamaño del vector: ";
-	std::cin >> tamano;
-	return  tamano;
-}
-
-bool Menu1Var::desdeArchivoOTeclado() {
-	char opcion;
-	bool eligesArchivo;
-	std::cout << "¿Leer desde un archivo?" << '\n';
-	std::cout << "s/n:";
-	std::cin >> opcion;
-	opcion == 's'? eligesArchivo = true: eligesArchivo = false;
-	return eligesArchivo;
-}
-
 void Menu1Var::menuSecundario() {
 	char eleccionNivel2, eleccionNivel3, eleccionNivel4;
 	Calculos1Var variable (desdeArchivoOTeclado(), tamanoVector());

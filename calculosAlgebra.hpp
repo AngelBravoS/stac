@@ -20,6 +20,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef _CALCULOSALGEBRA_HPP_
+#define _CALCULOSALGEBRA_HPP_
+
 #include "calculosNVar.hpp"
 
 class CalculosAlgebra : public CalculosNVar {
@@ -36,3 +39,6 @@ class CalculosAlgebra : public CalculosNVar {
 		void descomposicionLU();
 		void multiplicarMat();
 };
+
+#endif /* _CALCULOSALGEBRA_HPP_ */
+

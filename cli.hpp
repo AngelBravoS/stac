@@ -39,21 +39,19 @@ class CLI {
 		void hasElegido();
 		//======== subfunciones de menu ========
 		void menuPrincipal();
-		//void menu1Var();
-		//void menu2Var();
 		void menuNVar();
-		void menuAlgebra();
-		//void menuMuestreo();
-		//void crearDatosMuestra();
 		void menuSinDatos();
 		void menuTablasCont();
 		//======== funciones especificas de cada submenu ========
 		void menuInferencia();
 		void menuCombinatoria();
-		//void menuIA();
 		void menuDistribDiscreta();
 		//======== Entrada/Salida vectores ========
-		//void iniciarVector();
+		bool desdeArchivoOTeclado();
+		//void verificarArchivo();
+		unsigned int tamanoVector();
+		unsigned int tamanoFila();
+		unsigned int tamanoColumna();
 		//void numElementosVector();
 		//======== Textos de menús ========
 		void listadOpcionesPricipales();
@@ -62,6 +60,7 @@ class CLI {
 
 	protected:
 		char respuestaUsuario;
+		bool archivoValido;
 };
 
 #endif /* _CLI_HPP_ */

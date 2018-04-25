@@ -20,6 +20,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef _CALCULOS1VAR_HPP_
+#define _CALCULOS1VAR_HPP_
+
 #include "vector.hpp"
 #include "funcMatematicasBasicas.hpp"
 
@@ -60,3 +63,5 @@ class Calculos1Var : public Vector {
 		double testStudentVarConocida();
 		double testStudentVarDesconocida();
 };
+
+#endif /* _CALCULOS2VAR_HPP_ */

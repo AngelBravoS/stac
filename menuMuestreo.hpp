@@ -20,6 +20,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef _MENUMUESTREO_HPP_
+#define _MENUMUESTREO_HPP_
+
 #include "cli.hpp"
 #include "calculosMuestreo.hpp"
 #include<fstream>
@@ -28,13 +31,18 @@ class MenuMuestreo : public CLI {
 		//Obtener = Get
 		//Establecer = Set
 	public:
-		CalculosMuestreo muestra;
+		//bool getAgrupados();
+		//void setAgrupados(bool agrupadosPublico);
+		//CalculosMuestreo muestra(bool archivo, char muestreo, int longitudFila, unsigned int longitudColumna, bool datosAgrupados);
 		//========  funciones de muestreo ======== 
 		void menuSecundario();
-		void definirTipoMuestreo();
+		unsigned int tamanoColumna(bool agrupados);
+		char tipoDeMuestreo();
+		//bool datosAgrupados();
 		void recogerDatosMuestra();
 		void mostrarDatosMuestra();
-		void verificarArchivo();
-	protected:
-		bool archivoValido;
+	//protected:
+	
 };
+
+#endif /* _MENUMUESTREO_HPP_ */

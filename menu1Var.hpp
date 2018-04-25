@@ -19,6 +19,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef _MENU1VAR_HPP_
+#define _MENU1VAR_HPP_
 
 #include "cli.hpp"
 #include "calculos1Var.hpp"
@@ -28,15 +30,11 @@ class Menu1Var : public CLI {
 		//Obtener = Get
 		//Establecer = Set
 	public:
-		Calculos1Var variable(bool, unsigned int);
+		//Calculos1Var variable(bool, unsigned int); Parece innecesario
 		//========  funciones de muestreo ======== 
 		void menuSecundario();
-		unsigned int tamanoVector();
-		bool desdeArchivoOTeclado();
-		//void crearVector(bool archivo, unsigned int tamano);
-		//void recogerDatosMuestra();
-		//void mostrarDatosMuestra();
-		void verificarArchivo();
 	protected:
 		bool archivoValido;
 };
+
+#endif /* _MENU1VAR_HPP_ */

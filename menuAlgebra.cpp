@@ -21,11 +21,20 @@
  ***************************************************************************/
 
 #include <iostream>
-#include "cli.hpp"
-#include "calculosAlgebra.hpp"
+#include "menuAlgebra.hpp"
 
-void CLI::menuAlgebra() {
-	char elegir1o2Matrices, eleccionCalculosMatriz, eligesArchivo;
+bool MenuAlgebra::desdeArchivoOTeclado() {
+	char opcion;
+	bool eligesArchivo;
+	std::cout << "¿Leer desde un archivo?" << '\n';
+	std::cout << "s/n:";
+	std::cin >> opcion;
+	opcion == 's'? eligesArchivo = true: eligesArchivo = false;
+	return eligesArchivo;
+}
+
+void MenuAlgebra::menuSecundario() {
+	/*char elegir1o2Matrices, eleccionCalculosMatriz, eligesArchivo;
 	do {
 		std::cout << "'1' Cálculos con una matriz" << '\n';
 		std::cout << "'2' Cálculos con dos matrices" << '\n';
@@ -33,13 +42,13 @@ void CLI::menuAlgebra() {
 		std::cout << "> ";
 		std::cin >> elegir1o2Matrices;
 		switch ( elegir1o2Matrices ) {
-			case '1':
+			case '1': {
 				CalculosAlgebra matrizA;
 				std::cout << "¿Leer desde un archivo?" << '\n';
 				std::cout << "s/n:";
 				std::cin >> eligesArchivo;
 				if ( eligesArchivo == 's' ) {
-					matrizA.leerMatrizArchivo();
+					matrizA.leerArchivo();
 				} else {
 					matrizA.setDimensionMatriz();
 					matrizA.crearMatrizVacia();
@@ -120,17 +129,18 @@ void CLI::menuAlgebra() {
 							std::cout << '\n';
 							break;
 					}
-					/*if ( eleccionCalculosMatriz != '0' ) {
-						std::cout << "¿Copiar el resultado a un archivo?" << endl;
-						std::cout << "s/n:";
-						std::cin >> eligesArchivo;
-						}
-					if ( eligesArchivo == 's' ) {
-						matrizA.guardarEnArchivo();
-						}*/
+					//if ( eleccionCalculosMatriz != '0' ) {
+				//		std::cout << "¿Copiar el resultado a un archivo?" << endl;
+				//		std::cout << "s/n:";
+				//		std::cin >> eligesArchivo;
+				//		}
+				//	if ( eligesArchivo == 's' ) {
+				//		matrizA.guardarEnArchivo();
+						//}
 				} while ( eleccionCalculosMatriz != '0' );
 				break;
-			case '2':
+			}
+			case '2': {
 				CalculosAlgebra matrizB;
 				matrizB.setDimensionMatriz();
 				matrizB.crearMatrizVacia();
@@ -158,6 +168,7 @@ void CLI::menuAlgebra() {
 					std::cout << "¿Copiar el resultado a un archivo?" << '\n';
 				} while ( eleccionCalculosMatriz != '0' );
 				break;
+			}
 		}
-	} while ( elegir1o2Matrices != '0' );
+	} while ( elegir1o2Matrices != '0' );*/
 }
