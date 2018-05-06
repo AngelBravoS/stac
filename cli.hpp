@@ -57,6 +57,7 @@ class CLI {
 		void listadOpcionesPricipales();
 		void listadOpcionesMuestreo();
 		void listadOpciones1Variable();
+		void listadOpciones2Variables();
 
 	protected:
 		char respuestaUsuario;

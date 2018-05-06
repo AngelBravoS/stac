@@ -27,20 +27,20 @@ void CLI::hasElegido() {
 	std::cout << '\n';
 	std::cout << "has elegido: " << getOpcionSeleccionada() << '\n';
 	std::cout << '\n';
-	}
+}
 
 void CLI::introduccion() {
 	std::cout << '\n';
 	std::cout << "             ╔══════════════════════════╗" << '\n';
-	std::cout << "             ║           STAC           ║" << '\n';	
+	std::cout << "             ║           STAC           ║" << '\n';
 	std::cout << "             ║        Estadística       ║" << '\n';
 	std::cout << "             ║   en línea de comandos   ║" << '\n';
-	std::cout << "             ║    Versión alpha 0.7.5   ║" << '\n';	
-	std::cout << "             ║     Rama ''pruebas''     ║" << '\n';		
+	std::cout << "             ║    Versión alpha 0.7.5   ║" << '\n';
+	std::cout << "             ║     Rama ''pruebas''     ║" << '\n';
 	std::cout << "             ╚══════════════════════════╝" << '\n';
 	std::cout << '\n';
-	}
-	
+}
+
 void CLI::acercaDe() {
 	std::cout << '\n';
 	std::cout << "             ╔══════════════════════════╗" << '\n';
@@ -49,7 +49,7 @@ void CLI::acercaDe() {
 	std::cout << "             ║     Ángel Bravo Sáenz    ║" << '\n';
 	std::cout << "             ╚══════════════════════════╝" << '\n';
 	std::cout << '\n';
-	}
+}
 
 void CLI::ayuda() {
 	std::cout << "                      Ayuda" << '\n';
@@ -101,7 +101,7 @@ void CLI::ayuda() {
 	std::cout << "		Generador congruencia mixto" << '\n';
 	std::cout << "	Distribuciones discretas de probabilidad" << '\n';
 	std::cout << '\n';
-	}
+}
 
 void CLI::listadOpcionesPricipales() {
 	std::cout << "		    Menú principal" << '\n';
@@ -115,9 +115,9 @@ void CLI::listadOpcionesPricipales() {
 	std::cout << "'s' Análisis que no requiere datos." << '\n';
 	std::cout << "'h' Ayuda." << '\n';
 	std::cout << "'0'  Salir." << '\n';
-	}
+}
 
-void CLI::listadOpcionesMuestreo() {	
+void CLI::listadOpcionesMuestreo() {
 	std::cout << '\n';
 	std::cout << "Selecciona el tipo de muestreo:" << '\n';
 	std::cout << "'1' MAS (Sin reemplazo y probabilidades iguales)" << '\n';
@@ -125,17 +125,26 @@ void CLI::listadOpcionesMuestreo() {
 	std::cout << "'3' Sin reemplazo y probabilidades desiguales." << '\n';
 	std::cout << "'4' Con reemplazo y probabilidades desiguales"  << '\n';
 	std::cout << "'5' Muestreo sistemático" << '\n';
-	std::cout << "'6' Métodos indirectos de estimación" << '\n';	
+	std::cout << "'6' Métodos indirectos de estimación" << '\n';
 	std::cout << "'7' Muestreo estratificado" << '\n';
 	std::cout << "'8' Muestreo por conglomerados" << '\n';
 	std::cout << "'0' Salir." << '\n';
 	std::cout << "> ";
 }
 
-void CLI::listadOpciones1Variable() {	
+void CLI::listadOpciones1Variable() {
 	std::cout << '\n';
 	std::cout << "'1' Medidas descriptivas básicas" << '\n';
 	std::cout << "'2' Inferencia" << '\n';
 	std::cout << "'0' Volver al menú principal" << '\n';
+	std::cout << "> ";
+}
+
+void CLI::listadOpciones2Variables() {
+	std::cout << '\n';
+	std::cout << "'1' medias y sumatorias" << '\n';
+	std::cout << "'2' medidas de dispersión" << '\n';
+	std::cout << "'3' medidas de regresión" << '\n';
+	std::cout << "'0' Salir." << '\n';
 	std::cout << "> ";
 }

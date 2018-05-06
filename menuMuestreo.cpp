@@ -27,6 +27,7 @@
 void MenuMuestreo::menuSecundario() {
 	char respuesta, tipoDeMuestreo;
 	bool agrupados;
+	var = 1;
 	listadOpcionesMuestreo();
 	std::cin >> tipoDeMuestreo;
 	std::cout << '\n';
@@ -48,6 +49,9 @@ void MenuMuestreo::menuSecundario() {
 	muestra.setSumatoriaXi2(muestra.calculoSumatoria(0, 2));	
 	std::cout << "∑Xi = " << muestra.getSumatoriaXi();
 	std::cout << ", ∑Xi^2 = " << muestra.getSumatoriaXi2();
+	std::cout << ", media  = " << muestra.mediaAritmetica(0) << '\n';
+	std::cout << ", cuasiVarianza  = " << muestra.cuasiVarianza(0) << '\n';
+	std::cout << ", total = " << muestra.total(0) << '\n';
 	std::cout << '\n';
 }
 
@@ -62,9 +66,5 @@ unsigned int MenuMuestreo::tamanoColumna(bool agrupados) {
 	return columna;
 }
 
-void MenuMuestreo::recogerDatosMuestra() {
+void crearMuestra() {
 }
-
-void MenuMuestreo::mostrarDatosMuestra() {
-}
-

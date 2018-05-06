@@ -35,13 +35,14 @@ class CalculosNVar : public Matriz {
 		void setVarianza ( double varianzaPublica );	
 		//========  funciones de estadística descriptiva ======== 
 		double calculoSumatoria ( int indiceVariable, short unsigned int exponente );
-		double calculoMediaAritmetica ( int indiceVariable );
-		double calculoMediaGeometrica ( int indiceVariable ) ;
-		double calculoMediaArmonica ( int indiceVariable );
-		double calculoMediaCuadratica ( int indiceVariable );
+		double total (int indiceVariable);
+		double mediaAritmetica ( int indiceVariable );
+		double mediaGeometrica ( int indiceVariable ) ;
+		double mediaArmonica ( int indiceVariable );
+		double mediaCuadratica ( int indiceVariable );
 		double difRespecMedia ( int indiceVariable, int exponente );
-		double calculoVarianza ( int indiceVariable );
-		double calculoCuasiVarianza ( int indiceVariable );
+		double varianza ( int indiceVariable );
+		double cuasiVarianza ( int indiceVariable );
 		double desviacionTipica ( int indiceVariable );
 		double cuasiDesviacionTipica ( int indiceVariable );
 		double momentos ( int indiceVariable, int exponente );
@@ -51,12 +52,11 @@ class CalculosNVar : public Matriz {
 		double covarianza ( int indiceVariable );
 		//========  funciones de tablas de contingencia ========
 		
-				
 	protected:
 		double sumatoria;
 		double media;
-		double varianza;
-		double cuasiVarianza;
+		//double varianza;
+		//double cuasiVarianza;
 };
 
 #endif /* _MATRIZ_HPP_ */

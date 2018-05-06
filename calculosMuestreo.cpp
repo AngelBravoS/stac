@@ -22,7 +22,7 @@
 
 #include <iostream>
 #include <cmath>
-#include<fstream>
+#include <fstream>
 #include "calculosMuestreo.hpp"
 
 //Límite máximo en unsigned short int: 65535
@@ -218,18 +218,65 @@ void CalculosMuestreo::incorporarXiYXi2() {
 	}
 }
 
-void CalculosMuestreo::calculoIC() {
-
+double CalculosMuestreo::estimador() {
+	double resultado = 0;
+	switch(tipoMuestreo) {
+		case '1' :
+			resultado = mediaAritmetica(0);
+			break;
+		case '2' :
+			break;
+		case '3' :
+			
+			break;
+		case '4' :
+			break;
+	}
+	return resultado;
 }
 
-void CalculosMuestreo::varianzaEstimador() {
-
+double CalculosMuestreo::calculoIC() {
+	double resultado = 0;
+	switch(tipoMuestreo) {
+		case '1' :
+			break;
+		case '2' :
+			break;
+		case '3' :
+			break;
+		case '4' :
+			break;
+	}
+	return resultado;
 }
 
-void CalculosMuestreo::estimadorVarianza() {
-
+double CalculosMuestreo::varianzaEstimador() {
+	double resultado = 0;
+	switch(tipoMuestreo) {
+		case '1' :
+			resultado = cuasiVarianza(0);
+			break;
+		case '2' :
+			break;
+		case '3' :
+			break;
+		case '4' :
+			break;
+	}
+	return resultado;
 }
 
-void CalculosMuestreo::calculoEstimador() {
-
+double CalculosMuestreo::estimadorVarianza() {
+	double resultado = 0;
+	switch(tipoMuestreo) {
+		case '1' :
+			break;
+		case '2' :
+			break;
+		case '3' :
+			break;
+		case '4' :
+			break;
+	}
+	return resultado;
 }

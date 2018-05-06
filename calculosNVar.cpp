@@ -48,14 +48,21 @@ double  CalculosNVar::calculoSumatoria(int indiceVariable, unsigned short int ex
 	return resultado;
 }
 
-double  CalculosNVar::calculoMediaAritmetica(int indiceVariable) {
+double  CalculosNVar::total(int indiceVariable) {
+	unsigned int n = columna;
+	double resultado = 0;
+	resultado = (n* mediaAritmetica(indiceVariable));
+	return resultado;
+}
+
+double  CalculosNVar::mediaAritmetica(int indiceVariable) {
 	unsigned int n = columna;
 	double resultado = 0;
 	resultado = (calculoSumatoria(indiceVariable, 1) / n);
 	return resultado;
 }
 
-double CalculosNVar::calculoMediaGeometrica(int indiceVariable) {
+double CalculosNVar::mediaGeometrica(int indiceVariable) {
 	unsigned int n = columna;
 	double mediaGeometrica = 1;
 	for(unsigned int j = 0; j < n; j++) {
@@ -65,7 +72,7 @@ double CalculosNVar::calculoMediaGeometrica(int indiceVariable) {
 	return mediaGeometrica;
 }
 
-double CalculosNVar::calculoMediaArmonica(int indiceVariable) {
+double CalculosNVar::mediaArmonica(int indiceVariable) {
 	unsigned int n = columna;
 	double mediaArmonica = 0;
 	for(unsigned int j = 0; j < n; j++) {
@@ -75,7 +82,7 @@ double CalculosNVar::calculoMediaArmonica(int indiceVariable) {
 	return mediaArmonica;
 }
 
-double CalculosNVar::calculoMediaCuadratica(int indiceVariable) {
+double CalculosNVar::mediaCuadratica(int indiceVariable) {
 	unsigned int n = columna;
 	double mediaCuadratica;
 	mediaCuadratica = calculoSumatoria(indiceVariable, 2) * (1.0 / n);
@@ -88,19 +95,19 @@ double CalculosNVar::difRespecMedia(int indiceVariable, int exponente) {
 	unsigned int n = columna;
 	double difRespecMedia = 0;
 	for(unsigned int j = 0; j < n; j++) {
-		difRespecMedia += pow(matriz[indiceVariable][j] - calculoMediaAritmetica(indiceVariable), exponente);
+		difRespecMedia += pow(matriz[indiceVariable][j] - mediaAritmetica(indiceVariable), exponente);
 	}
 	return difRespecMedia;
 }
 
-double CalculosNVar::calculoVarianza(int indiceVariable) {
+double CalculosNVar::varianza(int indiceVariable) {
 	unsigned int n = columna;
 	double resultado;
 	resultado = (difRespecMedia(indiceVariable, 2)) / n;
 	return resultado;
 }
 
-double CalculosNVar::calculoCuasiVarianza(int indiceVariable) {
+double CalculosNVar::cuasiVarianza(int indiceVariable) {
 	unsigned int n = columna;
 	double resultado;
 	resultado = (difRespecMedia(indiceVariable, 2)) / (n - 1);
@@ -109,13 +116,13 @@ double CalculosNVar::calculoCuasiVarianza(int indiceVariable) {
 
 double CalculosNVar::desviacionTipica(int indiceVariable) {
 	double desviacionTipica;
-	desviacionTipica = sqrt(calculoVarianza(indiceVariable));
+	desviacionTipica = sqrt(varianza(indiceVariable));
 	return desviacionTipica;
 }
 
 double CalculosNVar::cuasiDesviacionTipica(int indiceVariable) {
 	double cuasiDesviacionTipica;
-	cuasiDesviacionTipica = sqrt(calculoCuasiVarianza(indiceVariable));
+	cuasiDesviacionTipica = sqrt(cuasiVarianza(indiceVariable));
 	return cuasiDesviacionTipica;
 }
 
@@ -128,7 +135,7 @@ double CalculosNVar::momentos(int indiceVariable, int exponente) {
 
 double CalculosNVar::coeficientePearson(int indiceVariable) {
 	double coeficientePearson;
-	coeficientePearson = cuasiDesviacionTipica(indiceVariable) / calculoMediaAritmetica(indiceVariable);
+	coeficientePearson = cuasiDesviacionTipica(indiceVariable) / mediaAritmetica(indiceVariable);
 	return coeficientePearson;
 }
 

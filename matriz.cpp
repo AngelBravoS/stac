@@ -21,7 +21,7 @@
  ***************************************************************************/
 
 #include <iostream>
-#include<fstream>
+#include <fstream>
 #include "matriz.hpp"
 
 //======== funciones de matrices ========

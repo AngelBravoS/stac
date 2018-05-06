@@ -28,20 +28,15 @@
 #include<fstream>
 
 class MenuMuestreo : public CLI {
-		//Obtener = Get
-		//Establecer = Set
 	public:
-		//bool getAgrupados();
-		//void setAgrupados(bool agrupadosPublico);
-		//CalculosMuestreo muestra(bool archivo, char muestreo, int longitudFila, unsigned int longitudColumna, bool datosAgrupados);
 		//========  funciones de muestreo ======== 
 		void menuSecundario();
 		unsigned int tamanoColumna(bool agrupados);
 		char tipoDeMuestreo();
-		//bool datosAgrupados();
-		void recogerDatosMuestra();
+		void crearMuestra();
 		void mostrarDatosMuestra();
-	//protected:
+	private:
+		int var;
 	
 };
 

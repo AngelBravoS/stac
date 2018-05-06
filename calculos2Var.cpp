@@ -51,7 +51,7 @@ double Calculos2Var::covarianza() {
 	unsigned int n = columna;
 	double covarianza = 0;
 	covarianza += (sumatoria2Var(0, 1, 1, 1));
-	covarianza = (covarianza / n) - (calculoMediaAritmetica(0) * calculoMediaAritmetica(1));
+	covarianza = (covarianza / n) - (mediaAritmetica(0) * mediaAritmetica(1));
 	return covarianza;
 }
 

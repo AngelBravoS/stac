@@ -25,16 +25,19 @@
 
 void Menu1Var::menuSecundario() {
 	char eleccionNivel2, eleccionNivel3, eleccionNivel4;
-	Calculos1Var variable (desdeArchivoOTeclado(), tamanoVector());
+	Calculos1Var variable(desdeArchivoOTeclado(), tamanoVector());
 	variable.desdeDondeLeeVector();
+	std::cout << '\n';	
+	std::cout << "Variable X:" << '\n';
+	variable.mostrarVector();
 	do {
-		std::cout << "Vector:" << '\n';
-		variable.mostrarVector();
 		listadOpciones1Variable();
 		std::cin >> eleccionNivel2;
+		std::cout << "Variable X:" << '\n';
+		variable.mostrarVector();
+		std::cout << '\n';
 		switch(eleccionNivel2) {
 		case '1':
-			std::cout << '\n';
 			std::cout << "Medidas de tendencia central" << '\n';
 			std::cout << "Media aritmética = " << variable.mediaAritmetica() << '\n';
 			std::cout << "Media geométrica = " << variable.mediaGeometrica() << '\n';
@@ -50,7 +53,6 @@ void Menu1Var::menuSecundario() {
 			std::cout << '\n';
 			std::cout << "Medidas de forma" << '\n';
 			std::cout << "Norma = " << variable.norma() << '\n';
-			std::cout << '\n';
 			break;
 		case '2':
 			do {

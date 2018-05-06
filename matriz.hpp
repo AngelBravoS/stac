@@ -24,8 +24,6 @@
 #define _MATRIZ_HPP_
 
 class Matriz {
-		//Obtener = Get
-		//Establecer = Set
 	public:
 		//======== constructor ======== 
 		Matriz();
@@ -49,9 +47,7 @@ class Matriz {
 		void mostrarMatrizB ();
 		void copiarDimensionMatriz();
 		void copiarMatriz();
-
 	protected:
-		
 		unsigned int fila, filaB;
 		unsigned int columna, columnaB;
 		double **matriz;

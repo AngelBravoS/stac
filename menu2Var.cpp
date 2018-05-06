@@ -27,33 +27,39 @@ void Menu2Var::menuSecundario() {
 	char eleccionNivel2;
 	Calculos2Var variables(desdeArchivoOTeclado(), 2, tamanoColumna());
 	variables.desdeDondeLeeMatriz();
+	std::cout << "Variables X e Y:" << '\n';
+	variables.mostrarMatriz();
+	std::cout << '\n';
 	do {
-		std::cout << "'1' medias y sumatorias" << '\n';
-		std::cout << "'2' medidas de dispersión" << '\n';
-		std::cout << "'0' Salir." << '\n';
-		std::cout << "> ";
-		std::cin >> eleccionNivel2;
+		listadOpciones2Variables();
+		std::cin >> eleccionNivel2;		
+		std::cout << "Variables X e Y:" << '\n';
 		variables.mostrarMatriz();
 		std::cout << '\n';
 		switch(eleccionNivel2) {
 			case '1':
 				//medidas de tendencia Central
-				std::cout << "Media aritmética de X = " << variables.calculoMediaAritmetica(0) << '\n';
-				std::cout << "Media aritmética de Y = " << variables.calculoMediaAritmetica(1) << '\n';
+				std::cout << "Media aritmética de X = " << variables.mediaAritmetica(0) << '\n';
+				std::cout << "Media aritmética de Y = " << variables.mediaAritmetica(1) << '\n';
 				std::cout << "Sumatoria de X = " << variables.calculoSumatoria(0,1) << '\n';
 				std::cout << "Sumatoria de Y = " << variables.calculoSumatoria(1,1) << '\n';
 				std::cout << "Sumatoria de X e Y = " << variables.sumatoria2Var(0,1,1,1) << '\n';
-				std::cout << '\n';
 				break;
 			case '2':
 				//std::cout << "Las diferencias respecto a la media son: " << variablesXeY.difRespecMedia() << endl;
-				std::cout << "Varianza de X = " << variables.calculoVarianza(0) << '\n';
-				std::cout << "Varianza de Y = " << variables.calculoVarianza(1) << '\n';
+				std::cout << "Varianza de X = " << variables.varianza(0) << '\n';
+				std::cout << "Varianza de Y = " << variables.varianza(1) << '\n';
 				std::cout << "Desviación típica de X = " << variables.desviacionTipica(0) << '\n';
 				std::cout << "Desviación típica de Y = " << variables.desviacionTipica(1) << '\n';
 				std::cout << "Covarianza de X e Y = " << variables.covarianza() << '\n';
 				std::cout << "Coeficiente de correlación de X e Y =  " << variables.coeficienteCorrelacion() << '\n';
-				std::cout << '\n';
+				break;
+			case '3':/*
+				// regresión y correlación
+				std::cout << " = " << variables. << '\n';
+				std::cout << " = " << variables. << '\n';
+				std::cout << " = " << variables. << '\n';
+				std::cout << " = " << variables. << '\n';*/
 				break;
 		}
 	} while(eleccionNivel2 != '0');

@@ -24,54 +24,42 @@
 #include "funcMatematicasBasicas.hpp"
  
 class CalculosMuestreo : public CalculosNVar {
-		//Obtener = Get
-		//Establecer = Set
 	public:
 		CalculosMuestreo(bool archivo, char muestreo, unsigned int longitudFila, unsigned int longitudColumna, bool datosAgrupados);
-		
 		//========  funciones de muestreo ======== 
-	
 		double getSumatoriaXi();
 		void setSumatoriaXi ( double SumatoriaXiPublica );	
 		double getSumatoriaXi2();
 		void setSumatoriaXi2 ( double SumatoriaXi2Publica );	
-		
 		double getEstimador();
 		void setEstimador ( double estimadorPublico );
-		
 		double getVarianzaDelEstimador();
 		void setVarianzaDelEstimador ( double varianzaDelEstimadorPublica );
-		
 		double getEstimadorDeLaVarianza();
 		void setEstimadorDeLaVarianza ( double estimadorDeLaVarianzaPublico );
-		
 		void editarMatrizVacia();
-
 		//========  funciones de muestreo ======== 
-
 		void desdeDondeLeeMatriz();
 		void leerDatosDesdeTeclado();
 		void leerDatosDesdeArchivo();
 		void asignar();
 		void desagrupar();
-		
 		void calculoXi2();
 		void calculoXi();
-		void calculoEstimador();
-		void calculoIC();
-		void varianzaEstimador();		
-		void estimadorVarianza();
+		double estimador();
 		
+		double calculoIC();
+		double varianzaEstimador();		
+		double estimadorVarianza();
 		void incorporarXiYXi2();
-		
 	protected:
-
 		bool agrupados, reemplazo, probIguales, mismoTamanyo;
 		//bool leeArchivo;
 		char tipoMuestreo;
 		double sumatoriaXi;
 		double sumatoriaXi2;
-		double estimador;
+		double ic;
+		//double estimador;
 		double varianzaDelEstimador;
 		double estimadorDeLaVarianza;
 };
