@@ -1,11 +1,14 @@
 .kdev4/
+build/
 CMakeFiles/
+Makefile
 CMakeCache.txt
 cmake_install.cmake
 datos.dat
 viejoscpp/
 TODO.txt
 notas.txt
+stac.kdev4
 .vector.hpp.kate-swp
 .vector.cpp.kate-swp
 .calculos1Var.hpp.kate-swp

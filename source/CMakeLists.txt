@@ -41,7 +41,7 @@ set(CMAKE_BUILD_TYPE Debug)
 
 #-march=amdfam10/core2/native
 
-set(CMAKE_CXX_FLAGS "-ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=native -std=gnu++14")
+set(CMAKE_CXX_FLAGS "-ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14")
 
 set(CMAKE_CXX_FLAGS_DEBUG " -ggdb3 -DDEBUG")
 

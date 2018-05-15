@@ -35,7 +35,7 @@ void CLI::introduccion() {
 	std::cout << "             ║           STAC           ║" << '\n';
 	std::cout << "             ║        Estadística       ║" << '\n';
 	std::cout << "             ║   en línea de comandos   ║" << '\n';
-	std::cout << "             ║    Versión alpha 0.7.5   ║" << '\n';
+	std::cout << "             ║    Versión alpha 0.7.6   ║" << '\n';
 	std::cout << "             ╚══════════════════════════╝" << '\n';
 	std::cout << '\n';
 }
@@ -43,7 +43,6 @@ void CLI::introduccion() {
 void CLI::acercaDe() {
 	std::cout << '\n';
 	std::cout << "             ╔══════════════════════════╗" << '\n';
-	std::cout << "             ║    Versión alpha 0.7.4   ║" << '\n';
 	std::cout << "             ║       Escrito en c++     ║" << '\n';
 	std::cout << "             ║     Ángel Bravo Sáenz    ║" << '\n';
 	std::cout << "             ╚══════════════════════════╝" << '\n';
