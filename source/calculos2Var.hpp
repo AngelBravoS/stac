@@ -35,6 +35,8 @@ class Calculos2Var : public CalculosNVar {
 		double covarianza();
 		double coeficienteCorrelacion();
 		double distanciaEuclidea();
+		double coeficienteRegresion(int variable);
+		double rectaRegresion();
 };
 
 #endif /* _CALCULOS2VAR_HPP_ */

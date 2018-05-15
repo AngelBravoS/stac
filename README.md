@@ -4,7 +4,7 @@ Stac es un programa en línea de comandos de cálculo estadístico avanzado -o e
 
 Stac is a command line program for advanced statistics -or is that trying to be-. I am not a programmer or engineer, just a statistician who tries to learn a programming language and some of its tools (c++, gcc, gdb, Git, Kdevelop, cmake...) by applying what I learned in my statistics career. Learning is therefore the end of this project, although I hope that little by little it will become more complex and useful, although I don't try to revolutionize the world... yet.
 
-###Features###
+### Features ###
 
 
 ### Getting started ###

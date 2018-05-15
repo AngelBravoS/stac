@@ -20,17 +20,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-double bernouilli(float parametroP, unsigned short int probabilidad);
+double bernouilli(float parametroP, unsigned int probabilidad);
 
-double binomial(unsigned short int parametroN, float parametroP, 
-	unsigned short int probabilidad);
+double binomial(unsigned int parametroN, float parametroP, 
+	unsigned int probabilidad);
 
-double binomialNegativa(unsigned short int parametron, float parametroP, 
-	unsigned short int probabilidad);
+double binomialNegativa(unsigned int parametron, float parametroP, 
+	unsigned int probabilidad);
 
-double hipergeometrica(unsigned short int parametroN, unsigned short int parametron, 
-		unsigned short int parametror, unsigned short int probabilidad);
+double hipergeometrica(unsigned int parametroN, unsigned int parametron, 
+		unsigned int parametror, unsigned int probabilidad);
 
-double poisson(float parametroP, unsigned short int probabilidad);
+double poisson(float parametroP, unsigned int probabilidad);
 
-double geometrica(float parametroP, unsigned short int probabilidad);
+double geometrica(float parametroP, unsigned int probabilidad);

@@ -45,4 +45,4 @@ set(CMAKE_CXX_FLAGS "-ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual 
 
 set(CMAKE_CXX_FLAGS_DEBUG " -ggdb3 -DDEBUG")
 
-add_executable(stacPruebas ${lista_archivos})
+add_executable(stac ${lista_archivos})

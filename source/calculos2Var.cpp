@@ -55,6 +55,12 @@ double Calculos2Var::covarianza() {
 	return covarianza;
 }
 
+double Calculos2Var::coeficienteRegresion(int variable){
+	double resultado;
+	resultado = covarianza()/varianza(variable);
+	return resultado;
+}
+
 double Calculos2Var::coeficienteCorrelacion() {
 	double coeficienteCorrelacion;
 	coeficienteCorrelacion = (covarianza()) / (desviacionTipica(0) * desviacionTipica(1));

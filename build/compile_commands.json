@@ -1,0 +1,122 @@
+[
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/main.cpp.o -c /home/angel/codigo/kdevelop/stac/source/main.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/main.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/cli.cpp.o -c /home/angel/codigo/kdevelop/stac/source/cli.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/cli.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/textosMenus.cpp.o -c /home/angel/codigo/kdevelop/stac/source/textosMenus.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/textosMenus.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/vector.cpp.o -c /home/angel/codigo/kdevelop/stac/source/vector.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/vector.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/matriz.cpp.o -c /home/angel/codigo/kdevelop/stac/source/matriz.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/matriz.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/funcMatematicasBasicas.cpp.o -c /home/angel/codigo/kdevelop/stac/source/funcMatematicasBasicas.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/funcMatematicasBasicas.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/calculos1Var.cpp.o -c /home/angel/codigo/kdevelop/stac/source/calculos1Var.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/calculos1Var.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/calculos2Var.cpp.o -c /home/angel/codigo/kdevelop/stac/source/calculos2Var.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/calculos2Var.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/calculosIA.cpp.o -c /home/angel/codigo/kdevelop/stac/source/calculosIA.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/calculosIA.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/calculosNVar.cpp.o -c /home/angel/codigo/kdevelop/stac/source/calculosNVar.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/calculosNVar.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/calculosAlgebra.cpp.o -c /home/angel/codigo/kdevelop/stac/source/calculosAlgebra.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/calculosAlgebra.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/calculosMuestreo.cpp.o -c /home/angel/codigo/kdevelop/stac/source/calculosMuestreo.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/calculosMuestreo.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/combinatoria.cpp.o -c /home/angel/codigo/kdevelop/stac/source/combinatoria.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/combinatoria.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/distribucionesDiscretas.cpp.o -c /home/angel/codigo/kdevelop/stac/source/distribucionesDiscretas.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/distribucionesDiscretas.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/menu1Var.cpp.o -c /home/angel/codigo/kdevelop/stac/source/menu1Var.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/menu1Var.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/menu2Var.cpp.o -c /home/angel/codigo/kdevelop/stac/source/menu2Var.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/menu2Var.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/menuNVar.cpp.o -c /home/angel/codigo/kdevelop/stac/source/menuNVar.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/menuNVar.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/menuAlgebra.cpp.o -c /home/angel/codigo/kdevelop/stac/source/menuAlgebra.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/menuAlgebra.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/menuMuestreo.cpp.o -c /home/angel/codigo/kdevelop/stac/source/menuMuestreo.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/menuMuestreo.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/menuSinDatos.cpp.o -c /home/angel/codigo/kdevelop/stac/source/menuSinDatos.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/menuSinDatos.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/menuCombinatoria.cpp.o -c /home/angel/codigo/kdevelop/stac/source/menuCombinatoria.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/menuCombinatoria.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/menuIA.cpp.o -c /home/angel/codigo/kdevelop/stac/source/menuIA.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/menuIA.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/menuDistribDiscretas.cpp.o -c /home/angel/codigo/kdevelop/stac/source/menuDistribDiscretas.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/menuDistribDiscretas.cpp"
+},
+{
+  "directory": "/home/angel/codigo/kdevelop/stac/build",
+  "command": "/usr/bin/c++     -ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=athlon64 -std=gnu++14  -ggdb3 -DDEBUG   -o CMakeFiles/stac.dir/menuTablasCont.cpp.o -c /home/angel/codigo/kdevelop/stac/source/menuTablasCont.cpp",
+  "file": "/home/angel/codigo/kdevelop/stac/source/menuTablasCont.cpp"
+}
+]
