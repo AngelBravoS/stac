@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -35,17 +35,8 @@ void CLI::introduccion() {
 	std::cout << "             ║           STAC           ║" << '\n';
 	std::cout << "             ║        Estadística       ║" << '\n';
 	std::cout << "             ║   en línea de comandos   ║" << '\n';
-	std::cout << "             ║    Versión alpha 0.7.6   ║" << '\n';
 	std::cout << "             ╚══════════════════════════╝" << '\n';
-	std::cout << '\n';
-}
-
-void CLI::acercaDe() {
-	std::cout << '\n';
-	std::cout << "             ╔══════════════════════════╗" << '\n';
-	std::cout << "             ║       Escrito en c++     ║" << '\n';
-	std::cout << "             ║     Ángel Bravo Sáenz    ║" << '\n';
-	std::cout << "             ╚══════════════════════════╝" << '\n';
+	std::cout << "                                        ver 0.77" << '\n';
 	std::cout << '\n';
 }
 
@@ -132,7 +123,7 @@ void CLI::listadOpcionesMuestreo() {
 
 void CLI::listadOpciones1Variable() {
 	std::cout << '\n';
-	std::cout << "'1' Medidas descriptivas básicas" << '\n';
+	std::cout << "'1' Medidas estadísticas básicas" << '\n';
 	std::cout << "'2' Inferencia" << '\n';
 	std::cout << "'0' Volver al menú principal" << '\n';
 	std::cout << "> ";
@@ -140,8 +131,8 @@ void CLI::listadOpciones1Variable() {
 
 void CLI::listadOpciones2Variables() {
 	std::cout << '\n';
-	std::cout << "'1' medias y sumatorias" << '\n';
-	std::cout << "'2' medidas de dispersión" << '\n';
+	std::cout << "'1' Medidas estadísticas básicas" << '\n';
+	std::cout << "'2' Inferencia" << '\n';
 	std::cout << "'3' medidas de regresión" << '\n';
 	std::cout << "'0' Salir." << '\n';
 	std::cout << "> ";

@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -38,14 +38,20 @@ void Menu1Var::menuSecundario() {
 		std::cout << '\n';
 		switch(eleccionNivel2) {
 		case '1':
+			
+			std::cout << "sumatoria: " << variable.sumatoria(1) << '\n';
+			std::cout << "sumatoria al cuadrado: " << variable.sumatoria(2) << '\n';			
+			std::cout << '\n';
+			
 			std::cout << "Medidas de tendencia central" << '\n';
 			std::cout << "Media aritmética = " << variable.mediaAritmetica() << '\n';
 			std::cout << "Media geométrica = " << variable.mediaGeometrica() << '\n';
 			std::cout << "Media armónica = " << variable.mediaArmonica() << '\n';
 			std::cout << "Media cuadrática = " << variable.mediaCuadratica() << '\n';
 			std::cout << '\n';
+			
 			std::cout << "Medidas de dispersión" << '\n';
-			//std::cout << "Las diferencias respecto a la media son: " << variableX.difRespecMedia() << endl;
+			std::cout << "Diferencias respecto a la media al cuadrado: " << variable.difRespecMedia(2) << '\n';
 			std::cout << "Varianza = " << variable.varianza() << '\n';
 			std::cout << "Cuasivarianza = " << variable.cuasiVarianza() << '\n';
 			std::cout << "Desviación típica = " << variable.desviacionTipica() << '\n';

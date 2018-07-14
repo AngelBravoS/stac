@@ -22,9 +22,9 @@
 
 #include <iostream>
 #include "cli.hpp"
-#include "calculosNVar.hpp"
+#include "menuNVar.hpp"
 
-void CLI::menuNVar() {
+void MenuNVar::menuSecundario() {
 	char eleccionNivel2;
 	std::cout << "'1' Funciones de estadística descriptiva n-dimensional." << '\n';
 	std::cout << "'2' Análisis de tablas de contingencia."  << '\n';

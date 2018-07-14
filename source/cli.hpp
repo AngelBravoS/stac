@@ -39,7 +39,6 @@ class CLI {
 		void hasElegido();
 		//======== subfunciones de menu ========
 		void menuPrincipal();
-		void menuNVar();
 		void menuSinDatos();
 		void menuTablasCont();
 		//======== funciones especificas de cada submenu ========

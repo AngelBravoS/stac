@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -32,45 +32,49 @@ void Menu2Var::menuSecundario() {
 	std::cout << '\n';
 	do {
 		listadOpciones2Variables();
-		std::cin >> eleccionNivel2;		
+		std::cin >> eleccionNivel2;
 		std::cout << "Variables X e Y:" << '\n';
 		variables.mostrarMatriz();
 		std::cout << '\n';
 		switch(eleccionNivel2) {
-			case '1':
-				//medidas de tendencia Central
-				std::cout << "Media aritmética de X = " << variables.mediaAritmetica(0) << '\n';
-				std::cout << "Media aritmética de Y = " << variables.mediaAritmetica(1) << '\n';
-				std::cout << "Sumatoria de X = " << variables.calculoSumatoria(0,1) << '\n';
-				std::cout << "Sumatoria de X^2 = " << variables.calculoSumatoria(0,2) << '\n';
-				std::cout << "Sumatoria de Y = " << variables.calculoSumatoria(1,1) << '\n';
-				std::cout << "Sumatoria de Y^2 = " << variables.calculoSumatoria(1,2) << '\n';
-				std::cout << "Sumatoria de X e Y = " << variables.sumatoria2Var(0,1,1,1) << '\n';
-				break;
-			case '2':
-				//std::cout << "Las diferencias respecto a la media son: " << variablesXeY.difRespecMedia() << endl;
-				std::cout << "Varianza de X = " << variables.varianza(0) << '\n';
-				std::cout << "Varianza de Y = " << variables.varianza(1) << '\n';
-				std::cout << "Desviación típica de X = " << variables.desviacionTipica(0) << '\n';
-				std::cout << "Desviación típica de Y = " << variables.desviacionTipica(1) << '\n';
-				std::cout << "Covarianza de X e Y = " << variables.covarianza() << '\n';
-				break;
-			case '3':
-				// regresión y correlación
-				std::cout << "Regresión" << '\n';
-				std::cout << "	Rectas de regresión:" << '\n';
-				std::cout << "		Recta de Y sobre X: " << '\n';
-				std::cout << "		Recta de X sobre Y: " << '\n';
-				std::cout << "	Coeficientes de regresión:" << '\n';
-				std::cout << "		Coeficiente de Y sobre X: " << variables.coeficienteRegresion(0) << '\n';
-				std::cout << "		Coeficiente de X sobre Y: " << variables.coeficienteRegresion(1) << '\n';
-				std::cout << "Correlación" << '\n';
-				//std::cout << "" << '\n';
-				/*std::cout << " = " << variables. << '\n';
-				std::cout << " = " << variables. << '\n';
-				std::cout << " = " << variables. << '\n';
-				std::cout << " = " << variables. << '\n';*/
-				break;
+		case '1':
+			//medidas de tendencia Central
+			std::cout << "Medidas de tendencia Central" << '\n';
+			std::cout << "Media aritmética de X = " << variables.mediaAritmetica(0) << '\n';
+			std::cout << "Media aritmética de Y = " << variables.mediaAritmetica(1) << '\n';
+			std::cout << "Sumatoria de X = " << variables.calculoSumatoria(0, 1) << '\n';
+			std::cout << "Sumatoria de X^2 = " << variables.calculoSumatoria(0, 2) << '\n';
+			std::cout << "Sumatoria de Y = " << variables.calculoSumatoria(1, 1) << '\n';
+			std::cout << "Sumatoria de Y^2 = " << variables.calculoSumatoria(1, 2) << '\n';
+			std::cout << "Sumatoria de X e Y = " << variables.sumatoria2Var(0, 1, 1, 1) << '\n';
+			std::cout << "Medidas de dispersión" << '\n';
+			std::cout << "Varianza de X = " << variables.varianza(0) << '\n';
+			std::cout << "Varianza de Y = " << variables.varianza(1) << '\n';
+			std::cout << "Desviación típica de X = " << variables.desviacionTipica(0) << '\n';
+			std::cout << "Desviación típica de Y = " << variables.desviacionTipica(1) << '\n';
+			std::cout << "Covarianza de X e Y = " << variables.covarianza() << '\n';			
+			break;
+		case '2':
+			//std::cout << "Las diferencias respecto a la media son: " << variablesXeY.difRespecMedia() << endl;
+
+			break;
+		case '3':
+			// regresión y correlación
+			std::cout << "Regresión" << '\n';
+			std::cout << "	Rectas de regresión:" << '\n';
+			std::cout << "		Recta de Y sobre X: y = " << variables.coeficienteRegresion(0) << "x" << " + (" << variables.rectaRegresion(0) + variables.mediaAritmetica(1) << ")" << '\n';
+			std::cout << "		Recta de X sobre Y: x = " << variables.coeficienteRegresion(1) << "y" << " + (" << variables.rectaRegresion(1) + variables.mediaAritmetica(0) << ")" << '\n';
+			std::cout << "	Coeficientes de regresión:" << '\n';
+			std::cout << "		Coeficiente de Y sobre X: " << variables.coeficienteRegresion(0) << '\n';
+			std::cout << "		Coeficiente de X sobre Y: " << variables.coeficienteRegresion(1) << '\n';
+			std::cout << "Correlación" << '\n';
+			std::cout << "Coeficiente de correlación lineal: " << variables.coeficienteCorrelacion()<<'\n';
+			//std::cout << "" << '\n';
+			/*std::cout << " = " << variables. << '\n';
+			std::cout << " = " << variables. << '\n';
+			std::cout << " = " << variables. << '\n';
+			std::cout << " = " << variables. << '\n';*/
+			break;
 		}
 	} while(eleccionNivel2 != '0');
 	//variables.destructorVector();
@@ -82,4 +86,3 @@ unsigned int Menu2Var::tamanoColumna() {
 	std::cin >> col;
 	return col;
 }
-

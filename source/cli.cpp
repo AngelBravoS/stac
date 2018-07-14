@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -24,6 +24,7 @@
 #include "cli.hpp"
 #include "menu1Var.hpp"
 #include "menu2Var.hpp"
+#include "menuNVar.hpp"
 #include "menuAlgebra.hpp"
 #include "menuMuestreo.hpp"
 #include <iostream>
@@ -60,7 +61,8 @@ void CLI::menuPrincipal() {
 				break;
 			}
 			case 'n' : {
-				menuNVar();
+				MenuNVar multivariante;
+				multivariante.menuSecundario();
 				break;
 			}
 			case 'a' : {

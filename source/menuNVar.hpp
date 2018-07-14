@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -20,24 +20,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _CALCULOS2VAR_HPP_
-#define _CALCULOS2VAR_HPP_
+#ifndef _MENUNVAR_HPP_
+#define _MENUNVAR_HPP_
 
-
+#include "cli.hpp"
 #include "calculosNVar.hpp"
+#include<fstream>
 
-class Calculos2Var : public CalculosNVar {
+class MenuNVar : public CLI {
+		//Obtener = Get
+		//Establecer = Set
 	public:
-		//======== constructor ======== 
-		Calculos2Var(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
-		//-------- funciones especificas de 2 variables --------
-		double sumatoria2Var ( int variableX, int variableY, int exponenteX, int exponenteY );
-		double covarianza();
-		double coeficienteCorrelacion();
-		double distanciaEuclidea();
-		double coeficienteRegresion(int variable);
-		double rectaRegresion(int variable);
-		//double ecm(double variableDependiente, double variableIndependiente);
+		//Calculos2Var variableXeY(bool, unsigned int, unsigned int);
+		//========  funciones de muestreo ======== 
+		void menuSecundario();
+		unsigned int tamanoColumna();
 };
 
-#endif /* _CALCULOS2VAR_HPP_ */
+#endif /* _MENUNVAR_HPP_ */

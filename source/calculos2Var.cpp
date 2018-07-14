@@ -28,7 +28,7 @@
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
-Calculos2Var::Calculos2Var (bool archivo, unsigned int longitudFila, unsigned int longitudColumna){
+Calculos2Var::Calculos2Var(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
 	leerDesdeArchivo = archivo;
 	fila = longitudFila;
 	columna = longitudColumna;
@@ -49,23 +49,36 @@ double Calculos2Var::sumatoria2Var(int variableX, int variableY, int exponenteX,
 
 double Calculos2Var::covarianza() {
 	unsigned int n = columna;
-	double covarianza = 0;
-	covarianza += (sumatoria2Var(0, 1, 1, 1));
-	covarianza = (covarianza / n) - (mediaAritmetica(0) * mediaAritmetica(1));
-	return covarianza;
-}
-
-double Calculos2Var::coeficienteRegresion(int variable){
-	double resultado;
-	resultado = covarianza()/varianza(variable);
+	double resultado = 0;
+	resultado += (sumatoria2Var(0, 1, 1, 1));
+	resultado = (resultado / n) - (mediaAritmetica(0) * mediaAritmetica(1));
 	return resultado;
 }
 
-double Calculos2Var::coeficienteCorrelacion() {
-	double coeficienteCorrelacion;
-	coeficienteCorrelacion = (covarianza()) / (desviacionTipica(0) * desviacionTipica(1));
-	return coeficienteCorrelacion;
+//Regresión
+
+double Calculos2Var::coeficienteRegresion(int variable) {
+	double resultado;
+	resultado = covarianza() / varianza(variable);
+	return resultado;
 }
+
+double Calculos2Var::rectaRegresion(int variable) {
+	double resultado = 0;
+	resultado = -1 * mediaAritmetica(variable) * coeficienteRegresion(variable);
+	return resultado;
+
+}
+
+//Correlación
+
+double Calculos2Var::coeficienteCorrelacion() {
+	double resultado;
+	resultado = (covarianza()) / (desviacionTipica(0) * desviacionTipica(1));
+	return resultado;
+}
+
+//Distancias
 
 double Calculos2Var::distanciaEuclidea() {
 	double distanciaEuclidea = 0;
