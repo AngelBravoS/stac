@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -27,7 +27,7 @@
 void CLI::menuSinDatos() {
 	char eleccionNivel2;
 	std::cout << "'1' Combinatoria." << '\n';
-	std::cout << "'2' Inteligencia artificial."  << '\n';
+	std::cout << "'2' Investigación operativa e inteligencia artificial."  << '\n';
 	std::cout << "'3' Distribuciones de probabilidad discretas." << '\n';
 	std::cout << "'0' Salir." << '\n';
 	std::cout << "> ";

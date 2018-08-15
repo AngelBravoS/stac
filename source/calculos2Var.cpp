@@ -34,8 +34,8 @@ Calculos2Var::Calculos2Var(bool archivo, unsigned int longitudFila, unsigned int
 	columna = longitudColumna;
 }
 
-//-----Pide un exponente para poder hacer cosumatorias de cuadrados, cubos, etc, sin necesitar otro método-----//
-//-----recibe el exponente de cada variable así como su índice dentro de la matriz (0, 1, 2...)-----//
+//-----Pide un exponente para poder hacer cosumatorias de cuadrados, cubos, etc, sin necesitar otro método
+//-----recibe el exponente de cada variable así como su índice dentro de la matriz (0, 1, 2...)
 //-----como las dos variables tienen la misma longitud (vector[0].length = vector[1].length) y solo hay que indicar
 //-----una de ellas, se elige la primera.
 double Calculos2Var::sumatoria2Var(int variableX, int variableY, int exponenteX, int exponenteY) {
@@ -55,22 +55,23 @@ double Calculos2Var::covarianza() {
 	return resultado;
 }
 
-//Regresión
+double Calculos2Var::rectaRegresion(int variable) {
+	double resultado = 0;
+	resultado = -1 * mediaAritmetica(variable) * coeficienteRegresion(variable);
+	return resultado;
+}
+
+double Calculos2Var::curvaRegresion(int variable) {
+	double resultado = 0;
+	resultado = -1 * mediaAritmetica(variable) * coeficienteRegresion(variable);
+	return resultado;
+}
 
 double Calculos2Var::coeficienteRegresion(int variable) {
 	double resultado;
 	resultado = covarianza() / varianza(variable);
 	return resultado;
 }
-
-double Calculos2Var::rectaRegresion(int variable) {
-	double resultado = 0;
-	resultado = -1 * mediaAritmetica(variable) * coeficienteRegresion(variable);
-	return resultado;
-
-}
-
-//Correlación
 
 double Calculos2Var::coeficienteCorrelacion() {
 	double resultado;

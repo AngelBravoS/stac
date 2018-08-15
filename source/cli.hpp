@@ -1,4 +1,4 @@
-/***************************************************************************														*
+/***************************************************************************
  *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
  *   angelbravosaenz@gmail.com                                             *
  *                                                                         *
@@ -44,6 +44,7 @@ class CLI {
 		//======== funciones especificas de cada submenu ========
 		void menuInferencia();
 		void menuCombinatoria();
+		void menuColas();
 		void menuDistribDiscreta();
 		//======== Entrada/Salida vectores ========
 		bool desdeArchivoOTeclado();

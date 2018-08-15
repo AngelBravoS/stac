@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -19,7 +19,6 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
 #include <iostream>
 #include "calculosAlgebra.hpp"
 
@@ -52,7 +51,7 @@ double  CalculosAlgebra::determinante() {
 			                matriz[0][0] * matriz[1][2] * matriz[2][1]);
 			break;
 		default :
-			std::cout << "Determinantes de orden >3 aún no disponible." << endl;
+			std::cout << "Determinantes de orden >3 aún no disponible." << '\n';
 			break;
 	}
 	return determinante;

@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -23,7 +23,6 @@
 #ifndef _CALCULOS2VAR_HPP_
 #define _CALCULOS2VAR_HPP_
 
-
 #include "calculosNVar.hpp"
 
 class Calculos2Var : public CalculosNVar {
@@ -33,10 +32,14 @@ class Calculos2Var : public CalculosNVar {
 		//-------- funciones especificas de 2 variables --------
 		double sumatoria2Var ( int variableX, int variableY, int exponenteX, int exponenteY );
 		double covarianza();
-		double coeficienteCorrelacion();
-		double distanciaEuclidea();
-		double coeficienteRegresion(int variable);
+		
 		double rectaRegresion(int variable);
+		double curvaRegresion(int variable);
+		double coeficienteRegresion(int variable);
+		
+		double coeficienteCorrelacion();		
+		
+		double distanciaEuclidea();
 		//double ecm(double variableDependiente, double variableIndependiente);
 };
 

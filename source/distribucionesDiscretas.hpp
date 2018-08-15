@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -20,17 +20,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-double bernouilli(float parametroP, unsigned int probabilidad);
+#include "funcMatematicasBasicas.hpp"
 
-double binomial(unsigned int parametroN, float parametroP, 
-	unsigned int probabilidad);
+double poisson ( float p, unsigned int probabilidad );
 
-double binomialNegativa(unsigned int parametron, float parametroP, 
-	unsigned int probabilidad);
+double bernouilli ( float p, unsigned int probabilidad );
+double binomial ( unsigned int N, float p,
+                  unsigned int probabilidad );
+double binomialNegativa ( unsigned int n, float p,
+                          unsigned int probabilidad );
+double hipergeometrica ( unsigned int N, unsigned int n,
+                         unsigned int r, unsigned int probabilidad );
 
-double hipergeometrica(unsigned int parametroN, unsigned int parametron, 
-		unsigned int parametror, unsigned int probabilidad);
-
-double poisson(float parametroP, unsigned int probabilidad);
-
-double geometrica(float parametroP, unsigned int probabilidad);
+double geometrica ( float p, unsigned int probabilidad );
+double multinomial ( unsigned int n, float p,
+                     unsigned int probabilidad );

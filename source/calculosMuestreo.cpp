@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -157,7 +157,7 @@ void CalculosMuestreo::leerDatosDesdeArchivo() {
 void CalculosMuestreo::desagrupar() {
 	double n;
 	int x = 0; //entender por qué así funciona.
-	double totalElementos = calculoSumatoria(1, 1);
+	double totalElementos = sumatoria(1, 1);
 	filaB = 5;
 	columnaB = convierteDoubleEnInt(totalElementos);
 	crearMatrizVaciaB();

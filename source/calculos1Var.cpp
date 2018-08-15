@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -27,15 +27,13 @@
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
-using namespace std;
-typedef unsigned short int unShortInt;
 
 Calculos1Var::Calculos1Var (bool archivo, unsigned int tamano){
 	leerDesdeArchivo = archivo;
 	longitudVector = tamano;
 }
 
-double  Calculos1Var::sumatoria(unsigned short int exponente) {
+double  Calculos1Var::sumatoria(unsigned int exponente) {
 	unsigned int n = longitudVector;
 	double sumatoria = 0;
 	for(unsigned int i = 0; i < n; i++) {
@@ -174,7 +172,7 @@ double Calculos1Var::norma() {
 
 double Calculos1Var::media1MuestraSigmaConocida() {
 	double resultado = 0;
-	std::cout << "ok."<<endl;
+	std::cout << "ok."<< '\n';
 	return resultado;
 
 }

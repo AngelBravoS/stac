@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -28,13 +28,17 @@
 class CalculosNVar : public Matriz {
 
 	public:
+		/*
 		//========  getters & setters ======== 
 		double getSumatoria();
 		void setSumatoria ( double sumatoria );	
 		double getVarianza();
-		void setVarianza ( double varianzaPublica );	
+		void setVarianza ( double varianzaPublica );	*/
+		//======== constructor ======== 
+		CalculosNVar();
+		CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
 		//========  funciones de estadística descriptiva ======== 
-		double calculoSumatoria ( int indiceVariable, short unsigned int exponente );
+		double sumatoria ( int indiceVariable, short unsigned int exponente );
 		double total (int indiceVariable);
 		double mediaAritmetica ( int indiceVariable );
 		double mediaGeometrica ( int indiceVariable ) ;
@@ -53,8 +57,8 @@ class CalculosNVar : public Matriz {
 		//========  funciones de tablas de contingencia ========
 		
 	protected:
-		double sumatoria;
-		double media;
+		//double sumatoria;
+		//double media;
 		//double varianza;
 		//double cuasiVarianza;
 };

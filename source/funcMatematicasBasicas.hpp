@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -21,7 +21,9 @@
  ***************************************************************************/
 
 double factorial(double n);
-double potencia(double numero, unsigned short int potencia);
+double potencia(double numero, unsigned int potencia);
 double potenciaDouble(double numero, double potencia);
 double binomio(double a, double b);
+double e();
 unsigned int convierteDoubleEnInt (double doble);
+float convierteIntEnFloat(unsigned int entero);

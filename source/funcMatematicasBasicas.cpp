@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -20,18 +20,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-//#include <math.h>
-
-//----- Pide un exponente para poder hacer sumatorias de cuadrados,
-// cubos, etc, sin necesitar otro método-----//
-/*double sumatoria(int exponente, int n) {
-	double sumatoria = 0;
-    for (short int i = 0; i < n; i++) {
-		sumatoria = sumatoria + Math.pow(vector[indiceVariable][j], exponente);
-     }
-    return sumatoria;
-}*/
-
 double factorial(double n) {
 	if(n == 0) {
 		// Aseguramos que tenga salida siempre
@@ -42,12 +30,12 @@ double factorial(double n) {
 	}
 }
 
-double potencia(double numero, unsigned short int  potencia) {
+double potencia(double numero, unsigned int  potencia) {
 	double temporal = numero;
 	if(potencia == 0) {
 		numero = 1;
 	} else {
-		for(unsigned short int x = 1; x < potencia; x++) {
+		for(unsigned int x = 1; x < potencia; x++) {
 			numero *= temporal;
 		}
 	}
@@ -66,7 +54,23 @@ double binomio(double n, double k) {
 	return resultado;
 }
 
+double e (){
+	double resultado, producto;
+	resultado = 1;
+	producto = 1;
+	for (unsigned int i = 1; i <= 17; i++) {
+		producto *= i;
+		resultado += 1/producto;
+	}
+	return resultado;
+}
+
 unsigned int convierteDoubleEnInt(double doble) {
 	unsigned int valorEntero = static_cast<unsigned int>(doble);
 	return valorEntero;
+}
+
+float convierteIntEnFloat(unsigned int entero) {
+	float valorFloat = static_cast<float>(entero);
+	return valorFloat;
 }

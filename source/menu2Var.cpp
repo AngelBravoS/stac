@@ -38,21 +38,21 @@ void Menu2Var::menuSecundario() {
 		std::cout << '\n';
 		switch(eleccionNivel2) {
 		case '1':
-			//medidas de tendencia Central
 			std::cout << "Medidas de tendencia Central" << '\n';
-			std::cout << "Media aritmética de X = " << variables.mediaAritmetica(0) << '\n';
-			std::cout << "Media aritmética de Y = " << variables.mediaAritmetica(1) << '\n';
-			std::cout << "Sumatoria de X = " << variables.calculoSumatoria(0, 1) << '\n';
-			std::cout << "Sumatoria de X^2 = " << variables.calculoSumatoria(0, 2) << '\n';
-			std::cout << "Sumatoria de Y = " << variables.calculoSumatoria(1, 1) << '\n';
-			std::cout << "Sumatoria de Y^2 = " << variables.calculoSumatoria(1, 2) << '\n';
-			std::cout << "Sumatoria de X e Y = " << variables.sumatoria2Var(0, 1, 1, 1) << '\n';
+			std::cout << "	Media aritmética de X = " << variables.mediaAritmetica(0) << '\n';
+			std::cout << "	Media aritmética de Y = " << variables.mediaAritmetica(1) << '\n';
+			std::cout << "	Sumatoria de X = " << variables.sumatoria(0, 1) << '\n';
+			std::cout << "	Sumatoria de X^2 = " << variables.sumatoria(0, 2) << '\n';
+			std::cout << "	Sumatoria de Y = " << variables.sumatoria(1, 1) << '\n';
+			std::cout << "	Sumatoria de Y^2 = " << variables.sumatoria(1, 2) << '\n';
+			std::cout << "	Sumatoria de X e Y = " << variables.sumatoria2Var(0, 1, 1, 1) << '\n';
+			std::cout << '\n';
 			std::cout << "Medidas de dispersión" << '\n';
-			std::cout << "Varianza de X = " << variables.varianza(0) << '\n';
-			std::cout << "Varianza de Y = " << variables.varianza(1) << '\n';
-			std::cout << "Desviación típica de X = " << variables.desviacionTipica(0) << '\n';
-			std::cout << "Desviación típica de Y = " << variables.desviacionTipica(1) << '\n';
-			std::cout << "Covarianza de X e Y = " << variables.covarianza() << '\n';			
+			std::cout << "	Varianza de X = " << variables.varianza(0) << '\n';
+			std::cout << "	Varianza de Y = " << variables.varianza(1) << '\n';
+			std::cout << "	Desviación típica de X = " << variables.desviacionTipica(0) << '\n';
+			std::cout << "	Desviación típica de Y = " << variables.desviacionTipica(1) << '\n';
+			std::cout << "	Covarianza de X e Y = " << variables.covarianza() << '\n';			
 			break;
 		case '2':
 			//std::cout << "Las diferencias respecto a la media son: " << variablesXeY.difRespecMedia() << endl;

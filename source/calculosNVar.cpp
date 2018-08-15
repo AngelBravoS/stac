@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -31,15 +31,23 @@
 using namespace std;
 typedef unsigned short int unShortInt;
 
-double CalculosNVar::getSumatoria() {
-	return sumatoria;
+CalculosNVar::CalculosNVar() {
 	}
+	
+CalculosNVar::CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
+	leerDesdeArchivo = archivo;
+	fila = longitudFila;
+	columna = longitudColumna;
+}
 
+	
+/*
 void CalculosNVar::setSumatoria ( double sumatoriaPublica ) {
 	sumatoria = sumatoriaPublica;
 	}	
+*/
 
-double  CalculosNVar::calculoSumatoria(int indiceVariable, unsigned short int exponente) {
+double  CalculosNVar::sumatoria(int indiceVariable, unsigned short int exponente) {
 	unsigned int n = columna;
 	double resultado = 0;
 	for(unsigned int j = 0; j < n; j++) {
@@ -58,7 +66,7 @@ double  CalculosNVar::total(int indiceVariable) {
 double  CalculosNVar::mediaAritmetica(int indiceVariable) {
 	unsigned int n = columna;
 	double resultado = 0;
-	resultado = (calculoSumatoria(indiceVariable, 1) / n);
+	resultado = (sumatoria(indiceVariable, 1) / n);
 	return resultado;
 }
 
@@ -85,7 +93,7 @@ double CalculosNVar::mediaArmonica(int indiceVariable) {
 double CalculosNVar::mediaCuadratica(int indiceVariable) {
 	unsigned int n = columna;
 	double mediaCuadratica;
-	mediaCuadratica = calculoSumatoria(indiceVariable, 2) * (1.0 / n);
+	mediaCuadratica = sumatoria(indiceVariable, 2) * (1.0 / n);
 	mediaCuadratica = sqrt(mediaCuadratica);
 	return mediaCuadratica;
 }

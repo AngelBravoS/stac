@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -24,20 +24,20 @@
 #include "funcMatematicasBasicas.hpp"
 
 class CalculosIA : public Vector {
-	public:
-		//======== constructor ======== 
-		CalculosIA ();
-		//========  Generadores Congruenciales ========
-		unsigned int congruencialMixto(unsigned int a, unsigned int b,
-		                               unsigned int m, unsigned int X0);
-		unsigned int congruencialMultip(unsigned int a, unsigned int m,
-		                                unsigned int X0);
+    public:
+    //======== constructor ========
+    CalculosIA ();
+    //========  Generadores Congruenciales ========
+    unsigned int congruencialMixto ( unsigned int a, unsigned int b,
+                                     unsigned int m, unsigned int X0 );
+    unsigned int congruencialMultip ( unsigned int a, unsigned int m,
+                                      unsigned int X0 );
 
-		//========  funciones XXXX ========
-		void crearSecuenciaMixto(unsigned int a, unsigned int b,
-		                         unsigned int m, unsigned int X0);
-		void crearSecuenciaMultip(unsigned int a, unsigned int m, unsigned int X0);
-		unsigned int periodo();
-	protected:
-		unsigned int *vector;
+    //========  funciones XXXX ========
+    void crearSecuenciaMixto ( unsigned int a, unsigned int b,
+                               unsigned int m, unsigned int X0 );
+    void crearSecuenciaMultip ( unsigned int a, unsigned int m, unsigned int X0 );
+    unsigned int periodo();
+    protected:
+    unsigned int *vector;
 };

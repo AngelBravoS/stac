@@ -1,7 +1,7 @@
-/***************************************************************************														*
- *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
- *   angelbravosaenz@gmail.com  															*
- *																									*
+/***************************************************************************
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
+ *   angelbravosaenz@gmail.com                                             *
+ *                                                                         *
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -45,8 +45,8 @@ void MenuMuestreo::menuSecundario() {
 	std::cout << "cosas:" << '\n';
 	muestra.mostrarMatrizB();
 	std::cout << '\n';
-	muestra.setSumatoriaXi(muestra.calculoSumatoria(0, 1));
-	muestra.setSumatoriaXi2(muestra.calculoSumatoria(0, 2));	
+	muestra.setSumatoriaXi(muestra.sumatoria(0, 1));
+	muestra.setSumatoriaXi2(muestra.sumatoria(0, 2));	
 	std::cout << "∑Xi = " << muestra.getSumatoriaXi();
 	std::cout << ", ∑Xi^2 = " << muestra.getSumatoriaXi2();
 	std::cout << ", media  = " << muestra.mediaAritmetica(0) << '\n';
