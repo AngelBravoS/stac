@@ -28,8 +28,8 @@
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
-using namespace std;
-typedef unsigned short int unShortInt;
+//using namespace std;
+//typedef unsigned short int unShortInt;
 
 CalculosNVar::CalculosNVar() {
 	}
@@ -40,14 +40,7 @@ CalculosNVar::CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int
 	columna = longitudColumna;
 }
 
-	
-/*
-void CalculosNVar::setSumatoria ( double sumatoriaPublica ) {
-	sumatoria = sumatoriaPublica;
-	}	
-*/
-
-double  CalculosNVar::sumatoria(int indiceVariable, unsigned short int exponente) {
+double  CalculosNVar::sumatoria (int indiceVariable, unsigned short int exponente) {
 	unsigned int n = columna;
 	double resultado = 0;
 	for(unsigned int j = 0; j < n; j++) {
@@ -66,7 +59,7 @@ double  CalculosNVar::total(int indiceVariable) {
 double  CalculosNVar::mediaAritmetica(int indiceVariable) {
 	unsigned int n = columna;
 	double resultado = 0;
-	resultado = (sumatoria(indiceVariable, 1) / n);
+	resultado = ( sumatoria (indiceVariable, 1) / n);
 	return resultado;
 }
 
@@ -93,7 +86,7 @@ double CalculosNVar::mediaArmonica(int indiceVariable) {
 double CalculosNVar::mediaCuadratica(int indiceVariable) {
 	unsigned int n = columna;
 	double mediaCuadratica;
-	mediaCuadratica = sumatoria(indiceVariable, 2) * (1.0 / n);
+	mediaCuadratica = sumatoria (indiceVariable, 2) * (1.0 / n);
 	mediaCuadratica = sqrt(mediaCuadratica);
 	return mediaCuadratica;
 }

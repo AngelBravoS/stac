@@ -28,32 +28,6 @@
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
-double CalculosMuestreo::getSumatoriaXi() {
-	return sumatoriaXi;
-}
-
-void CalculosMuestreo::setSumatoriaXi(double sumatoriaXiPublica) {
-	sumatoriaXi = sumatoriaXiPublica;
-}
-
-double CalculosMuestreo::getSumatoriaXi2() {
-	return sumatoriaXi2;
-}
-
-void CalculosMuestreo::setSumatoriaXi2(double sumatoriaXi2Publica) {
-	sumatoriaXi2 = sumatoriaXi2Publica;
-}
-
-/*
-double CalculosMuestreo::getMedia() {
-	return media;
-}
-
-void CalculosMuestreo::setMedia(double mediaPublica) {
-	media = mediaPublica;
-}*/
-
-
 CalculosMuestreo::CalculosMuestreo(bool archivo, char muestreo, unsigned int longitudFila, unsigned int longitudColumna, bool datosAgrupados) {
 	tipoMuestreo = muestreo;
 	leerDesdeArchivo = archivo;
@@ -94,7 +68,7 @@ void CalculosMuestreo::asignar() {
 	}
 }
 
-void CalculosMuestreo::desdeDondeLeeMatriz() {
+void CalculosMuestreo::desdeDondeLeeDatos() {
 	crearMatrizVacia();
 	if(leerDesdeArchivo == true) {
 		verificarArchivo();
@@ -107,7 +81,7 @@ void CalculosMuestreo::desdeDondeLeeMatriz() {
 void CalculosMuestreo::leerDatosDesdeArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
-	int n = columna;
+	int unsigned n = columna;
 	double prob = (double) n;
 	if(agrupados == true) {
 		if(probIguales == true) { // Probabilidades iguales y datos agrupados
@@ -118,10 +92,10 @@ void CalculosMuestreo::leerDatosDesdeArchivo() {
 				i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
 				j = j % n; //se asegura que esté entre 0 y N-1
 			}
-			for(int k = 0; k < n; k++) {
+			for(unsigned int k = 0; k < n; k++) {
 				matriz[2][k] = 1 / prob;
 			}
-			//desagrupar();
+			desagrupar();
 		} else {// Probabilidades desiguales y datos agrupados
 			unsigned int i = 0, j = 0;
 			while(!archivo.eof()) {
@@ -134,7 +108,7 @@ void CalculosMuestreo::leerDatosDesdeArchivo() {
 		}
 	} else {
 		if(probIguales == true) { //Probabilidades iguales y datos desagrupados
-			for(int j = 0; j < n; j++) {
+			for(unsigned int j = 0; j < n; j++) {
 				archivo >> matriz[0][j];
 				matriz[1][j] = 1;
 				matriz[2][j] = 1 / prob;
@@ -157,7 +131,7 @@ void CalculosMuestreo::leerDatosDesdeArchivo() {
 void CalculosMuestreo::desagrupar() {
 	double n;
 	int x = 0; //entender por qué así funciona.
-	double totalElementos = sumatoria(1, 1);
+	double totalElementos = sumatoria (1, 1);
 	filaB = 5;
 	columnaB = convierteDoubleEnInt(totalElementos);
 	crearMatrizVaciaB();
@@ -181,7 +155,7 @@ void CalculosMuestreo::desagrupar() {
 }
 
 void CalculosMuestreo::leerDatosDesdeTeclado() {
-	int n = columna;
+	unsigned int n = columna;
 	double prob = (double) n;
 	for(unsigned int j = 0; j < columna; j++) {
 		std::cout << "Elemento " << j + 1 << " de la muestra: ";
@@ -211,14 +185,14 @@ void CalculosMuestreo::leerDatosDesdeTeclado() {
 }
 // añade ∑Xi Y ∑Xi2
 void CalculosMuestreo::incorporarXiYXi2() {
-	int i = fila;
+	unsigned int i = fila;
 	for(unsigned int j = 0; j < columna; j++) {
 		matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
 		matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
 	}
 }
 
-double CalculosMuestreo::estimador() {
+/*double CalculosMuestreo::media() {
 	double resultado = 0;
 	switch(tipoMuestreo) {
 		case '1' :
@@ -233,7 +207,7 @@ double CalculosMuestreo::estimador() {
 			break;
 	}
 	return resultado;
-}
+}*/
 
 double CalculosMuestreo::calculoIC() {
 	double resultado = 0;

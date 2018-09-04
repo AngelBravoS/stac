@@ -27,7 +27,9 @@
 void MenuMuestreo::menuSecundario() {
 	char respuesta, tipoDeMuestreo;
 	bool agrupados;
-	var = 1;
+	unsigned int longitudFila;
+	longitudFila = 3;
+	//var = 1;
 	listadOpcionesMuestreo();
 	std::cin >> tipoDeMuestreo;
 	std::cout << '\n';
@@ -35,7 +37,7 @@ void MenuMuestreo::menuSecundario() {
 	std::cout << "s/n:";
 	std::cin >> respuesta;
 	respuesta == 's' ? agrupados = true : agrupados = false;
-	CalculosMuestreo muestra(desdeArchivoOTeclado(), tipoDeMuestreo, 3, tamanoColumna(agrupados), agrupados);
+	CalculosMuestreo muestra(desdeArchivoOTeclado(), tipoDeMuestreo, longitudFila, longitudColumna (agrupados), agrupados);
 	muestra.asignar();
 	muestra.desdeDondeLeeMatriz();
 	std::cout << '\n';
@@ -45,17 +47,15 @@ void MenuMuestreo::menuSecundario() {
 	std::cout << "cosas:" << '\n';
 	muestra.mostrarMatrizB();
 	std::cout << '\n';
-	muestra.setSumatoriaXi(muestra.sumatoria(0, 1));
-	muestra.setSumatoriaXi2(muestra.sumatoria(0, 2));	
-	std::cout << "∑Xi = " << muestra.getSumatoriaXi();
-	std::cout << ", ∑Xi^2 = " << muestra.getSumatoriaXi2();
+	std::cout << "∑Xi = " << muestra.sumatoria(0, 1);
+	std::cout << ", ∑Xi^2 = " << muestra.sumatoria(0, 2);
 	std::cout << ", media  = " << muestra.mediaAritmetica(0) << '\n';
 	std::cout << ", cuasiVarianza  = " << muestra.cuasiVarianza(0) << '\n';
-	std::cout << ", total = " << muestra.total(0) << '\n';
+	//std::cout << ", total = " << muestra.total(0) << '\n';
 	std::cout << '\n';
 }
 
-unsigned int MenuMuestreo::tamanoColumna(bool agrupados) {
+unsigned int MenuMuestreo::longitudColumna (bool agrupados) {
 	unsigned int columna;
 	if(agrupados == true) {
 		std::cout << "Número de datos distintos que contiene la muestra: ";

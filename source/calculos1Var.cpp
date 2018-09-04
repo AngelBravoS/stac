@@ -135,7 +135,7 @@ double Calculos1Var::coeficienteAsimetriaFisher() {
 
 double Calculos1Var::curtosis() {
 	double curtosis;
-	int n =  longitudVector;
+	unsigned int n =  longitudVector;
 	curtosis = ((difRespecMedia(4) / ((n - 1) * pow(cuasiDesviacionTipica(), 4))));
 	//curtosis = curtosis -3;
 	return curtosis;

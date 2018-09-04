@@ -30,7 +30,7 @@ class MenuMuestreo : public CLI {
 	public:
 		//========  funciones de muestreo ======== 
 		void menuSecundario();
-		unsigned int tamanoColumna(bool agrupados);
+		unsigned int longitudColumna (bool agrupados);
 		char tipoDeMuestreo();
 		void crearMuestra();
 		void mostrarDatosMuestra();

@@ -26,38 +26,30 @@
 class CalculosMuestreo : public CalculosNVar {
 	public:
 		CalculosMuestreo(bool archivo, char muestreo, unsigned int longitudFila, unsigned int longitudColumna, bool datosAgrupados);
-		//========  funciones de muestreo ======== 
-		double getSumatoriaXi();
-		void setSumatoriaXi ( double SumatoriaXiPublica );	
-		double getSumatoriaXi2();
-		void setSumatoriaXi2 ( double SumatoriaXi2Publica );	
-		double getEstimador();
-		void setEstimador ( double estimadorPublico );
-		double getVarianzaDelEstimador();
-		void setVarianzaDelEstimador ( double varianzaDelEstimadorPublica );
-		double getEstimadorDeLaVarianza();
-		void setEstimadorDeLaVarianza ( double estimadorDeLaVarianzaPublico );
 		void editarMatrizVacia();
 		//========  funciones de muestreo ======== 
-		void desdeDondeLeeMatriz();
+		void desdeDondeLeeDatos();
 		void leerDatosDesdeTeclado();
 		void leerDatosDesdeArchivo();
 		void asignar();
 		void desagrupar();
-		void calculoXi2();
-		void calculoXi();
-		double estimador();
+		void incorporarXiYXi2();
 		
-		double calculoIC();
+		double media(int indiceVariable );
+		double proporcion(int indiceVariable );
+		double total(int indiceVariable );
+		
 		double varianzaEstimador();		
 		double estimadorVarianza();
-		void incorporarXiYXi2();
+	
+		double calculoIC();
 	protected:
 		bool agrupados, reemplazo, probIguales, mismoTamanyo;
 		//bool leeArchivo;
 		char tipoMuestreo;
-		double sumatoriaXi;
-		double sumatoriaXi2;
+		double mediaDeX, proporcionDeX, totalDeX;
+		double sumatoriaDeX;
+		double sumatoriaCuadradoDeX;
 		double ic;
 		//double estimador;
 		double varianzaDelEstimador;
