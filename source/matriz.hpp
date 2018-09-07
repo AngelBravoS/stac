@@ -35,8 +35,8 @@ class Matriz {
 		//======== entrada/salida ========  
 		void desdeDondeLeeMatriz();
 		void verificarArchivo();
-		void leerDatosDesdeArchivo();
-		void leerDatosDesdeTeclado();
+		void leerDesdeArchivo();
+		void leerDesdeTeclado();
 		void guardarEnArchivo();
 		//======== funciones de la matriz de datos ======== 
 		void setDimensionMatriz();
@@ -46,13 +46,14 @@ class Matriz {
 		void mostrarMatriz ();
 		void mostrarMatrizB ();
 		void copiarDimensionMatriz();
-		void copiarMatriz();
+		void copiarMatrizA();
+		void copiarMatrizB();
 	protected:
 		unsigned int fila, filaB;
 		unsigned int columna, columnaB;
 		double **matriz;
 		double **matrizB;
-		bool leerDesdeArchivo;
+		bool desdeArchivo;
 };
 
 #endif /* _MATRIZ_HPP_ */

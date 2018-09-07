@@ -25,27 +25,21 @@
 #include "menuMuestreo.hpp"
 
 void MenuMuestreo::menuSecundario() {
-	char respuesta, tipoDeMuestreo;
+	char tipoDeMuestreo;
 	bool agrupados;
-	unsigned int longitudFila;
-	longitudFila = 3;
-	//var = 1;
+	agrupados = preguntarSiAgrupados();
 	listadOpcionesMuestreo();
 	std::cin >> tipoDeMuestreo;
-	std::cout << '\n';
-	std::cout << "¿Los datos están agrupados?" << '\n';
-	std::cout << "s/n:";
-	std::cin >> respuesta;
-	respuesta == 's' ? agrupados = true : agrupados = false;
-	CalculosMuestreo muestra(desdeArchivoOTeclado(), tipoDeMuestreo, longitudFila, longitudColumna (agrupados), agrupados);
-	muestra.asignar();
-	muestra.desdeDondeLeeMatriz();
+	CalculosMuestreo muestra(desdeArchivoOTeclado(), tipoDeMuestreo, preguntarNumeroColumnas (agrupados), agrupados);
+	muestra.asignarVariables();
+	muestra.desdeDondeLeeDatos();
+	muestra.crearMatrizParaCalculos();
 	std::cout << '\n';
 	std::cout << "Tabla de datos:" << '\n';
-	muestra.mostrarMatriz();
+	muestra.mostrarMatrizB();
 	std::cout << '\n';
 	std::cout << "cosas:" << '\n';
-	muestra.mostrarMatrizB();
+	muestra.mostrarMatriz();
 	std::cout << '\n';
 	std::cout << "∑Xi = " << muestra.sumatoria(0, 1);
 	std::cout << ", ∑Xi^2 = " << muestra.sumatoria(0, 2);
@@ -55,7 +49,7 @@ void MenuMuestreo::menuSecundario() {
 	std::cout << '\n';
 }
 
-unsigned int MenuMuestreo::longitudColumna (bool agrupados) {
+unsigned int MenuMuestreo::preguntarNumeroColumnas (bool agrupados) {
 	unsigned int columna;
 	if(agrupados == true) {
 		std::cout << "Número de datos distintos que contiene la muestra: ";
@@ -66,5 +60,13 @@ unsigned int MenuMuestreo::longitudColumna (bool agrupados) {
 	return columna;
 }
 
-void crearMuestra() {
+bool MenuMuestreo::preguntarSiAgrupados(){
+	char respuesta;
+	bool agrupados;
+	std::cout << '\n';
+	std::cout << "¿Los datos están agrupados?" << '\n';
+	std::cout << "s/n:";
+	std::cin >> respuesta;
+	respuesta == 's' ? agrupados = true : agrupados = false;
+	return agrupados;
 }

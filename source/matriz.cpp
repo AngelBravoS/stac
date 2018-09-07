@@ -58,15 +58,15 @@ void Matriz::verificarArchivo() {
 
 void Matriz::desdeDondeLeeMatriz() {
 	crearMatrizVacia();
-	if(leerDesdeArchivo == true) {
+	if( desdeArchivo == true) {
 		verificarArchivo();
-		leerDatosDesdeArchivo();
+		leerDesdeArchivo();
 	} else {
 		editarMatrizVacia();
 	}
 }
 
-void Matriz::leerDatosDesdeArchivo() {
+void Matriz::leerDesdeArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
 	unsigned int n = columna;
@@ -120,10 +120,18 @@ void Matriz::copiarDimensionMatriz() {
 	}
 }
 
-void Matriz::copiarMatriz() {
+void Matriz::copiarMatrizA() {
 	for(unsigned int i = 0; i < fila; i++) {
 		for(unsigned int j = 0; j < columna; j++) {
 			matrizB[i][j] = matriz[i][j];
+		}
+	}
+}
+
+void Matriz::copiarMatrizB() {
+	for(unsigned int i = 0; i < filaB; i++) {
+		for(unsigned int j = 0; j < columnaB; j++) {
+			matriz[i][j] = matrizB[i][j];
 		}
 	}
 }

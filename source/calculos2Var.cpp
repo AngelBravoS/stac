@@ -29,7 +29,7 @@
 //Límite máximo en unsigned int: 4.294.967.295
 
 Calculos2Var::Calculos2Var(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
-	leerDesdeArchivo = archivo;
+	desdeArchivo = archivo;
 	fila = longitudFila;
 	columna = longitudColumna;
 }

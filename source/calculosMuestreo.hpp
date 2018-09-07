@@ -25,15 +25,17 @@
  
 class CalculosMuestreo : public CalculosNVar {
 	public:
-		CalculosMuestreo(bool archivo, char muestreo, unsigned int longitudFila, unsigned int longitudColumna, bool datosAgrupados);
+		CalculosMuestreo(bool archivo, char muestreo, unsigned int numeroColumnas, bool datosAgrupados);
 		void editarMatrizVacia();
 		//========  funciones de muestreo ======== 
 		void desdeDondeLeeDatos();
-		void leerDatosDesdeTeclado();
-		void leerDatosDesdeArchivo();
-		void asignar();
+		void leerDesdeTeclado();
+		void leerDesdeArchivo();
+		void asignarVariables();
+		void desagruparElementos();
 		void desagrupar();
 		void incorporarXiYXi2();
+		void crearMatrizParaCalculos();
 		
 		double media(int indiceVariable );
 		double proporcion(int indiceVariable );

@@ -35,7 +35,7 @@ CalculosNVar::CalculosNVar() {
 	}
 	
 CalculosNVar::CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
-	leerDesdeArchivo = archivo;
+	desdeArchivo = archivo;
 	fila = longitudFila;
 	columna = longitudColumna;
 }

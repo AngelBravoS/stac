@@ -58,7 +58,7 @@ double  CalculosAlgebra::determinante() {
 }
 
 void CalculosAlgebra::traspuesta() {
-	copiarMatriz();
+	copiarMatrizA();
 	for(unsigned int i = 0; i < fila; i++) {
 		for(unsigned int j = 0; j < columna; j++) {
 			matrizB[i][j] = matriz[j][i];
@@ -100,7 +100,7 @@ de la columna debajo del pivote
 */
 void CalculosAlgebra::gauss() {
 	unsigned int const n = fila;
-	copiarMatriz();
+	copiarMatrizA();
 	for(int i = 1; i < n; i++) {
 		if(matrizB[i][i] == 0) {
 			for(int j = i + 1; j < n; j++) {
@@ -141,7 +141,7 @@ void CalculosAlgebra::descomposicionLU() {
 			}
 		}
 	}
-	copiarMatriz();
+	copiarMatrizA();
 	for(i = 0; i < n; i++) {
 		for(j = 0; j < n; j++) {
 			matrizB[i][j] = matrizL[i][j];

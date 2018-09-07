@@ -28,169 +28,161 @@
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
-CalculosMuestreo::CalculosMuestreo(bool archivo, char muestreo, unsigned int longitudFila, unsigned int longitudColumna, bool datosAgrupados) {
-	tipoMuestreo = muestreo;
-	leerDesdeArchivo = archivo;
-	fila = longitudFila;
-	columna = longitudColumna;
-	agrupados = datosAgrupados;
-}
+CalculosMuestreo::CalculosMuestreo(bool archivo, char muestreo, unsigned int numeroColumnas, bool datosAgrupados) {
+   tipoMuestreo = muestreo;
+   desdeArchivo = archivo;
+   //fila = numeroFilas;
+   columnaB = numeroColumnas;
+   agrupados = datosAgrupados;
+   }
 
-void CalculosMuestreo::asignar() {
-	char mismoTamanyoConglomerado;
-	switch(tipoMuestreo) {
-	case '1' :
-		reemplazo = false;
-		probIguales = true;
-		break;
-	case '2' :
-		reemplazo = true;
-		probIguales = true;
-		break;
-	case '3' :
-		reemplazo = false;
-		probIguales = false;
-		break;
-	case '4' :
-		reemplazo = true;
-		probIguales = false;
-		break;
-	case '8' :
-		std::cout << "¿Los conglomerados tienen el mismo tamaño?" << '\n';
-		std::cout << "s/n:";
-		std::cin >> mismoTamanyoConglomerado;
-		if(mismoTamanyoConglomerado == 's') {
+void CalculosMuestreo::asignarVariables() {
+   char mismoTamanyoConglomerado;
+   switch (tipoMuestreo) {
+	  case '1' : // MAS
+		 reemplazo = false;
+		 probIguales = true;
+		 agrupados == true ? filaB = 2 : filaB = 1;
+		 break;
+	  case '2' :
+		 reemplazo = true;
+		 probIguales = true;
+		 agrupados == true ? filaB = 2 : filaB = 1;
+		 break;
+	  case '3' :
+		 reemplazo = false;
+		 probIguales = false;
+		 agrupados == true ? filaB = 3 : filaB = 2;
+		 break;
+	  case '4' :
+		 reemplazo = true;
+		 probIguales = false;
+		 agrupados == true ? filaB = 3 : filaB = 2;
+		 break;
+	  case '8' :
+		 std::cout << "¿Los conglomerados tienen el mismo tamaño?" << '\n';
+		 std::cout << "s/n:";
+		 std::cin >> mismoTamanyoConglomerado;
+		 if (mismoTamanyoConglomerado == 's') {
 			mismoTamanyo = true;
-		} else {
+			}
+		 else {
 			mismoTamanyo = false;
-		}
-		break;
-	}
-}
+			}
+		 break;
+	  }
+   fila = filaB;
+   }
 
 void CalculosMuestreo::desdeDondeLeeDatos() {
-	crearMatrizVacia();
-	if(leerDesdeArchivo == true) {
-		verificarArchivo();
-		leerDatosDesdeArchivo();
-	} else {
-		leerDatosDesdeTeclado();
-	}
-}
+   crearMatrizVaciaB();
+   if (desdeArchivo == true) {
+	  verificarArchivo();
+	  leerDesdeArchivo();
+	  }
+   else {
+	  leerDesdeTeclado();
+	  }
+   }
 
-void CalculosMuestreo::leerDatosDesdeArchivo() {
-	std::fstream archivo;
-	archivo.open("datos.dat", std::ios::in | std::ios::binary);
-	int unsigned n = columna;
-	double prob = (double) n;
-	if(agrupados == true) {
-		if(probIguales == true) { // Probabilidades iguales y datos agrupados
-			unsigned int i = 0, j = 0;
-			while(!archivo.eof()) {
-				archivo >> matriz[i][j];
-				j++; //avanza en la fila
-				i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
-				j = j % n; //se asegura que esté entre 0 y N-1
-			}
-			for(unsigned int k = 0; k < n; k++) {
-				matriz[2][k] = 1 / prob;
-			}
-			desagrupar();
-		} else {// Probabilidades desiguales y datos agrupados
-			unsigned int i = 0, j = 0;
-			while(!archivo.eof()) {
-				archivo >> matriz[i][j];
-				j++; //avanza en la fila
-				i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
-				j = j % n; //se asegura que esté entre 0 y N-1
-			}
-			//desagrupar();
-		}
-	} else {
-		if(probIguales == true) { //Probabilidades iguales y datos desagrupados
-			for(unsigned int j = 0; j < n; j++) {
-				archivo >> matriz[0][j];
-				matriz[1][j] = 1;
-				matriz[2][j] = 1 / prob;
-			}
-			
-		} else { // Probabilidades desiguales y datos desagrupados => leer directamente
-			unsigned int i = 0, j = 0;
-			while(!archivo.eof()) {
-				archivo >> matriz[i][j];
-				j++; //avanza en la fila
-				i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
-				j = j % n; //se asegura que esté entre 0 y N-1
-			}
-		}
-	}
-	archivo.close();
-	desagrupar();
-}
+void CalculosMuestreo::leerDesdeArchivo() {
+   std::fstream archivo;
+   archivo.open("datos.dat", std::ios::in | std::ios::binary);
+   int unsigned n = columnaB;
+   if (agrupados == true) {
+	  unsigned int i = 0, j = 0;
+	  while (!archivo.eof()) {
+		 archivo >> matrizB[i][j];
+		 j++; //avanza en la fila
+		 i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
+		 j = j % n; //se asegura que esté entre 0 y N-1
+		 }
+	  }
+   else {
+	  for (unsigned int j = 0; j < n; j++) {
+		 archivo >> matrizB[0][j];
+		 }
+	  }
+   archivo.close();
+   }
 
-void CalculosMuestreo::desagrupar() {
-	double n;
-	int x = 0; //entender por qué así funciona.
-	double totalElementos = sumatoria (1, 1);
-	filaB = 5;
-	columnaB = convierteDoubleEnInt(totalElementos);
-	crearMatrizVaciaB();
-	for(unsigned int j = 0; j < columna; j++) {
-		n = matriz[1][j];
-		for(unsigned int i = 0; i < n; i++) {
-			matrizB[0][x] = matriz[0][j];
-			x++;
-		}
-	}
-	// incluir operador ternario para Probabilidades desiguales
-	for(unsigned int k = 0; k < totalElementos; k++) {
-		matrizB[1][k] = 1;
-		matrizB[2][k] = 1 / totalElementos;
-		matrizB[3][k] = matrizB[0][k] * matrizB[1][k];
-		matrizB[4][k] = matrizB[3][k] * matrizB[3][k];
-	}
-	//std::cout << "matrices no mostradas en la versión final" << '\n';
-	//mostrarMatriz();
-	//mostrarMatrizB();
-}
+void CalculosMuestreo::crearMatrizParaCalculos() {
+   if (agrupados == true) {
+	  desagruparElementos();
+	  }
+   else {
+	  columna = columnaB;
+	  crearMatrizVacia();
+	  copiarMatrizB();
+	  }
+   }
 
-void CalculosMuestreo::leerDatosDesdeTeclado() {
-	unsigned int n = columna;
-	double prob = (double) n;
-	for(unsigned int j = 0; j < columna; j++) {
-		std::cout << "Elemento " << j + 1 << " de la muestra: ";
-		std::cin >> matriz[0][j];
-	}
-	if(agrupados == true) {
-		for(unsigned int j = 0; j < columna; j++) {
-			std::cout << "Nº de veces que el elemento " << j + 1 << " de la muestra aparece en ella: ";
-			std::cin >> matriz[1][j];
-		}
-		desagrupar();
-	} else {
-		for(unsigned int j = 0; j < columna; j++) {
-			matriz[1][j] = 1;
-		}
-	}
-	if(probIguales == true) {
-		for(unsigned int j = 0; j < columna; j++) {
-			matriz[2][j] = 1 / prob;
-		}
-	} else {
-		for(unsigned int j = 0; j < columna; j++) {
-			std::cout << "Probabilidad del elemento " << j + 1 << " de la muestra: ";
-			std::cin >> matriz[2][j];
-		}
-	}
-}
-// añade ∑Xi Y ∑Xi2
+void CalculosMuestreo::desagruparElementos() {
+   double n;
+   double totalElementos = 0;
+   int x = 0; //entender por qué así funciona.
+   for (unsigned int j = 0; j < columnaB; j++) {
+	  totalElementos += potencia(matrizB[1][j], 1);
+	  }
+   columna = convierteDoubleEnInt(totalElementos);
+   crearMatrizVacia();
+   for (unsigned int j = 0; j < columnaB; j++) {
+	  n = matrizB[1][j];
+	  for (unsigned int i = 0; i < n; i++) {
+		 matriz[0][x] = matrizB[0][j];
+		 matriz[1][x] = 1;
+		 x++;
+		 }
+	  }
+   }
+
+void CalculosMuestreo::leerDesdeTeclado() {
+   if (agrupados == true) {
+	  for (unsigned int j = 0; j < columnaB; j++) {
+		 std::cout << "x" << j + 1 << " = ";
+		 std::cin >> matrizB[0][j];
+		 std::cout << "f" << j + 1 << " = ";
+		 std::cin >> matrizB[1][j];
+		 }
+	  desagruparElementos();
+	  }
+   else {
+	  for (unsigned int j = 0; j < columnaB; j++) {
+		 std::cout << "x" << j + 1 << " = ";
+		 std::cin >> matrizB[0][j];
+		 }
+	  }
+   if ((agrupados == true) && (probIguales == false)) {
+	  for (unsigned int j = 0; j < columnaB; j++) {
+		  std::cout << "p" << j + 1 << " = ";
+		 std::cin >> matrizB[2][j];
+		 }
+	  }
+   if ((agrupados == false) && (probIguales == false)) {
+	  for (unsigned int j = 0; j < columnaB; j++) {
+		  std::cout << "p" << j + 1 << " = ";
+		 std::cin >> matrizB[1][j];
+		 }
+	  }
+   }
+// añade ∑Xi Y ∑Xi2 a la matriz
 void CalculosMuestreo::incorporarXiYXi2() {
-	unsigned int i = fila;
-	for(unsigned int j = 0; j < columna; j++) {
-		matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
-		matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
-	}
-}
+   unsigned int i = fila;
+   if (agrupados == true) {
+	  for (unsigned int j = 0; j < columna; j++) {
+		 matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
+		 matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
+		 }
+	  }
+   else {
+	  matriz[i - 2][0] = matriz[0][0];
+	  matriz[i - 1][0] = matriz[0][0] * matriz[0][0];
+	  for (unsigned int j = 1; j < columna; j++) {
+		 matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
+		 matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
+		 }
+	  }
+   }
 
 /*double CalculosMuestreo::media() {
 	double resultado = 0;
@@ -201,7 +193,7 @@ void CalculosMuestreo::incorporarXiYXi2() {
 		case '2' :
 			break;
 		case '3' :
-			
+
 			break;
 		case '4' :
 			break;
@@ -210,47 +202,51 @@ void CalculosMuestreo::incorporarXiYXi2() {
 }*/
 
 double CalculosMuestreo::calculoIC() {
-	double resultado = 0;
-	switch(tipoMuestreo) {
-		case '1' :
-			break;
-		case '2' :
-			break;
-		case '3' :
-			break;
-		case '4' :
-			break;
-	}
-	return resultado;
-}
+   double resultado = 0;
+   switch (tipoMuestreo) {
+	  case '1' :
+		 break;
+	  case '2' :
+		 break;
+	  case '3' :
+		 break;
+	  case '4' :
+		 break;
+	  }
+   return resultado;
+   }
 
 double CalculosMuestreo::varianzaEstimador() {
-	double resultado = 0;
-	switch(tipoMuestreo) {
-		case '1' :
-			resultado = cuasiVarianza(0);
-			break;
-		case '2' :
-			break;
-		case '3' :
-			break;
-		case '4' :
-			break;
-	}
-	return resultado;
-}
+   double resultado = 0;
+   switch (tipoMuestreo) {
+	  case '1' :
+		 resultado = cuasiVarianza(0);
+		 break;
+	  case '2' :
+		 break;
+	  case '3' :
+		 break;
+	  case '4' :
+		 break;
+	  }
+   return resultado;
+   }
 
 double CalculosMuestreo::estimadorVarianza() {
-	double resultado = 0;
-	switch(tipoMuestreo) {
-		case '1' :
-			break;
-		case '2' :
-			break;
-		case '3' :
-			break;
-		case '4' :
-			break;
-	}
-	return resultado;
-}
+   double resultado = 0;
+   switch (tipoMuestreo) {
+	  case '1' :
+		 break;
+	  case '2' :
+		 break;
+	  case '3' :
+		 break;
+	  case '4' :
+		 break;
+	  }
+   return resultado;
+   }
+
+
+
+
