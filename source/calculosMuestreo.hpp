@@ -37,6 +37,7 @@ class CalculosMuestreo : public CalculosNVar {
 		void incorporarXiYXi2();
 		void crearMatrizParaCalculos();
 		
+		double estimador(char estimador);
 		double media(int indiceVariable );
 		double proporcion(int indiceVariable );
 		double total(int indiceVariable );

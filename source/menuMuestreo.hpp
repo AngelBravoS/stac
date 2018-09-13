@@ -32,8 +32,9 @@ class MenuMuestreo : public CLI {
 		void menuSecundario();
 		unsigned int preguntarNumeroColumnas (bool agrupados);
 		unsigned int numeroFilas ();
-		char tipoDeMuestreo();
+		char preguntarTipoDeMuestreo();
 		bool preguntarSiAgrupados();
+		char preguntarEstimador();
 		void mostrarDatosMuestra();
 	private:
 		int var;

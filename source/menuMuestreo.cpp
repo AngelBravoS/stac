@@ -30,12 +30,12 @@ void MenuMuestreo::menuSecundario() {
 	agrupados = preguntarSiAgrupados();
 	listadOpcionesMuestreo();
 	std::cin >> tipoDeMuestreo;
+	preguntarEstimador();
 	CalculosMuestreo muestra(desdeArchivoOTeclado(), tipoDeMuestreo, preguntarNumeroColumnas (agrupados), agrupados);
 	muestra.asignarVariables();
 	muestra.desdeDondeLeeDatos();
 	muestra.crearMatrizParaCalculos();
-	std::cout << '\n';
-	std::cout << "Tabla de datos:" << '\n';
+	std::cout << '\n' << "Tabla de datos:" << '\n';
 	muestra.mostrarMatrizB();
 	std::cout << '\n';
 	std::cout << "cosas:" << '\n';
@@ -48,6 +48,15 @@ void MenuMuestreo::menuSecundario() {
 	//std::cout << ", total = " << muestra.total(0) << '\n';
 	std::cout << '\n';
 }
+char MenuMuestreo::preguntarEstimador () {
+	char estimador;
+	std::cout << "Media";
+	std::cout << "Total";
+	std::cout << "Proporción";
+	std::cin >> estimador;
+	return estimador;
+}
+
 
 unsigned int MenuMuestreo::preguntarNumeroColumnas (bool agrupados) {
 	unsigned int columna;

@@ -184,22 +184,21 @@ void CalculosMuestreo::incorporarXiYXi2() {
 	  }
    }
 
-/*double CalculosMuestreo::media() {
+double CalculosMuestreo::estimador(char estimador) {
 	double resultado = 0;
-	switch(tipoMuestreo) {
-		case '1' :
+	switch(estimador) {
+		case 'm' :
 			resultado = mediaAritmetica(0);
 			break;
-		case '2' :
+		case 't' :
+			//resultado = N * mediaAritmetica(0);
 			break;
-		case '3' :
-
-			break;
-		case '4' :
+		case 'p' :
+			resultado = mediaAritmetica(0);
 			break;
 	}
 	return resultado;
-}*/
+}
 
 double CalculosMuestreo::calculoIC() {
    double resultado = 0;
