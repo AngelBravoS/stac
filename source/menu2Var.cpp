@@ -25,7 +25,7 @@
 
 void Menu2Var::menuSecundario() {
 	char eleccionNivel2;
-	Calculos2Var variables(desdeArchivoOTeclado(), 2, tamanoColumna());
+	Calculos2Var variables(preguntarDesdeArchivoOTeclado(), 2, preguntarNumeroColumnas());
 	variables.desdeDondeLeeMatriz();
 	std::cout << "Variables X e Y:" << '\n';
 	variables.mostrarMatriz();
@@ -80,7 +80,7 @@ void Menu2Var::menuSecundario() {
 	//variables.destructorVector();
 }
 
-unsigned int Menu2Var::tamanoColumna() {
+unsigned int Menu2Var::preguntarNumeroColumnas() {
 	unsigned int col;
 	std::cout << "Número de elementos de cada variable: ";
 	std::cin >> col;

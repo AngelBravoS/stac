@@ -20,26 +20,45 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _MENUIA_HPP_
-#define _MENUIA_HPP_
+#ifndef _MMINFINIT_HPP_
+#define _MMINFINIT_HPP_
 
-#include "cli.hpp"
-#include "calculosIA.hpp"
-#include <fstream>
+#include "modelo.hpp"
 
-class MenuIA : public CLI {
-	public:
-		//CalculosIA ia (bool, unsigned int);
-		//========  funciones de muestreo ======== 
-		void menuSecundario();
-		void menuCongruencial();
-		void menuColasExponencial();
-		void periodo();
-		unsigned int preguntarNumeroColumnas();
-		bool preguntarDesdeArchivoOTeclado();
-		void verificarArchivo();
-	protected:
-		bool archivoValido;
+class MMINFINIT : public Modelo {
+    protected:
+    double r;
+    public:
+    //======== Constructores ========
+    MMINFINIT ();
+    MMINFINIT ( double lambda, double mu, unsigned int n );
+    //======== Funciones específicas ========
+    double p0 () {
+        double resultado;
+        resultado = 1/potencia ( e(), r );
+		  return resultado;
+    }
+    double pn () {
+        double resultado;
+			resultado = 1/factorial(n)*potencia(r,n)*p0();
+        return resultado;
+    }
+    double lq () {
+        double resultado = 0;
+        return resultado;
+    }
+    double wq () {
+        double resultado = 0;
+        return resultado;
+    }
+    double w () {
+        double resultado = 1/mu;
+        return resultado;
+    }
+    double l () {
+        double resultado = r;
+        return resultado;
+    }
 };
 
-#endif /* _MENUIA_HPP_ */
+#endif /* _MMINFINIT_HPP_ */

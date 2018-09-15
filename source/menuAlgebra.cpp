@@ -23,7 +23,7 @@
 #include <iostream>
 #include "menuAlgebra.hpp"
 
-bool MenuAlgebra::desdeArchivoOTeclado() {
+bool MenuAlgebra::preguntarDesdeArchivoOTeclado() {
 	char opcion;
 	bool eligesArchivo;
 	std::cout << "¿Leer desde un archivo?" << '\n';

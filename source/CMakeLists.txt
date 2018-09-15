@@ -20,6 +20,7 @@ set(lista_archivos
   calculosNVar.cpp
   calculosAlgebra.cpp
   calculosMuestreo.cpp
+  
   combinatoria.cpp 
   distribucionesDiscretas.cpp
   #Los submenus de cada tipo de operacion
@@ -30,9 +31,16 @@ set(lista_archivos
   menuMuestreo.cpp
   menuSinDatos.cpp
   menuCombinatoria.cpp
-  menuIA.cpp
   menuDistribDiscretas.cpp
-  menuTablasCont.cpp
+  menuTablasCont.cpp  
+  menuIA.cpp
+  menuIO.cpp
+  modelo.cpp
+  mmi.cpp
+  mmik.cpp
+  mmc.cpp
+  mmInfinit.cpp
+  mgi.cpp
 )
 
 #Debug/Release
@@ -46,3 +54,5 @@ set(CMAKE_CXX_FLAGS "-ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual 
 set(CMAKE_CXX_FLAGS_DEBUG " -ggdb3 -DDEBUG")
 
 add_executable(stac ${lista_archivos})
+
+#install(TARGETS stac RUNTIME DESTINATION bin)

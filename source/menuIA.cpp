@@ -28,6 +28,21 @@ void MenuIA::periodo() {
 }
 
 void MenuIA::menuSecundario() {
+	//std::cout << "Escribe ''e'' para el cálculo de funciones exponenciales." << '\n';
+	std::cout << "Escribe ''g'' para el cálculo con generadores congruenciales." << '\n';
+	std::cout << "> ";
+	eleccion();
+	switch(getOpcionSeleccionada()) {
+		case 'e':
+			menuColasExponencial();
+			break;
+		case 'g':
+			menuCongruencial();
+			break;
+	}
+}
+
+void MenuIA::menuCongruencial() {
 	unsigned int a, b, Xo, Xn, m;
 	CalculosIA secuencia;
 	std::cout << "Escribe x para el generador congruencial mixto." << '\n';
@@ -93,4 +108,9 @@ void MenuIA::menuSecundario() {
 		std::cout << "El período de la secuencia es " << i << '\n';
 		break;
 	}
+}
+
+void MenuIA::menuColasExponencial() {
+
+	
 }

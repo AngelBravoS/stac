@@ -35,7 +35,7 @@ class MenuAlgebra : public CLI {
 		//========  funciones de muestreo ======== 
 		void menuSecundario();
 		//unsigned int tamanoVector();
-		bool desdeArchivoOTeclado();
+		bool preguntarDesdeArchivoOTeclado();
 		//void crearVector(bool archivo, unsigned int tamano);
 		//void recogerDatosMuestra();
 		//void mostrarDatosMuestra();

@@ -36,7 +36,7 @@ void CLI::introduccion() {
 	std::cout << "             ║        Estadística       ║" << '\n';
 	std::cout << "             ║   en línea de comandos   ║" << '\n';
 	std::cout << "             ╚══════════════════════════╝" << '\n';
-	std::cout << "                                        ver 0.78" << '\n';
+	std::cout << "                                        ver 0.80" << '\n';
 	std::cout << '\n';
 }
 
@@ -135,5 +135,17 @@ void CLI::listadOpciones2Variables() {
 	std::cout << "'2' Inferencia" << '\n';
 	std::cout << "'3' medidas de regresión" << '\n';
 	std::cout << "'0' Salir." << '\n';
+	std::cout << "> ";
+}
+
+void CLI::listadOpcionesColasExponencial() {
+	std::cout << '\n';
+	std::cout << "Modelos de colas exponenciales: " << "\n";
+	std::cout << "1) M/M/1" << "\n";
+	std::cout << "2) M/M/1/K" << "\n";
+	std::cout << "3) M/M/C" << "\n";
+	std::cout << "4) M/M/Inf" << "\n";
+	std::cout << "5) M/G/I" << "\n";
+	std::cout << "0) Salir" << "\n";
 	std::cout << "> ";
 }

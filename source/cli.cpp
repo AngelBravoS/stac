@@ -87,28 +87,28 @@ void CLI::menuPrincipal() {
 	} while(getOpcionSeleccionada() != '0');
 }
 
-unsigned int CLI::tamanoVector(){
+unsigned int CLI::preguntarTamanoVector(){
 	unsigned int tamano;
 	std::cout << "Tamaño del vector: ";
 	std::cin >> tamano;
 	return  tamano;
 }
 
-unsigned int CLI::tamanoFila() {
+unsigned int CLI::preguntarNumeroFilas() {
 	unsigned int fila;
 	std::cout << "Número de filas: ";
 	std::cin >> fila;
 	return fila;
 }
 
-unsigned int CLI::tamanoColumna() {
+unsigned int CLI::preguntarNumeroColumnas() {
 	unsigned int col;
 	std::cout << "Número de columnas: ";
 	std::cin >> col;
 	return col;
 }
 
-bool CLI::desdeArchivoOTeclado() {
+bool CLI::preguntarDesdeArchivoOTeclado() {
 	char opcion;
 	bool eligesArchivo;
 	std::cout << "¿Leer desde un archivo?" << '\n';

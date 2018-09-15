@@ -23,12 +23,14 @@
 #include <iostream>
 #include "cli.hpp"
 #include "menuIA.hpp"
+#include "menuIO.hpp"
 
 void CLI::menuSinDatos() {
 	char eleccionNivel2;
 	std::cout << "'1' Combinatoria." << '\n';
-	std::cout << "'2' Investigación operativa e inteligencia artificial."  << '\n';
-	std::cout << "'3' Distribuciones de probabilidad discretas." << '\n';
+	std::cout << "'2' Inteligencia artificial."  << '\n';
+	std::cout << "'3' Investigación operativa." << '\n';
+	std::cout << "'4' Distribuciones de probabilidad discretas." << '\n';
 	std::cout << "'0' Salir." << '\n';
 	std::cout << "> ";
 	std::cin >> eleccionNivel2;
@@ -41,6 +43,10 @@ void CLI::menuSinDatos() {
 			ia.menuSecundario();
 			break;
 		case '3' :
+			MenuIO io;
+			io.menuSecundario();
+			break;
+		case '4' :
 			menuDistribDiscreta();
 			break;
 	}

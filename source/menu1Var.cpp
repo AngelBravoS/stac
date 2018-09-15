@@ -25,7 +25,7 @@
 
 void Menu1Var::menuSecundario() {
 	char eleccionNivel2, eleccionNivel3, eleccionNivel4;
-	Calculos1Var variable(desdeArchivoOTeclado(), tamanoVector());
+	Calculos1Var variable(preguntarDesdeArchivoOTeclado(), preguntarNumeroColumnas());
 	variable.desdeDondeLeeVector();
 	std::cout << '\n';	
 	std::cout << "Variable X:" << '\n';

@@ -34,7 +34,7 @@ class MenuNVar : public CLI {
 		//Calculos2Var variableXeY(bool, unsigned int, unsigned int);
 		//========  funciones de muestreo ======== 
 		void menuSecundario();
-		unsigned int tamanoColumna();
+		unsigned int preguntarNumeroColumnas();
 };
 
 #endif /* _MENUNVAR_HPP_ */

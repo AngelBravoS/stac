@@ -20,26 +20,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _MENUIA_HPP_
-#define _MENUIA_HPP_
+#include "mmi.hpp"
 
-#include "cli.hpp"
-#include "calculosIA.hpp"
-#include <fstream>
+MMI::MMI () {}
 
-class MenuIA : public CLI {
-	public:
-		//CalculosIA ia (bool, unsigned int);
-		//========  funciones de muestreo ======== 
-		void menuSecundario();
-		void menuCongruencial();
-		void menuColasExponencial();
-		void periodo();
-		unsigned int preguntarNumeroColumnas();
-		bool preguntarDesdeArchivoOTeclado();
-		void verificarArchivo();
-	protected:
-		bool archivoValido;
-};
-
-#endif /* _MENUIA_HPP_ */
+MMI::MMI ( double lambdaUsuario, double muUsuario, unsigned int nUsuario ) {
+    lambda = lambdaUsuario;
+    mu = muUsuario;
+    n = nUsuario;
+    ro = lambda/mu;
+}

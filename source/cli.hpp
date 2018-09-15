@@ -44,20 +44,21 @@ class CLI {
 		//======== funciones especificas de cada submenu ========
 		void menuInferencia();
 		void menuCombinatoria();
-		void menuColas();
+		void menuColasExponencial();
 		void menuDistribDiscreta();
 		//======== Entrada/Salida vectores ========
-		bool desdeArchivoOTeclado();
+		bool preguntarDesdeArchivoOTeclado();
 		//void verificarArchivo();
-		unsigned int tamanoVector();
-		unsigned int tamanoFila();
-		unsigned int tamanoColumna();
+		unsigned int preguntarTamanoVector();
+		unsigned int preguntarNumeroFilas();
+		unsigned int preguntarNumeroColumnas();
 		//void numElementosVector();
 		//======== Textos de menús ========
 		void listadOpcionesPricipales();
 		void listadOpcionesMuestreo();
 		void listadOpciones1Variable();
 		void listadOpciones2Variables();
+		void listadOpcionesColasExponencial();
 
 	protected:
 		char respuestaUsuario;

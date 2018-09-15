@@ -31,7 +31,7 @@ void MenuMuestreo::menuSecundario() {
 	listadOpcionesMuestreo();
 	std::cin >> tipoDeMuestreo;
 	preguntarEstimador();
-	CalculosMuestreo muestra(desdeArchivoOTeclado(), tipoDeMuestreo, preguntarNumeroColumnas (agrupados), agrupados);
+	CalculosMuestreo muestra(preguntarDesdeArchivoOTeclado(), tipoDeMuestreo, preguntarNumeroColumnas (agrupados), agrupados);
 	muestra.asignarVariables();
 	muestra.desdeDondeLeeDatos();
 	muestra.crearMatrizParaCalculos();
