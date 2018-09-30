@@ -23,58 +23,20 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
-#include "calculosMuestreo.hpp"
+#include "mas.hpp"
 
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
-CalculosMuestreo::CalculosMuestreo(bool archivo, char muestreo, unsigned int numeroColumnas, bool datosAgrupados) {
-   tipoMuestreo = muestreo;
+MAS::MAS(bool archivo, unsigned int numeroColumnas, bool datosAgrupados) {
    desdeArchivo = archivo;
-   //fila = numeroFilas;
    columnaB = numeroColumnas;
    agrupados = datosAgrupados;
    }
 
-void CalculosMuestreo::asignarVariables() {
-   char mismoTamanyoConglomerado;
-   switch (tipoMuestreo) {
-	  case '1' : // MAS
-		 reemplazo = false;
-		 probIguales = true;
-		 agrupados == true ? filaB = 2 : filaB = 1;
-		 break;
-	  case '2' :
-		 reemplazo = true;
-		 probIguales = true;
-		 agrupados == true ? filaB = 2 : filaB = 1;
-		 break;
-	  case '3' :
-		 reemplazo = false;
-		 probIguales = false;
-		 agrupados == true ? filaB = 3 : filaB = 2;
-		 break;
-	  case '4' :
-		 reemplazo = true;
-		 probIguales = false;
-		 agrupados == true ? filaB = 3 : filaB = 2;
-		 break;
-	  case '8' :
-		 std::cout << "¿Los conglomerados tienen el mismo tamaño?" << '\n';
-		 std::cout << "s/n:";
-		 std::cin >> mismoTamanyoConglomerado;
-		 if (mismoTamanyoConglomerado == 's') {
-			mismoTamanyo = true;
-			}
-		 else {
-			mismoTamanyo = false;
-			}
-		 break;
-	  }
-   fila = filaB;
-   }
-
-void CalculosMuestreo::desdeDondeLeeDatos() {
+void MAS::desdeDondeLeeDatos() {
+	agrupados == true ? filaB = 2 : filaB = 1;
+	fila = filaB;
    crearMatrizVaciaB();
    if (desdeArchivo == true) {
 	  verificarArchivo();
@@ -85,7 +47,7 @@ void CalculosMuestreo::desdeDondeLeeDatos() {
 	  }
    }
 
-void CalculosMuestreo::leerDesdeArchivo() {
+void MAS::leerDesdeArchivo() {
    std::fstream archivo;
    archivo.open("datos.dat", std::ios::in | std::ios::binary);
    int unsigned n = columnaB;
@@ -106,7 +68,7 @@ void CalculosMuestreo::leerDesdeArchivo() {
    archivo.close();
    }
 
-void CalculosMuestreo::crearMatrizParaCalculos() {
+void MAS::crearMatrizParaCalculos() {
    if (agrupados == true) {
 	  desagruparElementos();
 	  }
@@ -117,7 +79,7 @@ void CalculosMuestreo::crearMatrizParaCalculos() {
 	  }
    }
 
-void CalculosMuestreo::desagruparElementos() {
+void MAS::desagruparElementos() {
    double n;
    double totalElementos = 0;
    int x = 0; //entender por qué así funciona.
@@ -136,7 +98,7 @@ void CalculosMuestreo::desagruparElementos() {
 	  }
    }
 
-void CalculosMuestreo::leerDesdeTeclado() {
+void MAS::leerDesdeTeclado() {
    if (agrupados == true) {
 	  for (unsigned int j = 0; j < columnaB; j++) {
 		 std::cout << "x" << j + 1 << " = ";
@@ -152,21 +114,10 @@ void CalculosMuestreo::leerDesdeTeclado() {
 		 std::cin >> matrizB[0][j];
 		 }
 	  }
-   if ((agrupados == true) && (probIguales == false)) {
-	  for (unsigned int j = 0; j < columnaB; j++) {
-		  std::cout << "p" << j + 1 << " = ";
-		 std::cin >> matrizB[2][j];
-		 }
-	  }
-   if ((agrupados == false) && (probIguales == false)) {
-	  for (unsigned int j = 0; j < columnaB; j++) {
-		  std::cout << "p" << j + 1 << " = ";
-		 std::cin >> matrizB[1][j];
-		 }
-	  }
    }
+   
 // añade ∑Xi Y ∑Xi2 a la matriz
-void CalculosMuestreo::incorporarXiYXi2() {
+void MAS::incorporarXiYXi2() {
    unsigned int i = fila;
    if (agrupados == true) {
 	  for (unsigned int j = 0; j < columna; j++) {
@@ -184,7 +135,7 @@ void CalculosMuestreo::incorporarXiYXi2() {
 	  }
    }
 
-double CalculosMuestreo::estimador(char estimador) {
+double MAS::estimador(char estimador) {
 	double resultado = 0;
 	switch(estimador) {
 		case 'm' :
@@ -200,49 +151,18 @@ double CalculosMuestreo::estimador(char estimador) {
 	return resultado;
 }
 
-double CalculosMuestreo::calculoIC() {
+double MAS::calculoIC() {
    double resultado = 0;
-   switch (tipoMuestreo) {
-	  case '1' :
-		 break;
-	  case '2' :
-		 break;
-	  case '3' :
-		 break;
-	  case '4' :
-		 break;
-	  }
    return resultado;
    }
 
-double CalculosMuestreo::varianzaEstimador() {
+double MAS::varianzaEstimador() {
    double resultado = 0;
-   switch (tipoMuestreo) {
-	  case '1' :
-		 resultado = cuasiVarianza(0);
-		 break;
-	  case '2' :
-		 break;
-	  case '3' :
-		 break;
-	  case '4' :
-		 break;
-	  }
    return resultado;
    }
 
-double CalculosMuestreo::estimadorVarianza() {
+double MAS::estimadorVarianza() {
    double resultado = 0;
-   switch (tipoMuestreo) {
-	  case '1' :
-		 break;
-	  case '2' :
-		 break;
-	  case '3' :
-		 break;
-	  case '4' :
-		 break;
-	  }
    return resultado;
    }
 

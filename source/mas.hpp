@@ -23,9 +23,9 @@
 #include "calculosNVar.hpp"
 #include "funcMatematicasBasicas.hpp"
  
-class CalculosMuestreo : public CalculosNVar {
+class MAS : public CalculosNVar {
 	public:
-		CalculosMuestreo(bool archivo, char muestreo, unsigned int numeroColumnas, bool datosAgrupados);
+		MAS(bool archivo, unsigned int numeroColumnas, bool datosAgrupados);
 		void editarMatrizVacia();
 		//========  funciones de muestreo ======== 
 		void desdeDondeLeeDatos();
@@ -47,9 +47,7 @@ class CalculosMuestreo : public CalculosNVar {
 	
 		double calculoIC();
 	protected:
-		bool agrupados, reemplazo, probIguales, mismoTamanyo;
-		//bool leeArchivo;
-		char tipoMuestreo;
+		bool agrupados;
 		double mediaDeX, proporcionDeX, totalDeX;
 		double sumatoriaDeX;
 		double sumatoriaCuadradoDeX;

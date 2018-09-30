@@ -19,8 +19,7 @@ set(lista_archivos
   calculosIA.cpp
   calculosNVar.cpp
   calculosAlgebra.cpp
-  calculosMuestreo.cpp
-  
+  mas.cpp
   combinatoria.cpp 
   distribucionesDiscretas.cpp
   #Los submenus de cada tipo de operacion

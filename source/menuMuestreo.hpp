@@ -23,8 +23,8 @@
 #define _MENUMUESTREO_HPP_
 
 #include "cli.hpp"
-#include "calculosMuestreo.hpp"
-#include<fstream>
+#include "mas.hpp"
+#include <fstream>
 
 class MenuMuestreo : public CLI {
 	public:

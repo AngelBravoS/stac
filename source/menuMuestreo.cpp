@@ -31,8 +31,7 @@ void MenuMuestreo::menuSecundario() {
 	listadOpcionesMuestreo();
 	std::cin >> tipoDeMuestreo;
 	preguntarEstimador();
-	CalculosMuestreo muestra(preguntarDesdeArchivoOTeclado(), tipoDeMuestreo, preguntarNumeroColumnas (agrupados), agrupados);
-	muestra.asignarVariables();
+	MAS muestra(preguntarDesdeArchivoOTeclado(), preguntarNumeroColumnas (agrupados), agrupados);
 	muestra.desdeDondeLeeDatos();
 	muestra.crearMatrizParaCalculos();
 	std::cout << '\n' << "Tabla de datos:" << '\n';
@@ -45,18 +44,18 @@ void MenuMuestreo::menuSecundario() {
 	std::cout << ", ∑Xi^2 = " << muestra.sumatoria(0, 2);
 	std::cout << ", media  = " << muestra.mediaAritmetica(0) << '\n';
 	std::cout << ", cuasiVarianza  = " << muestra.cuasiVarianza(0) << '\n';
-	//std::cout << ", total = " << muestra.total(0) << '\n';
 	std::cout << '\n';
 }
 char MenuMuestreo::preguntarEstimador () {
 	char estimador;
-	std::cout << "Media";
-	std::cout << "Total";
-	std::cout << "Proporción";
+	std::cout << "Selecciona parámetro:" << '\n';
+	std::cout << "''m'' para la media" << '\n';
+	std::cout << "''t'' para el total" << '\n';
+	std::cout << "''p'' para la proporción" << '\n';
+	std::cout << "> ";
 	std::cin >> estimador;
 	return estimador;
 }
-
 
 unsigned int MenuMuestreo::preguntarNumeroColumnas (bool agrupados) {
 	unsigned int columna;
