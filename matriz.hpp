@@ -49,8 +49,8 @@ class Matriz {
 		void copiarMatrizA();
 		void copiarMatrizB();
 	protected:
-		unsigned int fila, filaB;
-		unsigned int columna, columnaB;
+		unsigned int filas, filasDeB;
+		unsigned int columnas, columnasDeB;
 		double **matriz;
 		double **matrizB;
 		bool desdeArchivo;

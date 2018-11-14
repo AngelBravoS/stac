@@ -20,51 +20,39 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// command-line interface (CLI)
-#ifndef _CLI_HPP_
-#define _CLI_HPP_
-
-class CLI {
-		//Obtener = Get
-		//Establecer = Set
+#include "calculosNVar.hpp"
+#include "funcMatematicasBasicas.hpp"
+ 
+class MAS : public CalculosNVar {
 	public:
-		//======== setters y getters ========
-		char getOpcionSeleccionada();
-		void setOpcionSeleccionada(char respuestaUsuarioPublica);
-		//======== funciones de menu ========
-		void introduccion();
-		void acercaDe();
-		void ayuda();
-		void eleccion();
-		void hasElegido();
-		//======== subfunciones de menu ========
-		void menuPrincipal();
-		void menuSinDatos();
-		void menuTablasCont();
-		//======== funciones especificas de cada submenu ========
-		void menuInferencia();
-		void menuCombinatoria();
-		void menuColasExponencial();
-		void menuDistribDiscreta();
-		//======== Entrada/Salida vectores ========
-		bool preguntarDesdeArchivoOTeclado();
-		//void verificarArchivo();
-		unsigned int preguntarTamanoVector();
-		unsigned int preguntarNumeroFilas();
-		unsigned int preguntarNumeroColumnas();
-		//void numElementosVector();
-		//======== Textos de menús ========
-		void listadOpcionesPricipales();
-		void listadOpcionesMuestreo();
-		void listadOpciones1Variable();
-		void listadOpciones2Variables();
-		void listadOpcionesColasExponencial();
-
+		MAS(bool archivo, char estimadorElegido, unsigned int numeroColumnas, bool datosAgrupados);
+		void editarMatrizVacia();
+		//========  funciones de muestreo ======== 
+		void desdeDondeLeeDatos();
+		void leerDesdeTeclado();
+		void leerDesdeArchivo();
+		void asignarVariables();
+		void desagruparElementos();
+		void desagrupar();
+		void incorporarXiYXi2();
+		void crearMatrizParaCalculos();
+		
+		double calcularEstimador();
+		double media(int indiceVariable );
+		double proporcion(int indiceVariable );
+		double total(int indiceVariable );
+		
+		double varianzaEstimador();		
+		double estimadorVarianza();
+	
+		double calculoIC();
 	protected:
-		char respuestaUsuario;
-		bool archivoValido;
+		bool agrupados;
+		double mediaDeX, proporcionDeX, totalDeX;
+		double sumatoriaDeX;
+		double sumatoriaCuadradoDeX;
+		double ic;
+		double estimador;
+		double varianzaDelEstimador;
+		double estimadorDeLaVarianza;
 };
-
-#endif /* _CLI_HPP_ */
-
-

@@ -26,16 +26,16 @@ using namespace std;
 
 double CalculosAlgebra::traza() {
 	double traza = 0;
-	for(unsigned int i = 0; i < fila; i++) {
+	for(unsigned int i = 0; i < filas; i++) {
 		traza += matriz[i][i];
 	}
 	return traza;
 }
 
 double  CalculosAlgebra::determinante() {
-	unsigned int const n = fila;
+	unsigned int const n = filas;
 	double determinante = 0;
-	switch(fila) {
+	switch(filas) {
 		case 1:
 			determinante = matriz[0][0];
 			break;
@@ -59,8 +59,8 @@ double  CalculosAlgebra::determinante() {
 
 void CalculosAlgebra::traspuesta() {
 	copiarMatrizA();
-	for(unsigned int i = 0; i < fila; i++) {
-		for(unsigned int j = 0; j < columna; j++) {
+	for(unsigned int i = 0; i < filas; i++) {
+		for(unsigned int j = 0; j < columnas; j++) {
 			matrizB[i][j] = matriz[j][i];
 		}
 	}
@@ -99,7 +99,7 @@ Si A11 =/= 0 para i = 2...n, mi1=-ai1/a11, así hacemos 0 todo elemento
 de la columna debajo del pivote
 */
 void CalculosAlgebra::gauss() {
-	unsigned int const n = fila;
+	unsigned int const n = filas;
 	copiarMatrizA();
 	for(int i = 1; i < n; i++) {
 		if(matrizB[i][i] == 0) {
@@ -113,7 +113,7 @@ void CalculosAlgebra::gauss() {
 }
 
 void CalculosAlgebra::descomposicionLU() {
-	unsigned int const n = fila;
+	unsigned int const n = filas;
 	unsigned int i, j, k;
 	double matrizL [n][n];
 	double matrizU [n][n];
@@ -158,8 +158,8 @@ void CalculosAlgebra::descomposicionLU() {
 
 void CalculosAlgebra::multiplicarMat() {
 	crearMatrizVacia();
-	for(unsigned int i = 0; i < fila; i++) {
-		for(unsigned int j = 0; j < columna; j++) {
+	for(unsigned int i = 0; i < filas; i++) {
+		for(unsigned int j = 0; j < columnas; j++) {
 			matrizB[i][j] = matriz[j][i];
 		}
 	}

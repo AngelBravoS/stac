@@ -19,26 +19,53 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef _MENUMUESTREO_HPP_
-#define _MENUMUESTREO_HPP_
 
-#include "cli.hpp"
-#include "mas.hpp"
-#include <fstream>
+//CLI => Command Line Interface.
+#include <iostream>
+#include "menuMuestreo.hpp"
 
-class MenuMuestreo : public CLI {
-	public:
-		//========  funciones de muestreo ======== 
-		void menuSecundario();
-		unsigned int preguntarNumeroColumnas (bool agrupados);
-		unsigned int numeroFilas ();
-		char preguntarTipoDeMuestreo();
-		bool preguntarSiAgrupados();
-		char preguntarEstimador();
-		void mostrarDatosMuestra();
-	private:
-		int var;
-	
-};
+void MenuMuestreo::menuSecundario() {
+	char tipoDeMuestreo, estimador;
+	bool agrupados;
+	agrupados = preguntarSiAgrupados();
+	listadOpcionesMuestreo();
+	std::cin >> tipoDeMuestreo;
+	preguntarEstimador();
+	std::cin >> estimador;
+	MAS muestra(preguntarDesdeArchivoOTeclado(), estimador, preguntarNumeroColumnas (agrupados), agrupados);
+	muestra.desdeDondeLeeDatos();
+	muestra.crearMatrizParaCalculos();
+	std::cout << '\n' << "Tabla de datos:" << '\n';
+	muestra.mostrarMatrizB();
+	std::cout << '\n';
+	std::cout << "cosas:" << '\n';
+	muestra.mostrarMatriz();
+	std::cout << '\n';
+	std::cout << "∑Xi = " << muestra.sumatoria(0, 1);
+	std::cout << ", ∑Xi^2 = " << muestra.sumatoria(0, 2);
+	std::cout << ", media  = " << muestra.mediaAritmetica(0) << '\n';
+	std::cout << ", cuasiVarianza  = " << muestra.cuasiVarianza(0) << '\n';
+	std::cout << '\n';
+}
 
-#endif /* _MENUMUESTREO_HPP_ */
+unsigned int MenuMuestreo::preguntarNumeroColumnas (bool agrupados) {
+	unsigned int columna;
+	if(agrupados == true) {
+		std::cout << "Número de datos distintos que contiene la muestra: ";
+	} else {
+		std::cout << "Tamaño de la muestra: ";
+	}
+	std::cin >> columna;
+	return columna;
+}
+
+bool MenuMuestreo::preguntarSiAgrupados(){
+	char respuesta;
+	bool agrupados;
+	std::cout << '\n';
+	std::cout << "¿Los datos están agrupados?" << '\n';
+	std::cout << "s/n:";
+	std::cin >> respuesta;
+	respuesta == 's' ? agrupados = true : agrupados = false;
+	return agrupados;
+}

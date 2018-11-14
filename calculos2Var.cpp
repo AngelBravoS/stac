@@ -30,8 +30,8 @@
 
 Calculos2Var::Calculos2Var(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
 	desdeArchivo = archivo;
-	fila = longitudFila;
-	columna = longitudColumna;
+	filas = longitudFila;
+	columnas = longitudColumna;
 }
 
 //-----Pide un exponente para poder hacer cosumatorias de cuadrados, cubos, etc, sin necesitar otro método
@@ -40,7 +40,7 @@ Calculos2Var::Calculos2Var(bool archivo, unsigned int longitudFila, unsigned int
 //-----una de ellas, se elige la primera.
 double Calculos2Var::sumatoria2Var(int variableX, int variableY, int exponenteX, int exponenteY) {
 	double sumatoria2Variables = 0;
-	unsigned int n = columna;
+	unsigned int n = columnas;
 	for(unsigned int i = 0; i < n; i++) {
 		sumatoria2Variables += pow(matriz[variableX][i], exponenteX) * pow(matriz[variableY][i], exponenteY);
 	}
@@ -48,7 +48,7 @@ double Calculos2Var::sumatoria2Var(int variableX, int variableY, int exponenteX,
 }
 
 double Calculos2Var::covarianza() {
-	unsigned int n = columna;
+	unsigned int n = columnas;
 	double resultado = 0;
 	resultado += (sumatoria2Var(0, 1, 1, 1));
 	resultado = (resultado / n) - (mediaAritmetica(0) * mediaAritmetica(1));

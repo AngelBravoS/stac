@@ -19,40 +19,25 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef _MENUMUESTREO_HPP_
+#define _MENUMUESTREO_HPP_
 
-#include "calculosNVar.hpp"
-#include "funcMatematicasBasicas.hpp"
- 
-class MAS : public CalculosNVar {
+#include "cli.hpp"
+#include "mas.hpp"
+#include <fstream>
+
+class MenuMuestreo : public CLI {
 	public:
-		MAS(bool archivo, unsigned int numeroColumnas, bool datosAgrupados);
-		void editarMatrizVacia();
 		//========  funciones de muestreo ======== 
-		void desdeDondeLeeDatos();
-		void leerDesdeTeclado();
-		void leerDesdeArchivo();
-		void asignarVariables();
-		void desagruparElementos();
-		void desagrupar();
-		void incorporarXiYXi2();
-		void crearMatrizParaCalculos();
-		
-		double estimador(char estimador);
-		double media(int indiceVariable );
-		double proporcion(int indiceVariable );
-		double total(int indiceVariable );
-		
-		double varianzaEstimador();		
-		double estimadorVarianza();
+		void menuSecundario();
+		unsigned int preguntarNumeroColumnas (bool agrupados);
+		unsigned int numeroFilas ();
+		char preguntarTipoDeMuestreo();
+		bool preguntarSiAgrupados();
+		void mostrarDatosMuestra();
+	private:
+		int var;
 	
-		double calculoIC();
-	protected:
-		bool agrupados;
-		double mediaDeX, proporcionDeX, totalDeX;
-		double sumatoriaDeX;
-		double sumatoriaCuadradoDeX;
-		double ic;
-		//double estimador;
-		double varianzaDelEstimador;
-		double estimadorDeLaVarianza;
 };
+
+#endif /* _MENUMUESTREO_HPP_ */

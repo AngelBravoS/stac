@@ -69,7 +69,7 @@ void Matriz::desdeDondeLeeMatriz() {
 void Matriz::leerDesdeArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
-	unsigned int n = columna;
+	unsigned int n = columnas;
 	unsigned int i = 0, j = 0;
 	while(!archivo.eof()) {
 		archivo >> matriz[i][j];
@@ -88,24 +88,24 @@ void Matriz::guardarEnArchivo() {
 }
 
 void Matriz::crearMatrizVacia() {
-	matriz = new double *[fila];
-	for(unsigned int i = 0; i < fila; i++)     {
-		matriz[i] = new double [columna];
+	matriz = new double *[filas];
+	for(unsigned int i = 0; i < filas; i++)     {
+		matriz[i] = new double [columnas];
 	}
 	setMatriz(matriz);
 }
 
 void Matriz::crearMatrizVaciaB() {
-	matrizB = new double *[filaB];
-	for(unsigned int i = 0; i < filaB; i++)     {
-		matrizB[i] = new double [columnaB];
+	matrizB = new double *[filasDeB];
+	for(unsigned int i = 0; i < filasDeB; i++)     {
+		matrizB[i] = new double [columnasDeB];
 	}
 	setMatrizB(matrizB);
 }
 
 void Matriz::editarMatrizVacia() {
-	for(unsigned int i = 0; i < fila; i++) {
-		for(unsigned int j = 0; j < columna; j++) {
+	for(unsigned int i = 0; i < filas; i++) {
+		for(unsigned int j = 0; j < columnas; j++) {
 			std::cout << "Elemento " << i + 1 << "," << j + 1 << ": ";
 			std::cin >> matriz[i][j];
 		}
@@ -114,23 +114,23 @@ void Matriz::editarMatrizVacia() {
 }
 
 void Matriz::copiarDimensionMatriz() {
-	matrizB = new double *[fila];
-	for(unsigned int i = 0; i < fila; i++)     {
-		matrizB[i] = new double[columna];
+	matrizB = new double *[filas];
+	for(unsigned int i = 0; i < filas; i++)     {
+		matrizB[i] = new double[columnas];
 	}
 }
 
 void Matriz::copiarMatrizA() {
-	for(unsigned int i = 0; i < fila; i++) {
-		for(unsigned int j = 0; j < columna; j++) {
+	for(unsigned int i = 0; i < filas; i++) {
+		for(unsigned int j = 0; j < columnas; j++) {
 			matrizB[i][j] = matriz[i][j];
 		}
 	}
 }
 
 void Matriz::copiarMatrizB() {
-	for(unsigned int i = 0; i < filaB; i++) {
-		for(unsigned int j = 0; j < columnaB; j++) {
+	for(unsigned int i = 0; i < filasDeB; i++) {
+		for(unsigned int j = 0; j < columnasDeB; j++) {
 			matriz[i][j] = matrizB[i][j];
 		}
 	}
@@ -138,9 +138,9 @@ void Matriz::copiarMatrizB() {
 
 void Matriz::mostrarMatriz() {
 	std::cout << '\n';
-	for(unsigned int i = 0; i < fila; i++) {
+	for(unsigned int i = 0; i < filas; i++) {
 		std::cout << "( ";
-		for(unsigned int j = 0; j < columna; j++) {
+		for(unsigned int j = 0; j < columnas; j++) {
 			std::cout << matriz[i][j] << " ";
 		}
 		std::cout << ")";
@@ -150,9 +150,9 @@ void Matriz::mostrarMatriz() {
 
 void Matriz::mostrarMatrizB() {
 	std::cout << '\n';
-	for(unsigned int i = 0; i < filaB; i++) {
+	for(unsigned int i = 0; i < filasDeB; i++) {
 		std::cout << "( ";
-		for(unsigned int j = 0; j < columnaB; j++) {
+		for(unsigned int j = 0; j < columnasDeB; j++) {
 			std::cout << matrizB[i][j] << " ";
 		}
 		std::cout << ")";
