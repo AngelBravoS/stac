@@ -25,7 +25,7 @@
 
 #include "cli.hpp"
 #include "calculos1Var.hpp"
-#include<fstream>
+#include <fstream>
 
 class Menu1Var : public CLI {
 		//Obtener = Get
@@ -34,8 +34,11 @@ class Menu1Var : public CLI {
 		//Calculos1Var variable(bool, unsigned int); Parece innecesario
 		//========  funciones de muestreo ======== 
 		void menuSecundario();
+		unsigned int preguntarNumeroElementos();
 	protected:
 		bool archivoValido;
 };
+
+
 
 #endif /* _MENU1VAR_HPP_ */

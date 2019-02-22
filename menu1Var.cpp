@@ -23,9 +23,16 @@
 #include <iostream>
 #include "menu1Var.hpp"
 
+unsigned int Menu1Var::preguntarNumeroElementos() {
+	unsigned int col;
+	std::cout << "Número de elementos: ";
+	std::cin >> col;
+	return col;
+}
+
 void Menu1Var::menuSecundario() {
 	char eleccionNivel2, eleccionNivel3, eleccionNivel4;
-	Calculos1Var variable(preguntarDesdeArchivoOTeclado(), preguntarNumeroColumnas());
+	Calculos1Var variable(preguntarDesdeArchivoOTeclado(), preguntarNumeroElementos());
 	variable.desdeDondeLeeVector();
 	std::cout << '\n';	
 	std::cout << "Variable X:" << '\n';
