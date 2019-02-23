@@ -30,132 +30,135 @@ Matriz::Matriz() {}
 
 double Matriz::getMatriz() {
 	return **matriz;
-}
+	}
 
 void Matriz::setMatriz(double **matrizPublica) {
 	**matriz = **matrizPublica;
-}
+	}
 
 double Matriz::getMatrizB() {
 	return **matrizB;
-}
+	}
 
 void Matriz::setMatrizB(double **matrizBPublica) {
 	**matrizB = **matrizBPublica;
-}
+	}
 
 void Matriz::verificarArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
-	if(archivo.is_open()) {
+	if (archivo.is_open()) {
 		std::cout << "Fichero leído" << '\n';
-	} else {
+		}
+	else {
 		std::cout << "Fichero inexistente" << '\n';
 		exit(-1);
-	}
+		}
 	archivo.close();
-}
+	}
 
 void Matriz::desdeDondeLeeMatriz() {
 	crearMatrizVacia();
-	if( desdeArchivo == true) {
+	if (desdeArchivo == true) {
 		verificarArchivo();
 		leerDesdeArchivo();
-	} else {
+		}
+	else {
 		editarMatrizVacia();
+		}
 	}
-}
 
 void Matriz::leerDesdeArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
 	unsigned int n = columnas;
 	unsigned int i = 0, j = 0;
-	while(!archivo.eof()) {
+	while (!archivo.eof()) {
 		archivo >> matriz[i][j];
 		j++; //avanza en la fila
 		i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
 		j = j % n; //se asegura que esté entre 0 y N-1
-	}
+		}
 	archivo.close();
-}
+	}
 
 void Matriz::guardarEnArchivo() {
 	std::cout << "Aún no disponible" << '\n';
 	std::ofstream archivoSalida("resultado.dat");
 	//archivoSalida << traza();
 	archivoSalida.close();
-}
+	}
 
 void Matriz::crearMatrizVacia() {
 	matriz = new double *[filas];
-	for(unsigned int i = 0; i < filas; i++)     {
+	for (unsigned int i = 0; i < filas; i++)     {
 		matriz[i] = new double [columnas];
-	}
+		}
 	setMatriz(matriz);
-}
+	}
 
 void Matriz::crearMatrizVaciaB() {
 	matrizB = new double *[filasDeB];
-	for(unsigned int i = 0; i < filasDeB; i++)     {
+	for (unsigned int i = 0; i < filasDeB; i++)     {
 		matrizB[i] = new double [columnasDeB];
-	}
+		}
 	setMatrizB(matrizB);
-}
+	}
 
 void Matriz::editarMatrizVacia() {
-	for(unsigned int i = 0; i < filas; i++) {
-		for(unsigned int j = 0; j < columnas; j++) {
+	for (unsigned int i = 0; i < filas; i++) {
+		for (unsigned int j = 0; j < columnas; j++) {
 			std::cout << "Elemento " << i + 1 << "," << j + 1 << ": ";
 			std::cin >> matriz[i][j];
+			}
 		}
-	}
 	std::cout << '\n';
-}
+	}
 
 void Matriz::copiarDimensionMatriz() {
 	matrizB = new double *[filas];
-	for(unsigned int i = 0; i < filas; i++)     {
+	for (unsigned int i = 0; i < filas; i++)     {
 		matrizB[i] = new double[columnas];
+		}
 	}
-}
 
 void Matriz::copiarMatrizA() {
-	for(unsigned int i = 0; i < filas; i++) {
-		for(unsigned int j = 0; j < columnas; j++) {
+	crearMatrizVaciaB();
+	for (unsigned int i = 0; i < filas; i++) {
+		for (unsigned int j = 0; j < columnas; j++) {
 			matrizB[i][j] = matriz[i][j];
+			}
 		}
 	}
-}
 
 void Matriz::copiarMatrizB() {
-	for(unsigned int i = 0; i < filasDeB; i++) {
-		for(unsigned int j = 0; j < columnasDeB; j++) {
+	for (unsigned int i = 0; i < filasDeB; i++) {
+		for (unsigned int j = 0; j < columnasDeB; j++) {
 			matriz[i][j] = matrizB[i][j];
+			}
 		}
 	}
-}
 
 void Matriz::mostrarMatriz() {
 	std::cout << '\n';
-	for(unsigned int i = 0; i < filas; i++) {
+	for (unsigned int i = 0; i < filas; i++) {
 		std::cout << "( ";
-		for(unsigned int j = 0; j < columnas; j++) {
+		for (unsigned int j = 0; j < columnas; j++) {
 			std::cout << matriz[i][j] << " ";
-		}
+			}
 		std::cout << ")";
 		std::cout << '\n';
+		}
 	}
-}
 
 void Matriz::mostrarMatrizB() {
 	std::cout << '\n';
-	for(unsigned int i = 0; i < filasDeB; i++) {
+	for (unsigned int i = 0; i < filasDeB; i++) {
 		std::cout << "( ";
-		for(unsigned int j = 0; j < columnasDeB; j++) {
+		for (unsigned int j = 0; j < columnasDeB; j++) {
 			std::cout << matrizB[i][j] << " ";
-		}
+			}
 		std::cout << ")";
 		std::cout << '\n';
+		}
 	}
-}

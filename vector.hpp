@@ -24,32 +24,34 @@
 #define _VECTOR_HPP_
 
 class Vector {
-	public:
-		//======== constructor ======== 
-		Vector();
-		//======== setters y getters ======== 
-		double getVectorCopia();
-		void setVectorCopia ( double vectorCopiaPublico );
-		//======== funciones de vectores ======== 
-		void numElementosVector();
-		void crearVectorVacio();
-		void editarVectorVacio();
-		void mostrarVector();
-		void copiarvector();
-		void mostrarVectorCopia();
-		void destructorVector();
-		void destructorVectorCopia();		
-		//======== entrada/salida ======== 
-		void desdeDondeLeeVector();
-		void verificarArchivo();
-		void leerArchivo();
-		void leerTeclado();
-		void guardarEnArchivo();
-	protected:
-		unsigned int longitudVector;
-		bool leerDesdeArchivo;
-		double *vector;
-		double *vectorCopia;
-};
+public:
+	//======== constructor ========
+	Vector();
+	//======== setters y getters ========
+	double getVectorCopia();
+	void setVectorCopia(double vectorCopiaPublico);
+	//======== funciones de vectores ========
+	void numElementosVector();
+	void crearVectorVacio();
+	void editarVectorVacio();
+	void mostrarVector();
+	void copiarvector();
+	void ordenarVector();
+	void mostrarVectorAuxiliar();
+	void destructorVector();
+	void destructorVectorAuxiliar();
+	//======== entrada/salida ========
+	void desdeDondeLeeVector();
+	void verificarArchivo();
+	void leerArchivo();
+	void leerTeclado();
+	void guardarEnArchivo();
+protected:
+	unsigned int longitudVector;
+	bool leerDesdeArchivo;
+	double *vector;
+	double *vectorAuxiliar;
+	};
 
 #endif /* _VECTOR_HPP_ */
+

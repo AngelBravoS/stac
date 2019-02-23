@@ -21,7 +21,7 @@
  ***************************************************************************/
 
 #include <iostream>
-#include<fstream>
+#include <fstream>
 #include "vector.hpp"
 
 //======== funciones de vectores ========
@@ -29,92 +29,103 @@
 Vector::Vector() {}
 
 double Vector::getVectorCopia() {
-	return *vectorCopia;
-}
+	return *vectorAuxiliar;
+	}
 
-void Vector::setVectorCopia(double vectorCopiaPublico) {
-	*vectorCopia = vectorCopiaPublico;
-}
+void Vector::setVectorCopia(double vectorAuxiliarPublico) {
+	*vectorAuxiliar = vectorAuxiliarPublico;
+	}
 
 void Vector::leerArchivo() {
 	std::fstream archivo;
 	archivo.open("vector.dat", std::ios::in | std::ios::binary);
-		crearVectorVacio();
-		for(unsigned int i = 0; i < longitudVector; i++) {
-			archivo >> vector[i];
+	crearVectorVacio();
+	for (unsigned int i = 0; i < longitudVector; i++) {
+		archivo >> vector[i];
 		}
-		archivo.close();
-}
+	archivo.close();
+	}
 
 void Vector::verificarArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
-	if(archivo.is_open()) {
+	if (archivo.is_open()) {
 		std::cout << "Fichero leído" << '\n';
-	} else {
+		}
+	else {
 		std::cout << "Fichero inexistente" << '\n';
 		exit(-1);
-	}
+		}
 	archivo.close();
-}
+	}
 
 void Vector::leerTeclado() {
 	crearVectorVacio();
 	editarVectorVacio();
-}
+	}
 
 void Vector::desdeDondeLeeVector() {
-	if(leerDesdeArchivo == true) {
+	if (leerDesdeArchivo == true) {
 		verificarArchivo();
 		leerArchivo();
-	} else {
+		}
+	else {
 		leerTeclado();
+		}
 	}
-}
 
 void Vector::crearVectorVacio() {
 	vector = new double [longitudVector];
 	//setVector(vector);
-}
+	}
 
 void Vector::editarVectorVacio() {
-	for(unsigned int i = 0; i < longitudVector; i++) {
+	for (unsigned int i = 0; i < longitudVector; i++) {
 		std::cout << "Elemento " << i + 1  << ": ";
 		std::cin >> vector[i];
-	}
+		}
 	std::cout << '\n';
-}
+	}
 
 void Vector::mostrarVector() {
 	std::cout << "( ";
-	for(unsigned int i = 0; i < longitudVector; i++) {
+	for (unsigned int i = 0; i < longitudVector; i++) {
 		std::cout << vector[i] << " ";
+		}
+	std::cout << ")" << '\n';
 	}
-	std::cout << ")";
-	std::cout << '\n';
 
-}
+void Vector::ordenarVector() {
+	double *vectorOrdenado;
+	/*
+	 *	vectorOrdenado = new double [longitudVector];
+	 *	for(unsigned int i = 0; i < longitudVector; i++)     {
+	 *		vectorOrdenado[i] = vector[i];
+	}*/
+	}
+
 /*
-void Vector::copiarvector() {
-	vectorCopia = new double [getLongitudVector()];
-	for(unsigned int i = 0; i < getLongitudVector(); i++)     {
-		vectorCopia[i] = vector[i];
-	}
-}
+ * void Vector::mostrarVectorCopia() {
+ *	std::cout << "( ";
+ *	for(unsigned int i = 0; i < getLongitudVector(); i++) {
+ *		std::cout << vectorCopia[i] << " ";
+ *	}
+ *	std::cout << ")";
+ *	std::cout << '\n';
+ * }
+ */
 
-void Vector::mostrarVectorCopia() {
-	std::cout << "( ";
-	for(unsigned int i = 0; i < getLongitudVector(); i++) {
-		std::cout << vectorCopia[i] << " ";
+void Vector::copiarvector() {
+	vectorAuxiliar = new double [longitudVector];
+	for (unsigned int i = 0; i < longitudVector; i++)     {
+		vectorAuxiliar[i] = vector[i];
+		}
 	}
-	std::cout << ")";
-	std::cout << '\n';
-}
-*/
+
 void Vector::destructorVector() {
 	delete vector;
-}
+	}
 
-void Vector::destructorVectorCopia() {
-	delete vectorCopia;
-}
+void Vector::destructorVectorAuxiliar() {
+	delete vectorAuxiliar;
+	}
