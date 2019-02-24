@@ -59,6 +59,7 @@ class CLI {
 		void preguntarEstimador(); 
 		void listadOpciones1Variable();
 		void listadOpciones2Variables();
+		void listadOpciones1Matriz();
 		void listadOpcionesColasExponencial();
 
 	protected:

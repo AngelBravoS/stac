@@ -31,12 +31,12 @@ void CLI::hasElegido() {
 
 void CLI::introduccion() {
 	std::cout << '\n';
-	std::cout << "             ╔══════════════════════════╗" << '\n';
-	std::cout << "             ║           STAC           ║" << '\n';
-	std::cout << "             ║        Estadística       ║" << '\n';
-	std::cout << "             ║   en línea de comandos   ║" << '\n';
-	std::cout << "             ╚══════════════════════════╝" << '\n';
-	std::cout << "                                        ver 0.83" << '\n';
+	std::cout << "	╔══════════════════════════╗" << '\n';
+	std::cout << "	║           STAC           ║" << '\n';
+	std::cout << "	║        Estadística       ║" << '\n';
+	std::cout << "	║   en línea de comandos   ║" << '\n';
+	std::cout << "	╚══════════════════════════╝" << '\n';
+	std::cout << "			       a0.85" << '\n';
 	std::cout << '\n';
 }
 
@@ -93,8 +93,8 @@ void CLI::ayuda() {
 }
 
 void CLI::listadOpcionesPricipales() {
-	std::cout << "		    Menú principal" << '\n';
-	std::cout << "                ====================== " << '\n';
+	std::cout << "		Menú principal" << '\n';
+	std::cout << "	=========================== " << '\n';
 	std::cout << '\n';
 	std::cout << "'1' Análisis estadístico de una variable." << '\n';
 	std::cout << "'2' Análisis estadístico de dos variables."  << '\n';
@@ -143,6 +143,29 @@ void CLI::listadOpciones2Variables() {
 	std::cout << "'2' Inferencia" << '\n';
 	std::cout << "'3' medidas de regresión" << '\n';
 	std::cout << "'0' Salir." << '\n';
+	std::cout << "> ";
+}
+
+void CLI::listadOpciones1Matriz() {
+	std::cout << "Cálculos de una matriz" << '\n';
+	std::cout << "'1' Traza" << '\n';
+	std::cout << "'2' Determinante" << '\n';
+	std::cout << "'3' Matriz traspuesta" << '\n';
+	std::cout << "'4' Método de Gauss" << '\n';
+	std::cout << "'5' Matriz adjunta" << '\n';
+	std::cout << "'6' Matriz inversa" << '\n';
+	std::cout << "'7' Descomposición LU" << '\n';
+	std::cout << "'8' Métodos numéricos" << '\n';
+	std::cout << "'0' Volver al menú anterior." << '\n';
+	std::cout << "> ";
+}
+
+void listadOpciones2Variables() {
+	std::cout << "Cálculos de dos matrices" << '\n';
+	std::cout << "'1' Suma" << '\n';
+	std::cout << "'2' Multiplicación" << '\n';
+	std::cout << "'3' Kronecker" << '\n';
+	std::cout << "'0' Menú anterior." << '\n';
 	std::cout << "> ";
 }
 

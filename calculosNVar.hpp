@@ -26,14 +26,7 @@
 #include "matriz.hpp"
 
 class CalculosNVar : public Matriz {
-
 	public:
-		/*
-		//========  getters & setters ======== 
-		double getSumatoria();
-		void setSumatoria ( double sumatoria );	
-		double getVarianza();
-		void setVarianza ( double varianzaPublica );	*/
 		//======== constructor ======== 
 		CalculosNVar();
 		CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
