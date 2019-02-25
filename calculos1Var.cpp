@@ -28,46 +28,46 @@
 //Límite máximo en unsigned int: 4.294.967.295
 
 
-Calculos1Var::Calculos1Var (bool archivo, unsigned int tamano){
+Calculos1Var::Calculos1Var(bool archivo, unsigned int tamano) {
 	leerDesdeArchivo = archivo;
 	longitudVector = tamano;
-}
+	}
 
 double  Calculos1Var::sumatoria(unsigned int exponente) {
 	unsigned int n = longitudVector;
 	double sumatoria = 0;
-	for(unsigned int i = 0; i < n; i++) {
+	for (unsigned int i = 0; i < n; i++) {
 		sumatoria += potencia(vector[i], exponente);
-	}
+		}
 	return sumatoria;
-}
+	}
 
 double  Calculos1Var::mediaAritmetica() {
 	unsigned int n = longitudVector;
 	double media = 0;
 	media = (sumatoria(1) / n);
 	return media;
-}
+	}
 
 double Calculos1Var::mediaGeometrica() {
 	unsigned int n = longitudVector;
 	double mediaGeometrica = 1;
-	for(unsigned int i = 0; i < n; i++) {
+	for (unsigned int i = 0; i < n; i++) {
 		mediaGeometrica *= vector[i];
-	}
+		}
 	mediaGeometrica = pow(mediaGeometrica, 1.0 / n);
 	return mediaGeometrica;
-}
+	}
 
 double Calculos1Var::mediaArmonica() {
 	unsigned int n = longitudVector;
 	double mediaArmonica = 0;
-	for(unsigned int i = 0; i < n; i++) {
+	for (unsigned int i = 0; i < n; i++) {
 		mediaArmonica +=  1 / (potencia(vector[i], 1));
-	}
+		}
 	mediaArmonica = (n / mediaArmonica);
 	return mediaArmonica;
-}
+	}
 
 double Calculos1Var::mediaCuadratica() {
 	unsigned int n = longitudVector;
@@ -75,146 +75,139 @@ double Calculos1Var::mediaCuadratica() {
 	mediaCuadratica = sumatoria(2) * (1.0 / n);
 	mediaCuadratica = sqrt(mediaCuadratica);
 	return mediaCuadratica;
-}
+	}
 
 //Suma de diferencias respecto a la media con exponente
 double Calculos1Var::difRespecMedia(int exponente) {
 	unsigned int n = longitudVector;
 	double difRespecMedia = 0;
-	for(unsigned int i = 0; i < n; i++) {
+	for (unsigned int i = 0; i < n; i++) {
 		difRespecMedia += pow(vector[i] - mediaAritmetica(), exponente);
-	}
+		}
 	return difRespecMedia;
-}
+	}
+
+double Calculos1Var::mediana() {
+	double mediana = 0;
+
+	return mediana;
+	}
+
+double Calculos1Var::moda() {
+	double norma = 0;
+	norma += sumatoria(2);
+	norma = sqrt(norma);
+	return norma;
+	}
 
 double Calculos1Var::varianza() {
 	unsigned int n = longitudVector;
 	double varianza;
 	varianza = (difRespecMedia(2)) / n;
 	return varianza;
-}
+	}
 
-double Calculos1Var::cuasiVarianza() {
+double Calculos1Var::varianzaMuestral() {
 	unsigned int n = longitudVector;
-	double cuasiVarianza;
-	cuasiVarianza = (difRespecMedia(2)) / (n - 1);
-	return cuasiVarianza;
-}
+	double varianzaMuestral;
+	varianzaMuestral = (difRespecMedia(2)) / (n - 1);
+	return varianzaMuestral;
+	}
 
 double Calculos1Var::desviacionTipica() {
 	double desviacionTipica;
 	desviacionTipica = sqrt(varianza());
 	return desviacionTipica;
-}
+	}
 
-double Calculos1Var::cuasiDesviacionTipica() {
-	double cuasiDesviacionTipica;
-	cuasiDesviacionTipica = sqrt(cuasiVarianza());
-	return cuasiDesviacionTipica;
-}
+double Calculos1Var::desviacionTipicaMuestral() {
+	double desviacionTipicaMuestral;
+	desviacionTipicaMuestral = sqrt(varianzaMuestral());
+	return desviacionTipicaMuestral;
+	}
 
-double Calculos1Var::momentos(int exponente) {
+double Calculos1Var::momentosNoCentrados(int exponente) {
 	unsigned int n = longitudVector;
-	double momentos;
-	momentos = difRespecMedia(exponente) / n;
-	return momentos;
-}
+	double momento;
+	momento = difRespecMedia(exponente) / n;
+	return momento;
+	}
 
 double Calculos1Var::coeficientePearson() {
 	double coeficientePearson;
-	coeficientePearson = (cuasiDesviacionTipica() / mediaAritmetica());
+	coeficientePearson = desviacionTipica() / mediaAritmetica();
 	return coeficientePearson;
-}
+	}
 
-//funciona MAAAAL
 double Calculos1Var::coeficienteAsimetriaFisher() {
-	double coeficienteAsimetriaFisher;
-	coeficienteAsimetriaFisher = (momentos(3) / pow(cuasiDesviacionTipica(), 3));
-	return coeficienteAsimetriaFisher;
-}
+	double coeficiente, mu;
+	mu = difRespecMedia(3);
+	//mu = momentosNoCentrados(3)-3*momentosNoCentrados(1)*momentosNoCentrados(2)+2*potencia(momentosNoCentrados(1),3);
+	//coeficiente = mu*varianza();
+	coeficiente = mu / potencia(desviacionTipica(), 3);
+	return coeficiente;
+	}
 
 double Calculos1Var::curtosis() {
-	double curtosis;
-	unsigned int n =  longitudVector;
-	curtosis = ((difRespecMedia(4) / ((n - 1) * pow(cuasiDesviacionTipica(), 4))));
-	//curtosis = curtosis -3;
+	double curtosis, mu;
+	mu = momentosNoCentrados(4);
+	//mu = momentosNoCentrados(4)-4*momentosNoCentrados(1)*momentosNoCentrados(3)+6*potencia(momentosNoCentrados(1),2)-3*potencia(momentosNoCentrados(1),4);
+	curtosis = (mu / potencia(varianza(), 2)) - 3;
 	return curtosis;
-}
+	}
 
 double Calculos1Var::norma() {
 	double norma = 0;
-	norma+=sumatoria(2);
-	norma=sqrt(norma);
+	norma += sumatoria(2);
+	norma = sqrt(norma);
 	return norma;
-}
-
-/*
-	// Método Quicksort y opción de Arrays.sort(vectorOrdenado);
-	// con import java.util.Arrays; habilitado
-	double Vector::ordenamientoVector() {
-        double [] vectorOrdenado = (double[])vector.clone(); //===> Clonar ==> al clonar el vector original no se modifica
-        Arrays.sort(vectorOrdenado);
-        return vectorOrdenado;
-    }
-
-    double Vector::mediana(double []vectorOrdenado) {
-        double [] vector = vectorOrdenado;
-        double mediana=0;
-        if (vector.length mod 2) = 1
-			mediana = orden[i,(vector.length div 2)+1]
-		else
-			mediana = orden[i,(vector.length div 2)] + orden[i,(vector.length div 2)+1])  /  2
-        return mediana;
-    }
-    void Vector::moda() {
-    }
-}*/
+	}
 
 double Calculos1Var::media1MuestraSigmaConocida() {
 	double resultado = 0;
-	std::cout << "ok."<< '\n';
+	std::cout << "ok." << '\n';
 	return resultado;
 
-}
+	}
 
 double Calculos1Var::media1MuestraSigmaDesconocida() {
 	double resultado = 0;
 	return resultado;
 
-}
+	}
 
 double Calculos1Var::var1MuestraMuConocida() {
 	double resultado = 0;
 	return resultado;
 
-}
+	}
 
 double Calculos1Var::var1MuestraMuDesconocida() {
 	double resultado = 0;
 	return resultado;
 
-}
+	}
 
 double Calculos1Var::testChiMuConocida() {
 	double resultado = 0;
 	return resultado;
 
-}
+	}
 
 double Calculos1Var::testChiMuDesconocida() {
 	double resultado = 0;
 	return resultado;
 
-}
+	}
 
 double Calculos1Var::testStudentVarConocida() {
 	double resultado = 0;
 	return resultado;
 
-}
+	}
 
 double Calculos1Var::testStudentVarDesconocida() {
 	double resultado = 0;
 	return resultado;
 
-}
+	}

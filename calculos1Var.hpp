@@ -27,41 +27,43 @@
 #include "funcMatematicasBasicas.hpp"
 
 class Calculos1Var : public Vector {
-	public:
-		//======== constructor ======== 
-		Calculos1Var (bool leerArchivo, unsigned int longitudVector);
-		//========  funciones de estadística descriptiva ======== 
-		double sumatoria ( unsigned int exponente );
-		double mediaAritmetica();
-		double mediaGeometrica() ;
-		double mediaArmonica();
-		double mediaCuadratica();
-		double difRespecMedia ( int exponente );
-		double varianza();
-		double cuasiVarianza();
-		double desviacionTipica();
-		double cuasiDesviacionTipica();
-		double momentos ( int exponente );
-		double coeficientePearson();
-		double coeficienteAsimetriaFisher();
-		double curtosis();
-		double norma();
-		//======== funciones de inferencia ======== 
-		//-------- Contrastes en poblaciones normales --------
-		//-------- de una muestra. Relativo a la media--------
-		double media1MuestraSigmaConocida();
-		double media1MuestraSigmaDesconocida();
-		//-------- relativo a la varianza --------
-		double var1MuestraMuConocida();
-		double var1MuestraMuDesconocida();
-		//-------- Aplicaciones del test de razón --------
-		//-------- de verosimilitudes --------
-		//-------- Test de Chi-cuadrado sobre Sigma^2--------
-		double testChiMuConocida();
-		double testChiMuDesconocida();
-		//-------- Test t Student sobre mu --------
-		double testStudentVarConocida();
-		double testStudentVarDesconocida();
-};
+public:
+	//======== constructor ========
+	Calculos1Var(bool leerArchivo, unsigned int longitudVector);
+	//========  funciones de estadística descriptiva ========
+	double sumatoria(unsigned int exponente);
+	double mediaAritmetica();
+	double mediaGeometrica() ;
+	double mediaArmonica();
+	double mediaCuadratica();
+	double mediana();
+	double moda();
+	double difRespecMedia(int exponente);
+	double varianza();
+	double varianzaMuestral();
+	double desviacionTipica();
+	double desviacionTipicaMuestral();
+	double momentosNoCentrados(int exponente);
+	double coeficientePearson();
+	double coeficienteAsimetriaFisher();
+	double curtosis();
+	double norma();
+	//======== funciones de inferencia ========
+	//-------- Contrastes en poblaciones normales --------
+	//-------- de una muestra. Relativo a la media--------
+	double media1MuestraSigmaConocida();
+	double media1MuestraSigmaDesconocida();
+	//-------- relativo a la varianza --------
+	double var1MuestraMuConocida();
+	double var1MuestraMuDesconocida();
+	//-------- Aplicaciones del test de razón --------
+	//-------- de verosimilitudes --------
+	//-------- Test de Chi-cuadrado sobre Sigma^2--------
+	double testChiMuConocida();
+	double testChiMuDesconocida();
+	//-------- Test t Student sobre mu --------
+	double testStudentVarConocida();
+	double testStudentVarDesconocida();
+	};
 
 #endif /* _CALCULOS2VAR_HPP_ */

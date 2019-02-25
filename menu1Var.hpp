@@ -28,16 +28,17 @@
 #include <fstream>
 
 class Menu1Var : public CLI {
-		//Obtener = Get
-		//Establecer = Set
-	public:
-		//Calculos1Var variable(bool, unsigned int); Parece innecesario
-		//========  funciones de muestreo ======== 
-		void menuSecundario();
-		unsigned int preguntarNumeroElementos();
-	protected:
-		bool archivoValido;
-};
+	//Obtener = Get
+	//Establecer = Set
+public:
+	//Calculos1Var variable(bool, unsigned int); Parece innecesario
+	//========  funciones de muestreo ========
+	void menuSecundario();
+	unsigned int preguntarNumeroElementos();
+	//bool preguntarSiAgrupados();
+protected:
+	bool archivoValido;
+	};
 
 
 
