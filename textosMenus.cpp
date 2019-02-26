@@ -160,7 +160,7 @@ void CLI::listadOpciones1Matriz() {
 	std::cout << "> ";
 }
 
-void listadOpciones2Variables() {
+void CLI::listadOpciones2Matrices() {
 	std::cout << "Cálculos de dos matrices" << '\n';
 	std::cout << "'1' Suma" << '\n';
 	std::cout << "'2' Multiplicación" << '\n';

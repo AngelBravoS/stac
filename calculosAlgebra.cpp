@@ -22,20 +22,29 @@
 #include <iostream>
 #include "calculosAlgebra.hpp"
 
-using namespace std;
+CalculosAlgebra::CalculosAlgebra() {
+	}
+
+CalculosAlgebra::CalculosAlgebra(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
+	desdeArchivo = archivo;
+	filas = longitudFila;
+	filasDeB = filas;
+	columnas = longitudColumna;
+	columnasDeB = columnas;
+	}
 
 double CalculosAlgebra::traza() {
 	double traza = 0;
-	for(unsigned int i = 0; i < filas; i++) {
+	for (unsigned int i = 0; i < filas; i++) {
 		traza += matriz[i][i];
-	}
+		}
 	return traza;
-}
+	}
 
-double  CalculosAlgebra::determinante() {
+double CalculosAlgebra::determinante() {
 	unsigned int const n = filas;
 	double determinante = 0;
-	switch(filas) {
+	switch (filas) {
 		case 1:
 			determinante = matriz[0][0];
 			break;
@@ -44,40 +53,42 @@ double  CalculosAlgebra::determinante() {
 			break;
 		case 3://por sarrus
 			determinante = (matriz[0][0] * matriz[1][1] * matriz[2][2] +
-			                matriz[0][2] * matriz[1][0] * matriz[2][1] +
-			                matriz[0][1] * matriz[1][2] * matriz[2][0]) -
-			               (matriz[0][2] * matriz[1][1] * matriz[2][0] +
-			                matriz[0][1] * matriz[1][0] * matriz[2][2] +
-			                matriz[0][0] * matriz[1][2] * matriz[2][1]);
+								 matriz[0][2] * matriz[1][0] * matriz[2][1] +
+								 matriz[0][1] * matriz[1][2] * matriz[2][0]) -
+								(matriz[0][2] * matriz[1][1] * matriz[2][0] +
+								 matriz[0][1] * matriz[1][0] * matriz[2][2] +
+								 matriz[0][0] * matriz[1][2] * matriz[2][1]);
 			break;
 		default :
 			std::cout << "Determinantes de orden >3 aún no disponible." << '\n';
 			break;
-	}
+		}
 	return determinante;
-}
+	}
 
 void CalculosAlgebra::traspuesta() {
+	crearMatrizVaciaB();
 	copiarMatrizA();
-	for(unsigned int i = 0; i < filas; i++) {
-		for(unsigned int j = 0; j < columnas; j++) {
+	for (unsigned int i = 0; i < filas; i++) {
+		for (unsigned int j = 0; j < columnas; j++) {
 			matrizB[i][j] = matriz[j][i];
+			}
 		}
-	}
 	//mostrarMatriz ( copiaDeMatriz );
-	setMatrizB(matrizB);
-}
+	//setMatrizB(matrizB);
+	}
 
 void CalculosAlgebra::adjunta() {
-}
+	}
 
 void CalculosAlgebra::inversa() {
-	if(determinante() != 0) {
-		std::cout << "La matriz tiene inversa" << endl;
-	} else {
-		std::cout << "La matriz no tiene inversa" << endl;
+	if (determinante() != 0) {
+		std::cout << "La matriz tiene inversa" << '\n';
+		}
+	else {
+		std::cout << "La matriz no tiene inversa" << '\n';
+		}
 	}
-}
 
 void CalculosAlgebra::triangular() {
 	/*for ( int i = 1, i <= n, i++ ) {
@@ -90,7 +101,7 @@ void CalculosAlgebra::triangular() {
 				}
 			}
 		}*/
-}
+	}
 
 /*
 Si A11=0, se busca el primer coeficiente no nulo de la getColumna
@@ -101,78 +112,87 @@ de la columna debajo del pivote
 void CalculosAlgebra::gauss() {
 	unsigned int const n = filas;
 	copiarMatrizA();
-	for(int i = 1; i < n; i++) {
-		if(matrizB[i][i] == 0) {
-			for(int j = i + 1; j < n; j++) {
+	for (int i = 1; i < n; i++) {
+		if (matrizB[i][i] == 0) {
+			for (int j = i + 1; j < n; j++) {
+				}
 			}
-		} else {
+		else {
 			//copiaDeMatriz[i][j] =;
+			}
 		}
-	}
 	setMatrizB(matrizB);
-}
+	}
 
 void CalculosAlgebra::descomposicionLU() {
 	unsigned int const n = filas;
 	unsigned int i, j, k;
 	double matrizL [n][n];
 	double matrizU [n][n];
-	for(i = 0; i < n; i++) {
-		for(j = 0; j < n; j++) {
-			if(j < i) {
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < n; j++) {
+			if (j < i) {
 				matrizL[j][i] = 0;
-			} else {
+				}
+			else {
 				matrizL [j][i] = matriz [j][i];
-				for(k = 0; k < i; k++) {
+				for (k = 0; k < i; k++) {
 					matrizL [j][i] -= (matrizL [j][k] * matrizU [k][i]);
+					}
 				}
 			}
-		}
-		for(j = 0; j < n; j++) {
-			if(j < i) {
+		for (j = 0; j < n; j++) {
+			if (j < i) {
 				matrizU [i][j] = 0;
-			} else if(j == i) {
+				}
+			else if (j == i) {
 				matrizU [i][j] = 1;
-			} else {
+				}
+			else {
 				matrizU [i][j] = matriz[i][j] / matrizL [i][i];
-				for(k = 0; k < i; k++) {
+				for (k = 0; k < i; k++) {
 					matrizU [i][j] -= ((matrizL [i][k] * matrizU [k][j]) / matrizL [i][i]);
+					}
 				}
 			}
 		}
-	}
 	copiarMatrizA();
-	for(i = 0; i < n; i++) {
-		for(j = 0; j < n; j++) {
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < n; j++) {
 			matrizB[i][j] = matrizL[i][j];
+			}
 		}
-	}
 	mostrarMatrizB();
-	for(i = 0; i < n; i++) {
-		for(j = 0; j < n; j++) {
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < n; j++) {
 			matrizB[i][j] = matrizU[i][j];
+			}
 		}
-	}
 	mostrarMatrizB();
-}
-
-void CalculosAlgebra::multiplicarMat() {
-	crearMatrizVacia();
-	for(unsigned int i = 0; i < filas; i++) {
-		for(unsigned int j = 0; j < columnas; j++) {
-			matrizB[i][j] = matriz[j][i];
-		}
 	}
+
+void CalculosAlgebra::sumaDeMatrices() {
+	}
+
+void CalculosAlgebra::Kronecker() {
+	}
+
+void CalculosAlgebra::multiplicacionDeMatrices() {
+	crearMatrizVacia();
+	for (unsigned int i = 0; i < filas; i++) {
+		for (unsigned int j = 0; j < columnas; j++) {
+			matrizB[i][j] = matriz[j][i];
+			}
+		}
 	//mostrarMatriz ( copiaDeMatriz );
 	setMatrizB(matrizB);
-}
-
+	}
 
 /*
-(*---procedimiento para multiplicar matrices---*)	
+(*---procedimiento para multiplicar matrices---*)
 
 Procedure MultiplicarMat(m1,m2: Matriz; var resul:Matriz);
-	Var 
+	Var
 		i,j,k:1 .. W;
 	Begin
 		for i:=1 to dimension do

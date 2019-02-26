@@ -27,18 +27,23 @@
 
 class CalculosAlgebra : public CalculosNVar {
 
-	public:
-		//========  funciones matriciales ======== 
-		double traza();
-		double determinante();
-		void traspuesta();
-		void adjunta();
-		void triangular();
-		void inversa();
-		void gauss();
-		void descomposicionLU();
-		void multiplicarMat();
-};
+public:
+	//======== constructor ========
+	CalculosAlgebra();
+	CalculosAlgebra(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
+	//========  funciones matriciales ========
+	double traza();
+	double determinante();
+	void traspuesta();
+	void adjunta();
+	void triangular();
+	void inversa();
+	void gauss();
+	void descomposicionLU();
+	void sumaDeMatrices();
+	void multiplicacionDeMatrices();
+	void Kronecker();
+	};
 
 #endif /* _CALCULOSALGEBRA_HPP_ */
 

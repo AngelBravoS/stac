@@ -28,20 +28,14 @@
 #include <fstream>
 
 class MenuAlgebra : public CLI {
-		//Obtener = Get
-		//Establecer = Set
-	public:
-		//Calculos1Var variable(bool, unsigned int);
-		//========  funciones de muestreo ======== 
-		void menuSecundario();
-		//unsigned int tamanoVector();
-		bool preguntarDesdeArchivoOTeclado();
-		//void crearVector(bool archivo, unsigned int tamano);
-		//void recogerDatosMuestra();
-		//void mostrarDatosMuestra();
-		void verificarArchivo();
-	protected:
-		bool archivoValido;
-};
+public:
+	//========  funciones de muestreo ========
+	void menuSecundario();
+	void menu1Matriz();
+	void menu2Matrices();
+	void verificarArchivo();
+protected:
+	bool archivoValido;
+	};
 
 #endif /* _MENUALGEBRA_HPP_ */

@@ -60,6 +60,7 @@ class CLI {
 		void listadOpciones1Variable();
 		void listadOpciones2Variables();
 		void listadOpciones1Matriz();
+		void listadOpciones2Matrices();
 		void listadOpcionesColasExponencial();
 
 	protected:
