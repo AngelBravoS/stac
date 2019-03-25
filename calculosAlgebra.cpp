@@ -19,6 +19,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <iostream>
 #include "calculosAlgebra.hpp"
 
@@ -74,18 +75,66 @@ void CalculosAlgebra::traspuesta() {
 			matrizB[i][j] = matriz[j][i];
 			}
 		}
-	//mostrarMatriz ( copiaDeMatriz );
-	//setMatrizB(matrizB);
 	}
 
 void CalculosAlgebra::adjunta() {
+	crearMatrizVaciaB();
+	switch (filas){
+		case 1:
+			matrizB[0][0] = matriz[0][0];
+			break;
+		case 2:
+			matrizB[0][0] = matriz[1][1];
+			matrizB[0][1] = -matriz[0][1];
+			matrizB[1][0] = -matriz[1][0];
+			matrizB[1][1] = matriz[0][0];
+			break;
+		case 3:
+			matrizB[0][0] = (matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1]);
+			matrizB[0][1] = (matriz[1][2]*matriz[2][0]) - (matriz[1][0]*matriz[2][2]);
+			matrizB[0][2] = (matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]);
+			matrizB[1][0] = (matriz[2][1]*matriz[0][2]) - (matriz[2][2]*matriz[0][1]);
+			matrizB[1][1] = (matriz[2][2]*matriz[0][0]) - (matriz[2][0]*matriz[0][2]);
+			matrizB[1][2] = (matriz[2][0]*matriz[0][1]) - (matriz[2][1]*matriz[0][0]);
+			matrizB[2][0] = (matriz[0][1]*matriz[1][2]) - (matriz[0][2]*matriz[1][1]);
+			matrizB[2][1] = (matriz[0][2]*matriz[1][0]) - (matriz[0][0]*matriz[1][2]);
+			matrizB[2][2] = (matriz[0][0]*matriz[1][1]) - (matriz[0][1]*matriz[1][0]);
+			break;
+		default:
+			std::cout << "aún no disponible" << '\n';
+	}
 	}
 
 void CalculosAlgebra::inversa() {
+	crearMatrizVaciaB();
+	double det = determinante();
+	double frac = 1/det;
 	if (determinante() != 0) {
-		std::cout << "La matriz tiene inversa" << '\n';
+		switch (filas){
+			case 1:
+				matrizB[0][0] = matriz[0][0];
+				break;
+			case 2:
+				matrizB[0][0] = frac * matriz[1][1];
+				matrizB[0][1] = frac * (-matriz[0][1]);
+				matrizB[1][0] = frac * (-matriz[1][0]);
+				matrizB[1][1] = frac * matriz[0][0];
+				break;
+			case 3:
+				matrizB[0][0] = frac * ((matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1]));
+				matrizB[1][0] = frac * ((matriz[1][2]*matriz[2][0]) - (matriz[1][0]*matriz[2][2]));
+				matrizB[2][0] = frac * ((matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]));
+				matrizB[0][1] = frac * ((matriz[2][1]*matriz[0][2]) - (matriz[2][2]*matriz[0][1]));
+				matrizB[1][1] = frac * ((matriz[2][2]*matriz[0][0]) - (matriz[2][0]*matriz[0][2]));
+				matrizB[2][1] = frac * ((matriz[2][0]*matriz[0][1]) - (matriz[2][1]*matriz[0][0]));
+				matrizB[0][2] = frac * ((matriz[0][1]*matriz[1][2]) - (matriz[0][2]*matriz[1][1]));
+				matrizB[1][2] = frac * ((matriz[0][2]*matriz[1][0]) - (matriz[0][0]*matriz[1][2]));
+				matrizB[2][2] = frac * ((matriz[0][0]*matriz[1][1]) - (matriz[0][1]*matriz[1][0]));
+				break;
+			default:
+				std::cout << "aún no disponible" << '\n';
 		}
-	else {
+	} else {
 		std::cout << "La matriz no tiene inversa" << '\n';
 		}
 	}
@@ -110,7 +159,7 @@ Si A11 =/= 0 para i = 2...n, mi1=-ai1/a11, así hacemos 0 todo elemento
 de la columna debajo del pivote
 */
 void CalculosAlgebra::gauss() {
-	unsigned int const n = filas;
+	/*unsigned int const n = filas;
 	copiarMatrizA();
 	for (int i = 1; i < n; i++) {
 		if (matrizB[i][i] == 0) {
@@ -121,11 +170,11 @@ void CalculosAlgebra::gauss() {
 			//copiaDeMatriz[i][j] =;
 			}
 		}
-	setMatrizB(matrizB);
+	setMatrizB(matrizB);*/
 	}
 
 void CalculosAlgebra::descomposicionLU() {
-	unsigned int const n = filas;
+	/*unsigned int const n = filas;
 	unsigned int i, j, k;
 	double matrizL [n][n];
 	double matrizU [n][n];
@@ -168,7 +217,7 @@ void CalculosAlgebra::descomposicionLU() {
 			matrizB[i][j] = matrizU[i][j];
 			}
 		}
-	mostrarMatrizB();
+	mostrarMatrizB();*/
 	}
 
 void CalculosAlgebra::sumaDeMatrices() {
@@ -178,14 +227,14 @@ void CalculosAlgebra::Kronecker() {
 	}
 
 void CalculosAlgebra::multiplicacionDeMatrices() {
-	crearMatrizVacia();
+	Matriz matrizResultado(filas, columnas);
+	matrizResultado.crearMatrizVacia();
 	for (unsigned int i = 0; i < filas; i++) {
 		for (unsigned int j = 0; j < columnas; j++) {
-			matrizB[i][j] = matriz[j][i];
+			
 			}
 		}
 	//mostrarMatriz ( copiaDeMatriz );
-	setMatrizB(matrizB);
 	}
 
 /*

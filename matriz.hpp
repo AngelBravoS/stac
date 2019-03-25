@@ -27,6 +27,7 @@ class Matriz {
 	public:
 		//======== constructor ======== 
 		Matriz();
+		Matriz(unsigned int longitudFila, unsigned int longitudColumna);
 		//======== setters y getters ======== 
 		double getMatriz();
 		void setMatriz ( double **matrizPublica );

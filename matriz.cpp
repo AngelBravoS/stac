@@ -28,6 +28,11 @@
 
 Matriz::Matriz() {}
 
+Matriz::Matriz(unsigned int longitudFila, unsigned int longitudColumna) {
+	filas = longitudFila;
+	columnas = longitudColumna;
+}
+
 double Matriz::getMatriz() {
 	return **matriz;
 	}

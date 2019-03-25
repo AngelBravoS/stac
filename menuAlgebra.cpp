@@ -84,11 +84,15 @@ void MenuAlgebra::menu1Matriz() {
 				std::cout << "La matriz adjunta de A es: " << '\n';
 				std::cout << '\n';
 				matrizA.adjunta();
+				matrizA.mostrarMatrizB();
+				std::cout << '\n';
 				break;
 			case '6':
 				std::cout << "La matriz inversa de A es: " << '\n';
 				std::cout << '\n';
 				matrizA.inversa();
+				matrizA.mostrarMatrizB();
+				std::cout << '\n';
 				break;
 			case '7':
 				std::cout << "La matrices L y U son : " << '\n';
