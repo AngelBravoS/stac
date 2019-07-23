@@ -36,7 +36,7 @@ void CLI::introduccion() {
 	std::cout << "	║        Estadística       ║" << '\n';
 	std::cout << "	║   en línea de comandos   ║" << '\n';
 	std::cout << "	╚══════════════════════════╝" << '\n';
-	std::cout << "			       a0.86" << '\n';
+	std::cout << "			       a0.87" << '\n';
 	std::cout << '\n';
 }
 
@@ -60,6 +60,7 @@ void CLI::ayuda() {
 
 	std::cout << "Análisis estadístico de n-variables:" << '\n';
 	std::cout << "	Análisis multivariante " << '\n';
+	std::cout << "	Procesos estocásticos " << '\n';
 
 	std::cout << "Cálculo álgebra matricial:" << '\n';
 	std::cout << "	De una matriz" << '\n';
@@ -96,9 +97,9 @@ void CLI::listadOpcionesPricipales() {
 	std::cout << "		Menú principal" << '\n';
 	std::cout << "	=========================== " << '\n';
 	std::cout << '\n';
-	std::cout << "'1' Análisis estadístico de una variable." << '\n';
-	std::cout << "'2' Análisis estadístico de dos variables."  << '\n';
-	std::cout << "'n' Análisis estadístico de n-variables." << '\n';
+	std::cout << "'1' Análisis de una variable." << '\n';
+	std::cout << "'2' Análisis de dos variables."  << '\n';
+	std::cout << "'n' Análisis de n-variables." << '\n';
 	std::cout << "'a' Álgebra matricial." << '\n';
 	std::cout << "'m' Muestreo." << '\n';
 	std::cout << "'s' Análisis que no requiere datos." << '\n';
@@ -117,7 +118,7 @@ void CLI::listadOpcionesMuestreo() {
 	std::cout << "'6' Métodos indirectos de estimación" << '\n';
 	std::cout << "'7' Muestreo estratificado" << '\n';
 	std::cout << "'8' Muestreo por conglomerados" << '\n';
-	std::cout << "'0' Salir." << '\n';
+	std::cout << "'0' Volver al menú principal" << '\n';
 	std::cout << "> ";
 }
 
@@ -140,11 +141,11 @@ void CLI::listadOpciones1Variable() {
 void CLI::listadOpciones2Variables() {
 	std::cout << '\n';
 	std::cout << "'1' Medidas estadísticas básicas" << '\n';
-	std::cout << "'2' Inferencia" << '\n';
-	std::cout << "'3' medidas de regresión" << '\n';
-	std::cout << "'0' Salir." << '\n';
+	std::cout << "'2' Tablas de contingencia bidimensionales" << '\n';
+	std::cout << "'0' Volver al menú principal" << '\n';
 	std::cout << "> ";
 }
+
 
 void CLI::listadOpciones1Matriz() {
 	std::cout << "Cálculos de una matriz" << '\n';
@@ -156,7 +157,7 @@ void CLI::listadOpciones1Matriz() {
 	std::cout << "'6' Matriz inversa" << '\n';
 	std::cout << "'7' Descomposición LU" << '\n';
 	std::cout << "'8' Métodos numéricos" << '\n';
-	std::cout << "'0' Volver al menú anterior." << '\n';
+	std::cout << "'0' Menú anterior." << '\n';
 	std::cout << "> ";
 }
 
@@ -177,6 +178,6 @@ void CLI::listadOpcionesColasExponencial() {
 	std::cout << "'3' M/M/C" << "\n";
 	std::cout << "'4' M/M/Inf" << "\n";
 	std::cout << "'5' M/G/I" << "\n";
-	std::cout << "'0' Salir" << "\n";
+	std::cout << "'0' Menú anterior." << "\n";
 	std::cout << "> ";
 }

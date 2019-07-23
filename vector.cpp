@@ -28,14 +28,6 @@
 
 Vector::Vector() {}
 
-double Vector::getVectorCopia() {
-	return *vectorAuxiliar;
-	}
-
-void Vector::setVectorCopia(double vectorAuxiliarPublico) {
-	*vectorAuxiliar = vectorAuxiliarPublico;
-	}
-
 void Vector::leerArchivo() {
 	std::fstream archivo;
 	archivo.open("vector.dat", std::ios::in | std::ios::binary);
@@ -76,7 +68,6 @@ void Vector::desdeDondeLeeVector() {
 
 void Vector::crearVectorVacio() {
 	vector = new double [longitudVector];
-	//setVector(vector);
 	}
 
 void Vector::editarVectorVacio() {

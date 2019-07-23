@@ -33,22 +33,6 @@ Matriz::Matriz(unsigned int longitudFila, unsigned int longitudColumna) {
 	columnas = longitudColumna;
 }
 
-double Matriz::getMatriz() {
-	return **matriz;
-	}
-
-void Matriz::setMatriz(double **matrizPublica) {
-	**matriz = **matrizPublica;
-	}
-
-double Matriz::getMatrizB() {
-	return **matrizB;
-	}
-
-void Matriz::setMatrizB(double **matrizBPublica) {
-	**matrizB = **matrizBPublica;
-	}
-
 void Matriz::verificarArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
@@ -99,7 +83,6 @@ void Matriz::crearMatrizVacia() {
 	for (unsigned int i = 0; i < filas; i++)     {
 		matriz[i] = new double [columnas];
 		}
-	setMatriz(matriz);
 	}
 
 void Matriz::crearMatrizVaciaB() {
@@ -107,7 +90,6 @@ void Matriz::crearMatrizVaciaB() {
 	for (unsigned int i = 0; i < filasDeB; i++)     {
 		matrizB[i] = new double [columnasDeB];
 		}
-	setMatrizB(matrizB);
 	}
 
 void Matriz::editarMatrizVacia() {

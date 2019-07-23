@@ -27,9 +27,6 @@ class Vector {
 public:
 	//======== constructor ========
 	Vector();
-	//======== setters y getters ========
-	double getVectorCopia();
-	void setVectorCopia(double vectorCopiaPublico);
 	//======== funciones de vectores ========
 	void numElementosVector();
 	void crearVectorVacio();

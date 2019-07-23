@@ -57,10 +57,8 @@ void Menu1Var::menuSecundario() {
 		std::cout << '\n';
 		switch (eleccionNivel2) {
 			case '1':
-
-				std::cout << "∑Xi = " << variable.sumatoria(1) << '\n';
-				std::cout << "   2" << '\n';
-				std::cout << "∑Xi = " << variable.sumatoria(2) << '\n';
+				std::cout << "Sumatorias" << '\n';
+				std::cout << "∑Xi = " << variable.sumatoria(1) << " , ∑Xi^2 = " << variable.sumatoria(2) << '\n';
 				std::cout << '\n';
 
 				std::cout << "Medidas de tendencia central" << '\n';
@@ -74,11 +72,14 @@ void Menu1Var::menuSecundario() {
 				std::cout << "Xa = " << variable.mediaArmonica() << '\n';
 				std::cout << "_" << '\n';
 				std::cout << "Xc = " << variable.mediaCuadratica() << '\n';
-
-				std::cout << "Mediana";
-
-				std::cout << "Moda" << '\n';
-
+				std::cout << '\n';
+				
+				std::cout << "Innecesario en la versión final" << '\n';
+				std::cout << "Diferencias respecto a la media ^2 = " << variable.difRespecMedia(2)<< '\n';
+				std::cout << "Diferencias respecto a la media ^3 = " << variable.difRespecMedia(3)<< '\n';
+				std::cout << "Momentos centrados de orden 2 (Varianza) = " << variable.momentosNoCentrados(2)<< '\n';
+				std::cout << "Momentos centrados de orden 3 = " << variable.momentosNoCentrados(3)<< '\n';
+				//std::cout << "n * desviacionTipica al cubo" << variable.desviacionTipica() << '\n';
 				std::cout << '\n';
 
 				std::cout << "Medidas de dispersión" << '\n';

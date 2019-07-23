@@ -43,7 +43,7 @@ double CalculosAlgebra::traza() {
 	}
 
 double CalculosAlgebra::determinante() {
-	unsigned int const n = filas;
+	//unsigned int const n = filas;
 	double determinante = 0;
 	switch (filas) {
 		case 1:
@@ -61,6 +61,24 @@ double CalculosAlgebra::determinante() {
 								 matriz[0][0] * matriz[1][2] * matriz[2][1]);
 			break;
 		default :
+		/*	for (unsigned int n = 1; n < filas; n++) {
+				for (unsigned int i = 2; i < filas; i++) {
+					for (unsigned int j = 1; j < n-1; j++) {
+						matrizB[i-1,j] = matriz[i,j];
+						for (unsigned int j = 1; j < n-1; j++) {
+							matrizB[i-1,j-1] = matriz[i,j];
+						}
+					}					
+					if ((1+n) % 2 == 0){
+						i = 1;
+					} else {
+						i = -1;
+					}
+					det:= det + i * m1[1,n] * determinante(B,dimension-1);
+
+				
+				
+			*/
 			std::cout << "Determinantes de orden >3 aún no disponible." << '\n';
 			break;
 		}

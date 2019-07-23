@@ -155,6 +155,9 @@ double CalculosNVar::curtosis(int indiceVariable) {
 	return curtosis;
 }
 
+void CalculosNVar::matrizP(){
+	
+	}
 /*
 	// Método Quicksort y opción de Arrays.sort(vectorOrdenado);
 	// con import java.util.Arrays; habilitado

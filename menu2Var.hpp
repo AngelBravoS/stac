@@ -25,6 +25,7 @@
 
 #include "cli.hpp"
 #include "calculos2Var.hpp"
+#include "calculosTablasContBid.hpp"
 #include<fstream>
 
 class Menu2Var : public CLI {
@@ -34,7 +35,10 @@ class Menu2Var : public CLI {
 		//Calculos2Var variableXeY(bool, unsigned int, unsigned int);
 		//========  funciones de muestreo ======== 
 		void menuSecundario();
+		void menuMuestra2Var();
+		void menuFmp2Var();
 		unsigned int preguntarNumeroColumnas();
+		bool esMuestra();
 };
 
 #endif /* _MENU2VAR_HPP_ */

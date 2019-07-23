@@ -28,11 +28,6 @@ class Matriz {
 		//======== constructor ======== 
 		Matriz();
 		Matriz(unsigned int longitudFila, unsigned int longitudColumna);
-		//======== setters y getters ======== 
-		double getMatriz();
-		void setMatriz ( double **matrizPublica );
-		double getMatrizB();
-		void setMatrizB ( double **matrizBPublica );
 		//======== entrada/salida ========  
 		void desdeDondeLeeMatriz();
 		void verificarArchivo();

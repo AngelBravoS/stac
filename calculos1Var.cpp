@@ -141,10 +141,9 @@ double Calculos1Var::coeficientePearson() {
 
 double Calculos1Var::coeficienteAsimetriaFisher() {
 	double coeficiente, mu;
+	unsigned int n = longitudVector;
 	mu = difRespecMedia(3);
-	//mu = momentosNoCentrados(3)-3*momentosNoCentrados(1)*momentosNoCentrados(2)+2*potencia(momentosNoCentrados(1),3);
-	//coeficiente = mu*varianza();
-	coeficiente = mu / potencia(desviacionTipica(), 3);
+	coeficiente = mu / (n*potencia(desviacionTipicaMuestral(), 3));
 	return coeficiente;
 	}
 
