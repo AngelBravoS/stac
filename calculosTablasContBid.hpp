@@ -20,41 +20,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _CALCULOSNVAR_HPP_
-#define _CALCULOSNVAR_HPP_
+#ifndef _CALCULOSTABLASCONTBID_HPP_
+#define _CALCULOSTABLASCONTBID_HPP_
 
-#include "matriz.hpp"
+#include "calculosNVar.hpp"
 
-class CalculosNVar : public Matriz {
+class CalculosTablasContBid : public CalculosNVar {
 	public:
 		//======== constructor ======== 
-		CalculosNVar();
-		CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
-		//========  funciones de estadística descriptiva ======== 
-		double sumatoria ( int indiceVariable, short unsigned int exponente );
-		double total (int indiceVariable);
-		double mediaAritmetica ( int indiceVariable );
-		double mediaGeometrica ( int indiceVariable ) ;
-		double mediaArmonica ( int indiceVariable );
-		double mediaCuadratica ( int indiceVariable );
-		double difRespecMedia ( int indiceVariable, int exponente );
-		double varianza ( int indiceVariable );
-		double cuasiVarianza ( int indiceVariable );
-		double desviacionTipica ( int indiceVariable );
-		double cuasiDesviacionTipica ( int indiceVariable );
-		double momentos ( int indiceVariable, int exponente );
-		double coeficientePearson ( int indiceVariable );
-		double coeficienteAsimetriaFisher ( int indiceVariable );
-		double curtosis ( int indiceVariable );
-		double covarianza ( int indiceVariable );
-		//========  funciones de procesos estocásticos ========
-		void matrizP(unsigned int n);
-		
-	protected:
-		//double sumatoria;
-		//double media;
-		//double varianza;
-		//double cuasiVarianza;
+		CalculosTablasContBid(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
+		//-------- funciones especificas de 2 variables --------
+		//matrizConMarginales();
 };
 
-#endif /* _MATRIZ_HPP_ */
+#endif /* _CALCULOSTABLASCONTBID_HPP_ */

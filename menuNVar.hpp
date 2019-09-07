@@ -28,13 +28,10 @@
 #include<fstream>
 
 class MenuNVar : public CLI {
-		//Obtener = Get
-		//Establecer = Set
 	public:
-		//Calculos2Var variableXeY(bool, unsigned int, unsigned int);
-		//========  funciones de muestreo ======== 
 		void menuSecundario();
-		unsigned int preguntarNumeroColumnas();
+		void menuProcesos();
+		//unsigned int preguntarNumeroColumnas();
 };
 
 #endif /* _MENUNVAR_HPP_ */

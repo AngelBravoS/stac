@@ -34,9 +34,7 @@ public:
 	void mostrarVector();
 	void copiarvector();
 	void ordenarVector();
-	void mostrarVectorAuxiliar();
 	void destructorVector();
-	void destructorVectorAuxiliar();
 	//======== entrada/salida ========
 	void desdeDondeLeeVector();
 	void verificarArchivo();
@@ -47,7 +45,6 @@ protected:
 	unsigned int longitudVector;
 	bool leerDesdeArchivo;
 	double *vector;
-	double *vectorAuxiliar;
 	};
 
 #endif /* _VECTOR_HPP_ */

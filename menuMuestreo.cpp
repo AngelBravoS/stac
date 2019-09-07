@@ -30,13 +30,13 @@ void MenuMuestreo::menuSecundario() {
 	agrupados = preguntarSiAgrupados();
 	MAS muestra(preguntarDesdeArchivoOTeclado(), estimador, preguntarNumeroColumnas(agrupados), agrupados);
 	muestra.desdeDondeLeeDatos();
-	muestra.crearMatrizParaCalculos();
+//	muestra.crearMatrizParaCalculos();
 	listadOpcionesMuestreo();
 	std::cin >> tipoDeMuestreo;
 	preguntarEstimador();
 	std::cin >> estimador;
 	std::cout << '\n' << "Tabla de datos" << '\n';
-	muestra.mostrarMatrizB();
+	//muestra.mostrarMatrizResuelta();
 	std::cout << '\n';
 	muestra.mostrarMatriz();
 	std::cout << '\n';

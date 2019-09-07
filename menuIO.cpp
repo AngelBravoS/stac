@@ -29,32 +29,35 @@ void MenuIO::menuSecundario() {
 	double lambdaUsuario, muUsuario;
 	listadOpcionesColasExponencial();
 	std::cin >> modeloSeleccionado;
-	std::cout << "Valor Lambda = ";
-	std::cin >> lambdaUsuario;
-	std::cout << "Valor Mu = ";
-	std::cin >> muUsuario;
-	switch (modeloSeleccionado) {
-		case 2 :
-			std::cout << "Valor k para calcular Pk -0 para ninguno- = ";
-			std::cin >> nUsuario;
-			break;
-		case 3 :
-			std::cout << "Valor n para calcular Pn -0 para ninguno- = ";
-			std::cin >> nUsuario;
-			std::cout << "Valor c = ";
-			std::cin >> cUsuario;
-			break;
-		default :
-			std::cout << "Valor n para calcular Pn -0 para ninguno- = ";
-			std::cin >> nUsuario;
-			break;
-		}
-	std::cout << "\n";
-	resultados(lambdaUsuario, muUsuario, nUsuario, cUsuario, modeloSeleccionado);
+	if (modeloSeleccionado != 0) {
+		std::cout << "Valor Lambda = ";
+		std::cin >> lambdaUsuario;
+		std::cout << "Valor Mu = ";
+		std::cin >> muUsuario;
+		switch (modeloSeleccionado) {
+			case 2 :
+				std::cout << "Valor k para calcular Pk -0 para ninguno- = ";
+				std::cin >> nUsuario;
+				break;
+			case 3 :
+				std::cout << "Valor n para calcular Pn -0 para ninguno- = ";
+				std::cin >> nUsuario;
+				std::cout << "Valor c = ";
+				std::cin >> cUsuario;
+				break;
+			default :
+				std::cout << "Valor n para calcular Pn -0 para ninguno- = ";
+				std::cin >> nUsuario;
+				break;
+			}
+		std::cout << "\n";
+		resultados(lambdaUsuario, muUsuario, nUsuario, cUsuario, modeloSeleccionado);
+	}
 	}
 
 	void MenuIO::resultados(double lambdaUsuario, double muUsuario, unsigned int nUsuario, unsigned int cUsuario, unsigned int modeloSeleccionado) {
-	std::cout << " ======== Resultados ========" << '\n';
+	std::cout << "	======== Resultados ========" << '\n';
+	std::cout << "\n";
 	switch (modeloSeleccionado) {
 		case 1 : {
 				MMI colaMMI(lambdaUsuario, muUsuario, nUsuario);
@@ -70,7 +73,6 @@ void MenuIO::menuSecundario() {
 					}
 				break;
 				}
-
 		case 2 : {
 				MMIK colaMMIK(lambdaUsuario, muUsuario, nUsuario);
 				std::cout << "Valor P0" << " = " << colaMMIK.p0() << "\n";
@@ -109,7 +111,7 @@ void MenuIO::menuSecundario() {
 				//std::cout << "W (Tiempo medio de espera en el sistema) = " << colaMGI.w() << "\n";
 				break;
 				}
-
 		}
+	std::cout << "\n";	
 	}
 

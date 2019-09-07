@@ -37,12 +37,11 @@ void MenuAlgebra::menuSecundario() {
 		else if (elegir1o2Matrices == '2') {
 			menu2Matrices();
 			}
-		//elegir1o2Matrices == 1 ? menu1Matriz(): menu2Matrices();
 		}
 	while (elegir1o2Matrices != '0');
 	}
 
-void MenuAlgebra::menu1Matriz() {
+void MenuAlgebra::menu1Matriz() { //Descomponer en 2 funciones
 	char opcionElegida;
 	CalculosAlgebra matrizA(preguntarDesdeArchivoOTeclado(),
 									preguntarNumeroFilas(), preguntarNumeroColumnas());
@@ -61,37 +60,29 @@ void MenuAlgebra::menu1Matriz() {
 							 matrizA.traza() << '\n';
 				break;
 			case '2':
-				/*if ( matrizA.getFila() != matrizA.getColumna() ) {
-					std::cout << "La matriz no es cuadrada. " << '\n';
-				} else {*/
 				std::cout << "El determinante de la matriz A es: " <<
 							 matrizA.determinante() << '\n';
-				//}
 				break;
 			case '3':
 				std::cout << "La matriz traspuesta de A es: " << '\n';
 				matrizA.traspuesta();
-				matrizA.mostrarMatrizB();
 				std::cout << '\n';
 				break;
 			case '4':
 				std::cout << "La matriz A por Gauss es : " << '\n';
 				matrizA.gauss();
-				matrizA.mostrarMatrizB();
 				std::cout << '\n';
 				break;
 			case '5':
 				std::cout << "La matriz adjunta de A es: " << '\n';
 				std::cout << '\n';
 				matrizA.adjunta();
-				matrizA.mostrarMatrizB();
 				std::cout << '\n';
 				break;
 			case '6':
 				std::cout << "La matriz inversa de A es: " << '\n';
 				std::cout << '\n';
 				matrizA.inversa();
-				matrizA.mostrarMatrizB();
 				std::cout << '\n';
 				break;
 			case '7':
@@ -108,17 +99,23 @@ void MenuAlgebra::menu1Matriz() {
 	while (opcionElegida != '0');
 	}
 
+void bucleOpciones1Matriz() {
+	
+}	
+
 void MenuAlgebra::menu2Matrices() {
 	char opcionElegida;
+	std::cout << "Matriz A" << '\n';
 	CalculosAlgebra matrizA(preguntarDesdeArchivoOTeclado(),
 									preguntarNumeroFilas(), preguntarNumeroColumnas());
 	std::cout << '\n';
-	std::cout << "Matriz A" << '\n';
+	
 	matrizA.desdeDondeLeeMatriz();
+	std::cout << "Matriz B" << '\n';
 	CalculosAlgebra matrizB(preguntarDesdeArchivoOTeclado(),
 									preguntarNumeroFilas(), preguntarNumeroColumnas());
 	std::cout << '\n';
-	std::cout << "Matriz B" << '\n';
+	
 	matrizB.desdeDondeLeeMatriz();
 	do {
 		std::cout << '\n';
@@ -154,13 +151,13 @@ void MenuAlgebra::menu2Matrices() {
 	while (opcionElegida != '0');
 
 
-	//CalculosAlgebra matrizB;
+	//CalculosAlgebra matrizResuelta;
 	/*
 	 *
 
-	matrizB.setDimensionMatriz();
-	matrizB.crearMatrizVacia();
-	matrizB.editarMatrizVacia();
+	matrizResuelta.setDimensionMatriz();
+	matrizResuelta.crearMatrizVacia();
+	matrizResuelta.editarMatrizVacia();
 	matrizA.mostrarMatriz();
 
 

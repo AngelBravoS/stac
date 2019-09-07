@@ -105,18 +105,3 @@ void Vector::ordenarVector() {
  *	std::cout << '\n';
  * }
  */
-
-void Vector::copiarvector() {
-	vectorAuxiliar = new double [longitudVector];
-	for (unsigned int i = 0; i < longitudVector; i++)     {
-		vectorAuxiliar[i] = vector[i];
-		}
-	}
-
-void Vector::destructorVector() {
-	delete vector;
-	}
-
-void Vector::destructorVectorAuxiliar() {
-	delete vectorAuxiliar;
-	}

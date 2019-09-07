@@ -31,31 +31,31 @@
 MAS::MAS(bool archivo, char estimadorElegido, unsigned int numeroColumnas, bool datosAgrupados) {
    desdeArchivo = archivo;
 	estimador = estimadorElegido;
-   columnasDeB = numeroColumnas;
+   //columnasMatrizResuelta = numeroColumnas;
    agrupados = datosAgrupados;
    }
 
 void MAS::desdeDondeLeeDatos() {
-	agrupados == true ? filasDeB = 2 : filasDeB = 1;
-	filas = filasDeB;
-   crearMatrizVaciaB();
+	//agrupados == true ? filasMatrizResuelta = 2 : filasMatrizResuelta = 1;
+	//filas = filasMatrizResuelta;
+   //crearMatrizResueltaVacia();
    if (desdeArchivo == true) {
 	  verificarArchivo();
 	  leerDesdeArchivo();
 	  }
    else {
-	  leerDesdeTeclado();
+	  //leerDesdeTeclado();
 	  }
    }
 
 void MAS::leerDesdeArchivo() {
-   std::fstream archivo;
+/*   std::fstream archivo;
    archivo.open("datos.dat", std::ios::in | std::ios::binary);
-   int unsigned n = columnasDeB;
+   int unsigned n = columnasMatrizResuelta;
    if (agrupados == true) {
 	  unsigned int i = 0, j = 0;
 	  while (!archivo.eof()) {
-		 archivo >> matrizB[i][j];
+		 archivo >> matrizResuelta[i][j];
 		 j++; //avanza en la fila
 		 i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
 		 j = j % n; //se asegura que esté entre 0 y N-1
@@ -63,59 +63,59 @@ void MAS::leerDesdeArchivo() {
 	  }
    else {
 	  for (unsigned int j = 0; j < n; j++) {
-		 archivo >> matrizB[0][j];
+		 archivo >> matrizResuelta[0][j];
 		 }
 	  }
-   archivo.close();
+   archivo.close();*/
    }
 
-void MAS::crearMatrizParaCalculos() {
+/*void MAS::crearMatrizParaCalculos() {
    if (agrupados == true) {
 	  desagruparElementos();
 	  }
    else {
-	  columnas = columnasDeB;
-	  crearMatrizVacia();
-	  copiarMatrizB();
+	  columnas = columnasMatrizResuelta;
+	  crearMatrizResueltaVacia();
+	  copiarMatrizResuelta();
 	  }
-   }
+   }*/
 
-void MAS::desagruparElementos() {
+/*void MAS::desagruparElementos() {
    double n;
    double totalElementos = 0;
    int x = 0; //entender por qué así funciona.
-   for (unsigned int j = 0; j < columnasDeB; j++) {
-	  totalElementos += potencia(matrizB[1][j], 1);
+   for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
+	  totalElementos += potencia(matrizResuelta[1][j], 1);
 	  }
    columnas = convierteDoubleEnInt(totalElementos);
-   crearMatrizVacia();
-   for (unsigned int j = 0; j < columnasDeB; j++) {
-	  n = matrizB[1][j];
+   crearMatrizResueltaVacia();
+   for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
+	  n = matrizResuelta[1][j];
 	  for (unsigned int i = 0; i < n; i++) {
-		 matriz[0][x] = matrizB[0][j];
+		 matriz[0][x] = matrizResuelta[0][j];
 		 matriz[1][x] = 1;
 		 x++;
 		 }
 	  }
-   }
-
+   }*/
+/*
 void MAS::leerDesdeTeclado() {
    if (agrupados == true) {
-	  for (unsigned int j = 0; j < columnasDeB; j++) {
+	  for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
 		 std::cout << "x" << j + 1 << " = ";
-		 std::cin >> matrizB[0][j];
+		 std::cin >> matrizResuelta[0][j];
 		 std::cout << "f" << j + 1 << " = ";
-		 std::cin >> matrizB[1][j];
+		 std::cin >> matrizResuelta[1][j];
 		 }
 	  desagruparElementos();
 	  }
    else {
-	  for (unsigned int j = 0; j < columnasDeB; j++) {
+	  for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
 		 std::cout << "x" << j + 1 << " = ";
-		 std::cin >> matrizB[0][j];
+		 std::cin >> matrizResuelta[0][j];
 		 }
 	  }
-   }
+   }*/
    
 // añade ∑Xi Y ∑Xi2 a la matriz
 void MAS::incorporarXiYXi2() {

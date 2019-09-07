@@ -1,7 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2018 by Ángel Bravo Sáenz                               *
- *   angelbravosaenz@gmail.com                                             *
- *                                                                         *
+ *   Copyright (C) 2018 by Ángel Bravo Sáenz  										*
+ *   angelbravosaenz@gmail.com  															*
+ *																									*
  *   This file is part of Stac.                                            *
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
@@ -21,36 +21,22 @@
  ***************************************************************************/
 
 #include <iostream>
-#include "cli.hpp"
-#include "menuNVar.hpp"
+#include <cmath>
+#include "calculosTablasContBid.hpp"
+#include "funcMatematicasBasicas.hpp"
 
-void MenuNVar::menuSecundario() {
-	char eleccionNivel2;
-	std::cout << "'1' Funciones de estadística descriptiva n-dimensional." << '\n';
-	std::cout << "'2' Matriz P (Procesos estocásticos)"  << '\n';
-	std::cout << "'0' Salir." << '\n';
-	std::cout << "> ";
-	std::cin >> eleccionNivel2;
-	switch ( eleccionNivel2 ) {
-		case '1' :
-			///menuNVar();
-			break;
-		case '2' :
-			menuProcesos(); 
-			break;
+//Límite máximo en unsigned short int: 65535
+//Límite máximo en unsigned int: 4.294.967.295
+
+CalculosTablasContBid::CalculosTablasContBid(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
+	desdeArchivo = archivo;
+	filas = longitudFila;
+	columnas = longitudColumna;
+}
+
+void CalculosTablasContBid::matrizConMarginales (){
+	filasMatrizResuelta = filas+2;
+	columnasMatrizResuelta = columnas+2;
+	copiarMatrizResuelta();
 	}
-}
 
-void MenuNVar::menuProcesos() {
-	unsigned int n;
-	CalculosNVar matrizA (preguntarDesdeArchivoOTeclado(), preguntarNumeroFilas(), preguntarNumeroColumnas());
-	matrizA.desdeDondeLeeMatriz();
-	std::cout << '\n';
-	std::cout << "Valor de n: ";
-	std::cin >> n;
-	std::cout << "Matriz A" << '\n';
-	matrizA.mostrarMatriz();
-	matrizA.matrizP(n);
-	std::cout << "Matriz P" << '\n';
-	//matrizA.mostrarMatrizResuelta();
-}

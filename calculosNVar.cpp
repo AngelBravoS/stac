@@ -37,7 +37,11 @@ CalculosNVar::CalculosNVar() {
 CalculosNVar::CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
 	desdeArchivo = archivo;
 	filas = longitudFila;
+	//filasMatrizResuelta = longitudFila;
 	columnas = longitudColumna;
+	//columnasMatrizResuelta = longitudColumna;
+	filas == columnas ? matrizCuadrada = true : matrizCuadrada = false;
+	if (matrizCuadrada == true) {dimension = filas;};
 }
 
 double  CalculosNVar::sumatoria (int indiceVariable, unsigned short int exponente) {
@@ -155,27 +159,19 @@ double CalculosNVar::curtosis(int indiceVariable) {
 	return curtosis;
 }
 
-void CalculosNVar::matrizP(){
-	
+void CalculosNVar::matrizP(unsigned int n){
+	//crearMatrizResueltaVacia();
+	//copiarMatrizA();
+	unsigned int x = 0;
+	while (x != n){
+		for (unsigned int i = 0; i < filas; i++) {
+			for (unsigned int j = 0; j < columnas; j++) {
+				//matrizResuelta[i][j] = 0;
+				for (unsigned int k = 0; k < filas; k++) {
+					//matrizResuelta[i][j] += matriz[i][k] * matriz[k][j];
+				}
+			}
+		}
+	x++;
 	}
-/*
-	// Método Quicksort y opción de Arrays.sort(vectorOrdenado);
-	// con import java.util.Arrays; habilitado
-	double Vector::ordenamientoVector() {
-        double [] vectorOrdenado = (double[])vector.clone(); //===> Clonar ==> al clonar el vector original no se modifica
-        Arrays.sort(vectorOrdenado);
-        return vectorOrdenado;
-    }
-
-    double Vector::mediana(double []vectorOrdenado) {
-        double [] vector = vectorOrdenado;
-        double mediana=0;
-        if (vector.length mod 2) = 1
-			mediana = orden[i,(vector.length div 2)+1]
-		else
-			mediana = orden[i,(vector.length div 2)] + orden[i,(vector.length div 2)+1])  /  2
-        return mediana;
-    }
-    void Vector::moda() {
-    }
-}*/
+}

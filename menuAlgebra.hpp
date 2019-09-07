@@ -29,9 +29,9 @@
 
 class MenuAlgebra : public CLI {
 public:
-	//========  funciones de muestreo ========
 	void menuSecundario();
 	void menu1Matriz();
+	void bucleOpciones1Matriz();
 	void menu2Matrices();
 	void verificarArchivo();
 protected:

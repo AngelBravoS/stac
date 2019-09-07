@@ -31,6 +31,8 @@ Matriz::Matriz() {}
 Matriz::Matriz(unsigned int longitudFila, unsigned int longitudColumna) {
 	filas = longitudFila;
 	columnas = longitudColumna;
+	filas == columnas ? matrizCuadrada = true : matrizCuadrada = false;
+	if (matrizCuadrada == true) {dimension = filas;}
 }
 
 void Matriz::verificarArchivo() {
@@ -47,6 +49,7 @@ void Matriz::verificarArchivo() {
 	}
 
 void Matriz::desdeDondeLeeMatriz() {
+	//crearMatrizResueltaVacia();
 	crearMatrizVacia();
 	if (desdeArchivo == true) {
 		verificarArchivo();
@@ -85,13 +88,6 @@ void Matriz::crearMatrizVacia() {
 		}
 	}
 
-void Matriz::crearMatrizVaciaB() {
-	matrizB = new double *[filasDeB];
-	for (unsigned int i = 0; i < filasDeB; i++)     {
-		matrizB[i] = new double [columnasDeB];
-		}
-	}
-
 void Matriz::editarMatrizVacia() {
 	for (unsigned int i = 0; i < filas; i++) {
 		for (unsigned int j = 0; j < columnas; j++) {
@@ -102,48 +98,12 @@ void Matriz::editarMatrizVacia() {
 	std::cout << '\n';
 	}
 
-void Matriz::copiarDimensionMatriz() {
-	matrizB = new double *[filas];
-	for (unsigned int i = 0; i < filas; i++)     {
-		matrizB[i] = new double[columnas];
-		}
-	}
-
-void Matriz::copiarMatrizA() {
-	crearMatrizVaciaB();
-	for (unsigned int i = 0; i < filas; i++) {
-		for (unsigned int j = 0; j < columnas; j++) {
-			matrizB[i][j] = matriz[i][j];
-			}
-		}
-	}
-
-void Matriz::copiarMatrizB() {
-	for (unsigned int i = 0; i < filasDeB; i++) {
-		for (unsigned int j = 0; j < columnasDeB; j++) {
-			matriz[i][j] = matrizB[i][j];
-			}
-		}
-	}
-
 void Matriz::mostrarMatriz() {
 	std::cout << '\n';
 	for (unsigned int i = 0; i < filas; i++) {
 		std::cout << "( ";
 		for (unsigned int j = 0; j < columnas; j++) {
 			std::cout << matriz[i][j] << " ";
-			}
-		std::cout << ")";
-		std::cout << '\n';
-		}
-	}
-
-void Matriz::mostrarMatrizB() {
-	std::cout << '\n';
-	for (unsigned int i = 0; i < filasDeB; i++) {
-		std::cout << "( ";
-		for (unsigned int j = 0; j < columnasDeB; j++) {
-			std::cout << matrizB[i][j] << " ";
 			}
 		std::cout << ")";
 		std::cout << '\n';

@@ -19,6 +19,7 @@ set(lista_archivos
   calculosIA.cpp
   calculosNVar.cpp
   calculosAlgebra.cpp
+  #calculosTablasContBid.cpp
   mas.cpp
   combinatoria.cpp 
   distribucionesDiscretas.cpp
@@ -48,7 +49,7 @@ set(CMAKE_BUILD_TYPE Debug)
 
 #-march=amdfam10/core2/native
 
-set(CMAKE_CXX_FLAGS "-ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O2 -march=native -std=gnu++14")
+set(CMAKE_CXX_FLAGS "-ansi -pedantic -Wall -W -Wconversion -Wshadow -Wcast-qual -Wwrite-strings -O0 -march=native -std=gnu++14")
 
 set(CMAKE_CXX_FLAGS_DEBUG " -ggdb3 -DDEBUG")
 

@@ -66,8 +66,8 @@ void CLI::menuPrincipal() {
 				break;
 			}
 			case 'a' : {
-				MenuAlgebra matriz;
-				matriz.menuSecundario();
+				MenuAlgebra algebra;
+				algebra.menuSecundario();
 				break;
 			}
 			case 'm' : {

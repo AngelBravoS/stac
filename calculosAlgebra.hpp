@@ -30,6 +30,7 @@ class CalculosAlgebra : public CalculosNVar {
 public:
 	//======== constructor ========
 	CalculosAlgebra();
+	CalculosAlgebra(unsigned int longitudFila, unsigned int longitudColumna);
 	CalculosAlgebra(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
 	//========  funciones matriciales ========
 	double traza();

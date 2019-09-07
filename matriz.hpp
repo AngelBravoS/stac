@@ -37,19 +37,16 @@ class Matriz {
 		//======== funciones de la matriz de datos ======== 
 		void setDimensionMatriz();
 		void crearMatrizVacia();
-		void crearMatrizVaciaB();
+		//void crearMatrizResueltaVacia();
 		void editarMatrizVacia();
 		void mostrarMatriz ();
-		void mostrarMatrizB ();
-		void copiarDimensionMatriz();
-		void copiarMatrizA();
-		void copiarMatrizB();
 	protected:
-		unsigned int filas, filasDeB;
-		unsigned int columnas, columnasDeB;
+		unsigned int filas;
+		unsigned int columnas;
+		unsigned int dimension;
 		double **matriz;
-		double **matrizB;
 		bool desdeArchivo;
+		bool matrizCuadrada;
 };
 
 #endif /* _MATRIZ_HPP_ */

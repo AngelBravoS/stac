@@ -26,12 +26,21 @@
 CalculosAlgebra::CalculosAlgebra() {
 	}
 
+CalculosAlgebra::CalculosAlgebra(unsigned int longitudFila, unsigned int longitudColumna) {
+		filas = longitudFila;
+		columnas = longitudColumna;
+		filas == columnas ? matrizCuadrada = true : matrizCuadrada = false;
+		if (matrizCuadrada == true) {dimension = filas;}
+		crearMatrizVacia();
+	}	
+	
 CalculosAlgebra::CalculosAlgebra(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
 	desdeArchivo = archivo;
 	filas = longitudFila;
-	filasDeB = filas;
 	columnas = longitudColumna;
-	columnasDeB = columnas;
+	filas == columnas ? matrizCuadrada = true : matrizCuadrada = false;
+	if (matrizCuadrada == true) {dimension = filas;}
+	//crearMatrizVacia();
 	}
 
 double CalculosAlgebra::traza() {
@@ -43,80 +52,88 @@ double CalculosAlgebra::traza() {
 	}
 
 double CalculosAlgebra::determinante() {
-	//unsigned int const n = filas;
-	double determinante = 0;
-	switch (filas) {
-		case 1:
-			determinante = matriz[0][0];
-			break;
-		case 2://caso base para la recursividad
-			determinante = matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0];
-			break;
-		case 3://por sarrus
-			determinante = (matriz[0][0] * matriz[1][1] * matriz[2][2] +
-								 matriz[0][2] * matriz[1][0] * matriz[2][1] +
-								 matriz[0][1] * matriz[1][2] * matriz[2][0]) -
-								(matriz[0][2] * matriz[1][1] * matriz[2][0] +
-								 matriz[0][1] * matriz[1][0] * matriz[2][2] +
-								 matriz[0][0] * matriz[1][2] * matriz[2][1]);
-			break;
-		default :
-		/*	for (unsigned int n = 1; n < filas; n++) {
-				for (unsigned int i = 2; i < filas; i++) {
-					for (unsigned int j = 1; j < n-1; j++) {
-						matrizB[i-1,j] = matriz[i,j];
-						for (unsigned int j = 1; j < n-1; j++) {
-							matrizB[i-1,j-1] = matriz[i,j];
+	if ( matrizCuadrada == false ) {
+		std::cout << "La matriz no es cuadrada. " << '\n';
+		return 0;
+	} else {
+		double determinante = 0;
+		switch (filas) {
+			case 1:
+				determinante = matriz[0][0];
+				break;
+			case 2://caso base para la recursividad
+				determinante = matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0];
+				break;
+			case 3://por sarrus
+				determinante = (matriz[0][0] * matriz[1][1] * matriz[2][2] +
+									matriz[0][2] * matriz[1][0] * matriz[2][1] +
+									matriz[0][1] * matriz[1][2] * matriz[2][0]) -
+									(matriz[0][2] * matriz[1][1] * matriz[2][0] +
+									matriz[0][1] * matriz[1][0] * matriz[2][2] +
+									matriz[0][0] * matriz[1][2] * matriz[2][1]);
+				break;
+			default :
+				unsigned int n = filas;
+				for(unsigned int p=0;p<n;p++) {
+					unsigned int h = 0;
+					unsigned int k = 0;
+					for(unsigned int i=1;i<n;i++) {
+						for(unsigned int j=0;j<n;j++) {
+							if(j==p) {
+								continue;
+							}
+							//matrizAux[h][k] = matriz[i][j];
+							k++;
+							if(k==n-1) {
+								h++;
+								k = 0;
+							}
 						}
-					}					
-					if ((1+n) % 2 == 0){
-						i = 1;
-					} else {
-						i = -1;
 					}
-					det:= det + i * m1[1,n] * determinante(B,dimension-1);
-
-				
-				
-			*/
-			std::cout << "Determinantes de orden >3 aún no disponible." << '\n';
-			break;
-		}
-	return determinante;
+					//determinante=determinante+matriz[0][p]*pow(-1,p)*determinante(matrizAux,n-1);
+				}
+				std::cout << "Determinantes de orden >3 aún no disponible." << '\n';
+				break;
+			}
+		return determinante;
+	}
 	}
 
 void CalculosAlgebra::traspuesta() {
-	crearMatrizVaciaB();
-	copiarMatrizA();
+	CalculosAlgebra matrizResultado(filas, columnas);
 	for (unsigned int i = 0; i < filas; i++) {
 		for (unsigned int j = 0; j < columnas; j++) {
-			matrizB[i][j] = matriz[j][i];
-			}
+			matrizResultado.matriz[i][j] = matriz[j][i];
 		}
+	}
+	matrizResultado.mostrarMatriz();
 	}
 
 void CalculosAlgebra::adjunta() {
-	crearMatrizVaciaB();
+	CalculosAlgebra matrizResultado(filas, columnas);
 	switch (filas){
 		case 1:
-			matrizB[0][0] = matriz[0][0];
+			matrizResultado.matriz[0][0] = matriz[0][0];
+			matrizResultado.mostrarMatriz();
 			break;
 		case 2:
-			matrizB[0][0] = matriz[1][1];
-			matrizB[0][1] = -matriz[0][1];
-			matrizB[1][0] = -matriz[1][0];
-			matrizB[1][1] = matriz[0][0];
+			matrizResultado.matriz[0][0] = matriz[1][1];
+			matrizResultado.matriz[0][1] = -matriz[0][1];
+			matrizResultado.matriz[1][0] = -matriz[1][0];
+			matrizResultado.matriz[1][1] = matriz[0][0];
+			matrizResultado.mostrarMatriz();
 			break;
 		case 3:
-			matrizB[0][0] = (matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1]);
-			matrizB[0][1] = (matriz[1][2]*matriz[2][0]) - (matriz[1][0]*matriz[2][2]);
-			matrizB[0][2] = (matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]);
-			matrizB[1][0] = (matriz[2][1]*matriz[0][2]) - (matriz[2][2]*matriz[0][1]);
-			matrizB[1][1] = (matriz[2][2]*matriz[0][0]) - (matriz[2][0]*matriz[0][2]);
-			matrizB[1][2] = (matriz[2][0]*matriz[0][1]) - (matriz[2][1]*matriz[0][0]);
-			matrizB[2][0] = (matriz[0][1]*matriz[1][2]) - (matriz[0][2]*matriz[1][1]);
-			matrizB[2][1] = (matriz[0][2]*matriz[1][0]) - (matriz[0][0]*matriz[1][2]);
-			matrizB[2][2] = (matriz[0][0]*matriz[1][1]) - (matriz[0][1]*matriz[1][0]);
+			matrizResultado.matriz[0][0] = (matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1]);
+			matrizResultado.matriz[0][1] = (matriz[1][2]*matriz[2][0]) - (matriz[1][0]*matriz[2][2]);
+			matrizResultado.matriz[0][2] = (matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]);
+			matrizResultado.matriz[1][0] = (matriz[2][1]*matriz[0][2]) - (matriz[2][2]*matriz[0][1]);
+			matrizResultado.matriz[1][1] = (matriz[2][2]*matriz[0][0]) - (matriz[2][0]*matriz[0][2]);
+			matrizResultado.matriz[1][2] = (matriz[2][0]*matriz[0][1]) - (matriz[2][1]*matriz[0][0]);
+			matrizResultado.matriz[2][0] = (matriz[0][1]*matriz[1][2]) - (matriz[0][2]*matriz[1][1]);
+			matrizResultado.matriz[2][1] = (matriz[0][2]*matriz[1][0]) - (matriz[0][0]*matriz[1][2]);
+			matrizResultado.matriz[2][2] = (matriz[0][0]*matriz[1][1]) - (matriz[0][1]*matriz[1][0]);
+			matrizResultado.mostrarMatriz();
 			break;
 		default:
 			std::cout << "aún no disponible" << '\n';
@@ -124,30 +141,33 @@ void CalculosAlgebra::adjunta() {
 	}
 
 void CalculosAlgebra::inversa() {
-	crearMatrizVaciaB();
+	CalculosAlgebra matrizResultado(filas, columnas);
 	double det = determinante();
 	double frac = 1/det;
 	if (determinante() != 0) {
 		switch (filas){
 			case 1:
-				matrizB[0][0] = matriz[0][0];
+				matrizResultado.matriz[0][0] = matriz[0][0];
+				matrizResultado.mostrarMatriz();
 				break;
 			case 2:
-				matrizB[0][0] = frac * matriz[1][1];
-				matrizB[0][1] = frac * (-matriz[0][1]);
-				matrizB[1][0] = frac * (-matriz[1][0]);
-				matrizB[1][1] = frac * matriz[0][0];
+				matrizResultado.matriz[0][0] = frac * matriz[1][1];
+				matrizResultado.matriz[0][1] = frac * (-matriz[0][1]);
+				matrizResultado.matriz[1][0] = frac * (-matriz[1][0]);
+				matrizResultado.matriz[1][1] = frac * matriz[0][0];
+				matrizResultado.mostrarMatriz();
 				break;
 			case 3:
-				matrizB[0][0] = frac * ((matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1]));
-				matrizB[1][0] = frac * ((matriz[1][2]*matriz[2][0]) - (matriz[1][0]*matriz[2][2]));
-				matrizB[2][0] = frac * ((matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]));
-				matrizB[0][1] = frac * ((matriz[2][1]*matriz[0][2]) - (matriz[2][2]*matriz[0][1]));
-				matrizB[1][1] = frac * ((matriz[2][2]*matriz[0][0]) - (matriz[2][0]*matriz[0][2]));
-				matrizB[2][1] = frac * ((matriz[2][0]*matriz[0][1]) - (matriz[2][1]*matriz[0][0]));
-				matrizB[0][2] = frac * ((matriz[0][1]*matriz[1][2]) - (matriz[0][2]*matriz[1][1]));
-				matrizB[1][2] = frac * ((matriz[0][2]*matriz[1][0]) - (matriz[0][0]*matriz[1][2]));
-				matrizB[2][2] = frac * ((matriz[0][0]*matriz[1][1]) - (matriz[0][1]*matriz[1][0]));
+				matrizResultado.matriz[0][0] = frac * ((matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1]));
+				matrizResultado.matriz[1][0] = frac * ((matriz[1][2]*matriz[2][0]) - (matriz[1][0]*matriz[2][2]));
+				matrizResultado.matriz[2][0] = frac * ((matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]));
+				matrizResultado.matriz[0][1] = frac * ((matriz[2][1]*matriz[0][2]) - (matriz[2][2]*matriz[0][1]));
+				matrizResultado.matriz[1][1] = frac * ((matriz[2][2]*matriz[0][0]) - (matriz[2][0]*matriz[0][2]));
+				matrizResultado.matriz[2][1] = frac * ((matriz[2][0]*matriz[0][1]) - (matriz[2][1]*matriz[0][0]));
+				matrizResultado.matriz[0][2] = frac * ((matriz[0][1]*matriz[1][2]) - (matriz[0][2]*matriz[1][1]));
+				matrizResultado.matriz[1][2] = frac * ((matriz[0][2]*matriz[1][0]) - (matriz[0][0]*matriz[1][2]));
+				matrizResultado.matriz[2][2] = frac * ((matriz[0][0]*matriz[1][1]) - (matriz[0][1]*matriz[1][0]));
+				matrizResultado.mostrarMatriz();
 				break;
 			default:
 				std::cout << "aún no disponible" << '\n';
@@ -180,7 +200,7 @@ void CalculosAlgebra::gauss() {
 	/*unsigned int const n = filas;
 	copiarMatrizA();
 	for (int i = 1; i < n; i++) {
-		if (matrizB[i][i] == 0) {
+		if (matrizResuelta[i][i] == 0) {
 			for (int j = i + 1; j < n; j++) {
 				}
 			}
@@ -188,7 +208,7 @@ void CalculosAlgebra::gauss() {
 			//copiaDeMatriz[i][j] =;
 			}
 		}
-	setMatrizB(matrizB);*/
+	setMatrizB(matrizResuelta);*/
 	}
 
 void CalculosAlgebra::descomposicionLU() {
@@ -226,19 +246,26 @@ void CalculosAlgebra::descomposicionLU() {
 	copiarMatrizA();
 	for (i = 0; i < n; i++) {
 		for (j = 0; j < n; j++) {
-			matrizB[i][j] = matrizL[i][j];
+			matrizResuelta[i][j] = matrizL[i][j];
 			}
 		}
-	mostrarMatrizB();
+	mostrarMatrizResuelta();
 	for (i = 0; i < n; i++) {
 		for (j = 0; j < n; j++) {
-			matrizB[i][j] = matrizU[i][j];
+			matrizResuelta[i][j] = matrizU[i][j];
 			}
 		}
-	mostrarMatrizB();*/
+	mostrarMatrizResuelta();*/
 	}
 
 void CalculosAlgebra::sumaDeMatrices() {
+	CalculosAlgebra matrizResultado(filas, columnas);
+	matrizResultado.mostrarMatriz();
+	for (unsigned int i = 0; i < filas; i++) {
+		for (unsigned int j = 0; j < columnas; j++) {
+			//matrizResultado.matriz[i][j] = matriz[i][j]+matriz[i][j];
+		}
+	}
 	}
 
 void CalculosAlgebra::Kronecker() {
@@ -249,11 +276,13 @@ void CalculosAlgebra::multiplicacionDeMatrices() {
 	matrizResultado.crearMatrizVacia();
 	for (unsigned int i = 0; i < filas; i++) {
 		for (unsigned int j = 0; j < columnas; j++) {
-			
+			//matrizResuelta[i][j] = 0;
+			for (unsigned int k = 0; k < filas; k++) {
+				//matrizResuelta[i][j] += matriz[i][k] * matriz[k][j];
 			}
 		}
-	//mostrarMatriz ( copiaDeMatriz );
 	}
+}
 
 /*
 (*---procedimiento para multiplicar matrices---*)

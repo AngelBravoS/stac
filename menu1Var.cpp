@@ -166,7 +166,6 @@ void Menu1Var::menuSecundario() {
 			}
 		}
 	while (eleccionNivel2 != '0');
-	variable.destructorVector();
 	}
 
 
