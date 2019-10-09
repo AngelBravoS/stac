@@ -6,8 +6,7 @@
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
+ *   the Free Software Foundation; version 2 of the License.               *
  *                                                                         *
  *   Stac is distributed in the hope that it will be useful,               *
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
@@ -29,7 +28,7 @@ class Matriz {
 		Matriz();
 		Matriz(unsigned int longitudFila, unsigned int longitudColumna);
 		//======== entrada/salida ========  
-		void desdeDondeLeeMatriz();
+		void leerMatriz();
 		void verificarArchivo();
 		void leerDesdeArchivo();
 		void leerDesdeTeclado();
@@ -37,16 +36,20 @@ class Matriz {
 		//======== funciones de la matriz de datos ======== 
 		void setDimensionMatriz();
 		void crearMatrizVacia();
-		//void crearMatrizResueltaVacia();
 		void editarMatrizVacia();
-		void mostrarMatriz ();
+		void mostrarMatriz();
+		void crearMatrizResultado();
+		void mostrarResultado();
+		double **resultado;
 	protected:
 		unsigned int filas;
 		unsigned int columnas;
 		unsigned int dimension;
 		double **matriz;
+		
 		bool desdeArchivo;
-		bool matrizCuadrada;
+		bool cuadrada;
+		bool regular;
 };
 
 #endif /* _MATRIZ_HPP_ */

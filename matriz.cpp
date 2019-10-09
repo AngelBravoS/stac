@@ -6,8 +6,7 @@
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
+ *   the Free Software Foundation; version 2 of the License.               *
  *                                                                         *
  *   Stac is distributed in the hope that it will be useful,               *
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
@@ -31,8 +30,9 @@ Matriz::Matriz() {}
 Matriz::Matriz(unsigned int longitudFila, unsigned int longitudColumna) {
 	filas = longitudFila;
 	columnas = longitudColumna;
-	filas == columnas ? matrizCuadrada = true : matrizCuadrada = false;
-	if (matrizCuadrada == true) {dimension = filas;}
+	crearMatrizVacia();
+	//filas == columnas ? cuadrada = true : cuadrada = false;
+	if (cuadrada == true) {dimension = filas;}
 }
 
 void Matriz::verificarArchivo() {
@@ -48,9 +48,8 @@ void Matriz::verificarArchivo() {
 	archivo.close();
 	}
 
-void Matriz::desdeDondeLeeMatriz() {
-	//crearMatrizResueltaVacia();
-	crearMatrizVacia();
+void Matriz::leerMatriz() {
+	//crearMatrizVacia();
 	if (desdeArchivo == true) {
 		verificarArchivo();
 		leerDesdeArchivo();
@@ -88,10 +87,25 @@ void Matriz::crearMatrizVacia() {
 		}
 	}
 
+void Matriz::crearMatrizResultado() {
+		resultado = new double *[filas];
+		for(unsigned int i = 0; i < filas; i++)     {
+			resultado[i] = new double [columnas];
+		}
+		for (unsigned int i = 0; i < filas; i++) {
+			for (unsigned int j = 0; j < columnas; j++) {
+				resultado[i][j] = matriz[i][j];
+			}
+		}
+	}	
+
 void Matriz::editarMatrizVacia() {
+	std::cout << "Introduce los elementos uno a uno " << "\n";
+	std::cout << "pulsa intro para escribir la fila siguiente" << "\n";
+	std::cout << "\n";
 	for (unsigned int i = 0; i < filas; i++) {
 		for (unsigned int j = 0; j < columnas; j++) {
-			std::cout << "Elemento " << i + 1 << "," << j + 1 << ": ";
+			//std::cout << "Elemento " << i + 1 << "," << j + 1 << ": ";
 			std::cin >> matriz[i][j];
 			}
 		}
@@ -109,3 +123,16 @@ void Matriz::mostrarMatriz() {
 		std::cout << '\n';
 		}
 	}
+	
+void Matriz::mostrarResultado() {
+		std::cout << '\n';
+		for (unsigned int i = 0; i < filas; i++) {
+			std::cout << "( ";
+			for (unsigned int j = 0; j < columnas; j++) {
+				std::cout << resultado[i][j] << " ";
+			}
+			std::cout << ")";
+			std::cout << '\n';
+		}
+	}
+	

@@ -6,8 +6,7 @@
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
+ *   the Free Software Foundation; version 2 of the License.               *
  *                                                                         *
  *   Stac is distributed in the hope that it will be useful,               *
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
@@ -40,8 +39,8 @@ CalculosNVar::CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int
 	//filasMatrizResuelta = longitudFila;
 	columnas = longitudColumna;
 	//columnasMatrizResuelta = longitudColumna;
-	filas == columnas ? matrizCuadrada = true : matrizCuadrada = false;
-	if (matrizCuadrada == true) {dimension = filas;};
+	filas == columnas ? cuadrada = true : cuadrada = false;
+	if (cuadrada == true) {dimension = filas;};
 }
 
 double  CalculosNVar::sumatoria (int indiceVariable, unsigned short int exponente) {

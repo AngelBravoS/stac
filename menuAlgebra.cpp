@@ -6,8 +6,7 @@
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
+ *   the Free Software Foundation; version 2 of the License.               *
  *                                                                         *
  *   Stac is distributed in the hope that it will be useful,               *
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
@@ -45,7 +44,8 @@ void MenuAlgebra::menu1Matriz() { //Descomponer en 2 funciones
 	char opcionElegida;
 	CalculosAlgebra matrizA(preguntarDesdeArchivoOTeclado(),
 									preguntarNumeroFilas(), preguntarNumeroColumnas());
-	matrizA.desdeDondeLeeMatriz();
+	matrizA.leerMatriz();
+	matrizA.crearMatrizResultado();
 	do {
 		std::cout << '\n';
 		std::cout << "Matriz A" << '\n';
@@ -66,28 +66,33 @@ void MenuAlgebra::menu1Matriz() { //Descomponer en 2 funciones
 			case '3':
 				std::cout << "La matriz traspuesta de A es: " << '\n';
 				matrizA.traspuesta();
+				matrizA.mostrarResultado();
 				std::cout << '\n';
 				break;
 			case '4':
 				std::cout << "La matriz A por Gauss es : " << '\n';
 				matrizA.gauss();
+				matrizA.mostrarResultado();
 				std::cout << '\n';
 				break;
 			case '5':
 				std::cout << "La matriz adjunta de A es: " << '\n';
 				std::cout << '\n';
 				matrizA.adjunta();
+				matrizA.mostrarResultado();
 				std::cout << '\n';
 				break;
 			case '6':
 				std::cout << "La matriz inversa de A es: " << '\n';
 				std::cout << '\n';
 				matrizA.inversa();
+				matrizA.mostrarResultado();
 				std::cout << '\n';
 				break;
 			case '7':
 				std::cout << "La matrices L y U son : " << '\n';
 				matrizA.descomposicionLU();
+				
 				std::cout << '\n';
 				break;
 			case '8':
@@ -110,13 +115,13 @@ void MenuAlgebra::menu2Matrices() {
 									preguntarNumeroFilas(), preguntarNumeroColumnas());
 	std::cout << '\n';
 	
-	matrizA.desdeDondeLeeMatriz();
+	matrizA.leerMatriz();
 	std::cout << "Matriz B" << '\n';
 	CalculosAlgebra matrizB(preguntarDesdeArchivoOTeclado(),
 									preguntarNumeroFilas(), preguntarNumeroColumnas());
 	std::cout << '\n';
 	
-	matrizB.desdeDondeLeeMatriz();
+	matrizB.leerMatriz();
 	do {
 		std::cout << '\n';
 		std::cout << "Matriz A" << '\n';

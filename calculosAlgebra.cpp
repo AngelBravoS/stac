@@ -6,8 +6,7 @@
  *                                                                         *
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
+ *   the Free Software Foundation; version 2 of the License.               *
  *                                                                         *
  *   Stac is distributed in the hope that it will be useful,               *
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
@@ -29,18 +28,18 @@ CalculosAlgebra::CalculosAlgebra() {
 CalculosAlgebra::CalculosAlgebra(unsigned int longitudFila, unsigned int longitudColumna) {
 		filas = longitudFila;
 		columnas = longitudColumna;
-		filas == columnas ? matrizCuadrada = true : matrizCuadrada = false;
-		if (matrizCuadrada == true) {dimension = filas;}
 		crearMatrizVacia();
+		filas == columnas ? cuadrada = true : cuadrada = false;
+		if (cuadrada == true) {dimension = filas;}
 	}	
 	
 CalculosAlgebra::CalculosAlgebra(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
 	desdeArchivo = archivo;
 	filas = longitudFila;
 	columnas = longitudColumna;
-	filas == columnas ? matrizCuadrada = true : matrizCuadrada = false;
-	if (matrizCuadrada == true) {dimension = filas;}
-	//crearMatrizVacia();
+	crearMatrizVacia();
+	filas == columnas ? cuadrada = true : cuadrada = false;
+	if (cuadrada == true) {dimension = filas;}
 	}
 
 double CalculosAlgebra::traza() {
@@ -52,7 +51,7 @@ double CalculosAlgebra::traza() {
 	}
 
 double CalculosAlgebra::determinante() {
-	if ( matrizCuadrada == false ) {
+	if ( cuadrada == false ) {
 		std::cout << "La matriz no es cuadrada. " << '\n';
 		return 0;
 	} else {
@@ -73,26 +72,11 @@ double CalculosAlgebra::determinante() {
 									matriz[0][0] * matriz[1][2] * matriz[2][1]);
 				break;
 			default :
-				unsigned int n = filas;
-				for(unsigned int p=0;p<n;p++) {
-					unsigned int h = 0;
-					unsigned int k = 0;
-					for(unsigned int i=1;i<n;i++) {
-						for(unsigned int j=0;j<n;j++) {
-							if(j==p) {
-								continue;
-							}
-							//matrizAux[h][k] = matriz[i][j];
-							k++;
-							if(k==n-1) {
-								h++;
-								k = 0;
-							}
-						}
-					}
-					//determinante=determinante+matriz[0][p]*pow(-1,p)*determinante(matrizAux,n-1);
+				gauss();
+				determinante = 1;
+				for(unsigned int i = 0; i < dimension; i++) {
+					determinante *= resultado[i][i];
 				}
-				std::cout << "Determinantes de orden >3 aún no disponible." << '\n';
 				break;
 			}
 		return determinante;
@@ -100,40 +84,34 @@ double CalculosAlgebra::determinante() {
 	}
 
 void CalculosAlgebra::traspuesta() {
-	CalculosAlgebra matrizResultado(filas, columnas);
 	for (unsigned int i = 0; i < filas; i++) {
 		for (unsigned int j = 0; j < columnas; j++) {
-			matrizResultado.matriz[i][j] = matriz[j][i];
+			resultado[i][j] = matriz[j][i];
 		}
 	}
-	matrizResultado.mostrarMatriz();
-	}
+}
 
 void CalculosAlgebra::adjunta() {
-	CalculosAlgebra matrizResultado(filas, columnas);
 	switch (filas){
 		case 1:
-			matrizResultado.matriz[0][0] = matriz[0][0];
-			matrizResultado.mostrarMatriz();
+			resultado[0][0] = matriz[0][0];
 			break;
 		case 2:
-			matrizResultado.matriz[0][0] = matriz[1][1];
-			matrizResultado.matriz[0][1] = -matriz[0][1];
-			matrizResultado.matriz[1][0] = -matriz[1][0];
-			matrizResultado.matriz[1][1] = matriz[0][0];
-			matrizResultado.mostrarMatriz();
+			resultado[0][0] = matriz[1][1];
+			resultado[0][1] = -matriz[0][1];
+			resultado[1][0] = -matriz[1][0];
+			resultado[1][1] = matriz[0][0];
 			break;
 		case 3:
-			matrizResultado.matriz[0][0] = (matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1]);
-			matrizResultado.matriz[0][1] = (matriz[1][2]*matriz[2][0]) - (matriz[1][0]*matriz[2][2]);
-			matrizResultado.matriz[0][2] = (matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]);
-			matrizResultado.matriz[1][0] = (matriz[2][1]*matriz[0][2]) - (matriz[2][2]*matriz[0][1]);
-			matrizResultado.matriz[1][1] = (matriz[2][2]*matriz[0][0]) - (matriz[2][0]*matriz[0][2]);
-			matrizResultado.matriz[1][2] = (matriz[2][0]*matriz[0][1]) - (matriz[2][1]*matriz[0][0]);
-			matrizResultado.matriz[2][0] = (matriz[0][1]*matriz[1][2]) - (matriz[0][2]*matriz[1][1]);
-			matrizResultado.matriz[2][1] = (matriz[0][2]*matriz[1][0]) - (matriz[0][0]*matriz[1][2]);
-			matrizResultado.matriz[2][2] = (matriz[0][0]*matriz[1][1]) - (matriz[0][1]*matriz[1][0]);
-			matrizResultado.mostrarMatriz();
+			resultado[0][0] = (matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1]);
+			resultado[0][1] = (matriz[1][2]*matriz[2][0]) - (matriz[1][0]*matriz[2][2]);
+			resultado[0][2] = (matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]);
+			resultado[1][0] = (matriz[2][1]*matriz[0][2]) - (matriz[2][2]*matriz[0][1]);
+			resultado[1][1] = (matriz[2][2]*matriz[0][0]) - (matriz[2][0]*matriz[0][2]);
+			resultado[1][2] = (matriz[2][0]*matriz[0][1]) - (matriz[2][1]*matriz[0][0]);
+			resultado[2][0] = (matriz[0][1]*matriz[1][2]) - (matriz[0][2]*matriz[1][1]);
+			resultado[2][1] = (matriz[0][2]*matriz[1][0]) - (matriz[0][0]*matriz[1][2]);
+			resultado[2][2] = (matriz[0][0]*matriz[1][1]) - (matriz[0][1]*matriz[1][0]);
 			break;
 		default:
 			std::cout << "aún no disponible" << '\n';
@@ -141,33 +119,29 @@ void CalculosAlgebra::adjunta() {
 	}
 
 void CalculosAlgebra::inversa() {
-	CalculosAlgebra matrizResultado(filas, columnas);
 	double det = determinante();
 	double frac = 1/det;
 	if (determinante() != 0) {
 		switch (filas){
 			case 1:
-				matrizResultado.matriz[0][0] = matriz[0][0];
-				matrizResultado.mostrarMatriz();
+				resultado[0][0] = matriz[0][0];
 				break;
 			case 2:
-				matrizResultado.matriz[0][0] = frac * matriz[1][1];
-				matrizResultado.matriz[0][1] = frac * (-matriz[0][1]);
-				matrizResultado.matriz[1][0] = frac * (-matriz[1][0]);
-				matrizResultado.matriz[1][1] = frac * matriz[0][0];
-				matrizResultado.mostrarMatriz();
+				resultado[0][0] = frac * matriz[1][1];
+				resultado[0][1] = frac * (-matriz[0][1]);
+				resultado[1][0] = frac * (-matriz[1][0]);
+				resultado[1][1] = frac * matriz[0][0];
 				break;
 			case 3:
-				matrizResultado.matriz[0][0] = frac * ((matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1]));
-				matrizResultado.matriz[1][0] = frac * ((matriz[1][2]*matriz[2][0]) - (matriz[1][0]*matriz[2][2]));
-				matrizResultado.matriz[2][0] = frac * ((matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]));
-				matrizResultado.matriz[0][1] = frac * ((matriz[2][1]*matriz[0][2]) - (matriz[2][2]*matriz[0][1]));
-				matrizResultado.matriz[1][1] = frac * ((matriz[2][2]*matriz[0][0]) - (matriz[2][0]*matriz[0][2]));
-				matrizResultado.matriz[2][1] = frac * ((matriz[2][0]*matriz[0][1]) - (matriz[2][1]*matriz[0][0]));
-				matrizResultado.matriz[0][2] = frac * ((matriz[0][1]*matriz[1][2]) - (matriz[0][2]*matriz[1][1]));
-				matrizResultado.matriz[1][2] = frac * ((matriz[0][2]*matriz[1][0]) - (matriz[0][0]*matriz[1][2]));
-				matrizResultado.matriz[2][2] = frac * ((matriz[0][0]*matriz[1][1]) - (matriz[0][1]*matriz[1][0]));
-				matrizResultado.mostrarMatriz();
+				resultado[0][0] = frac * ((matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1]));
+				resultado[1][0] = frac * ((matriz[1][2]*matriz[2][0]) - (matriz[1][0]*matriz[2][2]));
+				resultado[2][0] = frac * ((matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]));
+				resultado[0][1] = frac * ((matriz[2][1]*matriz[0][2]) - (matriz[2][2]*matriz[0][1]));
+				resultado[1][1] = frac * ((matriz[2][2]*matriz[0][0]) - (matriz[2][0]*matriz[0][2]));
+				resultado[2][1] = frac * ((matriz[2][0]*matriz[0][1]) - (matriz[2][1]*matriz[0][0]));
+				resultado[0][2] = frac * ((matriz[0][1]*matriz[1][2]) - (matriz[0][2]*matriz[1][1]));
+				resultado[1][2] = frac * ((matriz[0][2]*matriz[1][0]) - (matriz[0][0]*matriz[1][2]));
+				resultado[2][2] = frac * ((matriz[0][0]*matriz[1][1]) - (matriz[0][1]*matriz[1][0]));
 				break;
 			default:
 				std::cout << "aún no disponible" << '\n';
@@ -189,81 +163,90 @@ void CalculosAlgebra::triangular() {
 			}
 		}*/
 	}
-
 /*
 Si A11=0, se busca el primer coeficiente no nulo de la getColumna
 e intercambiamos fila.
 Si A11 =/= 0 para i = 2...n, mi1=-ai1/a11, así hacemos 0 todo elemento
 de la columna debajo del pivote
 */
+//Aviso chapuza mucho que mejorar
+//
 void CalculosAlgebra::gauss() {
-	/*unsigned int const n = filas;
-	copiarMatrizA();
-	for (int i = 1; i < n; i++) {
-		if (matrizResuelta[i][i] == 0) {
-			for (int j = i + 1; j < n; j++) {
+	CalculosAlgebra matrizL(filas, columnas);
+	CalculosAlgebra matrizU(filas, columnas);
+	unsigned int n = dimension;
+	for (unsigned int i = 0; i < n; i++) {
+		for (unsigned int j = 0; j < n; j++) {
+			if (j < i)
+				matrizL.matriz[j][i] = 0;
+			else {
+				matrizL.matriz[j][i] = matriz[j][i];
+				for (unsigned int k = 0; k < i; k++) {
+					matrizL.matriz[j][i] = matrizL.matriz[j][i] - matrizL.matriz[j][k] * matrizU.matriz[k][i];
 				}
 			}
-		else {
-			//copiaDeMatriz[i][j] =;
+		}		
+		for (unsigned int j = 0; j < n; j++) {
+			if (j < i)
+				matrizU.matriz[i][j] = 0;
+			else if (j == i)
+				matrizU.matriz[i][j] = 1;
+			else {
+				matrizU.matriz[i][j] = matriz[i][j] / matrizL.matriz[i][i];
+				for (unsigned int k = 0; k < i; k++) {
+					matrizU.matriz[i][j] = matrizU.matriz[i][j] - ((matrizL.matriz[i][k] * matrizU.matriz[k][j]) / matrizL.matriz[i][i]);
+				}
 			}
 		}
-	setMatrizB(matrizResuelta);*/
+		for (unsigned int x = 0; x < n; x++) {
+			for (unsigned int z = 0; z < n; z++) {
+				resultado[x][z] = matrizL.matriz[x][z];
+			}
+		}
 	}
+}
 
 void CalculosAlgebra::descomposicionLU() {
-	/*unsigned int const n = filas;
-	unsigned int i, j, k;
-	double matrizL [n][n];
-	double matrizU [n][n];
-	for (i = 0; i < n; i++) {
-		for (j = 0; j < n; j++) {
-			if (j < i) {
-				matrizL[j][i] = 0;
+	CalculosAlgebra matrizL(filas, columnas);
+	CalculosAlgebra matrizU(filas, columnas);
+	unsigned int n = dimension;
+	for (unsigned int i = 0; i < n; i++) {
+		for (unsigned int j = 0; j < n; j++) {
+			if (j < i)
+				matrizL.matriz[j][i] = 0;
+	      else {
+				matrizL.matriz[j][i] = matriz[j][i];
+	         for (unsigned int k = 0; k < i; k++) {
+					matrizL.matriz[j][i] = matrizL.matriz[j][i] - matrizL.matriz[j][k] * matrizU.matriz[k][i];
 				}
+			}
+		}		
+		for (unsigned int j = 0; j < n; j++) {
+			if (j < i)
+				matrizU.matriz[i][j] = 0;
+			else if (j == i)
+				matrizU.matriz[i][j] = 1;
 			else {
-				matrizL [j][i] = matriz [j][i];
-				for (k = 0; k < i; k++) {
-					matrizL [j][i] -= (matrizL [j][k] * matrizU [k][i]);
-					}
-				}
-			}
-		for (j = 0; j < n; j++) {
-			if (j < i) {
-				matrizU [i][j] = 0;
-				}
-			else if (j == i) {
-				matrizU [i][j] = 1;
-				}
-			else {
-				matrizU [i][j] = matriz[i][j] / matrizL [i][i];
-				for (k = 0; k < i; k++) {
-					matrizU [i][j] -= ((matrizL [i][k] * matrizU [k][j]) / matrizL [i][i]);
-					}
+				matrizU.matriz[i][j] = matriz[i][j] / matrizL.matriz[i][i];
+				for (unsigned int k = 0; k < i; k++) {
+					matrizU.matriz[i][j] = matrizU.matriz[i][j] - ((matrizL.matriz[i][k] * matrizU.matriz[k][j]) / matrizL.matriz[i][i]);
 				}
 			}
 		}
-	copiarMatrizA();
-	for (i = 0; i < n; i++) {
-		for (j = 0; j < n; j++) {
-			matrizResuelta[i][j] = matrizL[i][j];
-			}
-		}
-	mostrarMatrizResuelta();
-	for (i = 0; i < n; i++) {
-		for (j = 0; j < n; j++) {
-			matrizResuelta[i][j] = matrizU[i][j];
-			}
-		}
-	mostrarMatrizResuelta();*/
 	}
+	std::cout << "Matriz L"<< "\n";
+	matrizL.mostrarMatriz();
+	
+	std::cout << "\n" << "Matriz U"<< "\n";
+	matrizU.mostrarMatriz();
+}
 
 void CalculosAlgebra::sumaDeMatrices() {
 	CalculosAlgebra matrizResultado(filas, columnas);
 	matrizResultado.mostrarMatriz();
 	for (unsigned int i = 0; i < filas; i++) {
 		for (unsigned int j = 0; j < columnas; j++) {
-			//matrizResultado.matriz[i][j] = matriz[i][j]+matriz[i][j];
+			//resultado[i][j] = matriz[i][j]+matriz[i][j];
 		}
 	}
 	}

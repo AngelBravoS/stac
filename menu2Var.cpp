@@ -45,7 +45,7 @@ void Menu2Var::menuSecundario() {
 
 void Menu2Var::menuMuestra2Var(){
 	Calculos2Var variables(preguntarDesdeArchivoOTeclado(), 2, preguntarNumeroColumnas());
-	variables.desdeDondeLeeMatriz();
+	variables.leerMatriz();
 	std::cout << "Variables X e Y:" << '\n';
 	variables.mostrarMatriz();
 	std::cout << '\n';
@@ -90,7 +90,7 @@ void Menu2Var::menuMuestra2Var(){
 
 void Menu2Var::menuFmp2Var(){
 	/*CalculosTablasContBid variables(preguntarDesdeArchivoOTeclado(), preguntarNumeroFilas(), preguntarNumeroColumnas());
-	variables.desdeDondeLeeMatriz();
+	variables.leerMatriz();
 	std::cout << "Variables X e Y:" << '\n';
 	variables.mostrarMatriz();
 	std::cout << '\n';*/
