@@ -40,13 +40,12 @@ class Matriz {
 		void mostrarMatriz();
 		void crearMatrizResultado();
 		void mostrarResultado();
-		double **resultado;
 	protected:
 		unsigned int filas;
 		unsigned int columnas;
 		unsigned int dimension;
 		double **matriz;
-		
+		double **resultado;
 		bool desdeArchivo;
 		bool cuadrada;
 		bool regular;

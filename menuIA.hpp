@@ -33,10 +33,12 @@ class MenuIA : public CLI {
 		void menuSecundario();
 		void menuCongruencial();
 		void menuColasExponencial();
-		void periodo();
+        //void menuCongruencial(unsigned int a, unsigned int b, unsigned int m, unsigned int X0);
+        //void menuCongruencial(unsigned int a, unsigned int m, unsigned int X0);
 		unsigned int preguntarNumeroColumnas();
 		bool preguntarDesdeArchivoOTeclado();
 		void verificarArchivo();
+        
 	protected:
 		bool archivoValido;
 };

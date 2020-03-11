@@ -22,12 +22,6 @@
 #include "cli.hpp"
 #include <iostream>
 
-void CLI::hasElegido() {
-	std::cout << '\n';
-	std::cout << "has elegido: " << getOpcionSeleccionada() << '\n';
-	std::cout << '\n';
-}
-
 void CLI::introduccion() {
 	std::cout << '\n';
 	std::cout << "	╔══════════════════════════╗" << '\n';
@@ -145,7 +139,6 @@ void CLI::listadOpciones2Variables() {
 	std::cout << "> ";
 }
 
-
 void CLI::listadOpciones1Matriz() {
 	std::cout << "Cálculos de una matriz" << '\n';
 	std::cout << "'1' Traza" << '\n';
@@ -178,5 +171,11 @@ void CLI::listadOpcionesColasExponencial() {
 	std::cout << "'4' M/M/Inf" << "\n";
 	std::cout << "'5' M/G/I" << "\n";
 	std::cout << "'0' Menú anterior." << "\n";
+	std::cout << "> ";
+}
+
+void CLI::listadOpcionestipoGenerador() {
+	std::cout << "Escribe x para el generador congruencial mixto." << '\n';
+	std::cout << "Escribe m para el generador congruencial multiplicativo." << '\n';
 	std::cout << "> ";
 }

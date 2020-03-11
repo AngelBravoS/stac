@@ -20,78 +20,132 @@
  ***************************************************************************/
 
 #include "calculosIA.hpp"
-#include "funcMatematicasBasicas.hpp"
 
-CalculosIA::CalculosIA (){
-	leerDesdeArchivo = false;
+CalculosIA::CalculosIA (unsigned int parametro_a, unsigned int parametro_b,
+   unsigned int parametro_m, unsigned int parametro_X0) {
+	a = parametro_a;
+	b = parametro_b;
+	m = parametro_m;
+	X0 = parametro_X0;
 }
 
-unsigned int CalculosIA::periodo(){
-	return longitudVector;
+CalculosIA::CalculosIA (unsigned int parametro_a, unsigned int parametro_b,
+   unsigned int parametro_m) {
+	a = parametro_a;
+	b = parametro_b;
+	m = parametro_m;
 }
 
-//---función para el generador congruencial mixto--
-unsigned int CalculosIA::congruencialMixto(unsigned int a, unsigned int b,
-      unsigned int m, unsigned int X0) {
+//---función para el generador congruencial mixto y multiplicativo--
+unsigned int CalculosIA::generador (unsigned int semilla) {
 	unsigned int resultado ;
-	resultado = a * X0 + b;
-	if(resultado > m)
+	resultado = a * semilla + b;
+	if (resultado > m)
 		resultado = resultado % m;
 	return resultado;
 }
 
-//---función para el generador congruencial multiplicativo---
-unsigned int CalculosIA::congruencialMultip(unsigned int a, unsigned int m,
-      unsigned int X0) {
-	unsigned int resultado;
-	resultado = a * X0;
-	if(resultado > m)
-		resultado %=  m;
-	return resultado;
-}
-
-void CalculosIA::crearSecuenciaMixto(unsigned int a, unsigned int b,
-                                     unsigned int m, unsigned int X0) {
-	//Desconocemos la longitud del vector hasta que la semilla se repite
-	//por eso la llamada es redundante. Se llama en bucle dos veces, una
-	//para saber la longitud y otra para crear el vector con la secuencia
-	/*unsigned int i, Xn, n;
-	Xn = congruencialMixto(a, b, m, X0);
-	n = 1;
-	while(X0 != Xn) {
-		Xn = congruencialMixto(a, b, m, Xn);
-		n++;
+void CalculosIA::crearSecuencia() {
+	unsigned int Xn = generador (X0);
+	secuencia.push_back (Xn);
+	while (X0 != Xn) {
+		Xn = generador (Xn);
+		secuencia.push_back (Xn);
 	}
-	longitudVector = n;
-	crearVectorVacio();
-	vector[0] = congruencialMixto(a, b, m, X0);
-	i = 0;
-	while(X0 != vector[i]) {
-		vector[i+1] = congruencialMixto(a, b, m, vector[i]);
-		i++;
-	}*/
 }
 
-
-void CalculosIA::crearSecuenciaMultip(unsigned int a, unsigned int m,
-                                      unsigned int X0) {
-	//Desconocemos la longitud del vector hasta que la semilla se repite
-	//por eso la llamada es redundante. Se llama en bucle dos veces, una
-	//para saber la longitud y otra para crear el vector con la secuencia
-	/*unsigned int i, Xn, n;
-	Xn = congruencialMultip(a, m, X0);
-	n = 1;
-	while(X0 != Xn) {
-		Xn = congruencialMultip(a, m, Xn);
-		n++;
+void CalculosIA::mostrarSecuencia() {
+	std::cout << "( ";
+	for (unsigned int i = 0; i < secuencia.size(); i++) {
+		std::cout << secuencia[i] << ", ";
 	}
-	longitudVector = n;
-	crearVectorVacio();
-	vector[0] = congruencialMultip(a, m, X0);
-	i = 0;
-	while(X0 != vector[i]) {
-		vector[i+1] = congruencialMultip(a, m, vector[i]);
-		i++;
-	}*/
-	//periodo(n);
+	std::cout << ")" << "\n" << "\n";
 }
+
+
+bool CalculosIA::sonCongruentesFactoresPrimoQ () {
+	std::vector<unsigned int> valoresPrimosM;
+	for (unsigned int i = 1; i <= m; i++) {
+		if (m % i == 0 && esPrimo (i) == true) {
+			valoresPrimosM.push_back (i);
+		}
+	}
+
+	for (unsigned int i = 0; i < valoresPrimosM.size(); i++) {
+		if (sonCongruentes (a, 1, valoresPrimosM[i]) == false) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool CalculosIA::sonCongruentesFactoresPrimoP () {
+	std::vector<unsigned int> valoresPrimosM;
+	for (unsigned int i = 1; i <= m; i++) {
+		if (m % i == 0 && esPrimo (i) == true) {
+			valoresPrimosM.push_back (i);
+		}
+	}
+
+	for (unsigned int i = 0; i < valoresPrimosM.size(); i++) {
+		if (sonCongruentes (pow (a, valoresPrimosM[i]), 1, m) == false) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool CalculosIA::esMCongruente4() {
+	if (m % 4 != 0) { //Si el módulo es distinto de 0, m no es un múltiplo de 4 y la norma se ignora
+		return true;
+	} else if ( (sonCongruentes (a, 1, 4)) == true) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+bool CalculosIA::mEsPotenciaDe2() {
+	return (m != 0) && ( (m & (m - 1)) == 0);
+}
+
+bool CalculosIA::cumpleTeoremaKnuth () {
+	if ( (sonCoprimos (b, m) == false) || (sonCongruentesFactoresPrimoQ() == false) || (esMCongruente4() == false)) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+void CalculosIA::comprobarPeriodo (char tipoGenerador) {
+	if (tipoGenerador == 'x') { // 'x' -> Mixto
+		if (cumpleTeoremaKnuth() == true) {
+			periodoMaximo = true;
+		} else {
+			periodoMaximo = false;
+		}
+
+	} else { // 'm' -> multiplicativo
+		if (mEsPotenciaDe2() == true) {
+			if ( (esMultiplo (a, 2) == false) && (esMultiplo (X0, 2) == false) && ( (sonCongruentes (a, 3, 8) == true) || (sonCongruentes (a, 5, 8) == true))) {
+				periodoMaximo = true;
+			} else {
+				periodoMaximo = false;
+			}
+		} else if (sonCongruentesFactoresPrimoP() == false) {
+			periodoMaximo = true;
+		} else {
+			periodoMaximo = false;
+		}
+	}
+}
+
+void CalculosIA::mostrarComprobacionPeriodo() {
+	if (periodoMaximo == true) {
+		std::cout << "El período SI es máximo." << "\n";
+	} else {
+		std::cout << "El período NO es máximo." << "\n";
+	}
+}
+

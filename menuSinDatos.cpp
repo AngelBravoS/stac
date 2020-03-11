@@ -25,28 +25,31 @@
 #include "menuIO.hpp"
 
 void CLI::menuSinDatos() {
-	char eleccionNivel2;
-	std::cout << "'1' Combinatoria." << '\n';
-	std::cout << "'2' Inteligencia artificial."  << '\n';
-	std::cout << "'3' Investigación operativa." << '\n';
-	std::cout << "'4' Distribuciones de probabilidad discretas." << '\n';
-	std::cout << "'0' Salir." << '\n';
-	std::cout << "> ";
-	std::cin >> eleccionNivel2;
-	switch ( eleccionNivel2 ) {
-		case '1' :
-			menuCombinatoria();
-			break;
-		case '2' :
-			MenuIA ia;
-			ia.menuSecundario();
-			break;
-		case '3' :
-			MenuIO io;
-			io.menuSecundario();
-			break;
-		case '4' :
-			menuDistribDiscreta();
-			break;
-	}
+    //char eleccionNivel2;
+    do {
+        std::cout << "'1' Combinatoria." << '\n';
+        std::cout << "'2' Inteligencia artificial."  << '\n';
+        std::cout << "'3' Investigación operativa." << '\n';
+        std::cout << "'4' Distribuciones de probabilidad discretas." << '\n';
+        std::cout << "'0' Salir." << '\n';
+        std::cout << "> ";
+        eleccion(1);
+       // std::cin >> eleccionNivel2;
+        switch ( opciones[1] ) { //eleccionNivel2 ) {
+        case '1' :
+            menuCombinatoria();
+            break;
+        case '2' :
+            MenuIA ia;
+            ia.menuSecundario();
+            break;
+        case '3' :
+            MenuIO io;
+            io.menuSecundario();
+            break;
+        case '4' :
+            menuDistribDiscreta();
+            break;
+        }
+    } while (opciones[1] != '0');
 }

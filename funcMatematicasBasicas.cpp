@@ -19,6 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include "funcMatematicasBasicas.hpp"
+
 double factorial(double n) {
 	if(n == 0) {
 		// Aseguramos que tenga salida siempre
@@ -62,6 +64,46 @@ double e (){
 		resultado += 1/producto;
 	}
 	return resultado;
+}
+
+bool esMultiplo (unsigned int numero1, unsigned int numero2) {
+	if (numero1 % numero2 == 0) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool esPrimo (unsigned int numero) {
+	unsigned int i, contador = 0;
+	for (i = 2; i < numero; i++) {
+		if (numero % i == 0) {
+			contador++;
+			break;
+		}
+	}
+	if (contador == 0) {
+		return true;
+
+	} else {
+		return false;
+	}
+}
+
+bool sonCoprimos (unsigned int numero1, unsigned int numero2) {
+	if (std::__gcd (numero1, numero2) == 1) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool sonCongruentes (unsigned int numero1, unsigned int numero2, unsigned int numero3) {
+	if ( (numero1 - numero2) % numero3 == 0) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 unsigned int convierteDoubleEnInt(double doble) {

@@ -18,11 +18,24 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef FUNCMATEMATICASBASICAS_HPP_INCLUDED
+#define FUNCMATEMATICASBASICAS_HPP_INCLUDED
+
+#include <algorithm> 
+#include <math.h>
 
 double factorial(double n);
 double potencia(double numero, unsigned int potencia);
 double potenciaDouble(double numero, double potencia);
 double binomio(double a, double b);
 double e();
+
+bool esMultiplo(unsigned int numero1, unsigned int numero2);
+bool esPrimo (unsigned int numero);
+bool sonCoprimos (unsigned int numero1, unsigned int numero2);
+bool sonCongruentes (unsigned int numero1, unsigned int numero2, unsigned int numero3);
+
 unsigned int convierteDoubleEnInt (double doble);
 float convierteIntEnFloat(unsigned int entero);
+
+#endif // FUNCMATEMATICASBASICAS_HPP_INCLUDED

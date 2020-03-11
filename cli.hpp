@@ -27,14 +27,12 @@ class CLI {
 		//Obtener = Get
 		//Establecer = Set
 	public:
-		//======== setters y getters ========
-		char getOpcionSeleccionada();
-		void setOpcionSeleccionada(char respuestaUsuarioPublica);
 		//======== funciones de menu ========
 		void introduccion();
 		void acercaDe();
 		void ayuda();
 		void eleccion();
+        void eleccion(unsigned int i);
 		void hasElegido();
 		//======== subfunciones de menu ========
 		void menuPrincipal();
@@ -61,9 +59,10 @@ class CLI {
 		void listadOpciones1Matriz();
 		void listadOpciones2Matrices();
 		void listadOpcionesColasExponencial();
+        void listadOpcionestipoGenerador();
 
 	protected:
-		char respuestaUsuario;
+        char opciones[4];
 		bool archivoValido;
 };
 

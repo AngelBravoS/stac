@@ -22,16 +22,12 @@
 #include <iostream>
 #include "menuIA.hpp"
 
-void MenuIA::periodo() {
-
-}
-
 void MenuIA::menuSecundario() {
 	//std::cout << "Escribe ''e'' para el cálculo de funciones exponenciales." << '\n';
 	std::cout << "Escribe ''g'' para el cálculo con generadores congruenciales." << '\n';
 	std::cout << "> ";
-	eleccion();
-	switch(getOpcionSeleccionada()) {
+	eleccion(2);
+	switch(opciones[2]) {
 		case 'e':
 			menuColasExponencial();
 			break;
@@ -42,71 +38,79 @@ void MenuIA::menuSecundario() {
 }
 
 void MenuIA::menuCongruencial() {
-	unsigned int a, b, Xo, Xn, m;
-	CalculosIA secuencia;
-	std::cout << "Escribe x para el generador congruencial mixto." << '\n';
-	std::cout << "Escribe m para el generador congruencial multiplicativo." << '\n';
-	std::cout << "> ";
-	unsigned int i = 1;
-	eleccion();
-	switch(getOpcionSeleccionada()) {
-	case 'x':
-		std::cout << "valor de a = ";
-		std::cin >> a;
-		std::cout << "valor de b = ";
-		std::cin >> b;
-		std::cout << "valor de m = ";
-		std::cin >> m;
-		std::cout << "valor de Xo = ";
-		std::cin >> Xo;
-		if(m <= a || m <= b) {
-			std::cout << "secuencia no válida (m > a,b).";
-			exit(-1);
-		} else {
-			std::cout << "Para a = " << a << ", b = " << b << ", m = "
-			          << m << ", y Xo = " << Xo << ", el resultado es:" << '\n';
-			std::cout << "(" << secuencia.congruencialMixto(a, b, m, Xo);
-			//crea el primer valor X1 para usarlo como referencia
-			//mientras no coincida con el siguiente sigue calculando
-			Xn = secuencia.congruencialMixto(a, b, m, Xo);
-			while(Xo != Xn) {
-				std::cout << " " << secuencia.congruencialMixto(a, b, m, Xn);
-				Xn = secuencia.congruencialMixto(a, b, m, Xn);
-				i++;
+	unsigned int a, b, m, X0;
+	do {
+		listadOpcionesPricipales();
+		eleccion (3);
+        switch (opciones[3]) {
+			case '1' : {
+				listadOpcionestipoGenerador();
+				eleccion (4);
+				std::cout << "valor de a = ";
+				std::cin >> a;
+				if (opciones[4] == 'x') {
+					std::cout << "valor de b = ";
+					std::cin >> b;
+				} else {
+					b = 0;
+				}
+				std::cout << "valor de m = ";
+				std::cin >> m;
+				std::cout << "valor de Xo = ";
+				std::cin >> X0;
+				if ( (m <= a || m <= b) && opciones[1] == 'x') {
+					std::cout << "secuencia no válida (m > a,b)." << "\n";
+					exit (-1);
+				} else {
+					std::cout << "La secuencia es:" << '\n';
+					CalculosIA gc (a, b, m, X0);
+					gc.crearSecuencia();
+					gc.mostrarSecuencia();
+				}
+            break;
 			}
-			std::cout << ")" << '\n';
-			std::cout << "El período de la secuencia es " << i << '\n';
-			if(i == m) {
-				std::cout << "Es de período completo" << '\n';
+			case '2' : {
+				listadOpcionestipoGenerador();
+				eleccion (4);
+                std::cout << "valor de a = ";
+				std::cin >> a;
+				if (opciones[4] == 'x') {
+					std::cout << "valor de b = ";
+					std::cin >> b;
+				} else {
+					b = 0;
+				}
+				std::cout << "valor de m = ";
+				std::cin >> m;
+                if (opciones[4] == 'm'){
+                    std::cout << "valor de Xo = ";
+                    std::cin >> X0;
+                }
+                switch(opciones[4]){
+                    case 'x':{
+                        CalculosIA gc (a, b, m);
+                        gc.comprobarPeriodo (opciones[4]);
+                        gc.mostrarComprobacionPeriodo();
+                        break;
+                    }
+                    case 'm':{
+                        CalculosIA gc (a, b, m, X0);
+                        gc.comprobarPeriodo (opciones[4]);
+                        gc.mostrarComprobacionPeriodo();
+                        break;
+                    }
+                }
+            break;
+			}
+            case '3' : {
+                std::cout << "Uniforme= ";
+                std::cout << "Bernuilli= ";
+                std::cout << "Binomial= ";
+            break;
 			}
 		}
-		break;
-	case 'm':
-		std::cout << "valor de a = ";
-		std::cin >> a;
-		std::cout << "valor de m = ";
-		std::cin >> m;
-		std::cout << "valor de Xo = ";
-		std::cin >> Xo;
-		std::cout << "Para a = " << a << ", m = " << m << ", y Xo = "
-		          << Xo << ", el resultado es:" << '\n';
-		std::cout << "(" << secuencia.congruencialMultip(a, m, Xo);
-		//crea el primer valor X1 para usarlo como referencia
-		//mientras no coincida con el siguiente sigue calculando
-		Xn = secuencia.congruencialMultip(a, m, Xo);
-		i = 1;
-		while(Xo != Xn) {
-			std::cout << " " << secuencia.congruencialMultip(a, m, Xn);
-			Xn = secuencia.congruencialMultip(a, m, Xn);
-			i++;
-		}
-		std::cout << " " << secuencia.congruencialMultip(a, m, Xn);
-		Xn = secuencia.congruencialMultip(a, m, Xn);
-		i++;
-		std::cout << ")" << '\n';
-		std::cout << "El período de la secuencia es " << i << '\n';
-		break;
-	}
+		
+	} while (opciones[2] != '0');
 }
 
 void MenuIA::menuColasExponencial() {

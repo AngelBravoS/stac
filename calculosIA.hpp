@@ -19,24 +19,47 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef CALCULOSIA_HPP_INCLUDED
+#define CALCULOSIA_HPP_INCLUDED
+
+#include <vector>
+#include <iostream>
 #include "vector.hpp"
 #include "funcMatematicasBasicas.hpp"
 
 class CalculosIA : public Vector {
-    public:
-    //======== constructor ========
-    CalculosIA ();
-    //========  Generadores Congruenciales ========
-    unsigned int congruencialMixto ( unsigned int a, unsigned int b,
-                                     unsigned int m, unsigned int X0 );
-    unsigned int congruencialMultip ( unsigned int a, unsigned int m,
-                                      unsigned int X0 );
+public:
+	//======== constructor ========
+	CalculosIA ();
+	CalculosIA (unsigned int parametro_a, unsigned int parametro_b,
+	   unsigned int parametro_m, unsigned int parametro_X0);
+	CalculosIA (unsigned int parametro_a, unsigned int parametro_b,
+	   unsigned int parametro_m);
 
-    //========  funciones XXXX ========
-    void crearSecuenciaMixto ( unsigned int a, unsigned int b,
-                               unsigned int m, unsigned int X0 );
-    void crearSecuenciaMultip ( unsigned int a, unsigned int m, unsigned int X0 );
-    unsigned int periodo();
-    protected:
-    unsigned int *vector;
+    //========  funciones  ========
+    bool sonCongruentesFactoresPrimoQ();
+    bool sonCongruentesFactoresPrimoP();
+    bool esMCongruente4();
+    
+    bool mEsPotenciaDe2();
+    unsigned int generador (unsigned int X0);
+	
+
+	void crearSecuencia();
+	void mostrarSecuencia();
+
+	bool cumpleTeoremaKnuth ();
+    void comprobarPeriodo (char tipoGenerador);
+	void mostrarComprobacionPeriodo();
+
+protected:
+	unsigned int a;
+	unsigned int b;
+	unsigned int m;
+	unsigned int X0;
+	bool periodoCompleto;
+	bool periodoMaximo;
+	std::vector<unsigned int> secuencia;
 };
+
+#endif // CALCULOSIA_HPP_INCLUDED

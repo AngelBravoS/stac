@@ -31,7 +31,6 @@ Matriz::Matriz(unsigned int longitudFila, unsigned int longitudColumna) {
 	filas = longitudFila;
 	columnas = longitudColumna;
 	crearMatrizVacia();
-	//filas == columnas ? cuadrada = true : cuadrada = false;
 	if (cuadrada == true) {dimension = filas;}
 }
 
@@ -49,7 +48,6 @@ void Matriz::verificarArchivo() {
 	}
 
 void Matriz::leerMatriz() {
-	//crearMatrizVacia();
 	if (desdeArchivo == true) {
 		verificarArchivo();
 		leerDesdeArchivo();
