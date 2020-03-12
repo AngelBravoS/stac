@@ -25,17 +25,10 @@
 #include "menuIO.hpp"
 
 void CLI::menuSinDatos() {
-    //char eleccionNivel2;
     do {
-        std::cout << "'1' Combinatoria." << '\n';
-        std::cout << "'2' Inteligencia artificial."  << '\n';
-        std::cout << "'3' Investigación operativa." << '\n';
-        std::cout << "'4' Distribuciones de probabilidad discretas." << '\n';
-        std::cout << "'0' Salir." << '\n';
-        std::cout << "> ";
-        eleccion(1);
-       // std::cin >> eleccionNivel2;
-        switch ( opciones[1] ) { //eleccionNivel2 ) {
+        listadoMenuSinDatos();
+        eleccion();
+        switch ( getOpcionSeleccionada() ) {
         case '1' :
             menuCombinatoria();
             break;
@@ -51,5 +44,5 @@ void CLI::menuSinDatos() {
             menuDistribDiscreta();
             break;
         }
-    } while (opciones[1] != '0');
+    } while (getOpcionSeleccionada() != '0');
 }

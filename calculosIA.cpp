@@ -118,7 +118,7 @@ bool CalculosIA::cumpleTeoremaKnuth () {
 	}
 }
 
-void CalculosIA::comprobarPeriodo (char tipoGenerador) {
+void CalculosIA::comprobarPeriodo (int tipoGenerador) {
 	if (tipoGenerador == 'x') { // 'x' -> Mixto
 		if (cumpleTeoremaKnuth() == true) {
 			periodoMaximo = true;

@@ -23,97 +23,99 @@
 #include "menuIA.hpp"
 
 void MenuIA::menuSecundario() {
-	//std::cout << "Escribe ''e'' para el cálculo de funciones exponenciales." << '\n';
-	std::cout << "Escribe ''g'' para el cálculo con generadores congruenciales." << '\n';
-	std::cout << "> ";
-	eleccion(2);
-	switch(opciones[2]) {
-		case 'e':
-			menuColasExponencial();
-			break;
-		case 'g':
-			menuCongruencial();
-			break;
-	}
+    do {
+        listadOpcionesIA();
+        eleccion();
+        switch(getOpcionSeleccionada()) {
+        case '1' :
+            menuCongruencial();
+            break;
+        case '2' :
+            menuCongruencial();
+            break;
+        case '3' :
+            menuValoresAleatioriasDiscretas();
+            break;
+        }
+    } while (getOpcionSeleccionada() != '0');
 }
 
 void MenuIA::menuCongruencial() {
-	unsigned int a, b, m, X0;
-	do {
-		listadOpcionesPricipales();
-		eleccion (3);
-        switch (opciones[3]) {
-			case '1' : {
-				listadOpcionestipoGenerador();
-				eleccion (4);
-				std::cout << "valor de a = ";
-				std::cin >> a;
-				if (opciones[4] == 'x') {
-					std::cout << "valor de b = ";
-					std::cin >> b;
-				} else {
-					b = 0;
-				}
-				std::cout << "valor de m = ";
-				std::cin >> m;
-				std::cout << "valor de Xo = ";
-				std::cin >> X0;
-				if ( (m <= a || m <= b) && opciones[1] == 'x') {
-					std::cout << "secuencia no válida (m > a,b)." << "\n";
-					exit (-1);
-				} else {
-					std::cout << "La secuencia es:" << '\n';
-					CalculosIA gc (a, b, m, X0);
-					gc.crearSecuencia();
-					gc.mostrarSecuencia();
-				}
+    unsigned int a, b, m, X0;
+    do {
+        listadOpcionesIA();
+        eleccion ();
+        switch (getOpcionSeleccionada()) {
+        case '1' : {
+            listadOpcionestipoGenerador();
+            eleccion ();
+            std::cout << "valor de a = ";
+            std::cin >> a;
+            if (getOpcionSeleccionada() == '1') {
+                std::cout << "valor de b = ";
+                std::cin >> b;
+            } else {
+                b = 0;
+            }
+            std::cout << "valor de m = ";
+            std::cin >> m;
+            std::cout << "valor de Xo = ";
+            std::cin >> X0;
+            if ( (m <= a || m <= b) && getOpcionSeleccionada() == '1') {
+                std::cout << "secuencia no válida (m > a,b)." << "\n";
+                exit (-1);
+            } else {
+                std::cout << "La secuencia es:" << '\n';
+                CalculosIA gc (a, b, m, X0);
+                gc.crearSecuencia();
+                gc.mostrarSecuencia();
+            }
             break;
-			}
-			case '2' : {
-				listadOpcionestipoGenerador();
-				eleccion (4);
-                std::cout << "valor de a = ";
-				std::cin >> a;
-				if (opciones[4] == 'x') {
-					std::cout << "valor de b = ";
-					std::cin >> b;
-				} else {
-					b = 0;
-				}
-				std::cout << "valor de m = ";
-				std::cin >> m;
-                if (opciones[4] == 'm'){
-                    std::cout << "valor de Xo = ";
-                    std::cin >> X0;
-                }
-                switch(opciones[4]){
-                    case 'x':{
-                        CalculosIA gc (a, b, m);
-                        gc.comprobarPeriodo (opciones[4]);
-                        gc.mostrarComprobacionPeriodo();
-                        break;
-                    }
-                    case 'm':{
-                        CalculosIA gc (a, b, m, X0);
-                        gc.comprobarPeriodo (opciones[4]);
-                        gc.mostrarComprobacionPeriodo();
-                        break;
-                    }
-                }
+        }
+        case '2' : {
+            listadOpcionestipoGenerador();
+            eleccion ();
+            std::cout << "valor de a = ";
+            std::cin >> a;
+            if (getOpcionSeleccionada() == '1') {
+                std::cout << "valor de b = ";
+                std::cin >> b;
+            } else {
+                b = 0;
+            }
+            std::cout << "valor de m = ";
+            std::cin >> m;
+            if (getOpcionSeleccionada() == '2') {
+                std::cout << "valor de Xo = ";
+                std::cin >> X0;
+            }
+            switch(getOpcionSeleccionada()) {
+            case '1' : {
+                CalculosIA gc (a, b, m);
+                gc.comprobarPeriodo (getOpcionSeleccionada());
+                gc.mostrarComprobacionPeriodo();
+                break;
+            }
+            case '2' : {
+                CalculosIA gc (a, b, m, X0);
+                gc.comprobarPeriodo (getOpcionSeleccionada());
+                gc.mostrarComprobacionPeriodo();
+                break;
+            }
+            }
             break;
-			}
-            case '3' : {
-                std::cout << "Uniforme= ";
-                std::cout << "Bernuilli= ";
-                std::cout << "Binomial= ";
+        }
+        case '3' : {
+            std::cout << "Uniforme= ";
+            std::cout << "Bernuilli= ";
+            std::cout << "Binomial= ";
             break;
-			}
-		}
-		
-	} while (opciones[2] != '0');
+        }
+        }
+
+    } while (getOpcionSeleccionada() != '0');
 }
 
-void MenuIA::menuColasExponencial() {
-
-	
+void MenuIA::menuValoresAleatioriasDiscretas() {
+    std::cout << "Aún no." << '\n';
 }

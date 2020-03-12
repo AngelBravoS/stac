@@ -29,10 +29,10 @@
 class MenuIA : public CLI {
 	public:
 		//CalculosIA ia (bool, unsigned int);
-		//========  funciones de muestreo ======== 
+		//========  funciones ======== 
 		void menuSecundario();
 		void menuCongruencial();
-		void menuColasExponencial();
+		void menuValoresAleatioriasDiscretas();
         //void menuCongruencial(unsigned int a, unsigned int b, unsigned int m, unsigned int X0);
         //void menuCongruencial(unsigned int a, unsigned int m, unsigned int X0);
 		unsigned int preguntarNumeroColumnas();

@@ -49,7 +49,7 @@ void MenuNVar::menuProcesos() {
 	std::cin >> n;
 	std::cout << "Matriz A" << '\n';
 	matrizA.mostrarMatriz();
-	matrizA.matrizP(n);
+	matrizA.matrizTransicionP(n);
 	std::cout << "Matriz P" << '\n';
 	//matrizA.mostrarMatrizResuelta();
 }

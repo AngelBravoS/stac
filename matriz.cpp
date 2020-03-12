@@ -48,6 +48,7 @@ void Matriz::verificarArchivo() {
 	}
 
 void Matriz::leerMatriz() {
+    crearMatrizVacia();
 	if (desdeArchivo == true) {
 		verificarArchivo();
 		leerDesdeArchivo();

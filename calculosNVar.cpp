@@ -158,7 +158,7 @@ double CalculosNVar::curtosis(int indiceVariable) {
 	return curtosis;
 }
 
-void CalculosNVar::matrizP(unsigned int n){
+void CalculosNVar::matrizTransicionP(unsigned int n){
 	//crearMatrizResueltaVacia();
 	//copiarMatrizA();
 	unsigned int x = 0;

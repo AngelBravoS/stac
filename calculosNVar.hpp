@@ -47,7 +47,7 @@ class CalculosNVar : public Matriz {
 		double curtosis ( int indiceVariable );
 		double covarianza ( int indiceVariable );
 		//========  funciones de procesos estocásticos ========
-		void matrizP(unsigned int n);
+		void matrizTransicionP(unsigned int n);
 		
 	protected:
 		//double sumatoria;

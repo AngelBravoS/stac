@@ -37,7 +37,6 @@ CalculosAlgebra::CalculosAlgebra(bool archivo, unsigned int longitudFila, unsign
 	desdeArchivo = archivo;
 	filas = longitudFila;
 	columnas = longitudColumna;
-	crearMatrizVacia();
 	filas == columnas ? cuadrada = true : cuadrada = false;
 	if (cuadrada == true) {dimension = filas;}
 	}
