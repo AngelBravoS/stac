@@ -22,20 +22,18 @@
 // command-line interface (CLI)
 #ifndef _CLI_HPP_
 #define _CLI_HPP_
+//#include "cli.hpp"
+#include <iostream>
 
 class CLI {
 		//Obtener = Get
 		//Establecer = Set
 	public:
-        //======== setters y getters ========
-		char getOpcionSeleccionada();
-		void setOpcionSeleccionada(char respuestaUsuarioPublica);
 		//======== funciones de menu ========
 		void introduccion();
 		void acercaDe();
 		void ayuda();
-		void eleccion();
-        //void eleccion(unsigned int i);
+        void eleccion(unsigned int i);
 		void hasElegido();
 		//======== subfunciones de menu ========
 		void menuPrincipal();
@@ -54,7 +52,7 @@ class CLI {
 		unsigned int preguntarNumeroColumnas();
 		//void numElementosVector();
 		//======== Textos de menús ========
-		void listadOpcionesPricipales();
+		void listadOpcionesPrincipales();
 		void listadOpcionesMuestreo();
 		void preguntarEstimador(); 
 		void listadOpciones1Variable();
@@ -67,7 +65,7 @@ class CLI {
         void listadOpcionestipoGenerador();
 
 	protected:
-        char respuestaUsuario;
+        char opciones[4];
 		bool archivoValido;
 };
 

@@ -27,8 +27,8 @@
 void CLI::menuSinDatos() {
     do {
         listadoMenuSinDatos();
-        eleccion();
-        switch ( getOpcionSeleccionada() ) {
+        eleccion(0);
+        switch (opciones[0]) {
         case '1' :
             menuCombinatoria();
             break;
@@ -44,5 +44,5 @@ void CLI::menuSinDatos() {
             menuDistribDiscreta();
             break;
         }
-    } while (getOpcionSeleccionada() != '0');
+    } while (opciones[0] != '0');
 }

@@ -96,7 +96,8 @@ bool CalculosIA::sonCongruentesFactoresPrimoP () {
 }
 
 bool CalculosIA::esMCongruente4() {
-	if (m % 4 != 0) { //Si el módulo es distinto de 0, m no es un múltiplo de 4 y la norma se ignora
+	if (m % 4 != 0) { //Si el módulo es distinto de 0, m no es un múltiplo de 4 
+                        //y la norma se ignora
 		return true;
 	} else if ( (sonCongruentes (a, 1, 4)) == true) {
 		return true;
@@ -111,14 +112,15 @@ bool CalculosIA::mEsPotenciaDe2() {
 }
 
 bool CalculosIA::cumpleTeoremaKnuth () {
-	if ( (sonCoprimos (b, m) == false) || (sonCongruentesFactoresPrimoQ() == false) || (esMCongruente4() == false)) {
+	if ( (sonCoprimos (b, m) == false) || (sonCongruentesFactoresPrimoQ() == 
+false) || (esMCongruente4() == false)) {
 		return false;
 	} else {
 		return true;
 	}
 }
 
-void CalculosIA::comprobarPeriodo (int tipoGenerador) {
+void CalculosIA::comprobarPeriodo (char tipoGenerador) {
 	if (tipoGenerador == 'x') { // 'x' -> Mixto
 		if (cumpleTeoremaKnuth() == true) {
 			periodoMaximo = true;
@@ -128,7 +130,9 @@ void CalculosIA::comprobarPeriodo (int tipoGenerador) {
 
 	} else { // 'm' -> multiplicativo
 		if (mEsPotenciaDe2() == true) {
-			if ( (esMultiplo (a, 2) == false) && (esMultiplo (X0, 2) == false) && ( (sonCongruentes (a, 3, 8) == true) || (sonCongruentes (a, 5, 8) == true))) {
+			if ( (esMultiplo (a, 2) == false) && (esMultiplo (X0, 2) == false) 
+&& ( (sonCongruentes (a, 3, 8) == true) || (sonCongruentes (a, 5, 8) == true))) 
+{
 				periodoMaximo = true;
 			} else {
 				periodoMaximo = false;
@@ -148,4 +152,3 @@ void CalculosIA::mostrarComprobacionPeriodo() {
 		std::cout << "El período NO es máximo." << "\n";
 	}
 }
-

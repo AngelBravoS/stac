@@ -83,9 +83,11 @@ double CalculosAlgebra::determinante() {
 	}
 
 void CalculosAlgebra::traspuesta() {
+    Matriz matrizResultado(filas, columnas);
 	for (unsigned int i = 0; i < filas; i++) {
 		for (unsigned int j = 0; j < columnas; j++) {
-			resultado[i][j] = matriz[j][i];
+			//resultado[i][j] = matriz[j][i];
+            //matrizResultado.matriz[i][j] = matriz[j][i];
 		}
 	}
 }
@@ -241,14 +243,14 @@ void CalculosAlgebra::descomposicionLU() {
 }
 
 void CalculosAlgebra::sumaDeMatrices() {
-	CalculosAlgebra matrizResultado(filas, columnas);
-	matrizResultado.mostrarMatriz();
+	//CalculosAlgebra matrizResultado(filas, columnas);
+	//matrizResultado.mostrarMatriz();
 	for (unsigned int i = 0; i < filas; i++) {
 		for (unsigned int j = 0; j < columnas; j++) {
-			//resultado[i][j] = matriz[i][j]+matriz[i][j];
+			resultado[i][j] = matriz[i][j]+matriz[i][j];
 		}
 	}
-	}
+}
 
 void CalculosAlgebra::Kronecker() {
 	}

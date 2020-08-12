@@ -30,6 +30,7 @@ double potenciaDouble(double numero, double potencia);
 double binomio(double a, double b);
 double e();
 
+unsigned int gcd(unsigned int a , unsigned int b);
 bool esMultiplo(unsigned int numero1, unsigned int numero2);
 bool esPrimo (unsigned int numero);
 bool sonCoprimos (unsigned int numero1, unsigned int numero2);

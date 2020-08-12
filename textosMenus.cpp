@@ -29,7 +29,7 @@ void CLI::introduccion() {
 	std::cout << "	║        Estadística       ║" << '\n';
 	std::cout << "	║   en línea de comandos   ║" << '\n';
 	std::cout << "	╚══════════════════════════╝" << '\n';
-	std::cout << "			       a0.89" << '\n';
+	std::cout << "			       0.89b" << '\n';
 	std::cout << '\n';
 }
 
@@ -86,7 +86,7 @@ void CLI::ayuda() {
 	std::cout << '\n';
 }
 
-void CLI::listadOpcionesPricipales() {
+void CLI::listadOpcionesPrincipales() {
 	std::cout << "		Menú principal" << '\n';
 	std::cout << "	=========================== " << '\n';
 	std::cout << '\n';

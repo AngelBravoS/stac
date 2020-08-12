@@ -21,6 +21,8 @@
 
 #include "calculosNVar.hpp"
 #include "funcMatematicasBasicas.hpp"
+#include <cmath>
+#include <fstream>
  
 class MAS : public CalculosNVar {
 	public:

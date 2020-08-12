@@ -55,7 +55,7 @@ double binomio(double n, double k) {
 	return resultado;
 }
 
-double e (){
+double e(){
 	double resultado, producto;
 	resultado = 1;
 	producto = 1;
@@ -64,6 +64,12 @@ double e (){
 		resultado += 1/producto;
 	}
 	return resultado;
+}
+
+unsigned int gcd(unsigned int a , unsigned int b) {
+    if(b==0) return a;
+        a%=b;
+    return gcd(b,a);
 }
 
 bool esMultiplo (unsigned int numero1, unsigned int numero2) {
@@ -91,7 +97,7 @@ bool esPrimo (unsigned int numero) {
 }
 
 bool sonCoprimos (unsigned int numero1, unsigned int numero2) {
-	if (std::__gcd (numero1, numero2) == 1) {
+    if (gcd (numero1, numero2) == 1) {
 		return true;
 	} else {
 		return false;

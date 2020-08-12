@@ -49,7 +49,7 @@ public:
 	void mostrarSecuencia();
 
 	bool cumpleTeoremaKnuth ();
-    void comprobarPeriodo(int tipoGenerador);
+    void comprobarPeriodo (char tipoGenerador);
 	void mostrarComprobacionPeriodo();
 
 protected:

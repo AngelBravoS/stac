@@ -27,6 +27,7 @@
 class CalculosAlgebra : public CalculosNVar {
 
 public:
+    
 	//======== constructor ========
 	CalculosAlgebra();
 	CalculosAlgebra(unsigned int longitudFila, unsigned int longitudColumna);

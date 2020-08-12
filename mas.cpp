@@ -19,9 +19,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iostream>
-#include <cmath>
-#include <fstream>
+
 #include "mas.hpp"
 
 //Límite máximo en unsigned short int: 65535

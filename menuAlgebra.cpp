@@ -120,7 +120,8 @@ void MenuAlgebra::menu2Matrices() {
 	CalculosAlgebra matrizB(preguntarDesdeArchivoOTeclado(),
 									preguntarNumeroFilas(), preguntarNumeroColumnas());
 	std::cout << '\n';
-	
+	matrizA.crearMatrizResultado();
+    
 	matrizB.leerMatriz();
 	do {
 		std::cout << '\n';
@@ -139,6 +140,7 @@ void MenuAlgebra::menu2Matrices() {
 				std::cout << "Suma matricial de A y B" << '\n';
 				std::cout << '\n';
 				matrizA.sumaDeMatrices();
+                matrizA.mostrarResultado();
 				break;
 			case '2':
 				std::cout << "Multiplicación matricial de A y B" << '\n';

@@ -20,7 +20,6 @@
  ***************************************************************************/
 
 //CLI => Command Line Interface.
-#include "cli.hpp"
 #include "menu1Var.hpp"
 #include "menu2Var.hpp"
 #include "menuNVar.hpp"
@@ -28,27 +27,16 @@
 #include "menuMuestreo.hpp"
 #include <iostream>
 
-char CLI::getOpcionSeleccionada() {
-    return respuestaUsuario;
-}
-
-void CLI::setOpcionSeleccionada(char respuestaUsuarioPublica) {
-    respuestaUsuario = respuestaUsuarioPublica;
-}
-
-void CLI::eleccion() {
-    char opcionElegida;
-    std::cin >> opcionElegida;
-    //eleccion='1';
-    setOpcionSeleccionada(opcionElegida);
+void CLI::eleccion (unsigned int i) {
+	std::cin >> opciones[i];
 }
 
 void CLI::menuPrincipal() {
     do {
-        listadOpcionesPricipales();
+        listadOpcionesPrincipales();
         std::cout << "> ";
-        eleccion();
-        switch(getOpcionSeleccionada()) {
+        eleccion(0);
+		switch(opciones[0]) {
             case '1' : {
                 Menu1Var univariante;
                 univariante.menuSecundario();
@@ -83,7 +71,7 @@ void CLI::menuPrincipal() {
                 break;
             }
         }
-    } while(getOpcionSeleccionada() != '0');
+    } while(opciones[0] != '0');
 }
 
 unsigned int CLI::preguntarTamanoVector() {
