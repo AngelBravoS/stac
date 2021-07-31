@@ -29,7 +29,7 @@ void CLI::introduccion() {
 	std::cout << "	║        Estadística       ║" << '\n';
 	std::cout << "	║   en línea de comandos   ║" << '\n';
 	std::cout << "	╚══════════════════════════╝" << '\n';
-	std::cout << "			       0.89b" << '\n';
+	std::cout << "			       0.89c" << '\n';
 	std::cout << '\n';
 }
 
@@ -133,22 +133,22 @@ void CLI::listadOpciones1Variable() {
 
 void CLI::listadOpciones2Variables() {
 	std::cout << '\n';
-	std::cout << "'1' Medidas estadísticas básicas" << '\n';
-	std::cout << "'2' Tablas de contingencia bidimensionales" << '\n';
-	std::cout << "'0' Volver al menú principal" << '\n';
+	std::cout << "'1' Medidas estadísticas básicas." << '\n';
+	std::cout << "'2' Tablas de contingencia bidimensionales." << '\n';
+	std::cout << "'0' Volver al menú principal." << '\n';
 	std::cout << "> ";
 }
 
 void CLI::listadOpciones1Matriz() {
 	std::cout << "Cálculos de una matriz" << '\n';
-	std::cout << "'1' Traza" << '\n';
-	std::cout << "'2' Determinante" << '\n';
-	std::cout << "'3' Matriz traspuesta" << '\n';
-	std::cout << "'4' Método de Gauss" << '\n';
-	std::cout << "'5' Matriz adjunta" << '\n';
-	std::cout << "'6' Matriz inversa" << '\n';
-	std::cout << "'7' Descomposición LU" << '\n';
-	std::cout << "'8' Métodos numéricos" << '\n';
+	std::cout << "'1' Traza." << '\n';
+	std::cout << "'2' Determinante." << '\n';
+	std::cout << "'3' Matriz traspuesta." << '\n';
+	std::cout << "'4' Método de Gauss." << '\n';
+	std::cout << "'5' Matriz adjunta." << '\n';
+	std::cout << "'6' Matriz inversa." << '\n';
+	std::cout << "'7' Descomposición LU." << '\n';
+	std::cout << "'8' Métodos numéricos." << '\n';
 	std::cout << "'0' Menú anterior." << '\n';
 	std::cout << "> ";
 }
@@ -168,7 +168,7 @@ void CLI::listadoMenuSinDatos(){
     std::cout << "'2' Inteligencia artificial."  << '\n';
     std::cout << "'3' Investigación operativa." << '\n';
     std::cout << "'4' Distribuciones de probabilidad discretas." << '\n';
-    std::cout << "'0' Salir." << '\n';
+    std::cout << "'0' Volver al menú principal." << '\n';
     std::cout << "> ";
 }
 
@@ -185,12 +185,12 @@ void CLI::listadOpcionesColasExponencial() {
 }
 
 void CLI::listadOpcionesIA() {
-	std::cout << "	=========================== " << '\n';
+	//std::cout << "	=========================== " << '\n';
 	std::cout << '\n';
 	std::cout << "'1' Calcular la secuencia de generadores congruenciales." << '\n';
 	std::cout << "'2' Comprobar el período de un generador congruencial." << '\n';
 	std::cout << "'3' Generar valores aleatorios de distribuciones aleatorias." << '\n';
-	std::cout << "'0' Salir." << '\n';
+	std::cout << "'0' Menú anterior." << '\n';
 	std::cout << "> ";
 }
 

@@ -34,7 +34,7 @@ void CLI::menuSinDatos() {
             break;
         case '2' :
             MenuIA ia;
-            ia.menuSecundario();
+            ia.menuCongruencial();
             break;
         case '3' :
             MenuIO io;

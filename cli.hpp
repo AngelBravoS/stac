@@ -65,7 +65,7 @@ class CLI {
         void listadOpcionestipoGenerador();
 
 	protected:
-        char opciones[4];
+        char opciones[5];
 		bool archivoValido;
 };
 

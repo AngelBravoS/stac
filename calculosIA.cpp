@@ -21,23 +21,23 @@
 
 #include "calculosIA.hpp"
 
-CalculosIA::CalculosIA (unsigned int parametro_a, unsigned int parametro_b,
-   unsigned int parametro_m, unsigned int parametro_X0) {
+CalculosIA::CalculosIA(unsigned int parametro_a, unsigned int parametro_b,
+                       unsigned int parametro_m, unsigned int parametro_X0) {
 	a = parametro_a;
 	b = parametro_b;
 	m = parametro_m;
 	X0 = parametro_X0;
 }
 
-CalculosIA::CalculosIA (unsigned int parametro_a, unsigned int parametro_b,
-   unsigned int parametro_m) {
+CalculosIA::CalculosIA(unsigned int parametro_a, unsigned int parametro_b,
+                       unsigned int parametro_m) {
 	a = parametro_a;
 	b = parametro_b;
 	m = parametro_m;
 }
 
 //---función para el generador congruencial mixto y multiplicativo--
-unsigned int CalculosIA::generador (unsigned int semilla) {
+unsigned int CalculosIA::generador(unsigned int semilla) {
 	unsigned int resultado ;
 	resultado = a * semilla + b;
 	if (resultado > m)
@@ -46,11 +46,11 @@ unsigned int CalculosIA::generador (unsigned int semilla) {
 }
 
 void CalculosIA::crearSecuencia() {
-	unsigned int Xn = generador (X0);
-	secuencia.push_back (Xn);
+	unsigned int Xn = generador(X0);
+	secuencia.push_back(Xn);
 	while (X0 != Xn) {
-		Xn = generador (Xn);
-		secuencia.push_back (Xn);
+		Xn = generador(Xn);
+		secuencia.push_back(Xn);
 	}
 }
 
@@ -59,36 +59,40 @@ void CalculosIA::mostrarSecuencia() {
 	for (unsigned int i = 0; i < secuencia.size(); i++) {
 		std::cout << secuencia[i] << ", ";
 	}
-	std::cout << ")" << "\n" << "\n";
+	std::cout << ")" << "\n";
+	std::cout << "Y su longitud es " << secuencia.size();
+	if (m == secuencia.size()) {
+		std::cout << ", por tanto es de período completo." << "\n";
+	}
 }
 
 
-bool CalculosIA::sonCongruentesFactoresPrimoQ () {
+bool CalculosIA::sonCongruentesFactoresPrimoQ() {
 	std::vector<unsigned int> valoresPrimosM;
 	for (unsigned int i = 1; i <= m; i++) {
-		if (m % i == 0 && esPrimo (i) == true) {
-			valoresPrimosM.push_back (i);
+		if (m % i == 0 && esPrimo(i) == true) {
+			valoresPrimosM.push_back(i);
 		}
 	}
 
 	for (unsigned int i = 0; i < valoresPrimosM.size(); i++) {
-		if (sonCongruentes (a, 1, valoresPrimosM[i]) == false) {
+		if (sonCongruentes(a, 1, valoresPrimosM[i]) == false) {
 			return false;
 		}
 	}
 	return true;
 }
 
-bool CalculosIA::sonCongruentesFactoresPrimoP () {
+bool CalculosIA::sonCongruentesFactoresPrimoP() {
 	std::vector<unsigned int> valoresPrimosM;
 	for (unsigned int i = 1; i <= m; i++) {
-		if (m % i == 0 && esPrimo (i) == true) {
-			valoresPrimosM.push_back (i);
+		if (m % i == 0 && esPrimo(i) == true) {
+			valoresPrimosM.push_back(i);
 		}
 	}
 
 	for (unsigned int i = 0; i < valoresPrimosM.size(); i++) {
-		if (sonCongruentes (pow (a, valoresPrimosM[i]), 1, m) == false) {
+		if (sonCongruentes(pow(a, valoresPrimosM[i]), 1, m) == false) {
 			return false;
 		}
 	}
@@ -96,10 +100,10 @@ bool CalculosIA::sonCongruentesFactoresPrimoP () {
 }
 
 bool CalculosIA::esMCongruente4() {
-	if (m % 4 != 0) { //Si el módulo es distinto de 0, m no es un múltiplo de 4 
-                        //y la norma se ignora
+	if (m % 4 != 0) { //Si el módulo es distinto de 0, m no es un múltiplo de 4
+		//y la norma se ignora
 		return true;
-	} else if ( (sonCongruentes (a, 1, 4)) == true) {
+	} else if ((sonCongruentes(a, 1, 4)) == true) {
 		return true;
 	} else {
 		return false;
@@ -108,19 +112,19 @@ bool CalculosIA::esMCongruente4() {
 
 
 bool CalculosIA::mEsPotenciaDe2() {
-	return (m != 0) && ( (m & (m - 1)) == 0);
+	return (m != 0) && ((m & (m - 1)) == 0);
 }
 
-bool CalculosIA::cumpleTeoremaKnuth () {
-	if ( (sonCoprimos (b, m) == false) || (sonCongruentesFactoresPrimoQ() == 
-false) || (esMCongruente4() == false)) {
+bool CalculosIA::cumpleTeoremaKnuth() {
+	if ((sonCoprimos(b, m) == false) || (sonCongruentesFactoresPrimoQ() ==
+	                                     false) || (esMCongruente4() == false)) {
 		return false;
 	} else {
 		return true;
 	}
 }
 
-void CalculosIA::comprobarPeriodo (char tipoGenerador) {
+void CalculosIA::comprobarPeriodo(char tipoGenerador) {
 	if (tipoGenerador == 'x') { // 'x' -> Mixto
 		if (cumpleTeoremaKnuth() == true) {
 			periodoMaximo = true;
@@ -130,9 +134,9 @@ void CalculosIA::comprobarPeriodo (char tipoGenerador) {
 
 	} else { // 'm' -> multiplicativo
 		if (mEsPotenciaDe2() == true) {
-			if ( (esMultiplo (a, 2) == false) && (esMultiplo (X0, 2) == false) 
-&& ( (sonCongruentes (a, 3, 8) == true) || (sonCongruentes (a, 5, 8) == true))) 
-{
+			if ((esMultiplo(a, 2) == false) && (esMultiplo(X0, 2) == false)
+			    && ((sonCongruentes(a, 3, 8) == true) || (sonCongruentes(a, 5, 8) ==
+			        true))) {
 				periodoMaximo = true;
 			} else {
 				periodoMaximo = false;
