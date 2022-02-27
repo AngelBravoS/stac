@@ -47,22 +47,6 @@ public:
 	double coeficienteAsimetriaFisher();
 	double curtosis();
 	double norma();
-	//======== funciones de inferencia ========
-	//-------- Contrastes en poblaciones normales --------
-	//-------- de una muestra. Relativo a la media--------
-	double media1MuestraSigmaConocida();
-	double media1MuestraSigmaDesconocida();
-	//-------- relativo a la varianza --------
-	double var1MuestraMuConocida();
-	double var1MuestraMuDesconocida();
-	//-------- Aplicaciones del test de razón --------
-	//-------- de verosimilitudes --------
-	//-------- Test de Chi-cuadrado sobre Sigma^2--------
-	double testChiMuConocida();
-	double testChiMuDesconocida();
-	//-------- Test t Student sobre mu --------
-	double testStudentVarConocida();
-	double testStudentVarDesconocida();
 	};
 
 #endif /* _CALCULOS2VAR_HPP_ */

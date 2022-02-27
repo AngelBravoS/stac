@@ -21,6 +21,8 @@
 
 #ifndef _VECTOR_HPP_
 #define _VECTOR_HPP_
+#include <bits/stdc++.h>
+#include <vector>
 
 class Vector {
 public:
@@ -28,8 +30,7 @@ public:
 	Vector();
 	//======== funciones de vectores ========
 	void numElementosVector();
-	void crearVectorVacio();
-	void editarVectorVacio();
+	void crearVector();
 	void mostrarVector();
 	void copiarvector();
 	void ordenarVector();
@@ -38,12 +39,12 @@ public:
 	void desdeDondeLeeVector();
 	void verificarArchivo();
 	void leerArchivo();
-	void leerTeclado();
 	void guardarEnArchivo();
 protected:
 	unsigned int longitudVector;
 	bool leerDesdeArchivo;
 	double *vector;
+	std::vector<double> variable;
 	};
 
 #endif /* _VECTOR_HPP_ */

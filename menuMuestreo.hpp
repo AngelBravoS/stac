@@ -37,7 +37,6 @@ class MenuMuestreo : public CLI {
 		void mostrarDatosMuestra();
 	private:
 		int var;
-	
 };
 
 #endif /* _MENUMUESTREO_HPP_ */

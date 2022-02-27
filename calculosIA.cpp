@@ -66,7 +66,6 @@ void CalculosIA::mostrarSecuencia() {
 	}
 }
 
-
 bool CalculosIA::sonCongruentesFactoresPrimoQ() {
 	std::vector<unsigned int> valoresPrimosM;
 	for (unsigned int i = 1; i <= m; i++) {
@@ -109,7 +108,6 @@ bool CalculosIA::esMCongruente4() {
 		return false;
 	}
 }
-
 
 bool CalculosIA::mEsPotenciaDe2() {
 	return (m != 0) && ((m & (m - 1)) == 0);

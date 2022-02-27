@@ -25,145 +25,143 @@
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
-MAS::MAS(bool archivo, char estimadorElegido, unsigned int numeroColumnas, bool datosAgrupados) {
-   desdeArchivo = archivo;
-	estimador = estimadorElegido;
-   //columnasMatrizResuelta = numeroColumnas;
-   agrupados = datosAgrupados;
-   }
-
-void MAS::desdeDondeLeeDatos() {
-	//agrupados == true ? filasMatrizResuelta = 2 : filasMatrizResuelta = 1;
-	//filas = filasMatrizResuelta;
-   //crearMatrizResueltaVacia();
-   if (desdeArchivo == true) {
-	  verificarArchivo();
-	  leerDesdeArchivo();
-	  }
-   else {
-	  //leerDesdeTeclado();
-	  }
-   }
-
-void MAS::leerDesdeArchivo() {
-/*   std::fstream archivo;
-   archivo.open("datos.dat", std::ios::in | std::ios::binary);
-   int unsigned n = columnasMatrizResuelta;
-   if (agrupados == true) {
-	  unsigned int i = 0, j = 0;
-	  while (!archivo.eof()) {
-		 archivo >> matrizResuelta[i][j];
-		 j++; //avanza en la fila
-		 i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
-		 j = j % n; //se asegura que esté entre 0 y N-1
-		 }
-	  }
-   else {
-	  for (unsigned int j = 0; j < n; j++) {
-		 archivo >> matrizResuelta[0][j];
-		 }
-	  }
-   archivo.close();*/
-   }
-
-/*void MAS::crearMatrizParaCalculos() {
-   if (agrupados == true) {
-	  desagruparElementos();
-	  }
-   else {
-	  columnas = columnasMatrizResuelta;
-	  crearMatrizResueltaVacia();
-	  copiarMatrizResuelta();
-	  }
-   }*/
-
-/*void MAS::desagruparElementos() {
-   double n;
-   double totalElementos = 0;
-   int x = 0; //entender por qué así funciona.
-   for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
-	  totalElementos += potencia(matrizResuelta[1][j], 1);
-	  }
-   columnas = convierteDoubleEnInt(totalElementos);
-   crearMatrizResueltaVacia();
-   for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
-	  n = matrizResuelta[1][j];
-	  for (unsigned int i = 0; i < n; i++) {
-		 matriz[0][x] = matrizResuelta[0][j];
-		 matriz[1][x] = 1;
-		 x++;
-		 }
-	  }
-   }*/
-/*
-void MAS::leerDesdeTeclado() {
-   if (agrupados == true) {
-	  for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
-		 std::cout << "x" << j + 1 << " = ";
-		 std::cin >> matrizResuelta[0][j];
-		 std::cout << "f" << j + 1 << " = ";
-		 std::cin >> matrizResuelta[1][j];
-		 }
-	  desagruparElementos();
-	  }
-   else {
-	  for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
-		 std::cout << "x" << j + 1 << " = ";
-		 std::cin >> matrizResuelta[0][j];
-		 }
-	  }
-   }*/
-   
-// añade ∑Xi Y ∑Xi2 a la matriz
-void MAS::incorporarXiYXi2() {
-   unsigned int i = filas;
-   if (agrupados == true) {
-	  for (unsigned int j = 0; j < columnas; j++) {
-		 matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
-		 matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
-		 }
-	  }
-   else {
-	  matriz[i - 2][0] = matriz[0][0];
-	  matriz[i - 1][0] = matriz[0][0] * matriz[0][0];
-	  for (unsigned int j = 1; j < columnas; j++) {
-		 matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
-		 matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
-		 }
-	  }
-   }
-
-double MAS::calcularEstimador() {
-	double resultado = 0;
-	/*switch(estimador) {
-		case '1' :
-			resultado = mediaAritmetica(0);
-			break;
-		case '2' :
-			//resultado = N * mediaAritmetica(0);
-			break;
-		case '3' :
-			resultado = mediaAritmetica(0);
-			break;
-	}*/
-	return resultado;
+MAS::MAS(bool archivo, unsigned int numeroColumnas, bool 
+datosAgrupados) {
+	desdeArchivo = archivo;
+	columnasMatrizResuelta = numeroColumnas;
+	agrupados = datosAgrupados;
 }
 
-double MAS::calculoIC() {
-   double resultado = 0;
-   return resultado;
-   }
+MAS::MAS(bool archivo, char estimadorElegido, unsigned int numeroColumnas, bool 
+datosAgrupados) {
+	desdeArchivo = archivo;
+	estimador = estimadorElegido;
+	columnasMatrizResuelta = numeroColumnas;
+	agrupados = datosAgrupados;
+}
 
-double MAS::varianzaEstimador() {
-   double resultado = 0;
-   return resultado;
-   }
+void MAS::desdeDondeLeeDatos() {
+	agrupados == true ? filasMatrizResuelta = 2 : filasMatrizResuelta = 1;
+	filas = filasMatrizResuelta;
+	//crearMatrizResultado();
+	if (desdeArchivo == true) {
+		verificarArchivo();
+		leerDesdeArchivo();
+	} else {
+		leerDesdeTeclado();
+	}
+}
 
-double MAS::estimadorVarianza() {
-   double resultado = 0;
-   return resultado;
-   }
+void MAS::leerDesdeArchivo() {
+	std::fstream archivo;
+	archivo.open("datos.dat", std::ios::in | std::ios::binary);
+	int unsigned n = columnasMatrizResuelta;
+	if (agrupados == true) {
+		unsigned int i = 0, j = 0;
+		while (!archivo.eof()) {
+			archivo >> resultado[i][j];
+			j++; //avanza en la fila
+			i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
+			j = j % n; //se asegura que esté entre 0 y N-1
+		}
+	} else {
+		for (unsigned int j = 0; j < n; j++) {
+			archivo >> resultado[0][j];
+		}
+	}
+	archivo.close();
+}
 
+void MAS::crearMatrizParaCalculos() {
+	if (agrupados == true) {
+		desagruparElementos();
+	} else {
+		columnas = columnasMatrizResuelta;
+		crearMatrizResultado();
+	}
+}
 
+void MAS::desagruparElementos() {
+	double n;
+	double totalElementos = 0;
+	int x = 0; //entender por qué así funciona.
+	for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
+		totalElementos += potencia(resultado[1][j], 1);
+	}
+	columnas = convierteDoubleEnInt(totalElementos);
+	crearMatrizResultado();
+	for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
+		n = resultado[1][j];
+		for (unsigned int i = 0; i < n; i++) {
+			matriz[0][x] = resultado[0][j];
+			matriz[1][x] = 1;
+			x++;
+		}
+	}
+}
 
+void MAS::leerDesdeTeclado() {
+	if (agrupados == true) {
+		for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
+			std::cout << "x" << j + 1 << " = ";
+			std::cin >> resultado[0][j];
+			std::cout << "f" << j + 1 << " = ";
+			std::cin >> resultado[1][j];
+		}
+		desagruparElementos();
+	} else {
+		for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
+			std::cout << "x" << j + 1 << " = ";
+			std::cin >> resultado[0][j];
+		}
+	}
+}
 
+// añade ∑Xi Y ∑Xi2 a la matriz
+	void MAS::incorporarXiYXi2() {
+		unsigned int i = filas;
+		if (agrupados == true) {
+			for (unsigned int j = 0; j < columnas; j++) {
+				matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
+				matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
+			}
+		} else {
+			matriz[i - 2][0] = matriz[0][0];
+			matriz[i - 1][0] = matriz[0][0] * matriz[0][0];
+			for (unsigned int j = 1; j < columnas; j++) {
+				matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
+				matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
+			}
+		}
+	}
+
+	double MAS::calcularEstimador() {
+		double resultado = 0;
+		switch (estimador) {
+			case '1' :
+				resultado = mediaAritmetica(0);
+				break;
+			case '2' :
+				//resultado = N * mediaAritmetica(0);
+				break;
+			case '3' :
+				resultado = mediaAritmetica(0);
+				break;
+		}
+		return resultado;
+	}
+
+	double MAS::calculoIC() {
+		double resultado = 0;
+		return resultado;
+	}
+
+	double MAS::varianzaEstimador() {
+		double resultado = 0;
+		return resultado;
+	}
+
+	double MAS::estimadorVarianza() {
+		double resultado = 0;
+		return resultado;
+	}

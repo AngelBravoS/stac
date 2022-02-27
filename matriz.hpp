@@ -22,6 +22,9 @@
 #ifndef _MATRIZ_HPP_
 #define _MATRIZ_HPP_
 
+#include <iostream>
+#include <fstream>
+
 class Matriz {
 	public:
 		//======== constructor ======== 

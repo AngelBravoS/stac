@@ -123,14 +123,6 @@ void CLI::preguntarEstimador() {
 	std::cout << "> ";
 }
 
-void CLI::listadOpciones1Variable() {
-	std::cout << '\n';
-	std::cout << "'1' Medidas estadísticas básicas" << '\n';
-	std::cout << "'2' Inferencia" << '\n';
-	std::cout << "'0' Volver al menú principal" << '\n';
-	std::cout << "> ";
-}
-
 void CLI::listadOpciones2Variables() {
 	std::cout << '\n';
 	std::cout << "'1' Medidas estadísticas básicas." << '\n';

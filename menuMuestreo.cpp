@@ -25,17 +25,22 @@
 
 void MenuMuestreo::menuSecundario() {
 	char tipoDeMuestreo, estimador = '\0';
-	bool agrupados;
+	unsigned int numeroColumnas;
+	bool agrupados, desdeArchivoOTeclado;
+
+	desdeArchivoOTeclado = preguntarDesdeArchivoOTeclado();
 	agrupados = preguntarSiAgrupados();
-	MAS muestra(preguntarDesdeArchivoOTeclado(), estimador, preguntarNumeroColumnas(agrupados), agrupados);
+	numeroColumnas = preguntarNumeroColumnas(agrupados);
+
+	MAS muestra(desdeArchivoOTeclado, numeroColumnas, agrupados);
 	muestra.desdeDondeLeeDatos();
-//	muestra.crearMatrizParaCalculos();
+	muestra.crearMatrizParaCalculos();
 	listadOpcionesMuestreo();
 	std::cin >> tipoDeMuestreo;
 	preguntarEstimador();
 	std::cin >> estimador;
 	std::cout << '\n' << "Tabla de datos" << '\n';
-	//muestra.mostrarMatrizResuelta();
+	muestra.mostrarResultado();
 	std::cout << '\n';
 	muestra.mostrarMatriz();
 	std::cout << '\n';
@@ -56,19 +61,18 @@ void MenuMuestreo::menuSecundario() {
 
 	std::cout << "Varianzas de los estimadores" << '\n';
 	std::cout << '\n';
-	}
+}
 
 unsigned int MenuMuestreo::preguntarNumeroColumnas(bool agrupados) {
 	unsigned int columna;
 	if (agrupados == true) {
 		std::cout << "Número de datos distintos que contiene la muestra: ";
-		}
-	else {
+	} else {
 		std::cout << "Tamaño de la muestra: ";
-		}
+	}
 	std::cin >> columna;
 	return columna;
-	}
+}
 
 bool MenuMuestreo::preguntarSiAgrupados() {
 	char respuesta;
@@ -79,4 +83,4 @@ bool MenuMuestreo::preguntarSiAgrupados() {
 	std::cin >> respuesta;
 	respuesta == 's' ? agrupados = true : agrupados = false;
 	return agrupados;
-	}
+}

@@ -30,77 +30,55 @@ Vector::Vector() {}
 void Vector::leerArchivo() {
 	std::fstream archivo;
 	archivo.open("vector.dat", std::ios::in | std::ios::binary);
-	crearVectorVacio();
+	vector = new double [longitudVector];
 	for (unsigned int i = 0; i < longitudVector; i++) {
 		archivo >> vector[i];
-		}
-	archivo.close();
+		variable.push_back(vector[i]);
 	}
+	archivo.close();
+}
 
 void Vector::verificarArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
 	if (archivo.is_open()) {
 		std::cout << "Fichero leído" << '\n';
-		}
-	else {
+	} else {
 		std::cout << "Fichero inexistente" << '\n';
 		exit(-1);
-		}
+	}
 	archivo.close();
-	}
+}
 
-void Vector::leerTeclado() {
-	crearVectorVacio();
-	editarVectorVacio();
-	}
 
 void Vector::desdeDondeLeeVector() {
 	if (leerDesdeArchivo == true) {
 		verificarArchivo();
 		leerArchivo();
-		}
-	else {
-		leerTeclado();
-		}
+	} else {
+		crearVector();
 	}
+}
 
-void Vector::crearVectorVacio() {
-	vector = new double [longitudVector];
-	}
-
-void Vector::editarVectorVacio() {
+void Vector::crearVector() {
+	double xi;
+	std::cout << "Introduce los elementos uno a uno" << "\n";
+	std::cout << "separando con un espacio." << "\n";
 	for (unsigned int i = 0; i < longitudVector; i++) {
-		std::cout << "Elemento " << i + 1  << ": ";
-		std::cin >> vector[i];
-		}
-	std::cout << '\n';
+		std::cin >> xi;
+		variable.push_back(xi);
 	}
+	std::cout << '\n';
+}
 
 void Vector::mostrarVector() {
 	std::cout << "( ";
 	for (unsigned int i = 0; i < longitudVector; i++) {
-		std::cout << vector[i] << " ";
-		}
-	std::cout << ")" << '\n';
+		std::cout << variable[i] << " ";
 	}
+	std::cout << ")" << '\n';
+}
 
 void Vector::ordenarVector() {
-	double *vectorOrdenado;
-	/*
-	 *	vectorOrdenado = new double [longitudVector];
-	 *	for(unsigned int i = 0; i < longitudVector; i++)     {
-	 *		vectorOrdenado[i] = vector[i];
-	}*/
-	}
-
-/*
- * void Vector::mostrarVectorCopia() {
- *	std::cout << "( ";
- *	for(unsigned int i = 0; i < getLongitudVector(); i++) {
- *		std::cout << vectorCopia[i] << " ";
- *	}
- *	std::cout << ")";
- *	std::cout << '\n';
- * }
- */
+	std::sort(variable.begin(), variable.end());
+}

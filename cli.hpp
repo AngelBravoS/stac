@@ -33,7 +33,7 @@ class CLI {
 		void introduccion();
 		void acercaDe();
 		void ayuda();
-        void eleccion(unsigned int i);
+		void eleccion(unsigned int i);
 		void hasElegido();
 		//======== subfunciones de menu ========
 		void menuPrincipal();
@@ -54,18 +54,17 @@ class CLI {
 		//======== Textos de menús ========
 		void listadOpcionesPrincipales();
 		void listadOpcionesMuestreo();
-		void preguntarEstimador(); 
-		void listadOpciones1Variable();
+		void preguntarEstimador();
 		void listadOpciones2Variables();
 		void listadOpciones1Matriz();
 		void listadOpciones2Matrices();
-        void listadoMenuSinDatos();
+		void listadoMenuSinDatos();
 		void listadOpcionesColasExponencial();
-        void listadOpcionesIA();
-        void listadOpcionestipoGenerador();
+		void listadOpcionesIA();
+		void listadOpcionestipoGenerador();
 
 	protected:
-        char opciones[5];
+		char opciones[5];
 		bool archivoValido;
 };
 

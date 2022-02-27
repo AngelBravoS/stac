@@ -27,16 +27,16 @@
 //Límite máximo en unsigned int: 4.294.967.295
 
 
-Calculos1Var::Calculos1Var(bool archivo, unsigned int tamano) {
+Calculos1Var::Calculos1Var(bool archivo, unsigned int numeroElementos) {
 	leerDesdeArchivo = archivo;
-	longitudVector = tamano;
+	longitudVector = numeroElementos;
 	}
 
 double  Calculos1Var::sumatoria(unsigned int exponente) {
 	unsigned int n = longitudVector;
 	double sumatoria = 0;
 	for (unsigned int i = 0; i < n; i++) {
-		sumatoria += potencia(vector[i], exponente);
+		sumatoria += potencia(variable[i], exponente);
 		}
 	return sumatoria;
 	}
@@ -52,7 +52,7 @@ double Calculos1Var::mediaGeometrica() {
 	unsigned int n = longitudVector;
 	double mediaGeometrica = 1;
 	for (unsigned int i = 0; i < n; i++) {
-		mediaGeometrica *= vector[i];
+		mediaGeometrica *= variable[i];
 		}
 	mediaGeometrica = pow(mediaGeometrica, 1.0 / n);
 	return mediaGeometrica;
@@ -62,7 +62,7 @@ double Calculos1Var::mediaArmonica() {
 	unsigned int n = longitudVector;
 	double mediaArmonica = 0;
 	for (unsigned int i = 0; i < n; i++) {
-		mediaArmonica +=  1 / (potencia(vector[i], 1));
+		mediaArmonica +=  1 / (potencia(variable[i], 1));
 		}
 	mediaArmonica = (n / mediaArmonica);
 	return mediaArmonica;
@@ -81,15 +81,23 @@ double Calculos1Var::difRespecMedia(int exponente) {
 	unsigned int n = longitudVector;
 	double difRespecMedia = 0;
 	for (unsigned int i = 0; i < n; i++) {
-		difRespecMedia += pow(vector[i] - mediaAritmetica(), exponente);
+		difRespecMedia += pow(variable[i] - mediaAritmetica(), exponente);
 		}
 	return difRespecMedia;
 	}
 
 double Calculos1Var::mediana() {
-	double mediana = 0;
-
-	return mediana;
+		double mediana;
+		unsigned int n, v;
+		n = longitudVector;
+		ordenarVector();
+    v=n/2;
+    if(n%2==0) {
+    mediana =(variable[v]+variable[v-1])/2;
+    }
+    else{
+      mediana =variable[v];  
+    }
 	}
 
 double Calculos1Var::moda() {
@@ -159,53 +167,4 @@ double Calculos1Var::norma() {
 	norma += sumatoria(2);
 	norma = sqrt(norma);
 	return norma;
-	}
-
-double Calculos1Var::media1MuestraSigmaConocida() {
-	double resultado = 0;
-	std::cout << "ok." << '\n';
-	return resultado;
-
-	}
-
-double Calculos1Var::media1MuestraSigmaDesconocida() {
-	double resultado = 0;
-	return resultado;
-
-	}
-
-double Calculos1Var::var1MuestraMuConocida() {
-	double resultado = 0;
-	return resultado;
-
-	}
-
-double Calculos1Var::var1MuestraMuDesconocida() {
-	double resultado = 0;
-	return resultado;
-
-	}
-
-double Calculos1Var::testChiMuConocida() {
-	double resultado = 0;
-	return resultado;
-
-	}
-
-double Calculos1Var::testChiMuDesconocida() {
-	double resultado = 0;
-	return resultado;
-
-	}
-
-double Calculos1Var::testStudentVarConocida() {
-	double resultado = 0;
-	return resultado;
-
-	}
-
-double Calculos1Var::testStudentVarDesconocida() {
-	double resultado = 0;
-	return resultado;
-
 	}

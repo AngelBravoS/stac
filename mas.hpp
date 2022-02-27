@@ -26,6 +26,7 @@
  
 class MAS : public CalculosNVar {
 	public:
+		MAS(bool archivo, unsigned int numeroColumnas, bool datosAgrupados);
 		MAS(bool archivo, char estimadorElegido, unsigned int numeroColumnas, bool datosAgrupados);
 		void editarMatrizVacia();
 		//========  funciones de muestreo ======== 
@@ -49,11 +50,13 @@ class MAS : public CalculosNVar {
 		double calculoIC();
 	protected:
 		bool agrupados;
+		unsigned int columnasMatrizResuelta, filasMatrizResuelta;
+		unsigned int estimador;
 		double mediaDeX, proporcionDeX, totalDeX;
 		double sumatoriaDeX;
 		double sumatoriaCuadradoDeX;
 		double ic;
-		double estimador;
+		
 		double varianzaDelEstimador;
 		double estimadorDeLaVarianza;
 };

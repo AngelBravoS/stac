@@ -27,80 +27,80 @@
 #include "menuMuestreo.hpp"
 #include <iostream>
 
-void CLI::eleccion (unsigned int i) {
+void CLI::eleccion(unsigned int i) {
 	std::cin >> opciones[i];
 }
 
 void CLI::menuPrincipal() {
-    do {
-        listadOpcionesPrincipales();
-        std::cout << "> ";
-        eleccion(0);
-		switch(opciones[0]) {
-            case '1' : {
-                Menu1Var univariante;
-                univariante.menuSecundario();
-                break;
-            }
-            case '2' : {
-                Menu2Var bivariante;
-                bivariante.menuSecundario();
-                break;
-            }
-            case '3' : {
-                MenuNVar multivariante;
-                multivariante.menuSecundario();
-                break;
-            }
-            case '4' : {
-                MenuAlgebra algebra;
-                algebra.menuSecundario();
-                break;
-            }
-            case '5' : {
-                MenuMuestreo muestreo;
-                muestreo.menuSecundario();
-                break;
-            }
-            case '6' : {
-                menuSinDatos();
-                break;
-            }
-            case '7' : {
-                ayuda();
-                break;
-            }
-        }
-    } while(opciones[0] != '0');
+	do {
+		listadOpcionesPrincipales();
+		std::cout << "> ";
+		eleccion(0);
+		switch (opciones[0]) {
+			case '1' : {
+				Menu1Var univariante;
+				univariante.menuSecundario();
+				break;
+			}
+			case '2' : {
+				Menu2Var bivariante;
+				bivariante.menuSecundario();
+				break;
+			}
+			case '3' : {
+				MenuNVar multivariante;
+				multivariante.menuSecundario();
+				break;
+			}
+			case '4' : {
+				MenuAlgebra algebra;
+				algebra.menuSecundario();
+				break;
+			}
+			case '5' : {
+				MenuMuestreo muestreo;
+				muestreo.menuSecundario();
+				break;
+			}
+			case '6' : {
+				menuSinDatos();
+				break;
+			}
+			case '7' : {
+				ayuda();
+				break;
+			}
+		}
+	} while (opciones[0] != '0');
 }
 
 unsigned int CLI::preguntarTamanoVector() {
-    unsigned int tamano;
-    std::cout << "Tamaño del vector: ";
-    std::cin >> tamano;
-    return  tamano;
+	unsigned int tamano;
+	std::cout << "Tamaño del vector: ";
+	std::cin >> tamano;
+	return  tamano;
 }
 
 unsigned int CLI::preguntarNumeroFilas() {
-    unsigned int fila;
-    std::cout << "Número de filas: ";
-    std::cin >> fila;
-    return fila;
+	unsigned int fila;
+	std::cout << "Número de filas: ";
+	std::cin >> fila;
+	return fila;
 }
 
 unsigned int CLI::preguntarNumeroColumnas() {
-    unsigned int col;
-    std::cout << "Número de columnas: ";
-    std::cin >> col;
-    return col;
+	unsigned int col;
+	std::cout << "Número de columnas: ";
+	std::cin >> col;
+	return col;
 }
 
 bool CLI::preguntarDesdeArchivoOTeclado() {
-    char opcion;
-    bool eligesArchivo;
-    std::cout << "¿Leer desde un archivo?" << '\n';
-    std::cout << "s/n:";
-    std::cin >> opcion;
-    opcion == 's'? eligesArchivo = true: eligesArchivo = false;
-    return eligesArchivo;
+	char opcion;
+	bool eligesArchivo;
+	std::cout << "¿Leer desde un archivo?" << '\n';
+	std::cout << "s/n:";
+	std::cin >> opcion;
+	opcion == 's' ? eligesArchivo = true : eligesArchivo = false;
+	return eligesArchivo;
 }
