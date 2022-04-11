@@ -117,6 +117,11 @@ unsigned int convierteDoubleEnInt(double doble) {
 	return valorEntero;
 }
 
+unsigned int convierteLongEnInt(long unsigned int unsignedlong) {
+	unsigned int valorEntero = static_cast<unsigned int>(unsignedlong);
+	return valorEntero;
+}
+
 float convierteIntEnFloat(unsigned int entero) {
 	float valorFloat = static_cast<float>(entero);
 	return valorFloat;

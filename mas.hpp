@@ -19,44 +19,53 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "calculosNVar.hpp"
-#include "funcMatematicasBasicas.hpp"
+#ifndef MAS_HPP_INCLUDED
+#define MAS_HPP_INCLUDED
+
+#include "calculos1Var.hpp"
 #include <cmath>
 #include <fstream>
- 
-class MAS : public CalculosNVar {
+
+class MAS : public Calculos1Var {
 	public:
-		MAS(bool archivo, unsigned int numeroColumnas, bool datosAgrupados);
-		MAS(bool archivo, char estimadorElegido, unsigned int numeroColumnas, bool datosAgrupados);
-		void editarMatrizVacia();
-		//========  funciones de muestreo ======== 
-		void desdeDondeLeeDatos();
+		//======== constructor ========
+		MAS();
+		MAS(bool archivo, unsigned int tamanoVectorDatos, bool datosAgrupados);
+		MAS(bool archivo, unsigned int tamanoVectorDatos, bool datosAgrupados,
+		    unsigned int estimadorSeleccionado);
+		//========  funciones de muestreo ========
+		void leerDatos();
 		void leerDesdeTeclado();
 		void leerDesdeArchivo();
-		void asignarVariables();
-		void desagruparElementos();
-		void desagrupar();
+		void desagruparDesdeTeclado();
+		void desagruparDesdeArchivo();
 		void incorporarXiYXi2();
-		void crearMatrizParaCalculos();
+		void crearVector();
+		void setValorN(unsigned int estimadorSeleccionado);
+		unsigned int getSizeVector();
 		
 		double calcularEstimador();
-		double media(int indiceVariable );
-		double proporcion(int indiceVariable );
-		double total(int indiceVariable );
-		
-		double varianzaEstimador();		
+		double media();
+		double proporcion();
+		double total();
+
+		double varianzaEstimador();
 		double estimadorVarianza();
-	
+		double em();
 		double calculoIC();
+
 	protected:
 		bool agrupados;
-		unsigned int columnasMatrizResuelta, filasMatrizResuelta;
+		//unsigned int tamanoVectorDatos;
 		unsigned int estimador;
+		unsigned int N;
 		double mediaDeX, proporcionDeX, totalDeX;
 		double sumatoriaDeX;
 		double sumatoriaCuadradoDeX;
 		double ic;
-		
+
 		double varianzaDelEstimador;
 		double estimadorDeLaVarianza;
 };
+
+#endif // MAS_HPP_INCLUDED

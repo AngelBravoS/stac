@@ -25,48 +25,48 @@
 
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
-
+Calculos1Var::Calculos1Var() {}
 
 Calculos1Var::Calculos1Var(bool archivo, unsigned int numeroElementos) {
-	leerDesdeArchivo = archivo;
+	enArchivo = archivo;
 	longitudVector = numeroElementos;
-	}
+}
 
 double  Calculos1Var::sumatoria(unsigned int exponente) {
 	unsigned int n = longitudVector;
 	double sumatoria = 0;
 	for (unsigned int i = 0; i < n; i++) {
-		sumatoria += potencia(variable[i], exponente);
-		}
-	return sumatoria;
+		sumatoria += potencia(vector[i], exponente);
 	}
+	return sumatoria;
+}
 
 double  Calculos1Var::mediaAritmetica() {
 	unsigned int n = longitudVector;
 	double media = 0;
 	media = (sumatoria(1) / n);
 	return media;
-	}
+}
 
 double Calculos1Var::mediaGeometrica() {
 	unsigned int n = longitudVector;
 	double mediaGeometrica = 1;
 	for (unsigned int i = 0; i < n; i++) {
-		mediaGeometrica *= variable[i];
-		}
+		mediaGeometrica *= vector[i];
+	}
 	mediaGeometrica = pow(mediaGeometrica, 1.0 / n);
 	return mediaGeometrica;
-	}
+}
 
 double Calculos1Var::mediaArmonica() {
 	unsigned int n = longitudVector;
 	double mediaArmonica = 0;
 	for (unsigned int i = 0; i < n; i++) {
-		mediaArmonica +=  1 / (potencia(variable[i], 1));
-		}
+		mediaArmonica +=  1 / (potencia(vector[i], 1));
+	}
 	mediaArmonica = (n / mediaArmonica);
 	return mediaArmonica;
-	}
+}
 
 double Calculos1Var::mediaCuadratica() {
 	unsigned int n = longitudVector;
@@ -74,97 +74,99 @@ double Calculos1Var::mediaCuadratica() {
 	mediaCuadratica = sumatoria(2) * (1.0 / n);
 	mediaCuadratica = sqrt(mediaCuadratica);
 	return mediaCuadratica;
-	}
+}
 
 //Suma de diferencias respecto a la media con exponente
 double Calculos1Var::difRespecMedia(int exponente) {
 	unsigned int n = longitudVector;
 	double difRespecMedia = 0;
 	for (unsigned int i = 0; i < n; i++) {
-		difRespecMedia += pow(variable[i] - mediaAritmetica(), exponente);
-		}
-	return difRespecMedia;
+		difRespecMedia += pow(vector[i] - mediaAritmetica(), exponente);
 	}
+	return difRespecMedia;
+}
 
 double Calculos1Var::mediana() {
-		double mediana;
-		unsigned int n, v;
-		n = longitudVector;
-		ordenarVector();
-    v=n/2;
-    if(n%2==0) {
-    mediana =(variable[v]+variable[v-1])/2;
-    }
-    else{
-      mediana =variable[v];  
-    }
+	double mediana;
+	unsigned int n, v;
+	n = longitudVector;
+	ordenarVector();
+	v = n / 2;
+	if (n % 2 == 0) {
+		mediana = (vector[v] + vector[v - 1]) / 2;
+	} else {
+		mediana = vector[v];
 	}
+	return mediana;
+}
 
 double Calculos1Var::moda() {
 	double norma = 0;
 	norma += sumatoria(2);
 	norma = sqrt(norma);
 	return norma;
-	}
+}
 
 double Calculos1Var::varianza() {
 	unsigned int n = longitudVector;
 	double varianza;
 	varianza = (difRespecMedia(2)) / n;
 	return varianza;
-	}
+}
 
 double Calculos1Var::varianzaMuestral() {
 	unsigned int n = longitudVector;
 	double varianzaMuestral;
 	varianzaMuestral = (difRespecMedia(2)) / (n - 1);
 	return varianzaMuestral;
-	}
+}
 
 double Calculos1Var::desviacionTipica() {
 	double desviacionTipica;
 	desviacionTipica = sqrt(varianza());
 	return desviacionTipica;
-	}
+}
 
 double Calculos1Var::desviacionTipicaMuestral() {
 	double desviacionTipicaMuestral;
 	desviacionTipicaMuestral = sqrt(varianzaMuestral());
 	return desviacionTipicaMuestral;
-	}
+}
 
 double Calculos1Var::momentosNoCentrados(int exponente) {
 	unsigned int n = longitudVector;
 	double momento;
 	momento = difRespecMedia(exponente) / n;
 	return momento;
-	}
+}
 
 double Calculos1Var::coeficientePearson() {
 	double coeficientePearson;
 	coeficientePearson = desviacionTipica() / mediaAritmetica();
 	return coeficientePearson;
-	}
+}
 
 double Calculos1Var::coeficienteAsimetriaFisher() {
 	double coeficiente, mu;
-	unsigned int n = longitudVector;
+	//unsigned int n = longitudVector;
 	mu = difRespecMedia(3);
-	coeficiente = mu / (n*potencia(desviacionTipicaMuestral(), 3));
+	coeficiente = mu / momentosNoCentrados(3);
 	return coeficiente;
-	}
+}
 
 double Calculos1Var::curtosis() {
 	double curtosis, mu;
 	mu = momentosNoCentrados(4);
-	//mu = momentosNoCentrados(4)-4*momentosNoCentrados(1)*momentosNoCentrados(3)+6*potencia(momentosNoCentrados(1),2)-3*potencia(momentosNoCentrados(1),4);
+	/*mu = 
+momentosNoCentrados(4)-4*momentosNoCentrados(1)*momentosNoCentrados(3)+6*
+potencia(momentosNoCentrados(1),2)-3*potencia(momentosNoCentrados(1),4);*/
 	curtosis = (mu / potencia(varianza(), 2)) - 3;
 	return curtosis;
-	}
+}
 
 double Calculos1Var::norma() {
 	double norma = 0;
 	norma += sumatoria(2);
 	norma = sqrt(norma);
 	return norma;
-	}
+}

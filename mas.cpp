@@ -24,144 +24,201 @@
 
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
+MAS::MAS() {}
 
-MAS::MAS(bool archivo, unsigned int numeroColumnas, bool 
-datosAgrupados) {
-	desdeArchivo = archivo;
-	columnasMatrizResuelta = numeroColumnas;
+MAS::MAS(bool desdeArchivo, unsigned int longitudSelec, bool datosAgrupados) {
+	enArchivo = desdeArchivo;
+	longitudVector = longitudSelec;
 	agrupados = datosAgrupados;
 }
 
-MAS::MAS(bool archivo, char estimadorElegido, unsigned int numeroColumnas, bool 
-datosAgrupados) {
-	desdeArchivo = archivo;
-	estimador = estimadorElegido;
-	columnasMatrizResuelta = numeroColumnas;
+MAS::MAS(bool desdeArchivo, unsigned int longitudSelec, bool datosAgrupados,
+         unsigned int estimadorSelec) {
+	enArchivo = desdeArchivo;
+	longitudVector = longitudSelec;
 	agrupados = datosAgrupados;
+	estimador = estimadorSelec;
 }
 
-void MAS::desdeDondeLeeDatos() {
-	agrupados == true ? filasMatrizResuelta = 2 : filasMatrizResuelta = 1;
-	filas = filasMatrizResuelta;
-	//crearMatrizResultado();
-	if (desdeArchivo == true) {
+void MAS::setValorN(unsigned int valorNObtenido) {
+	N = valorNObtenido;
+}
+
+unsigned int MAS::getSizeVector() {
+	return	convierteLongEnInt(vector.size());
+}
+
+
+void MAS::leerDatos() {
+	if (enArchivo == true) {
 		verificarArchivo();
 		leerDesdeArchivo();
 	} else {
 		leerDesdeTeclado();
+		if (agrupados == true) desagruparDesdeTeclado();
+		else crearVector();
 	}
 }
 
 void MAS::leerDesdeArchivo() {
+	if (agrupados == true) {
+		desagruparDesdeArchivo();
+	} else {
+		leerArchivo();
+	}
+}
+
+void MAS::crearVector() {
+	double xi;
+	for (unsigned int i = 0; i < longitudVector; i++) {
+		std::cin >> xi;
+		vector.push_back(xi);
+	}
+	std::cout << '\n';
+}
+
+void MAS::desagruparDesdeTeclado() {
+	double xi;
+	double totalElementos = 0;
+
+	unsigned int fi;
+	unsigned int longitudVectorInicial = longitudVector;
+	unsigned int x = 0;
+	unsigned int n = 0;
+
+	std::vector<unsigned int> vectorfi;
+	std::vector<double> vectorxi;
+
+	for (unsigned int i = 0; i < longitudVector; i++) {
+		std::cin >> fi;
+		vectorfi.push_back(fi);
+	}
+	std::cout << '\n';
+
+	for (unsigned int i = 0; i < longitudVector; i++) {
+		std::cin >> xi;
+		vectorxi.push_back(xi);
+	}
+	std::cout << '\n';
+
+	for (unsigned int i = 0; i < longitudVector; i++) {
+		totalElementos += potencia(vectorfi[i], 1);
+	}
+	longitudVector = convierteDoubleEnInt(totalElementos);
+
+	for (unsigned int j = 0; j < longitudVectorInicial; j++) {
+		n = vectorfi[j];
+		for (unsigned int i = 0; i < n; i++) {
+			vector.push_back(vectorxi[x]);
+		}
+		x++;
+	}
+}
+
+void MAS::desagruparDesdeArchivo() {
 	std::fstream archivo;
 	archivo.open("datos.dat", std::ios::in | std::ios::binary);
-	int unsigned n = columnasMatrizResuelta;
-	if (agrupados == true) {
-		unsigned int i = 0, j = 0;
-		while (!archivo.eof()) {
-			archivo >> resultado[i][j];
-			j++; //avanza en la fila
-			i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
-			j = j % n; //se asegura que esté entre 0 y N-1
-		}
-	} else {
-		for (unsigned int j = 0; j < n; j++) {
-			archivo >> resultado[0][j];
-		}
-	}
-	archivo.close();
-}
 
-void MAS::crearMatrizParaCalculos() {
-	if (agrupados == true) {
-		desagruparElementos();
-	} else {
-		columnas = columnasMatrizResuelta;
-		crearMatrizResultado();
-	}
-}
-
-void MAS::desagruparElementos() {
-	double n;
+	double elem = 0;
 	double totalElementos = 0;
-	int x = 0; //entender por qué así funciona.
-	for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
-		totalElementos += potencia(resultado[1][j], 1);
+
+	unsigned int longitudVectorInicial = longitudVector;
+	unsigned int x = 0;
+	unsigned int n = 0;
+
+	std::vector<double> vectorxi;
+	std::vector<unsigned int> vectorfi;
+	std::vector<double> vectorArchivo;
+
+	while (!archivo.eof()) {
+		archivo >> elem;
+		vectorArchivo.push_back(elem);
 	}
-	columnas = convierteDoubleEnInt(totalElementos);
-	crearMatrizResultado();
-	for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
-		n = resultado[1][j];
+	
+	for (unsigned int i = 0; i < longitudVector; i++) {
+		vectorfi.push_back(convierteDoubleEnInt(vectorArchivo[i]));
+		vectorxi.push_back(vectorArchivo[i+longitudVector]);
+	}
+
+	for (unsigned int i = 0; i < longitudVector; i++) {
+		totalElementos += potencia(vectorfi[i], 1);
+	}
+	longitudVector = convierteDoubleEnInt(totalElementos);
+
+	for (unsigned int j = 0; j < longitudVectorInicial; j++) {
+		n = vectorfi[j];
 		for (unsigned int i = 0; i < n; i++) {
-			matriz[0][x] = resultado[0][j];
-			matriz[1][x] = 1;
-			x++;
+			vector.push_back(vectorxi[x]);
 		}
+		x++;
 	}
 }
 
 void MAS::leerDesdeTeclado() {
 	if (agrupados == true) {
-		for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
-			std::cout << "x" << j + 1 << " = ";
-			std::cin >> resultado[0][j];
-			std::cout << "f" << j + 1 << " = ";
-			std::cin >> resultado[1][j];
-		}
-		desagruparElementos();
+		std::cout << "Introduce la frecuencia (fi) de los datos " << "\n";
+		std::cout << "uno a uno separados por un espacio, después " << "\n";
+		std::cout << "pulsa intro para escribir el valor (xi)" << "\n";
+		std::cout << "\n";
 	} else {
-		for (unsigned int j = 0; j < columnasMatrizResuelta; j++) {
-			std::cout << "x" << j + 1 << " = ";
-			std::cin >> resultado[0][j];
-		}
+		std::cout << "Introduce los elementos uno a uno " << "\n";
+		std::cout << "después pulsa intro" << "\n";
+		std::cout << "\n";
 	}
 }
 
-// añade ∑Xi Y ∑Xi2 a la matriz
-	void MAS::incorporarXiYXi2() {
-		unsigned int i = filas;
-		if (agrupados == true) {
-			for (unsigned int j = 0; j < columnas; j++) {
-				matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
-				matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
-			}
-		} else {
-			matriz[i - 2][0] = matriz[0][0];
-			matriz[i - 1][0] = matriz[0][0] * matriz[0][0];
-			for (unsigned int j = 1; j < columnas; j++) {
-				matriz[i - 2][j] = matriz[0][j] * matriz[1][j];
-				matriz[i - 1][j] = matriz[i - 2][j] * matriz[i - 2][j];
-			}
-		}
+double MAS::calcularEstimador() {
+	double resultado = 0;
+	switch (estimador) {
+		case 1 :
+			resultado = mediaAritmetica();
+			break;
+		case 2 :
+			resultado = N * mediaAritmetica();
+			break;
+		case 3 :
+			resultado = mediaAritmetica();
+			break;
 	}
+	return resultado;
+}
 
-	double MAS::calcularEstimador() {
-		double resultado = 0;
-		switch (estimador) {
-			case '1' :
-				resultado = mediaAritmetica(0);
-				break;
-			case '2' :
-				//resultado = N * mediaAritmetica(0);
-				break;
-			case '3' :
-				resultado = mediaAritmetica(0);
-				break;
-		}
-		return resultado;
-	}
+double MAS::calculoIC() {
+	double resultado = 0;
+	return resultado;
+}
 
-	double MAS::calculoIC() {
-		double resultado = 0;
-		return resultado;
+double MAS::varianzaEstimador() {
+	double resultado = 0;
+	unsigned int n = longitudVector;
+	double f = n / (double)N;
+	double S2 = varianzaMuestral();
+	double N2 = potencia(N, 2);
+	double P = 0;
+	double Q = 0;
+	switch (estimador) {
+		case 1 :
+			resultado = (1 - f) * (S2 / n);
+			break;
+		case 2 :
+			resultado = N2 * (1 - f) * (S2 / n);
+			break;
+		case 3 :
+			P = mediaAritmetica();
+			Q = 1 - P;
+			resultado = ((N - n) / (N - 1)) * ((P * Q) / (n - 1));
+			break;
 	}
+	return resultado;
+}
 
-	double MAS::varianzaEstimador() {
-		double resultado = 0;
-		return resultado;
-	}
+double MAS::em() {
+	double resultado = 0;
+	resultado = sqrt(varianzaEstimador());
+	return resultado;
+}
 
-	double MAS::estimadorVarianza() {
-		double resultado = 0;
-		return resultado;
-	}
+double MAS::estimadorVarianza() {
+	double resultado = 0;
+	return resultado;
+}

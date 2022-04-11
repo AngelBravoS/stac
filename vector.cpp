@@ -29,11 +29,11 @@ Vector::Vector() {}
 
 void Vector::leerArchivo() {
 	std::fstream archivo;
-	archivo.open("vector.dat", std::ios::in | std::ios::binary);
-	vector = new double [longitudVector];
+	archivo.open("datos.dat", std::ios::in | std::ios::binary);
+	double *vectorTemporal = new double [longitudVector];
 	for (unsigned int i = 0; i < longitudVector; i++) {
-		archivo >> vector[i];
-		variable.push_back(vector[i]);
+		archivo >> vectorTemporal[i];
+		vector.push_back(vectorTemporal[i]);
 	}
 	archivo.close();
 }
@@ -52,7 +52,7 @@ void Vector::verificarArchivo() {
 
 
 void Vector::desdeDondeLeeVector() {
-	if (leerDesdeArchivo == true) {
+	if (enArchivo == true) {
 		verificarArchivo();
 		leerArchivo();
 	} else {
@@ -66,7 +66,7 @@ void Vector::crearVector() {
 	std::cout << "separando con un espacio." << "\n";
 	for (unsigned int i = 0; i < longitudVector; i++) {
 		std::cin >> xi;
-		variable.push_back(xi);
+		vector.push_back(xi);
 	}
 	std::cout << '\n';
 }
@@ -74,11 +74,11 @@ void Vector::crearVector() {
 void Vector::mostrarVector() {
 	std::cout << "( ";
 	for (unsigned int i = 0; i < longitudVector; i++) {
-		std::cout << variable[i] << " ";
+		std::cout << vector[i] << " ";
 	}
 	std::cout << ")" << '\n';
 }
 
 void Vector::ordenarVector() {
-	std::sort(variable.begin(), variable.end());
+	std::sort(vector.begin(), vector.end());
 }

@@ -115,14 +115,6 @@ void CLI::listadOpcionesMuestreo() {
 	std::cout << "> ";
 }
 
-void CLI::preguntarEstimador() {
-	std::cout << "Selecciona parámetro:" << '\n';
-	std::cout << "'1' para la media" << '\n';
-	std::cout << "'2' para el total" << '\n';
-	std::cout << "'3' para la proporción" << '\n';
-	std::cout << "> ";
-}
-
 void CLI::listadOpciones2Variables() {
 	std::cout << '\n';
 	std::cout << "'1' Medidas estadísticas básicas." << '\n';

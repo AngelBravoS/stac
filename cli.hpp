@@ -47,6 +47,7 @@ class CLI {
 		//======== Entrada/Salida vectores ========
 		bool preguntarDesdeArchivoOTeclado();
 		//void verificarArchivo();
+		
 		unsigned int preguntarTamanoVector();
 		unsigned int preguntarNumeroFilas();
 		unsigned int preguntarNumeroColumnas();
@@ -54,7 +55,7 @@ class CLI {
 		//======== Textos de menús ========
 		void listadOpcionesPrincipales();
 		void listadOpcionesMuestreo();
-		void preguntarEstimador();
+		
 		void listadOpciones2Variables();
 		void listadOpciones1Matriz();
 		void listadOpciones2Matrices();

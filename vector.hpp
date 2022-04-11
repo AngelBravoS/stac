@@ -21,6 +21,7 @@
 
 #ifndef _VECTOR_HPP_
 #define _VECTOR_HPP_
+
 #include <bits/stdc++.h>
 #include <vector>
 
@@ -42,9 +43,8 @@ public:
 	void guardarEnArchivo();
 protected:
 	unsigned int longitudVector;
-	bool leerDesdeArchivo;
-	double *vector;
-	std::vector<double> variable;
+	bool enArchivo;
+	std::vector<double> vector;
 	};
 
 #endif /* _VECTOR_HPP_ */

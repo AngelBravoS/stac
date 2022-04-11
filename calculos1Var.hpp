@@ -26,27 +26,28 @@
 #include "funcMatematicasBasicas.hpp"
 
 class Calculos1Var : public Vector {
-public:
-	//======== constructor ========
-	Calculos1Var(bool leerArchivo, unsigned int longitudVector);
-	//========  funciones de estadística descriptiva ========
-	double sumatoria(unsigned int exponente);
-	double mediaAritmetica();
-	double mediaGeometrica() ;
-	double mediaArmonica();
-	double mediaCuadratica();
-	double mediana();
-	double moda();
-	double difRespecMedia(int exponente);
-	double varianza();
-	double varianzaMuestral();
-	double desviacionTipica();
-	double desviacionTipicaMuestral();
-	double momentosNoCentrados(int exponente);
-	double coeficientePearson();
-	double coeficienteAsimetriaFisher();
-	double curtosis();
-	double norma();
-	};
+	public:
+		//======== constructor ========
+		Calculos1Var();
+		Calculos1Var(bool leerArchivo, unsigned int longitudVector);
+		//========  funciones de estadística descriptiva ========
+		double sumatoria(unsigned int exponente);
+		double mediaAritmetica();
+		double mediaGeometrica() ;
+		double mediaArmonica();
+		double mediaCuadratica();
+		double mediana();
+		double moda();
+		double difRespecMedia(int exponente);
+		double varianza();
+		double varianzaMuestral();
+		double desviacionTipica();
+		double desviacionTipicaMuestral();
+		double momentosNoCentrados(int exponente);
+		double coeficientePearson();
+		double coeficienteAsimetriaFisher();
+		double curtosis();
+		double norma();
+};
 
 #endif /* _CALCULOS2VAR_HPP_ */

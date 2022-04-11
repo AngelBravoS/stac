@@ -98,8 +98,7 @@ unsigned int CLI::preguntarNumeroColumnas() {
 bool CLI::preguntarDesdeArchivoOTeclado() {
 	char opcion;
 	bool eligesArchivo;
-	std::cout << "¿Leer desde un archivo?" << '\n';
-	std::cout << "s/n:";
+	std::cout << "¿Leer desde un archivo? s/n: ";
 	std::cin >> opcion;
 	opcion == 's' ? eligesArchivo = true : eligesArchivo = false;
 	return eligesArchivo;

@@ -77,6 +77,7 @@ void Menu1Var::menuSecundario() {
 	          variable.difRespecMedia(2) << '\n';
 	std::cout << "Diferencias respecto a la media ^3 = " <<
 	          variable.difRespecMedia(3) << '\n';
+		std::cout << '\n';         
 	std::cout << "Momentos centrados de orden 2 (Varianza) = " <<
 	          variable.momentosNoCentrados(2) << '\n';
 	std::cout << "Momentos centrados de orden 3 = " <<
