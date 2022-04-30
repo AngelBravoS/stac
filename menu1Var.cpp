@@ -40,7 +40,7 @@ unsigned int Menu1Var::preguntarNumeroElementos() {
 	return agrupados;
 }*/
 
-void Menu1Var::menuSecundario() {
+void Menu1Var::menuSecundario1Var() {
 	Calculos1Var variable(preguntarDesdeArchivoOTeclado(),
 	                      preguntarNumeroElementos());
 	variable.desdeDondeLeeVector();

@@ -44,7 +44,8 @@ void Menu2Var::menuSecundario() {
 }
 
 void Menu2Var::menuMuestra2Var(){
-	Calculos2Var variables(preguntarDesdeArchivoOTeclado(), 2, preguntarNumeroColumnas());
+	/*Calculos2Var variables(preguntarDesdeArchivoOTeclado(), 2, 
+preguntarNumeroColumnas());
 	variables.leerMatriz();
 	std::cout << "Variables X e Y:" << '\n';
 	variables.mostrarMatriz();
@@ -85,7 +86,8 @@ void Menu2Var::menuMuestra2Var(){
 	std::cout << "		Coeficiente de Y sobre X: " << variables.coeficienteRegresion(0) << '\n';
 	std::cout << "		Coeficiente de X sobre Y: " << variables.coeficienteRegresion(1) << '\n';
 	std::cout << "Correlación" << '\n';
-	std::cout << "	Coeficiente de correlación lineal: " << variables.coeficienteCorrelacion() << '\n';
+	std::cout << "	Coeficiente de correlación lineal: " << 
+variables.coeficienteCorrelacion() << '\n';*/
 }
 
 void Menu2Var::menuFmp2Var(){

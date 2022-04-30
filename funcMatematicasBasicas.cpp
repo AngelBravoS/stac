@@ -112,6 +112,11 @@ bool sonCongruentes (unsigned int numero1, unsigned int numero2, unsigned int nu
 	}
 }
 
+double convierteIntEnDouble(unsigned int entero) {
+	unsigned int valorDoble = static_cast<unsigned int>(entero);
+	return valorDoble;
+}
+
 unsigned int convierteDoubleEnInt(double doble) {
 	unsigned int valorEntero = static_cast<unsigned int>(doble);
 	return valorEntero;

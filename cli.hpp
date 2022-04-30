@@ -22,8 +22,18 @@
 // command-line interface (CLI)
 #ifndef _CLI_HPP_
 #define _CLI_HPP_
-//#include "cli.hpp"
+
 #include <iostream>
+#include <fstream>
+
+#include "entrada.hpp"
+#include "salida.hpp"
+
+//#include "menu1Var.hpp"
+//#include "menu2Var.hpp"
+//#include "menuNVar.hpp"
+#include "menuAlgebra.hpp"
+//#include "menuMuestreo.hpp"
 
 class CLI {
 		//Obtener = Get
@@ -46,7 +56,6 @@ class CLI {
 		void menuDistribDiscreta();
 		//======== Entrada/Salida vectores ========
 		bool preguntarDesdeArchivoOTeclado();
-		//void verificarArchivo();
 		
 		unsigned int preguntarTamanoVector();
 		unsigned int preguntarNumeroFilas();
@@ -63,7 +72,7 @@ class CLI {
 		void listadOpcionesColasExponencial();
 		void listadOpcionesIA();
 		void listadOpcionestipoGenerador();
-
+		void leerDesdeTeclado();
 	protected:
 		char opciones[5];
 		bool archivoValido;

@@ -20,12 +20,7 @@
  ***************************************************************************/
 
 //CLI => Command Line Interface.
-#include "menu1Var.hpp"
-#include "menu2Var.hpp"
-#include "menuNVar.hpp"
-#include "menuAlgebra.hpp"
-#include "menuMuestreo.hpp"
-#include <iostream>
+#include "cli.hpp"
 
 void CLI::eleccion(unsigned int i) {
 	std::cin >> opciones[i];
@@ -37,39 +32,27 @@ void CLI::menuPrincipal() {
 		std::cout << "> ";
 		eleccion(0);
 		switch (opciones[0]) {
-			case '1' : {
-				Menu1Var univariante;
-				univariante.menuSecundario();
+			case '1' : 
+				//menuSecundario1Var();
 				break;
-			}
-			case '2' : {
-				Menu2Var bivariante;
-				bivariante.menuSecundario();
+			case '2' :
+				//menuSecundario2Var();
 				break;
-			}
-			case '3' : {
-				MenuNVar multivariante;
-				multivariante.menuSecundario();
+			case '3' :
+				//menuSecundarioNvar();
 				break;
-			}
-			case '4' : {
-				MenuAlgebra algebra;
-				algebra.menuSecundario();
+			case '4' :
+				menuSecundarioAlgebra(); 
 				break;
-			}
-			case '5' : {
-				MenuMuestreo muestreo;
-				muestreo.menuSecundario();
+			case '5' :
+				//menuSecundarioMuestreo();
 				break;
-			}
-			case '6' : {
-				menuSinDatos();
+			case '6' :
+				//menuSinDatos();
 				break;
-			}
-			case '7' : {
+			case '7' :
 				ayuda();
 				break;
-			}
 		}
 	} while (opciones[0] != '0');
 }
@@ -93,13 +76,4 @@ unsigned int CLI::preguntarNumeroColumnas() {
 	std::cout << "Número de columnas: ";
 	std::cin >> col;
 	return col;
-}
-
-bool CLI::preguntarDesdeArchivoOTeclado() {
-	char opcion;
-	bool eligesArchivo;
-	std::cout << "¿Leer desde un archivo? s/n: ";
-	std::cin >> opcion;
-	opcion == 's' ? eligesArchivo = true : eligesArchivo = false;
-	return eligesArchivo;
 }

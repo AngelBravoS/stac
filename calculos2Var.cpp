@@ -26,7 +26,7 @@
 
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
-
+/*
 Calculos2Var::Calculos2Var(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
 	desdeArchivo = archivo;
 	filas = longitudFila;
@@ -82,11 +82,12 @@ double Calculos2Var::coeficienteCorrelacion() {
 
 double Calculos2Var::distanciaEuclidea() {
 	double distanciaEuclidea = 0;
-	/*
+
 	unsigned int n = getColumna();
 	for (unsigned int x = 0; x < n; x++ ) {
 		distanciaEuclidea = pow ( ( matriz[i][j] - matriz[i][j + x] ), 2 )
 		                    + pow ( ( matriz[i + x][j] - matriz[i + x][j + x] ), 2 );
-	}*/
+	}
 	return distanciaEuclidea;
 }
+*/

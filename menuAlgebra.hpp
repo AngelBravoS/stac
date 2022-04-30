@@ -24,17 +24,12 @@
 
 #include "cli.hpp"
 #include "calculosAlgebra.hpp"
-#include <fstream>
+//#include "entrada.hpp"
 
-class MenuAlgebra : public CLI {
-public:
-	void menuSecundario();
-	void menu1Matriz();
-	void bucleOpciones1Matriz();
-	void menu2Matrices();
-	void verificarArchivo();
-protected:
-	bool archivoValido;
-	};
+void menuSecundarioAlgebra();
+void menu1Matriz();
+void bucleOpciones1Matriz();
+void menu2Matrices();
+void verificarArchivo();
 
 #endif /* _MENUALGEBRA_HPP_ */

@@ -22,164 +22,158 @@
 #include <iostream>
 #include "menuAlgebra.hpp"
 
-void MenuAlgebra::menuSecundario() {
-	char elegir1o2Matrices;
-	do {
-		std::cout << "'1' Cálculos con una matriz" << '\n';
-		std::cout << "'2' Cálculos con dos matrices" << '\n';
-		std::cout << "'0' Salir al menú principal." << '\n';
-		std::cout << "> ";
-		std::cin >> elegir1o2Matrices;
-		if (elegir1o2Matrices == '1') {
-			menu1Matriz();
-			}
-		else if (elegir1o2Matrices == '2') {
-			menu2Matrices();
-			}
-		}
-	while (elegir1o2Matrices != '0');
-	}
+void menuSecundarioAlgebra() {
+    char elegir1o2Matrices;
+    do {
+        std::cout << "'1' Cálculos con una matriz" << '\n';
+        std::cout << "'2' Cálculos con dos matrices" << '\n';
+        std::cout << "'0' Salir al menú principal." << '\n';
+        std::cout << "> ";
+        std::cin >> elegir1o2Matrices;
+        if (elegir1o2Matrices == '1') {
+            menu1Matriz();
+        }
+        else if (elegir1o2Matrices == '2') {
+            menu2Matrices();
+        }
+    }
+    while (elegir1o2Matrices != '0');
+}
 
-void MenuAlgebra::menu1Matriz() { //Descomponer en 2 funciones
-	char opcionElegida;
-	CalculosAlgebra matrizA(preguntarDesdeArchivoOTeclado(),
-									preguntarNumeroFilas(), preguntarNumeroColumnas());
-	matrizA.leerMatriz();
-	matrizA.crearMatrizResultado();
-	do {
-		std::cout << '\n';
-		std::cout << "Matriz A" << '\n';
-		matrizA.mostrarMatriz();
-		std::cout << '\n';
-		listadOpciones1Matriz();
-		std::cin >> opcionElegida;
-		std::cout << '\n';
-		switch (opcionElegida) {
-			case '1':
-				std::cout << "La traza de la matriz A es: " <<
-							 matrizA.traza() << '\n';
-				break;
-			case '2':
-				std::cout << "El determinante de la matriz A es: " <<
-							 matrizA.determinante() << '\n';
-				break;
-			case '3':
-				std::cout << "La matriz traspuesta de A es: " << '\n';
-				matrizA.traspuesta();
-				matrizA.mostrarResultado();
-				std::cout << '\n';
-				break;
-			case '4':
-				std::cout << "La matriz A por Gauss es : " << '\n';
-				matrizA.gauss();
-				matrizA.mostrarResultado();
-				std::cout << '\n';
-				break;
-			case '5':
-				std::cout << "La matriz adjunta de A es: " << '\n';
-				std::cout << '\n';
-				matrizA.adjunta();
-				matrizA.mostrarResultado();
-				std::cout << '\n';
-				break;
-			case '6':
-				std::cout << "La matriz inversa de A es: " << '\n';
-				std::cout << '\n';
-				matrizA.inversa();
-				matrizA.mostrarResultado();
-				std::cout << '\n';
-				break;
-			case '7':
-				std::cout << "La matrices L y U son : " << '\n';
-				matrizA.descomposicionLU();
-				
-				std::cout << '\n';
-				break;
-			case '8':
-				std::cout << "Métodos numéricos aún no disponibles : " << '\n';
-				std::cout << '\n';
-				break;
-			}
-		}
-	while (opcionElegida != '0');
-	}
+void menu1Matriz() {
+    char opciones;
+    unsigned int filas, columnas;
+    filas = numeroFilas();
+    columnas = numeroColumnas();
+    bool desdeArchivo;
+    desdeArchivo = preguntarDesdeArchivoOTeclado();
+    Matriz matrizA(filas, columnas);
+    if (desdeArchivo == true) {
+        verificarArchivo();
+        leerDesdeArchivo(matrizA, columnas);
+    } else {
+        std::cout << "Introduce los elementos uno a uno " << "\n";
+        std::cout << "pulsa intro para escribir la fila siguiente" << "\n";
+        std::cout << "\n";
+        editarMatrizVacia(matrizA);
+    }
+    std::cout << '\n';
+    std::cout << ("Matriz ") << "\n";
+    mostrarMatriz(matrizA);
+    std::cout << '\n';
+
+    do {
+        std::cout << "Cálculos de una matriz" << "\n";
+        std::cout << "'1' Traza" << "\n";
+        std::cout << "'2' Determinante" << "\n";
+        std::cout << "'3' Matriz traspuesta" << "\n";
+        std::cout << "'4' Matriz adjunta" << "\n";
+        std::cout << "'5' Matriz inversa" << "\n";
+        std::cout << "'6' vectores y valores propios" << "\n";
+        std::cout << "'0' para volver al menu anterior." << "\n";
+        std::cout << "=> ";
+        std::cin >> opciones;
+        switch (opciones) {
+        case '1':
+            mostrarMatriz(matrizA);
+            std::cout << '\n';
+            std::cout << "La traza es " << traza(matrizA) << "\n" ;
+            std::cout << '\n';
+            break;
+        case '2':
+            mostrarMatriz(matrizA);
+            //matrizA.determinante();
+            break;
+        case '3':
+            mostrarMatriz(matrizA);
+            //matrizA.traspuesta();
+            mostrarMatriz(matrizA);
+            //adjunta();
+            break;
+        case '4':
+            //inversa();
+            break;
+        case '5':
+            //vectoresProp();
+            break;
+        case '6':
+            //vectoresProp();
+            break;
+        }
+    } while (opciones != '0');
+}
 
 void bucleOpciones1Matriz() {
-	
-}	
 
-void MenuAlgebra::menu2Matrices() {
-	char opcionElegida;
-	std::cout << "Matriz A" << '\n';
-	CalculosAlgebra matrizA(preguntarDesdeArchivoOTeclado(),
-									preguntarNumeroFilas(), preguntarNumeroColumnas());
-	std::cout << '\n';
-	
-	matrizA.leerMatriz();
-	std::cout << "Matriz B" << '\n';
-	CalculosAlgebra matrizB(preguntarDesdeArchivoOTeclado(),
-									preguntarNumeroFilas(), preguntarNumeroColumnas());
-	std::cout << '\n';
-	matrizA.crearMatrizResultado();
-    
-	matrizB.leerMatriz();
-	do {
-		std::cout << '\n';
-		std::cout << "Matriz A" << '\n';
-		matrizA.mostrarMatriz();
-		std::cout << '\n';
-		std::cout << '\n';
-		std::cout << "Matriz B" << '\n';
-		matrizB.mostrarMatriz();
-		std::cout << '\n';
-		listadOpciones2Matrices();
-		std::cin >> opcionElegida;
-		std::cout << '\n';
-		switch (opcionElegida) {
-			case '1':
-				std::cout << "Suma matricial de A y B" << '\n';
-				std::cout << '\n';
-				matrizA.sumaDeMatrices();
-                matrizA.mostrarResultado();
-				break;
-			case '2':
-				std::cout << "Multiplicación matricial de A y B" << '\n';
-				std::cout << '\n';
-				matrizA.multiplicacionDeMatrices();
-				break;
-			case '3':
-				std::cout << "Matriz de Kronecker de A y B" << '\n';
-				std::cout << '\n';
-				matrizA.Kronecker();
-				break;
-			}
-		//std::cout << eleccionCalculosMatrices << '\n';
-		}
-	while (opcionElegida != '0');
+}
+
+void menu2Matrices() {
+    char opciones;
+
+    unsigned int filas, columnas;
+    filas = numeroFilas();
+    columnas = numeroColumnas();
+    bool desdeArchivo;
+    std::cout << "Matriz A" << "\n";
+    desdeArchivo = preguntarDesdeArchivoOTeclado();
+    Matriz matrizA(filas, columnas);
+    if (desdeArchivo == true) {
+        verificarArchivo();
+        leerDesdeArchivo(matrizA, columnas);
+    } else {
+        std::cout << "Introduce los elementos uno a uno " << "\n";
+        std::cout << "pulsa intro para escribir la fila siguiente" << "\n";
+        std::cout << "\n";
+        editarMatrizVacia(matrizA);
+    }
+
+    std::cout << "Matriz B" << "\n";
+    Matriz matrizB(numeroFilas(), numeroColumnas());
+    desdeArchivo = preguntarDesdeArchivoOTeclado();
+    if (desdeArchivo == true) {
+        verificarArchivo();
+        leerDesdeArchivo(matrizB, columnas);
+    } else {
+        std::cout << "Introduce los elementos uno a uno " << "\n";
+        std::cout << "pulsa intro para escribir la fila siguiente" << "\n";
+        std::cout << "\n";
+        editarMatrizVacia(matrizB);
+    }
 
 
-	//CalculosAlgebra matrizResuelta;
-	/*
-	 *
+    std::cout << '\n';
+    std::cout << ("Matriz A") << "\n";
+    mostrarMatriz(matrizA);
+    std::cout << '\n';
 
-	matrizResuelta.setDimensionMatriz();
-	matrizResuelta.crearMatrizVacia();
-	matrizResuelta.editarMatrizVacia();
-	matrizA.mostrarMatriz();
+    std::cout << '\n';
+    std::cout << ("Matriz B") << "\n";
+    mostrarMatriz(matrizB);
+    std::cout << '\n';
 
-
-
-	switch ( eleccionCalculosMatriz ) {
-		case '1':
-			//sumaMatrices();
-			break;
-		case '2':
-			//multiplicMatrices();
-			break;
-		case '3':
-			//kronecker();
-			break;
-		}
-	std::cout << "¿Copiar el resultado a un archivo?" << '\n';*/
-	}
+    do {
+        std::cout << "Cálculos de dos matrices" << "\n";
+        std::cout << "'1' Suma" << "\n";
+        std::cout << "'2' Multiplicación" << "\n";
+        std::cout << "'3' Kronecker" << "\n";
+        std::cout << "'0' para volver al menu anterior." << "\n";
+        std::cout << "=> ";
+        std::cin >> opciones;
+        switch (opciones) {
+        case '1': {
+            Matriz resultado = matrizA + matrizB;
+            mostrarMatriz(resultado);
+        }
+        break;
+        case '2': {
+            Matriz resultado = matrizA * matrizB;
+            mostrarMatriz(resultado);
+        }
+        break;
+        case '3':
+            //kronecker();
+            break;
+        }
+    } while (opciones != '0');
+}
 

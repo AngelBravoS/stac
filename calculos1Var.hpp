@@ -33,7 +33,7 @@ class Calculos1Var : public Vector {
 		//========  funciones de estadística descriptiva ========
 		double sumatoria(unsigned int exponente);
 		double mediaAritmetica();
-		double mediaGeometrica() ;
+		double mediaGeometrica();
 		double mediaArmonica();
 		double mediaCuadratica();
 		double mediana();

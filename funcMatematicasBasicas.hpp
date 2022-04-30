@@ -39,5 +39,6 @@ bool sonCongruentes (unsigned int numero1, unsigned int numero2, unsigned int nu
 unsigned int convierteDoubleEnInt (double doble);
 unsigned int convierteLongEnInt(unsigned long unsignedlong);
 float convierteIntEnFloat(unsigned int entero);
+double convierteIntEnDouble(unsigned int entero);
 
 #endif // FUNCMATEMATICASBASICAS_HPP_INCLUDED

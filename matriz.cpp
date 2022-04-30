@@ -21,122 +21,27 @@
 
 #include "matriz.hpp"
 
-//======== funciones de matrices ========
-
-Matriz::Matriz() {}
-
-Matriz::Matriz(unsigned int longitudFila, unsigned int longitudColumna) {
-    filas = longitudFila;
-    columnas = longitudColumna;
-    crearMatrizVacia();
-    filas == columnas ? cuadrada = true : cuadrada = false;
-    if (cuadrada == true) {
-        dimension = filas;
+Matriz::Matriz(unsigned int rows,unsigned  int cols) {
+    rows == cols ? cuadrada = true : cuadrada = false;
+    for (unsigned int i = 0; i < rows; ++i) {
+        Row r(cols);
+        Array.insert(Array.end(), r);
     }
 }
 
-void Matriz::leerMatriz() {
-    crearMatrizVacia();
-    if (desdeArchivo == true) {
-        verificarArchivo();
-        leerDesdeArchivo();
-    }
-    else {
-        leerDesdeTeclado();
-    }
+Row &Matriz::operator[](unsigned int index) {
+    if (index < 0 || index > Array.size())
+        throw "Array Index out of Bounds";
+    return Array[ index ];
 }
 
-void Matriz::verificarArchivo() {
-    std::fstream archivo;
-    archivo.open("datos.dat", std::ios::in | std::ios::binary);
-    if (archivo.is_open()) {
-        std::cout << "Fichero leído" << '\n';
-    }
-    else {
-        std::cout << "Fichero inexistente" << '\n';
-        exit(-1);
-    }
-    archivo.close();
+unsigned int Matriz::RowCount() {
+    unsigned int size = convierteLongEnInt(Array.size());
+    return size;
 }
 
-void Matriz::leerDesdeArchivo() {
-    std::fstream archivo;
-    archivo.open("datos.dat", std::ios::in | std::ios::binary);
-    unsigned int n = columnas;
-    unsigned int i = 0, j = 0;
-    while (!archivo.eof()) {
-        archivo >> matriz[i][j];
-        j++; //avanza en la fila
-        i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
-        j = j % n; //se asegura que esté entre 0 y N-1
-    }
-    archivo.close();
+unsigned int Matriz::ColumnCount() {
+    if (Array.size())
+        return Array[0].size();
+    return 0;
 }
-
-void Matriz::leerDesdeTeclado() {
-    std::cout << "Introduce los elementos uno a uno " << "\n";
-    std::cout << "pulsa intro para escribir la fila siguiente" << "\n";
-    std::cout << "\n";
-    editarMatrizVacia();
-}
-
-void Matriz::guardarEnArchivo() {
-    std::cout << "Aún no disponible" << '\n';
-    std::ofstream archivoSalida("resultado.dat");
-    //archivoSalida << traza();
-    archivoSalida.close();
-}
-
-void Matriz::crearMatrizVacia() {
-    matriz = new double *[filas];
-    for (unsigned int i = 0; i < filas; i++)     {
-        matriz[i] = new double [columnas];
-    }
-}
-
-void Matriz::editarMatrizVacia() {
-    for (unsigned int i = 0; i < filas; i++) {
-        for (unsigned int j = 0; j < columnas; j++) {
-            //std::cout << "Elemento " << i + 1 << "," << j + 1 << ": ";
-            std::cin >> matriz[i][j];
-        }
-    }
-    std::cout << '\n';
-}
-
-void Matriz::crearMatrizResultado() {
-    resultado = new double *[filas];
-    for(unsigned int i = 0; i < filas; i++)     {
-        resultado[i] = new double [columnas];
-    }
-    for (unsigned int i = 0; i < filas; i++) {
-        for (unsigned int j = 0; j < columnas; j++) {
-            resultado[i][j] = matriz[i][j];
-        }
-    }
-}
-
-void Matriz::mostrarMatriz() {
-    std::cout << '\n';
-    for (unsigned int i = 0; i < filas; i++) {
-        std::cout << "( ";
-        for (unsigned int j = 0; j < columnas; j++) {
-            std::cout << matriz[i][j] << " ";
-        }
-        std::cout << ")";
-        std::cout << '\n';
-    }
-}
-
-void Matriz::mostrarResultado() {
-    std::cout << '\n';
-    for (unsigned int i = 0; i < filas; i++) {
-        std::cout << "( ";
-        for (unsigned int j = 0; j < columnas; j++) {
-            std::cout << resultado[i][j] << " ";
-        }
-        std::cout << ")";
-        std::cout << '\n';
-    }
-}
-

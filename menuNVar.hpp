@@ -24,13 +24,9 @@
 
 #include "cli.hpp"
 #include "calculosNVar.hpp"
-#include<fstream>
 
-class MenuNVar : public CLI {
-	public:
-		void menuSecundario();
+		void menuSecundarioNvar();
 		void menuProcesos();
 		//unsigned int preguntarNumeroColumnas();
-};
 
 #endif /* _MENUNVAR_HPP_ */

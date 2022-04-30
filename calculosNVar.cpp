@@ -32,15 +32,37 @@
 
 CalculosNVar::CalculosNVar() {
 	}
-	
+/*	
 CalculosNVar::CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
 	desdeArchivo = archivo;
 	filas = longitudFila;
-	//filasMatrizResuelta = longitudFila;
 	columnas = longitudColumna;
-	//columnasMatrizResuelta = longitudColumna;
 	filas == columnas ? cuadrada = true : cuadrada = false;
 	if (cuadrada == true) {dimension = filas;};
+}
+
+void CalculosNVar::crearMatrizResultado() {
+    resultado = new double *[filas];
+    for(unsigned int i = 0; i < filas; i++)     {
+        resultado[i] = new double [columnas];
+    }
+    for (unsigned int i = 0; i < filas; i++) {
+        for (unsigned int j = 0; j < columnas; j++) {
+            resultado[i][j] = matriz[i][j];
+        }
+    }
+}
+
+void CalculosNVar::mostrarMatrizResultado() {
+    std::cout << '\n';
+    for (unsigned int i = 0; i < filas; i++) {
+        std::cout << "( ";
+        for (unsigned int j = 0; j < columnas; j++) {
+            std::cout << resultado[i][j] << " ";
+        }
+        std::cout << ")";
+        std::cout << '\n';
+    }
 }
 
 double  CalculosNVar::sumatoria (int indiceVariable, unsigned short int exponente) {
@@ -173,4 +195,4 @@ void CalculosNVar::matrizTransicionP(unsigned int n){
 		}
 	x++;
 	}
-}
+}*/

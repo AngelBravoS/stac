@@ -24,11 +24,15 @@
 
 #include "matriz.hpp"
 
-class CalculosNVar : public Matriz {
+class CalculosNVar {
 	public:
 		//======== constructor ======== 
 		CalculosNVar();
-		CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
+		CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int 
+longitudColumna);
+		//======== funciones de la matriz de datos ======== 
+		void crearMatrizResultado();
+		void mostrarMatrizResultado();
 		//========  funciones de estadística descriptiva ======== 
 		double sumatoria ( int indiceVariable, short unsigned int exponente );
 		double total (int indiceVariable);
@@ -50,6 +54,7 @@ class CalculosNVar : public Matriz {
 		void matrizTransicionP(unsigned int n);
 		
 	protected:
+		double **resultado;
 		//double sumatoria;
 		//double media;
 		//double varianza;

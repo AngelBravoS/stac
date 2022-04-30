@@ -4,3 +4,6 @@ Makefile
 datos.dat
 TODO.txt
 notas.txt
+_config.yml
+buildClang/
+matrizOld.?pp

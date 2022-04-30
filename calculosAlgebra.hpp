@@ -22,29 +22,28 @@
 #ifndef _CALCULOSALGEBRA_HPP_
 #define _CALCULOSALGEBRA_HPP_
 
-#include "calculosNVar.hpp"
+#include "matriz.hpp"
 
-class CalculosAlgebra : public CalculosNVar {
+Matriz operator+(Matriz &m1, Matriz &m2);
 
-public:
-    
-	//======== constructor ========
-	CalculosAlgebra();
-	CalculosAlgebra(unsigned int longitudFila, unsigned int longitudColumna);
-	CalculosAlgebra(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
-	//========  funciones matriciales ========
-	double traza();
-	double determinante();
-	void traspuesta();
-	void adjunta();
-	void triangular();
-	void inversa();
-	void gauss();
-	void descomposicionLU();
-	void sumaDeMatrices();
-	void multiplicacionDeMatrices();
-	void Kronecker();
-	};
+Matriz scalar_multiplication(Matriz &m1, double scalar);
+
+Matriz operator*(Matriz &m1, double scalar);
+Matriz operator*(double scalar, Matriz &m1);
+Matriz operator*(Matriz &m1, Matriz &m2);
+
+double traza(Matriz &m1);
+double determinante(Matriz &m1);
+
+Matriz traspuesta(Matriz &m1);
+Matriz adjunta(Matriz &m1);
+Matriz triangular(Matriz &m1);
+Matriz inversa(Matriz &m1);
+Matriz gauss(Matriz &m1);
+Matriz descomposicionLU(Matriz &m1);
+
+Matriz Kronecker();
+
 
 #endif /* _CALCULOSALGEBRA_HPP_ */
 

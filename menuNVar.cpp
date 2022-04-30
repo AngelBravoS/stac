@@ -19,11 +19,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iostream>
-#include "cli.hpp"
 #include "menuNVar.hpp"
 
-void MenuNVar::menuSecundario() {
+void MenuNVar::menuSecundarioNvar() {
 	char eleccionNivel2;
 	std::cout << "'1' Funciones de estadística descriptiva n-dimensional." << '\n';
 	std::cout << "'2' Matriz P (Procesos estocásticos)"  << '\n';
@@ -41,7 +39,7 @@ void MenuNVar::menuSecundario() {
 }
 
 void MenuNVar::menuProcesos() {
-	unsigned int n;
+	/*unsigned int n;
 	CalculosNVar matrizA (preguntarDesdeArchivoOTeclado(), preguntarNumeroFilas(), preguntarNumeroColumnas());
 	matrizA.leerMatriz();
 	std::cout << '\n';
@@ -51,5 +49,5 @@ void MenuNVar::menuProcesos() {
 	matrizA.mostrarMatriz();
 	matrizA.matrizTransicionP(n);
 	std::cout << "Matriz P" << '\n';
-	//matrizA.mostrarMatrizResuelta();
+	//matrizA.mostrarMatrizResuelta();*/
 }

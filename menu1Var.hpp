@@ -24,21 +24,11 @@
 
 #include "cli.hpp"
 #include "calculos1Var.hpp"
-#include <fstream>
 
-class Menu1Var : public CLI {
-	//Obtener = Get
-	//Establecer = Set
-public:
 	//Calculos1Var variable(bool, unsigned int); Parece innecesario
 	//========  funciones de muestreo ========
-	void menuSecundario();
+	void menuSecundario1Var();
 	unsigned int preguntarNumeroElementos();
 	//bool preguntarSiAgrupados();
-protected:
-	bool archivoValido;
-	};
-
-
 
 #endif /* _MENU1VAR_HPP_ */

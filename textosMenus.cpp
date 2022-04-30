@@ -20,7 +20,6 @@
  ***************************************************************************/
 
 #include "cli.hpp"
-#include <iostream>
 
 void CLI::introduccion() {
 	std::cout << '\n';
@@ -29,7 +28,7 @@ void CLI::introduccion() {
 	std::cout << "	║        Estadística       ║" << '\n';
 	std::cout << "	║   en línea de comandos   ║" << '\n';
 	std::cout << "	╚══════════════════════════╝" << '\n';
-	std::cout << "			       0.89c" << '\n';
+	std::cout << "			       0.9" << '\n';
 	std::cout << '\n';
 }
 
@@ -146,7 +145,6 @@ void CLI::listadOpciones2Matrices() {
 	std::cout << "> ";
 }
 
-
 void CLI::listadoMenuSinDatos(){
     std::cout << "'1' Combinatoria." << '\n';
     std::cout << "'2' Inteligencia artificial."  << '\n';
@@ -183,4 +181,10 @@ void CLI::listadOpcionestipoGenerador() {
 	std::cout << "'2' Generador congruencial multiplicativo." << '\n';
 	std::cout << "'0' Menú anterior." << "\n";
 	std::cout << "> ";
+}
+
+void CLI::leerDesdeTeclado() {
+    std::cout << "Introduce los elementos uno a uno " << "\n";
+    std::cout << "pulsa intro para escribir la fila siguiente" << "\n";
+    std::cout << "\n";
 }

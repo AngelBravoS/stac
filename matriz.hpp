@@ -19,39 +19,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _MATRIZ_HPP_
-#define _MATRIZ_HPP_
+#pragma once
 
-#include <iostream>
-#include <fstream>
+#include "row.hpp"
+#include "funcMatematicasBasicas.hpp"
 
 class Matriz {
-	public:
-		//======== constructor ======== 
-		Matriz();
-		Matriz(unsigned int longitudFila, unsigned int longitudColumna);
-		//======== entrada/salida ========  
-		void leerMatriz();
-		void verificarArchivo();
-		void leerDesdeArchivo();
-		void leerDesdeTeclado();
-		void guardarEnArchivo();
-		//======== funciones de la matriz de datos ======== 
-		void setDimensionMatriz();
-		void crearMatrizVacia();
-		void editarMatrizVacia();
-		void mostrarMatriz();
-		void crearMatrizResultado();
-		void mostrarResultado();
-	protected:
-		unsigned int filas;
-		unsigned int columnas;
-		unsigned int dimension;
-		double **matriz;
-		double **resultado;
-		bool desdeArchivo;
-		bool cuadrada;
-		bool regular;
-};
 
-#endif /* _MATRIZ_HPP_ */
+	public:
+		Matriz(unsigned int rows, unsigned int cols);
+		Row &operator[](unsigned int index);
+		unsigned int RowCount() ;
+		unsigned int ColumnCount();
+	private:
+		std::vector< Row > Array;
+		bool cuadrada;
+};
