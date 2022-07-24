@@ -29,12 +29,6 @@
 #include "entrada.hpp"
 #include "salida.hpp"
 
-//#include "menu1Var.hpp"
-//#include "menu2Var.hpp"
-//#include "menuNVar.hpp"
-#include "menuAlgebra.hpp"
-//#include "menuMuestreo.hpp"
-
 class CLI {
 		//Obtener = Get
 		//Establecer = Set
@@ -45,26 +39,41 @@ class CLI {
 		void ayuda();
 		void eleccion(unsigned int i);
 		void hasElegido();
+
 		//======== subfunciones de menu ========
 		void menuPrincipal();
 		void menuSinDatos();
 		void menuTablasCont();
+		void menuSecundarioAlgebra();
+		void menuSecundarioIA();
+		void menuSecundarioIO();
+		void menuSecundario1Var();
+		void menuSecundario2Var();
+		void menuSecundarioNvar();
+		
 		//======== funciones especificas de cada submenu ========
+		void menu1Matriz();
+		void menu2Matrices();
 		void menuInferencia();
 		void menuCombinatoria();
+		void menuCongruencial();
 		void menuColasExponencial();
 		void menuDistribDiscreta();
-		//======== Entrada/Salida vectores ========
-		bool preguntarDesdeArchivoOTeclado();
+		void menuProcesos();
+		void resultadosColasExponencial(double lambdaUsuario, double muUsuario,
+		                                unsigned int nUsuario, unsigned int 
+																		cUsuario, unsigned int modeloSeleccionado);
 		
-		unsigned int preguntarTamanoVector();
-		unsigned int preguntarNumeroFilas();
-		unsigned int preguntarNumeroColumnas();
-		//void numElementosVector();
+		//cosas de 2var
+		//void menuSecundario();
+		//void menuMuestra2Var();
+		//void menuFmp2Var();
+		//unsigned int preguntarNumeroElementos();
+		//bool esMuestra();
+		
 		//======== Textos de menús ========
 		void listadOpcionesPrincipales();
 		void listadOpcionesMuestreo();
-		
 		void listadOpciones2Variables();
 		void listadOpciones1Matriz();
 		void listadOpciones2Matrices();
@@ -73,6 +82,7 @@ class CLI {
 		void listadOpcionesIA();
 		void listadOpcionestipoGenerador();
 		void leerDesdeTeclado();
+
 	protected:
 		char opciones[5];
 		bool archivoValido;

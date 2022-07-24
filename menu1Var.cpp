@@ -19,15 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iostream>
-#include "menu1Var.hpp"
-
-unsigned int Menu1Var::preguntarNumeroElementos() {
-	unsigned int col;
-	std::cout << "Número de elementos: ";
-	std::cin >> col;
-	return col;
-}
+#include "cli.hpp"
+#include "calculos1Var.hpp"
 
 /*bool Menu1Var::preguntarSiAgrupados(){
 	char respuesta;
@@ -40,78 +33,92 @@ unsigned int Menu1Var::preguntarNumeroElementos() {
 	return agrupados;
 }*/
 
-void Menu1Var::menuSecundario1Var() {
-	Calculos1Var variable(preguntarDesdeArchivoOTeclado(),
-	                      preguntarNumeroElementos());
-	variable.desdeDondeLeeVector();
+void CLI::menuSecundario1Var() {
+	unsigned int tamanyo;
+	tamanyo = preguntarNumeroElementos();
+	bool desdeArchivo;
+	desdeArchivo = preguntarDesdeArchivoOTeclado();
+	Vector vectorA(tamanyo);
+	if (desdeArchivo == true) {
+		verificarArchivo();
+		leerDesdeArchivo(vectorA);
+	} else {
+		std::cout << "Introduce los elementos uno a uno" << "\n";
+		std::cout << "separando con un espacio." << "\n";
+		for (unsigned int i = 0; i < vectorA.size(); i++) {
+			std::cin >> vectorA[i];
+		}
+		std::cout << '\n';
+	}
 	std::cout << '\n';
-	std::cout << "Vector" << '\n';
-	variable.mostrarVector();
+	std::cout << ("vector ") << "\n";
+	mostrarVector(vectorA);
+
 	std::cout << '\n';
 	std::cout << "Sumatorias" << '\n';
-	std::cout << "∑Xi = " << variable.sumatoria(1) << '\n';
-	std::cout << "∑Xi^2 = " << variable.sumatoria(2) << '\n';
+	std::cout << "∑Xi = " << sumatoria(vectorA, 1) << '\n';
+	std::cout << "∑Xi^2 = " << sumatoria(vectorA, 2) << '\n';
 	std::cout << '\n';
 	std::cout << '\n';
 	std::cout << "Medidas de tendencia central" << '\n';
 
 	std::cout << "Medias" << '\n';
 	std::cout << "_" << '\n';
-	std::cout << "Xa = " << variable.mediaAritmetica() << '\n';
+	std::cout << "Xa = " << mediaAritmetica(vectorA) << '\n';
 	std::cout << "_" << '\n';
-	std::cout << "Xg = " << variable.mediaGeometrica() << '\n';
+	std::cout << "Xg = " << mediaGeometrica(vectorA) << '\n';
 	std::cout << "_" << '\n';
-	std::cout << "Xa = " << variable.mediaArmonica() << '\n';
+	std::cout << "Xa = " << mediaArmonica(vectorA) << '\n';
 	std::cout << "_" << '\n';
-	std::cout << "Xc = " << variable.mediaCuadratica();
+	std::cout << "Xc = " << mediaCuadratica(vectorA);
 	std::cout << '\n';
 	std::cout << '\n';
 
-	std::cout << "Mediana = " << variable.mediana() << '\n';
+	std::cout << "Mediana = " << mediana(vectorA) << '\n';
 	std::cout << '\n';
-	std::cout << "Vector ordenado"<< '\n';
-	variable.mostrarVector();
+	std::cout << "Vector ordenado" << '\n';
+	mostrarVector(vectorA);
 	std::cout << '\n';
-	
+
 	std::cout << "Diferencias respecto a la media ^2 = " <<
-	          variable.difRespecMedia(2) << '\n';
+	          difRespecMedia(vectorA, 2) << '\n';
 	std::cout << "Diferencias respecto a la media ^3 = " <<
-	          variable.difRespecMedia(3) << '\n';
-		std::cout << '\n';         
+	          difRespecMedia(vectorA, 3) << '\n';
+	std::cout << '\n';
 	std::cout << "Momentos centrados de orden 2 (Varianza) = " <<
-	          variable.momentosNoCentrados(2) << '\n';
+	          momentosNoCentrados(vectorA, 2) << '\n';
 	std::cout << "Momentos centrados de orden 3 = " <<
-	          variable.momentosNoCentrados(3) << '\n';
+	          momentosNoCentrados(vectorA, 3) << '\n';
 	std::cout << '\n';
 
 	std::cout << "Medidas de dispersión" << '\n';
 	std::cout << '\n';
 	std::cout << "     _ 2" << '\n';
-	std::cout << "∑(Xi-X) = " << variable.difRespecMedia(2) << '\n';
+	std::cout << "∑(Xi-X) = " << difRespecMedia(vectorA, 2) << '\n';
 
 	std::cout << "                _ 2" << '\n';
 	std::cout << "           ∑(Xi-X)" << '\n';
-	std::cout << "varianza = ------- = "  << variable.varianza() << '\n';
+	std::cout << "varianza = ------- = "  << varianza(vectorA) << '\n';
 	std::cout << "              1  " << '\n';
 
 	std::cout << "                         _ 2" << '\n';
 	std::cout << "                    ∑(Xi-X)" << '\n';
 	std::cout << "varianza muestral = ------- = "
-	          << variable.varianzaMuestral() << '\n';
+	          << varianzaMuestral(vectorA) << '\n';
 	std::cout << "                     (n-1)  " << '\n';
 	std::cout << '\n';
 	std::cout << "Desviación típica = sqrt(varianza) = "
-	          << variable.desviacionTipica() << '\n';
+	          << desviacionTipica(vectorA) << '\n';
 	std::cout << "Desviación típica muestral = sqrt(varianza muestral) = "
-	          << variable.desviacionTipicaMuestral() << '\n';
+	          << desviacionTipicaMuestral(vectorA) << '\n';
 	std::cout << '\n';
 	std::cout << "Coef. variación Pearson = "
-	          << variable.coeficientePearson() << '\n';
-	std::cout << "Norma = " << variable.norma() << '\n';
+	          << coeficientePearson(vectorA) << '\n';
+	std::cout << "Norma = " << norma(vectorA) << '\n';
 	std::cout << '\n';
 	std::cout << "Medidas de forma" << '\n';
 	std::cout << "Coef. asímetría de Fisher = "
-	          << variable.coeficienteAsimetriaFisher() << '\n';
-	std::cout << "Curtosis = " << variable.curtosis() << '\n';
+	          << coeficienteAsimetriaFisher(vectorA) << '\n';
+	std::cout << "Curtosis = " << curtosis(vectorA) << '\n';
 	std::cout << '\n';
 }

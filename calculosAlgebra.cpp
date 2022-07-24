@@ -24,11 +24,11 @@
 Matriz operator+(Matriz &m1, Matriz &m2) {
 	// Here, we need to check that the rows and
 	// columns of the two are the same.
-	if (m1.RowCount() != m2.RowCount()){
+	if (m1.RowCount() != m2.RowCount()) {
 		std::cout << "Tamaño de filas incorrecto" << "\n";
 		exit(-1);
 	}
-	if (m1.ColumnCount() != m2.ColumnCount()){
+	if (m1.ColumnCount() != m2.ColumnCount()) {
 		std::cout << "Tamaño de columnas incorrecto" << "\n";
 		exit(-1);
 	}
@@ -45,7 +45,6 @@ Matriz operator+(Matriz &m1, Matriz &m2) {
 
 Matriz scalar_multiplication(Matriz &m1, double scalar) {
 	Matriz m(m1.RowCount(), m1.ColumnCount());
-
 	for (unsigned int r = 0; r < m1.RowCount(); ++ r) {
 		for (unsigned int c = 0; c < m1.ColumnCount(); ++c)
 			m[r][c] = m1[r][c] * scalar;
@@ -65,14 +64,33 @@ Matriz operator*(double scalar, Matriz &m1) {
 Matriz operator*(Matriz &m1, Matriz &m2) {
 	if (m1.RowCount() != m2.ColumnCount())
 		throw "Adding Matrices: Invalid Rows";
-		
+
 	Matriz m(m1.RowCount(), m2.ColumnCount());
 
 	for (unsigned int r = 0; r < m1.RowCount(); ++ r) {
 		for (unsigned int c = 0; c < m1.ColumnCount(); ++c)
 			m[r][c] = m1[r][c] + m2[r][c];
 	}
+	return m;
+}
 
+Vector vectorDiagonal(Matriz &m1) {
+	unsigned int n = m1.RowCount();
+	Vector resultado(n);
+	for (unsigned int i = 0; i < n; i++) {
+		for (unsigned int j = 0; j < n; j++) {
+			resultado[i] = m1[i][i];
+		}
+	}
+	return resultado;
+}
+
+Matriz identidad(unsigned int rows, unsigned int cols) {
+	Matriz m(rows, cols);
+	for (unsigned int r = 0; r < rows; ++ r) {
+		for (unsigned int c = 0; c < cols; ++c)
+			m[c][c] = 1;
+	}
 	return m;
 }
 
@@ -85,219 +103,212 @@ double traza(Matriz &m1) {
 	return traza;
 }
 
-double determinante() {
-	/*if (cuadrada == false) {
+double determinante(Matriz &m1) {
+	if (m1.cuadrada == false) {
 		std::cout << "La matriz no es cuadrada. " << '\n';
 		return 0;
 	} else {
+		unsigned int size = m1.RowCount();
 		double determinante = 0;
-		switch (filas) {
+		switch (size) {
 			case 1:
-				determinante = matriz[0][0];
+				determinante = m1[0][0];
 				break;
 			case 2://caso base para la recursividad
-				determinante = matriz[0][0] * matriz[1][1] - matriz[0][1] * 
-matriz[1][0];
+				determinante = m1[0][0] * m1[1][1] - m1[0][1] *
+				               m1[1][0];
 				break;
 			case 3://por sarrus
-				determinante = (matriz[0][0] * matriz[1][1] * matriz[2][2] +
-				                matriz[0][2] * matriz[1][0] * matriz[2][1] +
-				                matriz[0][1] * matriz[1][2] * matriz[2][0]) -
-				               (matriz[0][2] * matriz[1][1] * matriz[2][0] +
-				                matriz[0][1] * matriz[1][0] * matriz[2][2] +
-				                matriz[0][0] * matriz[1][2] * matriz[2][1]);
+				determinante = (m1[0][0] * m1[1][1] * m1[2][2] +
+				                m1[0][2] * m1[1][0] * m1[2][1] +
+				                m1[0][1] * m1[1][2] * m1[2][0]) -
+				               (m1[0][2] * m1[1][1] * m1[2][0] +
+				                m1[0][1] * m1[1][0] * m1[2][2] +
+				                m1[0][0] * m1[1][2] * m1[2][1]);
 				break;
 			default :
-				gauss();
+				Vector resultadoVec;
+				Matriz resultadoMat;
+				resultadoMat = descomposicionLU(m1, false);
+				resultadoVec = vectorDiagonal(resultadoMat);
 				determinante = 1;
-				for (unsigned int i = 0; i < dimension; i++) {
-					determinante *= resultado[i][i];
+				for (unsigned int i = 0; i < size; i++) {
+					determinante *= resultadoVec[i];
 				}
 				break;
 		}
 		return determinante;
-	}*/
+	}
 }
 
-Matriz traspuesta() {
-	/*CalculosAlgebra matrizResultado(filas, columnas);
-	for (unsigned int i = 0; i < filas; i++) {
-		for (unsigned int j = 0; j < columnas; j++) {
-			matrizResultado.matriz[i][j] = matriz[j][i];
-		}
-	}*/
+Matriz traspuesta(Matriz &m1) {
+	Matriz m(m1.RowCount(), m1.ColumnCount());
+	for (unsigned int r = 0; r < m1.RowCount(); ++ r) {
+		for (unsigned int c = 0; c < m1.ColumnCount(); ++c)
+			m[r][c] = m1[c][r];
+	}
+	return m;
 }
 
-Matriz adjunta() {
-	/*switch (filas) {
+Matriz adjunta(Matriz &m1) {
+	Matriz m(m1.RowCount(), m1.ColumnCount());
+	unsigned int size = m1.RowCount();
+	switch (size) {
 		case 1:
-			resultado[0][0] = matriz[0][0];
+			m[0][0] = m1[0][0];
 			break;
 		case 2:
-			resultado[0][0] = matriz[1][1];
-			resultado[0][1] = -matriz[0][1];
-			resultado[1][0] = -matriz[1][0];
-			resultado[1][1] = matriz[0][0];
+			m[0][0] = m1[1][1];
+			m[0][1] = -m1[0][1];
+			m[1][0] = -m1[1][0];
+			m[1][1] = m1[0][0];
 			break;
 		case 3:
-			resultado[0][0] = (matriz[1][1] * matriz[2][2]) - (matriz[1][2] * 
-matriz[2][1]);
-			resultado[0][1] = (matriz[1][2] * matriz[2][0]) - (matriz[1][0] * 
-matriz[2][2]);
-			resultado[0][2] = (matriz[1][0] * matriz[2][1]) - (matriz[1][1] * 
-matriz[2][0]);
-			resultado[1][0] = (matriz[2][1] * matriz[0][2]) - (matriz[2][2] * 
-matriz[0][1]);
-			resultado[1][1] = (matriz[2][2] * matriz[0][0]) - (matriz[2][0] * 
-matriz[0][2]);
-			resultado[1][2] = (matriz[2][0] * matriz[0][1]) - (matriz[2][1] * 
-matriz[0][0]);
-			resultado[2][0] = (matriz[0][1] * matriz[1][2]) - (matriz[0][2] * 
-matriz[1][1]);
-			resultado[2][1] = (matriz[0][2] * matriz[1][0]) - (matriz[0][0] * 
-matriz[1][2]);
-			resultado[2][2] = (matriz[0][0] * matriz[1][1]) - (matriz[0][1] * 
-matriz[1][0]);
+			m[0][0] = (m1[1][1] * m1[2][2]) - (m1[1][2] *
+			                                   m1[2][1]);
+			m[0][1] = (m1[1][2] * m1[2][0]) - (m1[1][0] *
+			                                   m1[2][2]);
+			m[0][2] = (m1[1][0] * m1[2][1]) - (m1[1][1] *
+			                                   m1[2][0]);
+			m[1][0] = (m1[2][1] * m1[0][2]) - (m1[2][2] *
+			                                   m1[0][1]);
+			m[1][1] = (m1[2][2] * m1[0][0]) - (m1[2][0] *
+			                                   m1[0][2]);
+			m[1][2] = (m1[2][0] * m1[0][1]) - (m1[2][1] *
+			                                   m1[0][0]);
+			m[2][0] = (m1[0][1] * m1[1][2]) - (m1[0][2] *
+			                                   m1[1][1]);
+			m[2][1] = (m1[0][2] * m1[1][0]) - (m1[0][0] *
+			                                   m1[1][2]);
+			m[2][2] = (m1[0][0] * m1[1][1]) - (m1[0][1] *
+			                                   m1[1][0]);
 			break;
 		default:
 			std::cout << "aún no disponible" << '\n';
-	}*/
+			exit(-1);
+	}
+	return m;
 }
 
-Matriz inversa() {
-	/*double det = determinante();
+Matriz inversa(Matriz &m1) {
+	Matriz m(m1.RowCount(), m1.ColumnCount());
+	double det = determinante(m1);
+	unsigned int size = m1.RowCount();
 	double frac = 1 / det;
-	if (determinante() != 0) {
-		switch (filas) {
+	if (det != 0) {
+		switch (size) {
 			case 1:
-				resultado[0][0] = matriz[0][0];
+				m[0][0] = m1[0][0];
 				break;
 			case 2:
-				resultado[0][0] = frac * matriz[1][1];
-				resultado[0][1] = frac * (-matriz[0][1]);
-				resultado[1][0] = frac * (-matriz[1][0]);
-				resultado[1][1] = frac * matriz[0][0];
+				m[0][0] = frac * m1[1][1];
+				m[0][1] = frac * (-m1[0][1]);
+				m[1][0] = frac * (-m1[1][0]);
+				m[1][1] = frac * m1[0][0];
 				break;
 			case 3:
-				resultado[0][0] = frac * ((matriz[1][1] * matriz[2][2]) - (matriz[1][2] 
-* matriz[2][1]));
-				resultado[1][0] = frac * ((matriz[1][2] * matriz[2][0]) - (matriz[1][0] 
-* matriz[2][2]));
-				resultado[2][0] = frac * ((matriz[1][0] * matriz[2][1]) - (matriz[1][1] 
-* matriz[2][0]));
-				resultado[0][1] = frac * ((matriz[2][1] * matriz[0][2]) - (matriz[2][2] 
-* matriz[0][1]));
-				resultado[1][1] = frac * ((matriz[2][2] * matriz[0][0]) - (matriz[2][0] 
-* matriz[0][2]));
-				resultado[2][1] = frac * ((matriz[2][0] * matriz[0][1]) - (matriz[2][1] 
-* matriz[0][0]));
-				resultado[0][2] = frac * ((matriz[0][1] * matriz[1][2]) - (matriz[0][2] 
-* matriz[1][1]));
-				resultado[1][2] = frac * ((matriz[0][2] * matriz[1][0]) - (matriz[0][0] 
-* matriz[1][2]));
-				resultado[2][2] = frac * ((matriz[0][0] * matriz[1][1]) - (matriz[0][1] 
-* matriz[1][0]));
+				m[0][0] = frac * ((m1[1][1] * m1[2][2]) -
+				                  (m1[1][2]
+				                   * m1[2][1]));
+				m[1][0] = frac * ((m1[1][2] * m1[2][0]) -
+				                  (m1[1][0]
+				                   * m1[2][2]));
+				m[2][0] = frac * ((m1[1][0] * m1[2][1]) -
+				                  (m1[1][1]
+				                   * m1[2][0]));
+				m[0][1] = frac * ((m1[2][1] * m1[0][2]) -
+				                  (m1[2][2]
+				                   * m1[0][1]));
+				m[1][1] = frac * ((m1[2][2] * m1[0][0]) -
+				                  (m1[2][0]
+				                   * m1[0][2]));
+				m[2][1] = frac * ((m1[2][0] * m1[0][1]) -
+				                  (m1[2][1]
+				                   * m1[0][0]));
+				m[0][2] = frac * ((m1[0][1] * m1[1][2]) -
+				                  (m1[0][2]
+				                   * m1[1][1]));
+				m[1][2] = frac * ((m1[0][2] * m1[1][0]) -
+				                  (m1[0][0]
+				                   * m1[1][2]));
+				m[2][2] = frac * ((m1[0][0] * m1[1][1]) -
+				                  (m1[0][1]
+				                   * m1[1][0]));
 				break;
 			default:
 				std::cout << "aún no disponible" << '\n';
+				exit(-1);
 		}
+		return m;
 	} else {
 		std::cout << "La matriz no tiene inversa" << '\n';
-	}*/
+	}
 }
 
-Matriz triangular() {
-	/*for ( int i = 1, i <= n, i++ ) {
-		if ( matriz[i, i] = 0 ) {
-			for ( j = i + 1, j <= n, j++ ) {
-				if ( matriz[j, i] != 0 ) {
-				k = j:
-					}
+Matriz gauss(Matriz &m1) {
+	Matriz matrizResultado(m1.RowCount(), m1.ColumnCount());
+	unsigned int m = m1.RowCount();
+	unsigned int n = m1.ColumnCount();
+	double temp;
 
-				}
-			}
-		}*/
-}
-/*
-Si A11=0, se busca el primer coeficiente no nulo de la getColumna
-e intercambiamos fila.
-Si A11 =/= 0 para i = 2...n, mi1=-ai1/a11, así hacemos 0 todo elemento
-de la columna debajo del pivote
-*/
-//Aviso chapuza mucho que mejorar
-//
-Matriz gauss() {
-	/*CalculosAlgebra matrizL(filas, columnas);
-	CalculosAlgebra matrizU(filas, columnas);
-	unsigned int n = dimension;
-	for (unsigned int i = 0; i < n; i++) {
-		for (unsigned int j = 0; j < n; j++) {
-			if (j < i)
-				matrizL.matriz[j][i] = 0;
-			else {
-				matrizL.matriz[j][i] = matriz[j][i];
-				for (unsigned int k = 0; k < i; k++) {
-					matrizL.matriz[j][i] = matrizL.matriz[j][i] - matrizL.matriz[j][k] * 
-matrizU.matriz[k][i];
-				}
-			}
+	for (unsigned int j = 0; j < m - 1; j++) {
+		for (unsigned int i = j + 1; i < m; i++) {
+			temp = m1[i][j] / m1[j][j];
+			for (unsigned int k = 0; k < n; k++)
+				m1[i][k] -= m1[j][k] * temp;
 		}
-		for (unsigned int j = 0; j < n; j++) {
-			if (j < i)
-				matrizU.matriz[i][j] = 0;
-			else if (j == i)
-				matrizU.matriz[i][j] = 1;
-			else {
-				matrizU.matriz[i][j] = matriz[i][j] / matrizL.matriz[i][i];
-				for (unsigned int k = 0; k < i; k++) {
-					matrizU.matriz[i][j] = matrizU.matriz[i][j] - ((matrizL.matriz[i][k] * 
-matrizU.matriz[k][j]) / matrizL.matriz[i][i]);
-				}
-			}
-		}
-		for (unsigned int x = 0; x < n; x++) {
-			for (unsigned int z = 0; z < n; z++) {
-				resultado[x][z] = matrizL.matriz[x][z];
-			}
-		}
-	}*/
+	}
+	return m1;
 }
 
-Matriz descomposicionLU() {
-	/*CalculosAlgebra matrizL(filas, columnas);
-	CalculosAlgebra matrizU(filas, columnas);
-	unsigned int n = dimension;
-	for (unsigned int i = 0; i < n; i++) {
-		for (unsigned int j = 0; j < n; j++) {
-			if (j < i)
-				matrizL.matriz[j][i] = 0;
-			else {
-				matrizL.matriz[j][i] = matriz[j][i];
-				for (unsigned int k = 0; k < i; k++) {
-					matrizL.matriz[j][i] = matrizL.matriz[j][i] - matrizL.matriz[j][k] * 
-matrizU.matriz[k][i];
-				}
-			}
-		}
-		for (unsigned int j = 0; j < n; j++) {
-			if (j < i)
-				matrizU.matriz[i][j] = 0;
-			else if (j == i)
-				matrizU.matriz[i][j] = 1;
-			else {
-				matrizU.matriz[i][j] = matriz[i][j] / matrizL.matriz[i][i];
-				for (unsigned int k = 0; k < i; k++) {
-					matrizU.matriz[i][j] = matrizU.matriz[i][j] - ((matrizL.matriz[i][k] * 
-matrizU.matriz[k][j]) / matrizL.matriz[i][i]);
+Matriz gaussJordan(Matriz &m1) {
+	Matriz m(m1.RowCount(), m1.ColumnCount());
+	double b;
+	unsigned int k;
+	unsigned int n = m1.RowCount();
+	for (unsigned int j = 1; j <= n; j++) {
+		for (unsigned int i = 1; i <= n; i++) {
+			if (i != j) {
+				b = m1[i][j] / m1[j][j];
+				for (k = 1; k <= n + 1; k++) {
+					m[i][k] = m1[i][k] - b * m1[j][k];
 				}
 			}
 		}
 	}
-	std::cout << "Matriz L" << "\n";
-	matrizL.mostrarMatriz();
+	return m;
+}
 
-	std::cout << "\n" << "Matriz U" << "\n";
-	matrizU.mostrarMatriz();*/
+Matriz descomposicionLU(Matriz &m1, bool devolverL) {
+	Matriz L(m1.RowCount(), m1.ColumnCount());
+	Matriz U(m1.RowCount(), m1.ColumnCount());
+	unsigned int n = m1.RowCount();
+	for (unsigned int i = 0; i < n; i++) {
+		for (unsigned int j = 0; j < n; j++) {
+			double sum = 0;
+			if (i <= j) {
+				for (unsigned int k = 0; k < n; k++)
+					if (k != i)
+						sum = sum + L[i][k] * U[k][j];
+				U[i][j] = m1[i][j] - sum;
+			} else {
+				for (unsigned int k = 0; k < n; k++)
+					if (k != j)
+						sum = sum + L[i][k] * U[k][j];
+				L[i][j] = (m1[i][j] - sum) / U[j][j];
+			}
+		}
+	}
+	for (unsigned int i = 0; i < n; i++) {
+		for (unsigned int j = 0; j < n; j++) {
+			L[i][i] = 1;
+		}
+	}
+	if (devolverL == true) {
+		return L;
+	} else {
+		return U;
+	}
 }
 
 Matriz Kronecker() {

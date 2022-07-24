@@ -21,28 +21,24 @@
 
 #include <iostream>
 #include "cli.hpp"
-#include "menuIA.hpp"
-#include "menuIO.hpp"
 
 void CLI::menuSinDatos() {
-    do {
-        listadoMenuSinDatos();
-        eleccion(0);
-        switch (opciones[0]) {
-        case '1' :
-            menuCombinatoria();
-            break;
-        case '2' :
-            MenuIA ia;
-            ia.menuCongruencial();
-            break;
-        case '3' :
-            MenuIO io;
-            io.menuSecundario();
-            break;
-        case '4' :
-            menuDistribDiscreta();
-            break;
-        }
-    } while (opciones[0] != '0');
+	do {
+		listadoMenuSinDatos();
+		eleccion(0);
+		switch (opciones[0]) {
+			case '1' :
+				menuCombinatoria();
+				break;
+			case '2' :
+				menuCongruencial();
+				break;
+			case '3' :
+				menuSecundarioIO();
+				break;
+			case '4' :
+				menuDistribDiscreta();
+				break;
+		}
+	} while (opciones[0] != '0');
 }

@@ -64,7 +64,7 @@ void MAS::leerDesdeArchivo() {
 	if (agrupados == true) {
 		desagruparDesdeArchivo();
 	} else {
-		leerArchivo();
+		leerDesdeArchivo();
 	}
 }
 

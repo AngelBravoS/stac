@@ -1,8 +1,5 @@
 #include "entrada.hpp"
 
-void leerMatriz(bool archivo) {
-}
-
 void verificarArchivo() {
     std::fstream archivo;
     archivo.open("datos.dat", std::ios::in | std::ios::binary);
@@ -30,17 +27,34 @@ void leerDesdeArchivo(Matriz &m1, unsigned int columnas) {
     archivo.close();
 }
 
+void leerDesdeArchivo(Vector &v1) {
+	std::fstream archivo;
+	archivo.open("datos.dat", std::ios::in | std::ios::binary);
+	for (unsigned int i = 0; i < v1.size(); i++) {
+		archivo >> v1[i];
+	}
+	archivo.close();
+}
+
 unsigned int numeroFilas() {
     unsigned int filas;
     std::cout << "Número de filas: ";
     std::cin >> filas;
     return filas;
 }
+
 unsigned int numeroColumnas() {
     unsigned int columnas;
     std::cout << "Número de columnas: ";
     std::cin >> columnas;
     return columnas;
+}
+
+unsigned int preguntarNumeroElementos() {
+	unsigned int col;
+	std::cout << "Número de elementos: ";
+	std::cin >> col;
+	return col;
 }
 
 Matriz editarMatrizVacia(Matriz &m1) {
@@ -52,6 +66,17 @@ Matriz editarMatrizVacia(Matriz &m1) {
     std::cout << '\n';
     return m1;
 }
+
+/* Vector editarVectorVacio(Vector &v1) {
+   for (unsigned int i = 0; i < m1.RowCount(); i++) {
+        for (unsigned int j = 0; j < m1.ColumnCount(); j++) {
+            std::cin >> m1[i][j];
+        }
+    }
+    std::cout << '\n';
+    return m1;
+}*/
+
 
 bool preguntarDesdeArchivoOTeclado() {
 	char opcion;

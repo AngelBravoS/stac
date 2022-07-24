@@ -22,43 +22,31 @@
 #ifndef _CALCULOSNVAR_HPP_
 #define _CALCULOSNVAR_HPP_
 
+#include <iostream>
+#include <cmath>
+#include "funcMatematicasBasicas.hpp"
 #include "matriz.hpp"
 
-class CalculosNVar {
-	public:
-		//======== constructor ======== 
-		CalculosNVar();
-		CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int 
-longitudColumna);
-		//======== funciones de la matriz de datos ======== 
-		void crearMatrizResultado();
-		void mostrarMatrizResultado();
-		//========  funciones de estadística descriptiva ======== 
-		double sumatoria ( int indiceVariable, short unsigned int exponente );
-		double total (int indiceVariable);
-		double mediaAritmetica ( int indiceVariable );
-		double mediaGeometrica ( int indiceVariable ) ;
-		double mediaArmonica ( int indiceVariable );
-		double mediaCuadratica ( int indiceVariable );
-		double difRespecMedia ( int indiceVariable, int exponente );
-		double varianza ( int indiceVariable );
-		double cuasiVarianza ( int indiceVariable );
-		double desviacionTipica ( int indiceVariable );
-		double cuasiDesviacionTipica ( int indiceVariable );
-		double momentos ( int indiceVariable, int exponente );
-		double coeficientePearson ( int indiceVariable );
-		double coeficienteAsimetriaFisher ( int indiceVariable );
-		double curtosis ( int indiceVariable );
-		double covarianza ( int indiceVariable );
-		//========  funciones de procesos estocásticos ========
-		void matrizTransicionP(unsigned int n);
-		
-	protected:
-		double **resultado;
-		//double sumatoria;
-		//double media;
-		//double varianza;
-		//double cuasiVarianza;
-};
+double sumatoria(Matriz &m1, unsigned int indiceVariable, short unsigned
+                 int exponente);
+double total(Matriz &m1, unsigned int indiceVariable);
+double mediaAritmetica(Matriz &m1, unsigned int indiceVariable);
+double mediaGeometrica(Matriz &m1, unsigned int indiceVariable) ;
+double mediaArmonica(Matriz &m1, unsigned int indiceVariable);
+double mediaCuadratica(Matriz &m1, unsigned int indiceVariable);
+double difRespecMedia(Matriz &m1, unsigned int indiceVariable, short
+                      unsigned
+                      int exponente);
+double varianza(Matriz &m1, unsigned int indiceVariable);
+double cuasiVarianza(Matriz &m1, unsigned int indiceVariable);
+double desviacionTipica(Matriz &m1, unsigned int indiceVariable);
+double cuasiDesviacionTipica(Matriz &m1, unsigned int indiceVariable);
+double momentos(Matriz &m1, unsigned int indiceVariable);
+double coeficientePearson(Matriz &m1, unsigned int indiceVariable);
+double coeficienteAsimetriaFisher(Matriz &m1, unsigned int indiceVariable);
+double curtosis(Matriz &m1, unsigned int indiceVariable);
+double covarianza(Matriz &m1, unsigned int indiceVariable);
+//========  funciones de procesos estocásticos ========
+void matrizTransicionP(Matriz &m1, unsigned int n);
 
 #endif /* _MATRIZ_HPP_ */

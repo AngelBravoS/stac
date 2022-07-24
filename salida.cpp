@@ -12,3 +12,11 @@ void mostrarMatriz(Matriz &m1) {
 		std::cout << '\n';
 	}
 }
+
+void mostrarVector(Vector &v1) {
+	std::cout << "( ";
+	for (unsigned int i = 0; i < v1.size(); i++) {
+		std::cout << v1[i] << " ";
+	}
+	std::cout << ")" << '\n';
+}

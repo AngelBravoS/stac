@@ -19,10 +19,32 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "menuNVar.hpp"
+#include "cli.hpp"
+#include "calculosNVar.hpp"
 
-void MenuNVar::menuSecundarioNvar() {
-	char eleccionNivel2;
+void CLI::menuSecundarioNvar() {
+		//char opciones;
+    unsigned int filas, columnas;
+    filas = numeroFilas();
+    columnas = numeroColumnas();
+    bool desdeArchivo;
+    desdeArchivo = preguntarDesdeArchivoOTeclado();
+    Matriz matrizA(filas, columnas);
+    if (desdeArchivo == true) {
+        verificarArchivo();
+        leerDesdeArchivo(matrizA, columnas);
+    } else {
+        std::cout << "Introduce los elementos uno a uno " << "\n";
+        std::cout << "pulsa intro para escribir la fila siguiente" << "\n";
+        std::cout << "\n";
+        editarMatrizVacia(matrizA);
+    }
+    std::cout << '\n';
+    std::cout << ("Matriz ") << "\n";
+    mostrarMatriz(matrizA);
+    std::cout << '\n';
+    std::cout << sumatoria(matrizA, 1, 1) << '\n';
+		/*char eleccionNivel2;
 	std::cout << "'1' Funciones de estadística descriptiva n-dimensional." << '\n';
 	std::cout << "'2' Matriz P (Procesos estocásticos)"  << '\n';
 	std::cout << "'0' Salir." << '\n';
@@ -35,10 +57,10 @@ void MenuNVar::menuSecundarioNvar() {
 		case '2' :
 			menuProcesos(); 
 			break;
-	}
+	}*/
 }
 
-void MenuNVar::menuProcesos() {
+void CLI::menuProcesos() {
 	/*unsigned int n;
 	CalculosNVar matrizA (preguntarDesdeArchivoOTeclado(), preguntarNumeroFilas(), preguntarNumeroColumnas());
 	matrizA.leerMatriz();

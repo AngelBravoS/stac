@@ -19,16 +19,48 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _MENU1VAR_HPP_
-#define _MENU1VAR_HPP_
+#ifndef CALCULOSIA_HPP_INCLUDED
+#define CALCULOSIA_HPP_INCLUDED
 
-#include "cli.hpp"
-#include "calculos1Var.hpp"
+#include <vector>
+#include <iostream>
+#include "vector.hpp"
+#include "funcMatematicasBasicas.hpp"
 
-	//Calculos1Var variable(bool, unsigned int); Parece innecesario
-	//========  funciones de muestreo ========
-	void menuSecundario1Var();
-	unsigned int preguntarNumeroElementos();
-	//bool preguntarSiAgrupados();
+class GeneradoresCongruenciales : public Vector {
+	public:
+		//======== constructor ========
+		GeneradoresCongruenciales();
+		GeneradoresCongruenciales(unsigned int parametro_a, unsigned int 
+parametro_b,
+		           unsigned int parametro_m, unsigned int parametro_X0);
+		GeneradoresCongruenciales(unsigned int parametro_a, unsigned int 
+parametro_b,
+		           unsigned int parametro_m);
 
-#endif /* _MENU1VAR_HPP_ */
+		//========  funciones  ========
+		bool sonCongruentesFactoresPrimoQ();
+		bool sonCongruentesFactoresPrimoP();
+		bool esMCongruente4();
+
+		bool mEsPotenciaDe2();
+		unsigned int generador(unsigned int X0);
+
+		void crearSecuencia();
+		void mostrarSecuencia();
+
+		bool cumpleTeoremaKnuth();
+		void comprobarPeriodo(char tipoGenerador);
+		void mostrarComprobacionPeriodo();
+
+	protected:
+		unsigned int a;
+		unsigned int b;
+		unsigned int m;
+		unsigned int X0;
+		bool periodoCompleto;
+		bool periodoMaximo;
+		std::vector<unsigned int> secuencia;
+};
+
+#endif // CALCULOSIA_HPP_INCLUDED

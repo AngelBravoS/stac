@@ -21,8 +21,9 @@
 
 #include "cli.hpp"
 
-int main() {
+auto main() -> int {
 	CLI menu;
+	std::cout << "\033[2J\033[1;1H";
 	menu.introduccion();
 	menu.menuPrincipal();
 	return 0;

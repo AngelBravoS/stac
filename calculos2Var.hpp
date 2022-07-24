@@ -22,24 +22,21 @@
 #ifndef _CALCULOS2VAR_HPP_
 #define _CALCULOS2VAR_HPP_
 
-#include "calculosNVar.hpp"
+#include "vector.hpp"
+#include "matriz.hpp"
+#include "calculos1Var.hpp"
 
-class Calculos2Var : public CalculosNVar {
-	public:
-		//======== constructor ======== 
-		Calculos2Var(bool archivo, unsigned int longitudFila, unsigned int longitudColumna);
-		//-------- funciones especificas de 2 variables --------
-		double sumatoria2Var ( int variableX, int variableY, int exponenteX, int exponenteY );
-		double covarianza();
+		Vector extraerVariable(Matriz &m1, unsigned int variable); 
+		double sumatoria2Var (Matriz &m1, int exponenteX, int exponenteY );
+		double covarianza(Matriz &m1);
 		
-		double rectaRegresion(int variable);
-		double curvaRegresion(int variable);
-		double coeficienteRegresion(int variable);
+		double rectaRegresion(Matriz &m1, Vector &v1);
+		double curvaRegresion(Matriz &m1, Vector &v1);
+		double coeficienteRegresion(Matriz &m1, Vector &v1);
 		
-		double coeficienteCorrelacion();		
+		double coeficienteCorrelacion(Matriz &m1);		
 		
 		double distanciaEuclidea();
 		//double ecm(double variableDependiente, double variableIndependiente);
-};
 
 #endif /* _CALCULOS2VAR_HPP_ */

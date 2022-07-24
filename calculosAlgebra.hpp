@@ -22,26 +22,30 @@
 #ifndef _CALCULOSALGEBRA_HPP_
 #define _CALCULOSALGEBRA_HPP_
 
+#include "vector.hpp"
 #include "matriz.hpp"
 
 Matriz operator+(Matriz &m1, Matriz &m2);
-
-Matriz scalar_multiplication(Matriz &m1, double scalar);
 
 Matriz operator*(Matriz &m1, double scalar);
 Matriz operator*(double scalar, Matriz &m1);
 Matriz operator*(Matriz &m1, Matriz &m2);
 
+Matriz scalar_multiplication(Matriz &m1, double scalar);
+
+Vector vectorDiagonal(Matriz &m1);
+
 double traza(Matriz &m1);
 double determinante(Matriz &m1);
 
+Matriz identidad(unsigned int rows, unsigned int cols);
 Matriz traspuesta(Matriz &m1);
 Matriz adjunta(Matriz &m1);
 Matriz triangular(Matriz &m1);
 Matriz inversa(Matriz &m1);
 Matriz gauss(Matriz &m1);
-Matriz descomposicionLU(Matriz &m1);
-
+Matriz gaussJordan(Matriz &m1);
+Matriz descomposicionLU(Matriz &m1, bool devolverL);
 Matriz Kronecker();
 
 

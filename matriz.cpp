@@ -21,6 +21,9 @@
 
 #include "matriz.hpp"
 
+Matriz::Matriz() {
+}
+
 Matriz::Matriz(unsigned int rows,unsigned  int cols) {
     rows == cols ? cuadrada = true : cuadrada = false;
     for (unsigned int i = 0; i < rows; ++i) {

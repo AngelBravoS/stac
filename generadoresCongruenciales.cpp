@@ -19,9 +19,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "calculosIA.hpp"
+#include "generadoresCongruenciales.hpp"
 
-CalculosIA::CalculosIA(unsigned int parametro_a, unsigned int parametro_b,
+GeneradoresCongruenciales::GeneradoresCongruenciales(unsigned int parametro_a, unsigned int parametro_b,
                        unsigned int parametro_m, unsigned int parametro_X0) {
 	a = parametro_a;
 	b = parametro_b;
@@ -29,7 +29,7 @@ CalculosIA::CalculosIA(unsigned int parametro_a, unsigned int parametro_b,
 	X0 = parametro_X0;
 }
 
-CalculosIA::CalculosIA(unsigned int parametro_a, unsigned int parametro_b,
+GeneradoresCongruenciales::GeneradoresCongruenciales(unsigned int parametro_a, unsigned int parametro_b,
                        unsigned int parametro_m) {
 	a = parametro_a;
 	b = parametro_b;
@@ -37,7 +37,7 @@ CalculosIA::CalculosIA(unsigned int parametro_a, unsigned int parametro_b,
 }
 
 //---función para el generador congruencial mixto y multiplicativo--
-unsigned int CalculosIA::generador(unsigned int semilla) {
+unsigned int GeneradoresCongruenciales::generador(unsigned int semilla) {
 	unsigned int resultado ;
 	resultado = a * semilla + b;
 	if (resultado > m)
@@ -45,7 +45,7 @@ unsigned int CalculosIA::generador(unsigned int semilla) {
 	return resultado;
 }
 
-void CalculosIA::crearSecuencia() {
+void GeneradoresCongruenciales::crearSecuencia() {
 	unsigned int Xn = generador(X0);
 	secuencia.push_back(Xn);
 	while (X0 != Xn) {
@@ -54,7 +54,7 @@ void CalculosIA::crearSecuencia() {
 	}
 }
 
-void CalculosIA::mostrarSecuencia() {
+void GeneradoresCongruenciales::mostrarSecuencia() {
 	std::cout << "( ";
 	for (unsigned int i = 0; i < secuencia.size(); i++) {
 		std::cout << secuencia[i] << ", ";
@@ -66,7 +66,7 @@ void CalculosIA::mostrarSecuencia() {
 	}
 }
 
-bool CalculosIA::sonCongruentesFactoresPrimoQ() {
+bool GeneradoresCongruenciales::sonCongruentesFactoresPrimoQ() {
 	std::vector<unsigned int> valoresPrimosM;
 	for (unsigned int i = 1; i <= m; i++) {
 		if (m % i == 0 && esPrimo(i) == true) {
@@ -82,7 +82,7 @@ bool CalculosIA::sonCongruentesFactoresPrimoQ() {
 	return true;
 }
 
-bool CalculosIA::sonCongruentesFactoresPrimoP() {
+bool GeneradoresCongruenciales::sonCongruentesFactoresPrimoP() {
 	std::vector<unsigned int> valoresPrimosM;
 	for (unsigned int i = 1; i <= m; i++) {
 		if (m % i == 0 && esPrimo(i) == true) {
@@ -98,7 +98,7 @@ bool CalculosIA::sonCongruentesFactoresPrimoP() {
 	return true;
 }
 
-bool CalculosIA::esMCongruente4() {
+bool GeneradoresCongruenciales::esMCongruente4() {
 	if (m % 4 != 0) { //Si el módulo es distinto de 0, m no es un múltiplo de 4
 		//y la norma se ignora
 		return true;
@@ -109,11 +109,11 @@ bool CalculosIA::esMCongruente4() {
 	}
 }
 
-bool CalculosIA::mEsPotenciaDe2() {
+bool GeneradoresCongruenciales::mEsPotenciaDe2() {
 	return (m != 0) && ((m & (m - 1)) == 0);
 }
 
-bool CalculosIA::cumpleTeoremaKnuth() {
+bool GeneradoresCongruenciales::cumpleTeoremaKnuth() {
 	if ((sonCoprimos(b, m) == false) || (sonCongruentesFactoresPrimoQ() ==
 	                                     false) || (esMCongruente4() == false)) {
 		return false;
@@ -122,7 +122,7 @@ bool CalculosIA::cumpleTeoremaKnuth() {
 	}
 }
 
-void CalculosIA::comprobarPeriodo(char tipoGenerador) {
+void GeneradoresCongruenciales::comprobarPeriodo(char tipoGenerador) {
 	if (tipoGenerador == 'x') { // 'x' -> Mixto
 		if (cumpleTeoremaKnuth() == true) {
 			periodoMaximo = true;
@@ -147,7 +147,7 @@ void CalculosIA::comprobarPeriodo(char tipoGenerador) {
 	}
 }
 
-void CalculosIA::mostrarComprobacionPeriodo() {
+void GeneradoresCongruenciales::mostrarComprobacionPeriodo() {
 	if (periodoMaximo == true) {
 		std::cout << "El período SI es máximo." << "\n";
 	} else {

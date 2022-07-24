@@ -20,10 +20,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iostream>
-#include "menu2Var.hpp"
+#include "cli.hpp"
+#include "calculos2Var.hpp"
 
-void Menu2Var::menuSecundario() {
+/*void CLI::menuSecundario2Var() {
 	char eleccionNivel2;
 	do {
 		listadOpciones2Variables();
@@ -41,71 +41,107 @@ void Menu2Var::menuSecundario() {
 			break;
 		}
 	} while (eleccionNivel2 != '0');
-}
+}*/
 
-void Menu2Var::menuMuestra2Var(){
-	/*Calculos2Var variables(preguntarDesdeArchivoOTeclado(), 2, 
-preguntarNumeroColumnas());
-	variables.leerMatriz();
-	std::cout << "Variables X e Y:" << '\n';
-	variables.mostrarMatriz();
+void CLI::menuSecundario2Var() {
+	//char opciones;
+	unsigned int filas, columnas;
+	filas = 2;
+	columnas = preguntarNumeroElementos();
+	bool desdeArchivo;
+	desdeArchivo = preguntarDesdeArchivoOTeclado();
+
+	Matriz varXeY(filas, columnas);
+	if (desdeArchivo == true) {
+		verificarArchivo();
+		leerDesdeArchivo(varXeY, columnas);
+	} else {
+		std::cout << "Introduce los elementos uno a uno " << "\n";
+		std::cout << "pulsa intro para escribir la fila siguiente" << "\n";
+		std::cout << "\n";
+		editarMatrizVacia(varXeY);
+	}
+	Vector varX(columnas);
+	varX = extraerVariable(varXeY, 0);
+	std::cout << ("Variable X") << "\n";
+	mostrarVector(varX);
+	std::cout << '\n';
+	Vector varY(columnas);
+	varY = extraerVariable(varXeY, 1);
+	std::cout << ("Variables Y") << "\n";
+	mostrarVector(varY);
+
 	std::cout << '\n';
 	std::cout << "Medidas de tendencia Central" << '\n';
 	std::cout << " _" << '\n';
-	std::cout << " X = " << variables.mediaAritmetica(0) << '\n';
+	std::cout << " X = " << mediaAritmetica(varX) << '\n';
 	std::cout << " _" << '\n';
-	std::cout << " Y = " << variables.mediaAritmetica(1) << '\n';
+	std::cout << " Y = " << mediaAritmetica(varY) << '\n';
 	std::cout << '\n';
-	std::cout << " ∑Xi = " << variables.sumatoria(0, 1) << '\n';
+	std::cout << " ∑Xi = " << sumatoria(varX, 1) << '\n';
 	std::cout << "    2" << '\n';
-	std::cout << " ∑Xi = " << variables.sumatoria(0, 2) << '\n';
+	std::cout << " ∑Xi = " << sumatoria(varX, 2) << '\n';
 	std::cout << '\n';
-	std::cout << " ∑Yi = " << variables.sumatoria(1, 1) << '\n';
+	std::cout << " ∑Yi = " << sumatoria(varY, 1) << '\n';
 	std::cout << "    2" << '\n';
-	std::cout << " ∑Yi = " << variables.sumatoria(1, 2) << '\n';
+	std::cout << " ∑Yi = " << sumatoria(varY, 2) << '\n';
 	std::cout << '\n';
-	std::cout << " ∑XYi = " << variables.sumatoria2Var(0, 1, 1, 1) << '\n';
+	std::cout << " ∑XYi = " << sumatoria2Var(varXeY, 1, 1) << '\n';
 	std::cout << '\n';
+	
 	std::cout << "Medidas de dispersión" << '\n';
 	std::cout << "                      _ 2" << '\n';
 	std::cout << "                 ∑(Xi-X)" << '\n';
-	std::cout << " varianza de X = ------- = "  << variables.varianza(0) << '\n';
+	std::cout << " varianza de X = ------- = "  << varianza(varX) << '\n';
 	std::cout << "                    1  " << '\n';
 	std::cout << "                      _ 2" << '\n';
 	std::cout << "                 ∑(Xi-X)" << '\n';
-	std::cout << " varianza de Y = ------- = "  << variables.varianza(1) << '\n';
+	std::cout << " varianza de Y = ------- = "  << varianza(varY) << '\n';
 	std::cout << "                    1  " << '\n';
-	std::cout << " Desviación típica de X = " << variables.desviacionTipica(0) << '\n';
-	std::cout << " Desviación típica de Y = " << variables.desviacionTipica(1) << '\n';
-	std::cout << " Covarianza de X e Y = " << variables.covarianza() << '\n';
+	
+	std::cout << " Desviación típica de X = " << desviacionTipica(varX) << '\n';
+	std::cout << " Desviación típica de Y = " << desviacionTipica(varY) << '\n';
+	std::cout << " Covarianza de X e Y = " << covarianza(varXeY) << '\n';
+	
 	std::cout << "Regresión" << '\n';
 	std::cout << "	Rectas de regresión:" << '\n';
-	std::cout << "		Recta de Y sobre X: y = " << variables.coeficienteRegresion(0) << "x" << " + (" << variables.rectaRegresion(0) + variables.mediaAritmetica(1) << ")" << '\n';
-	std::cout << "		Recta de X sobre Y: x = " << variables.coeficienteRegresion(1) << "y" << " + (" << variables.rectaRegresion(1) + variables.mediaAritmetica(0) << ")" << '\n';
+	
+	std::cout << "		Recta de Y sobre X: y = " <<	        
+						coeficienteRegresion(varXeY, varX) << "x" << " + (" <<
+	          rectaRegresion(varXeY, varX) + mediaAritmetica(varY) << ")" << '\n';
+	
+	std::cout << "		Recta de X sobre Y: x = " <<
+	          coeficienteRegresion(varXeY, varY) << "y" << " + (" <<
+	          rectaRegresion(varXeY, varY) + mediaAritmetica(varX) << ")" << '\n';
+	
 	std::cout << "	Coeficientes de regresión:" << '\n';
-	std::cout << "		Coeficiente de Y sobre X: " << variables.coeficienteRegresion(0) << '\n';
-	std::cout << "		Coeficiente de X sobre Y: " << variables.coeficienteRegresion(1) << '\n';
+	
+	std::cout << "		Coeficiente de Y sobre X: " << 
+						coeficienteRegresion(varXeY, varX) << '\n';
+	std::cout << "		Coeficiente de X sobre Y: " << 
+						coeficienteRegresion(varXeY, varY) << '\n';
 	std::cout << "Correlación" << '\n';
-	std::cout << "	Coeficiente de correlación lineal: " << 
-variables.coeficienteCorrelacion() << '\n';*/
+	std::cout << "	Coeficiente de correlación lineal: " <<
+	          coeficienteCorrelacion(varXeY) << '\n';
 }
 
-void Menu2Var::menuFmp2Var(){
-	/*CalculosTablasContBid variables(preguntarDesdeArchivoOTeclado(), preguntarNumeroFilas(), preguntarNumeroColumnas());
+/*void CLI::menuFmp2Var(){
+	CalculosTablasContBid variables(preguntarDesdeArchivoOTeclado(),
+preguntarNumeroFilas(), preguntarNumeroColumnas());
 	variables.leerMatriz();
 	std::cout << "Variables X e Y:" << '\n';
 	variables.mostrarMatriz();
-	std::cout << '\n';*/
+	std::cout << '\n';
 	}
 
-unsigned int Menu2Var::preguntarNumeroColumnas() {
+unsigned int CLI::preguntarNumeroColumnas() {
 	unsigned int col;
 	std::cout << "Número de elementos de cada variable: ";
 	std::cin >> col;
 	return col;
 	}
 
-bool Menu2Var::esMuestra(){
+bool CLI::esMuestra(){
 	char resultado;
 	bool muestra;
 	std::cout << "'s' si es una muestra de dos variables" << '\n';
@@ -115,4 +151,4 @@ bool Menu2Var::esMuestra(){
 	resultado == 's' ? muestra = true: muestra = false;
 	return muestra;
 	}
-
+*/

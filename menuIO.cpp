@@ -19,10 +19,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iostream>
-#include "menuIO.hpp"
+#include "cli.hpp"
+#include "modelo.hpp"
+#include "mmi.hpp"
+#include "mmik.hpp"
+#include "mmc.hpp"
+#include "mmInfinit.hpp"
+#include "mgi.hpp"
 
-void MenuIO::menuSecundario() {
+void CLI::menuSecundarioIO() {
 	unsigned int modeloSeleccionado;
 	unsigned int nUsuario, cUsuario = 0;
 	double lambdaUsuario, muUsuario;
@@ -50,11 +55,14 @@ void MenuIO::menuSecundario() {
 				break;
 			}
 		std::cout << "\n";
-		resultados(lambdaUsuario, muUsuario, nUsuario, cUsuario, modeloSeleccionado);
+		resultadosColasExponencial(lambdaUsuario, muUsuario, nUsuario, cUsuario, 
+modeloSeleccionado);
 	}
 	}
 
-	void MenuIO::resultados(double lambdaUsuario, double muUsuario, unsigned int nUsuario, unsigned int cUsuario, unsigned int modeloSeleccionado) {
+	void CLI::resultadosColasExponencial(double lambdaUsuario, double 
+muUsuario, unsigned int nUsuario, unsigned int cUsuario, unsigned int 
+modeloSeleccionado) {
 	std::cout << "	======== Resultados ========" << '\n';
 	std::cout << "\n";
 	switch (modeloSeleccionado) {

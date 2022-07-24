@@ -19,10 +19,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iostream>
-#include "menuAlgebra.hpp"
+#include "cli.hpp"
+#include "calculosAlgebra.hpp"
 
-void menuSecundarioAlgebra() {
+void CLI::menuSecundarioAlgebra() {
     char elegir1o2Matrices;
     do {
         std::cout << "'1' Cálculos con una matriz" << '\n';
@@ -40,7 +40,7 @@ void menuSecundarioAlgebra() {
     while (elegir1o2Matrices != '0');
 }
 
-void menu1Matriz() {
+void CLI::menu1Matriz() {
     char opciones;
     unsigned int filas, columnas;
     filas = numeroFilas();
@@ -69,7 +69,9 @@ void menu1Matriz() {
         std::cout << "'3' Matriz traspuesta" << "\n";
         std::cout << "'4' Matriz adjunta" << "\n";
         std::cout << "'5' Matriz inversa" << "\n";
-        std::cout << "'6' vectores y valores propios" << "\n";
+        std::cout << "'6' Descomposicion LU" << "\n";
+        std::cout << "'7' Gauss" << "\n";
+        std::cout << "'8' Valores y vectores propios" << "\n";
         std::cout << "'0' para volver al menu anterior." << "\n";
         std::cout << "=> ";
         std::cin >> opciones;
@@ -77,37 +79,69 @@ void menu1Matriz() {
         case '1':
             mostrarMatriz(matrizA);
             std::cout << '\n';
-            std::cout << "La traza es " << traza(matrizA) << "\n" ;
+            std::cout << "Traza: " << traza(matrizA) << "\n" ;
             std::cout << '\n';
             break;
         case '2':
             mostrarMatriz(matrizA);
-            //matrizA.determinante();
+            std::cout << '\n';
+            std::cout << "Determinante: " << determinante(matrizA) << "\n" ;
+            std::cout << '\n';
             break;
-        case '3':
+        case '3':{
             mostrarMatriz(matrizA);
-            //matrizA.traspuesta();
+            Matriz resultado(filas, columnas);
+            resultado = traspuesta(matrizA);
+            std::cout << '\n';
+            std::cout << ("Matriz A traspuesta ") << "\n";
+            mostrarMatriz(resultado);
+            std::cout << '\n';}
+            break;
+        case '4':{
             mostrarMatriz(matrizA);
-            //adjunta();
+            Matriz resultado(filas, columnas);
+            resultado = adjunta(matrizA);
+            std::cout << '\n';
+            std::cout << ("Matriz A adjunta ") << "\n";
+            mostrarMatriz(resultado);
+            std::cout << '\n';}
             break;
-        case '4':
-            //inversa();
+        case '5':{
+            mostrarMatriz(matrizA);
+            Matriz resultado(filas, columnas);
+            resultado = inversa(matrizA);
+            std::cout << '\n';
+            std::cout << ("Matriz A inversa ") << "\n";
+            mostrarMatriz(resultado);
+            std::cout << '\n';}
             break;
-        case '5':
-            //vectoresProp();
+        case '6':{
+            mostrarMatriz(matrizA);
+            Matriz resultado(filas, columnas);
+            resultado = descomposicionLU(matrizA, true);
+            std::cout << '\n';
+            std::cout << ("Matriz L ") << "\n";
+            mostrarMatriz(resultado);
+            std::cout << '\n';
+            resultado = descomposicionLU(matrizA, false);
+            std::cout << '\n';
+            std::cout << ("Matriz U ") << "\n";
+            mostrarMatriz(resultado);
+            std::cout << '\n';}
             break;
-        case '6':
-            //vectoresProp();
+        case '7':{
+            Matriz resultado(filas, columnas);
+            resultado = gauss(matrizA);
+            std::cout << '\n';
+            std::cout << ("Matriz A Gauss ") << "\n";
+            mostrarMatriz(resultado);
+            std::cout << '\n';}
             break;
         }
     } while (opciones != '0');
 }
 
-void bucleOpciones1Matriz() {
-
-}
-
-void menu2Matrices() {
+void CLI::menu2Matrices() {
     char opciones;
 
     unsigned int filas, columnas;

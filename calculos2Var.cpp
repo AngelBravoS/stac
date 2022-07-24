@@ -19,74 +19,96 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iostream>
-#include <cmath>
 #include "calculos2Var.hpp"
-#include "funcMatematicasBasicas.hpp"
 
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
-/*
-Calculos2Var::Calculos2Var(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
-	desdeArchivo = archivo;
-	filas = longitudFila;
-	columnas = longitudColumna;
+
+Vector extraerVariable(Matriz &m1, unsigned int variable) {
+	unsigned int n = m1.ColumnCount();
+	Vector resultado(n);
+	for (unsigned int i = 0; i < n; i++) {
+		resultado[i] = m1[variable][i];
+	}
+	return resultado;
 }
 
-//-----Pide un exponente para poder hacer cosumatorias de cuadrados, cubos, etc, sin necesitar otro método
-//-----recibe el exponente de cada variable así como su índice dentro de la matriz (0, 1, 2...)
-//-----como las dos variables tienen la misma longitud (vector[0].length = vector[1].length) y solo hay que indicar
+
+
+//-----Pide un exponente para poder hacer cosumatorias de cuadrados, cubos, etc,
+//sin necesitar otro método
+//-----recibe el exponente de cada variable así como su índice dentro de la
+//matriz (0, 1, 2...)
+//-----como las dos variables tienen la misma longitud (vector[0].length
+//= vector[1].length) y solo hay que indicar
 //-----una de ellas, se elige la primera.
-double Calculos2Var::sumatoria2Var(int variableX, int variableY, int exponenteX, int exponenteY) {
+
+double sumatoria2Var(Matriz &m1, int exponenteX, int exponenteY) {
 	double sumatoria2Variables = 0;
-	unsigned int n = columnas;
-	for(unsigned int i = 0; i < n; i++) {
-		sumatoria2Variables += pow(matriz[variableX][i], exponenteX) * pow(matriz[variableY][i], exponenteY);
+	unsigned int n = m1.ColumnCount();
+	for (unsigned int i = 0; i < n; i++) {
+		sumatoria2Variables += pow(m1[0][i], exponenteX) * pow(m1[1][i],
+		                       exponenteY);
 	}
 	return sumatoria2Variables;
 }
 
-double Calculos2Var::covarianza() {
-	unsigned int n = columnas;
+double covarianza(Matriz &m1) {
+	unsigned int n = m1.ColumnCount();
 	double resultado = 0;
-	resultado += (sumatoria2Var(0, 1, 1, 1));
-	resultado = (resultado / n) - (mediaAritmetica(0) * mediaAritmetica(1));
+	resultado += (sumatoria2Var(m1, 1, 1));
+
+	Vector x(n);
+	x = extraerVariable(m1, 0);
+
+	Vector y(n);
+	y = extraerVariable(m1, 1);
+
+	resultado = (resultado / n) - (mediaAritmetica(x) * mediaAritmetica(y));
 	return resultado;
 }
 
-double Calculos2Var::rectaRegresion(int variable) {
+double rectaRegresion(Matriz &m1, Vector &v1) {
 	double resultado = 0;
-	resultado = -1 * mediaAritmetica(variable) * coeficienteRegresion(variable);
+	resultado = -1 * mediaAritmetica(v1) * coeficienteRegresion(m1, v1);
 	return resultado;
 }
 
-double Calculos2Var::curvaRegresion(int variable) {
+double curvaRegresion(Matriz &m1, Vector &v1) {
 	double resultado = 0;
-	resultado = -1 * mediaAritmetica(variable) * coeficienteRegresion(variable);
+	
+	resultado = -1 * mediaAritmetica(v1) * coeficienteRegresion(m1, v1);
 	return resultado;
 }
 
-double Calculos2Var::coeficienteRegresion(int variable) {
+double coeficienteRegresion(Matriz &m1, Vector &v1) {
 	double resultado;
-	resultado = covarianza() / varianza(variable);
+	unsigned int n = m1.ColumnCount();
+	resultado = covarianza(m1) / varianza(v1);
 	return resultado;
 }
 
-double Calculos2Var::coeficienteCorrelacion() {
+double coeficienteCorrelacion(Matriz &m1) {
 	double resultado;
-	resultado = (covarianza()) / (desviacionTipica(0) * desviacionTipica(1));
+	unsigned int n = m1.ColumnCount();
+	Vector x(n);
+	x = extraerVariable(m1, 0);
+	Vector y(n);
+	y = extraerVariable(m1, 1);
+	resultado = (covarianza(m1)) / (desviacionTipica(x) * desviacionTipica(y));
 	return resultado;
 }
 
 //Distancias
-
-double Calculos2Var::distanciaEuclidea() {
+/*
+double distanciaEuclidea() {
 	double distanciaEuclidea = 0;
 
 	unsigned int n = getColumna();
 	for (unsigned int x = 0; x < n; x++ ) {
 		distanciaEuclidea = pow ( ( matriz[i][j] - matriz[i][j + x] ), 2 )
-		                    + pow ( ( matriz[i + x][j] - matriz[i + x][j + x] ), 2 );
+		                    + pow ( ( matriz[i + x][j] - matriz[i + x][j + x] ), 2
+);
 	}
 	return distanciaEuclidea;
 }

@@ -34,7 +34,7 @@ class MMINFINIT : public Modelo {
     //======== Funciones específicas ========
     double p0 () {
         double resultado;
-        resultado = 1/potencia ( e(), r );
+        resultado = 1/potencia ( e(), convierteDoubleEnInt(r) );
 		  return resultado;
     }
     double pn () {

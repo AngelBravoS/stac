@@ -22,30 +22,24 @@
 #ifndef _VECTOR_HPP_
 #define _VECTOR_HPP_
 
+#include "funcMatematicasBasicas.hpp"
 #include <bits/stdc++.h>
-#include <vector>
+#include <boost/mpl/push_back.hpp>
 
 class Vector {
-public:
-	//======== constructor ========
-	Vector();
-	//======== funciones de vectores ========
-	void numElementosVector();
-	void crearVector();
-	void mostrarVector();
-	void copiarvector();
-	void ordenarVector();
-	void destructorVector();
-	//======== entrada/salida ========
-	void desdeDondeLeeVector();
-	void verificarArchivo();
-	void leerArchivo();
-	void guardarEnArchivo();
-protected:
-	unsigned int longitudVector;
-	bool enArchivo;
-	std::vector<double> vector;
-	};
+	public:
+		Vector();
+		Vector(unsigned int size);
+		Vector(const Vector &aCopy);
+		unsigned int size();
+		double &operator[](unsigned int index);
+
+		void ordenarVector();
+	protected:
+		unsigned int longitudVector;
+		bool enArchivo;
+		std::vector<double> vector;
+};
 
 #endif /* _VECTOR_HPP_ */
 

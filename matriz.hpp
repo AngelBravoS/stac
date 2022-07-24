@@ -27,11 +27,12 @@
 class Matriz {
 
 	public:
+		Matriz();
 		Matriz(unsigned int rows, unsigned int cols);
 		Row &operator[](unsigned int index);
 		unsigned int RowCount() ;
 		unsigned int ColumnCount();
+		bool cuadrada;
 	private:
 		std::vector< Row > Array;
-		bool cuadrada;
 };

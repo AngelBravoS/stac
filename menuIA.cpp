@@ -19,10 +19,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iostream>
-#include "menuIA.hpp"
+#include "cli.hpp"
+#include "generadoresCongruenciales.hpp"
 
-void MenuIA::menuSecundario() { //inútil
+void CLI::menuSecundarioIA() { //inútil
 	//std::cout << "Escribe ''e'' para el cálculo de funciones exponenciales."
 //<< '\n';
 	std::cout << "Escribe ''g'' para el cálculo con generadores congruenciales."
@@ -36,10 +36,10 @@ void MenuIA::menuSecundario() { //inútil
 		case 'g':
 			menuCongruencial();
 			break;
-		}
 	}
+}
 
-void MenuIA::menuCongruencial() {
+void CLI::menuCongruencial() {
 	unsigned int a, b, m, X0;
 	do {
 		listadOpcionesIA();
@@ -53,10 +53,9 @@ void MenuIA::menuCongruencial() {
 				if (opciones[4] == '1') {
 					std::cout << "valor de b = ";
 					std::cin >> b;
-					}
-				else {
+				} else {
 					b = 0;
-					}
+				}
 				std::cout << "valor de m = ";
 				std::cin >> m;
 				std::cout << "valor de Xo = ";
@@ -64,15 +63,14 @@ void MenuIA::menuCongruencial() {
 				if ((m <= a || m <= b) && opciones[4] == '1') {
 					std::cout << "secuencia no válida (m > a,b)." << "\n";
 					exit(-1);
-					}
-				else {
+				} else {
 					std::cout << "La secuencia es:" << '\n';
-					CalculosIA gc(a, b, m, X0);
+					GeneradoresCongruenciales gc(a, b, m, X0);
 					gc.crearSecuencia();
 					gc.mostrarSecuencia();
-					}
-				break;
 				}
+				break;
+			}
 			case '2' : {
 				listadOpcionestipoGenerador();
 				eleccion(4);
@@ -81,45 +79,43 @@ void MenuIA::menuCongruencial() {
 				if (opciones[4] == '1') {
 					std::cout << "valor de b = ";
 					std::cin >> b;
-					}
-				else {
+				} else {
 					b = 0;
-					}
+				}
 				std::cout << "valor de m = ";
 				std::cin >> m;
 				if (opciones[4] == '2') {
 					std::cout << "valor de Xo = ";
 					std::cin >> X0;
-					}
+				}
 				switch (opciones[4]) {
 					case 'x': {
-						CalculosIA gc(a, b, m);
+						GeneradoresCongruenciales gc(a, b, m);
 						gc.comprobarPeriodo(opciones[4]);
 						gc.mostrarComprobacionPeriodo();
 						break;
-						}
-					case 'm': {
-						CalculosIA gc(a, b, m, X0);
-						gc.comprobarPeriodo(opciones[4]);
-						gc.mostrarComprobacionPeriodo();
-						break;
-						}
 					}
-				break;
+					case 'm': {
+						GeneradoresCongruenciales gc(a, b, m, X0);
+						gc.comprobarPeriodo(opciones[4]);
+						gc.mostrarComprobacionPeriodo();
+						break;
+					}
 				}
+				break;
+			}
 			case '3' : {
 				std::cout << "Uniforme= ";
 				std::cout << "Bernuilli= ";
 				std::cout << "Binomial= ";
 				break;
-				}
 			}
-
 		}
-	while (opciones[3] != '0');
-	}
 
-void MenuIA::menuColasExponencial() {
+	} while (opciones[3] != '0');
+}
+
+void CLI::menuColasExponencial() {
 
 
-	}
+}

@@ -17,33 +17,33 @@ set(lista_archivos
   matriz.cpp
   funcMatematicasBasicas.cpp
   #Específicas
-  #calculos1Var.cpp
-  #calculos2Var.cpp
-  #calculosIA.cpp
-  #calculosNVar.cpp
+  calculos1Var.cpp
+  calculos2Var.cpp
+  calculosNVar.cpp
   calculosAlgebra.cpp
   #calculosTablasContBid.cpp
   #mas.cpp
   combinatoria.cpp 
   distribucionesDiscretas.cpp
   #Los submenus de cada tipo de operacion
-  #menu1Var.cpp
-  #menu2Var.cpp
-  #menuNVar.cpp
+  menu1Var.cpp
+  menu2Var.cpp
+  menuNVar.cpp
   menuAlgebra.cpp
   #menuMuestreo.cpp
-  #menuSinDatos.cpp
-  #menuCombinatoria.cpp
-  #menuDistribDiscretas.cpp
+  menuSinDatos.cpp
+  menuCombinatoria.cpp
+  menuDistribDiscretas.cpp
+  menuIA.cpp
   #menuTablasCont.cpp  
-  #menuIA.cpp
-  #menuIO.cpp
-  #modelo.cpp
-  #mmi.cpp
-  #mmik.cpp
-  #mmc.cpp
-  #mmInfinit.cpp
-  #mgi.cpp
+  generadoresCongruenciales.cpp
+  menuIO.cpp
+  modelo.cpp
+  mmi.cpp
+  mmik.cpp
+  mmc.cpp
+  mmInfinit.cpp
+  mgi.cpp
 )
 
 #Debug/Release

@@ -33,13 +33,13 @@ void CLI::menuPrincipal() {
 		eleccion(0);
 		switch (opciones[0]) {
 			case '1' : 
-				//menuSecundario1Var();
+				menuSecundario1Var();
 				break;
 			case '2' :
-				//menuSecundario2Var();
+				menuSecundario2Var();
 				break;
 			case '3' :
-				//menuSecundarioNvar();
+				menuSecundarioNvar();
 				break;
 			case '4' :
 				menuSecundarioAlgebra(); 
@@ -48,32 +48,11 @@ void CLI::menuPrincipal() {
 				//menuSecundarioMuestreo();
 				break;
 			case '6' :
-				//menuSinDatos();
+				menuSinDatos();
 				break;
 			case '7' :
 				ayuda();
 				break;
 		}
 	} while (opciones[0] != '0');
-}
-
-unsigned int CLI::preguntarTamanoVector() {
-	unsigned int tamano;
-	std::cout << "Tamaño del vector: ";
-	std::cin >> tamano;
-	return  tamano;
-}
-
-unsigned int CLI::preguntarNumeroFilas() {
-	unsigned int fila;
-	std::cout << "Número de filas: ";
-	std::cin >> fila;
-	return fila;
-}
-
-unsigned int CLI::preguntarNumeroColumnas() {
-	unsigned int col;
-	std::cout << "Número de columnas: ";
-	std::cin >> col;
-	return col;
 }

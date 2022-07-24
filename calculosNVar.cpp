@@ -19,76 +19,34 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iostream>
-#include <cmath>
 #include "calculosNVar.hpp"
-#include "funcMatematicasBasicas.hpp"
 
-//Límite máximo en unsigned short int: 65535
-//Límite máximo en unsigned int: 4.294.967.295
-
-//using namespace std;
-//typedef unsigned short int unShortInt;
-
-CalculosNVar::CalculosNVar() {
-	}
-/*	
-CalculosNVar::CalculosNVar(bool archivo, unsigned int longitudFila, unsigned int longitudColumna) {
-	desdeArchivo = archivo;
-	filas = longitudFila;
-	columnas = longitudColumna;
-	filas == columnas ? cuadrada = true : cuadrada = false;
-	if (cuadrada == true) {dimension = filas;};
-}
-
-void CalculosNVar::crearMatrizResultado() {
-    resultado = new double *[filas];
-    for(unsigned int i = 0; i < filas; i++)     {
-        resultado[i] = new double [columnas];
-    }
-    for (unsigned int i = 0; i < filas; i++) {
-        for (unsigned int j = 0; j < columnas; j++) {
-            resultado[i][j] = matriz[i][j];
-        }
-    }
-}
-
-void CalculosNVar::mostrarMatrizResultado() {
-    std::cout << '\n';
-    for (unsigned int i = 0; i < filas; i++) {
-        std::cout << "( ";
-        for (unsigned int j = 0; j < columnas; j++) {
-            std::cout << resultado[i][j] << " ";
-        }
-        std::cout << ")";
-        std::cout << '\n';
-    }
-}
-
-double  CalculosNVar::sumatoria (int indiceVariable, unsigned short int exponente) {
-	unsigned int n = columnas;
+double sumatoria (Matriz &m1, unsigned int indiceVariable, short unsigned
+                 int exponente) {
+	unsigned int n = m1.ColumnCount();
 	double resultado = 0;
 	for(unsigned int j = 0; j < n; j++) {
-		resultado += potencia(matriz[indiceVariable][j], exponente);
+		resultado += potencia(m1[indiceVariable][j], exponente);
 	}
 	return resultado;
 }
 
-double  CalculosNVar::total(int indiceVariable) {
+/*
+double total(int indiceVariable) {
 	unsigned int n = columnas;
 	double resultado = 0;
 	resultado = (n* mediaAritmetica(indiceVariable));
 	return resultado;
 }
 
-double  CalculosNVar::mediaAritmetica(int indiceVariable) {
+double mediaAritmetica(int indiceVariable) {
 	unsigned int n = columnas;
 	double resultado = 0;
 	resultado = ( sumatoria (indiceVariable, 1) / n);
 	return resultado;
 }
 
-double CalculosNVar::mediaGeometrica(int indiceVariable) {
+double mediaGeometrica(int indiceVariable) {
 	unsigned int n = columnas;
 	double mediaGeometrica = 1;
 	for(unsigned int j = 0; j < n; j++) {
@@ -98,7 +56,7 @@ double CalculosNVar::mediaGeometrica(int indiceVariable) {
 	return mediaGeometrica;
 }
 
-double CalculosNVar::mediaArmonica(int indiceVariable) {
+double mediaArmonica(int indiceVariable) {
 	unsigned int n = columnas;
 	double mediaArmonica = 0;
 	for(unsigned int j = 0; j < n; j++) {
@@ -108,7 +66,7 @@ double CalculosNVar::mediaArmonica(int indiceVariable) {
 	return mediaArmonica;
 }
 
-double CalculosNVar::mediaCuadratica(int indiceVariable) {
+double mediaCuadratica(int indiceVariable) {
 	unsigned int n = columnas;
 	double mediaCuadratica;
 	mediaCuadratica = sumatoria (indiceVariable, 2) * (1.0 / n);
@@ -117,7 +75,7 @@ double CalculosNVar::mediaCuadratica(int indiceVariable) {
 }
 
 //Suma de diferencias respecto a la media con exponente
-double CalculosNVar::difRespecMedia(int indiceVariable, int exponente) {
+double difRespecMedia(int indiceVariable, int exponente) {
 	unsigned int n = columnas;
 	double difRespecMedia = 0;
 	for(unsigned int j = 0; j < n; j++) {
@@ -126,21 +84,21 @@ double CalculosNVar::difRespecMedia(int indiceVariable, int exponente) {
 	return difRespecMedia;
 }
 
-double CalculosNVar::varianza(int indiceVariable) {
+double varianza(int indiceVariable) {
 	unsigned int n = columnas;
 	double resultado;
 	resultado = (difRespecMedia(indiceVariable, 2)) / n;
 	return resultado;
 }
 
-double CalculosNVar::cuasiVarianza(int indiceVariable) {
+double cuasiVarianza(int indiceVariable) {
 	unsigned int n = columnas;
 	double resultado;
 	resultado = (difRespecMedia(indiceVariable, 2)) / (n - 1);
 	return resultado;
 }
 
-double CalculosNVar::desviacionTipica(int indiceVariable) {
+double desviacionTipica(int indiceVariable) {
 	double desviacionTipica;
 	desviacionTipica = sqrt(varianza(indiceVariable));
 	return desviacionTipica;
@@ -180,7 +138,7 @@ double CalculosNVar::curtosis(int indiceVariable) {
 	return curtosis;
 }
 
-void CalculosNVar::matrizTransicionP(unsigned int n){
+void matrizTransicionP(unsigned int n){
 	//crearMatrizResueltaVacia();
 	//copiarMatrizA();
 	unsigned int x = 0;

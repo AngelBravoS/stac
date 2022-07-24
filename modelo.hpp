@@ -22,6 +22,7 @@
 #ifndef _MODELO_HPP_
 #define _MODELO_HPP_
 
+#include "funcMatematicasBasicas.hpp"
 
 class Modelo {
     protected:

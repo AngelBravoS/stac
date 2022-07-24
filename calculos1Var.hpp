@@ -22,32 +22,25 @@
 #ifndef _CALCULOS1VAR_HPP_
 #define _CALCULOS1VAR_HPP_
 
+#include <cmath>
 #include "vector.hpp"
-#include "funcMatematicasBasicas.hpp"
 
-class Calculos1Var : public Vector {
-	public:
-		//======== constructor ========
-		Calculos1Var();
-		Calculos1Var(bool leerArchivo, unsigned int longitudVector);
-		//========  funciones de estadística descriptiva ========
-		double sumatoria(unsigned int exponente);
-		double mediaAritmetica();
-		double mediaGeometrica();
-		double mediaArmonica();
-		double mediaCuadratica();
-		double mediana();
-		double moda();
-		double difRespecMedia(int exponente);
-		double varianza();
-		double varianzaMuestral();
-		double desviacionTipica();
-		double desviacionTipicaMuestral();
-		double momentosNoCentrados(int exponente);
-		double coeficientePearson();
-		double coeficienteAsimetriaFisher();
-		double curtosis();
-		double norma();
-};
+double sumatoria(Vector &v1, unsigned int exponente);
+double mediaAritmetica(Vector &v1);
+double mediaGeometrica(Vector &v1);
+double mediaArmonica(Vector &v1);
+double mediaCuadratica(Vector &v1);
+double mediana(Vector &v1);
+double moda(Vector &v1);
+double difRespecMedia(Vector &v1, int exponente);
+double varianza(Vector &v1);
+double varianzaMuestral(Vector &v1);
+double desviacionTipica(Vector &v1);
+double desviacionTipicaMuestral(Vector &v1);
+double momentosNoCentrados(Vector &v1, int exponente);
+double coeficientePearson(Vector &v1);
+double coeficienteAsimetriaFisher(Vector &v1);
+double curtosis(Vector &v1);
+double norma(Vector &v1);
 
 #endif /* _CALCULOS2VAR_HPP_ */

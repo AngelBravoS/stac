@@ -19,154 +19,146 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iostream>
-#include <cmath>
 #include "calculos1Var.hpp"
 
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
-Calculos1Var::Calculos1Var() {}
 
-Calculos1Var::Calculos1Var(bool archivo, unsigned int numeroElementos) {
-	enArchivo = archivo;
-	longitudVector = numeroElementos;
-}
-
-double  Calculos1Var::sumatoria(unsigned int exponente) {
-	unsigned int n = longitudVector;
+double sumatoria(Vector &v1, unsigned int exponente) {
+	unsigned int n = v1.size();
 	double sumatoria = 0;
 	for (unsigned int i = 0; i < n; i++) {
-		sumatoria += potencia(vector[i], exponente);
+		sumatoria += potencia(v1[i], exponente);
 	}
 	return sumatoria;
 }
 
-double  Calculos1Var::mediaAritmetica() {
-	unsigned int n = longitudVector;
+double mediaAritmetica(Vector &v1) {
+	unsigned int n = v1.size();
 	double media = 0;
-	media = (sumatoria(1) / n);
+	media = (sumatoria(v1, 1) / n);
 	return media;
 }
 
-double Calculos1Var::mediaGeometrica() {
-	unsigned int n = longitudVector;
+double mediaGeometrica(Vector &v1) {
+	unsigned int n = v1.size();
 	double mediaGeometrica = 1;
 	for (unsigned int i = 0; i < n; i++) {
-		mediaGeometrica *= vector[i];
+		mediaGeometrica *= v1[i];
 	}
 	mediaGeometrica = pow(mediaGeometrica, 1.0 / n);
 	return mediaGeometrica;
 }
 
-double Calculos1Var::mediaArmonica() {
-	unsigned int n = longitudVector;
+double mediaArmonica(Vector &v1) {
+	unsigned int n = v1.size();
 	double mediaArmonica = 0;
 	for (unsigned int i = 0; i < n; i++) {
-		mediaArmonica +=  1 / (potencia(vector[i], 1));
+		mediaArmonica +=  1 / (potencia(v1[i], 1));
 	}
 	mediaArmonica = (n / mediaArmonica);
 	return mediaArmonica;
 }
 
-double Calculos1Var::mediaCuadratica() {
-	unsigned int n = longitudVector;
+double mediaCuadratica(Vector &v1) {
+	unsigned int n = v1.size();
 	double mediaCuadratica;
-	mediaCuadratica = sumatoria(2) * (1.0 / n);
+	mediaCuadratica = sumatoria(v1, 2) * (1.0 / n);
 	mediaCuadratica = sqrt(mediaCuadratica);
 	return mediaCuadratica;
 }
 
 //Suma de diferencias respecto a la media con exponente
-double Calculos1Var::difRespecMedia(int exponente) {
-	unsigned int n = longitudVector;
+double difRespecMedia(Vector &v1, int exponente) {
+	unsigned int n = v1.size();
 	double difRespecMedia = 0;
 	for (unsigned int i = 0; i < n; i++) {
-		difRespecMedia += pow(vector[i] - mediaAritmetica(), exponente);
+		difRespecMedia += pow(v1[i] - mediaAritmetica(v1), exponente);
 	}
 	return difRespecMedia;
 }
 
-double Calculos1Var::mediana() {
+double mediana(Vector &v1) {
 	double mediana;
 	unsigned int n, v;
-	n = longitudVector;
-	ordenarVector();
+	n = v1.size();
+	v1.ordenarVector();
 	v = n / 2;
 	if (n % 2 == 0) {
-		mediana = (vector[v] + vector[v - 1]) / 2;
+		mediana = (v1[v] + v1[v - 1]) / 2;
 	} else {
-		mediana = vector[v];
+		mediana = v1[v];
 	}
 	return mediana;
 }
 
-double Calculos1Var::moda() {
+double moda(Vector &v1) {
 	double norma = 0;
-	norma += sumatoria(2);
+	norma += sumatoria(v1, 2);
 	norma = sqrt(norma);
 	return norma;
 }
 
-double Calculos1Var::varianza() {
-	unsigned int n = longitudVector;
+double varianza(Vector &v1) {
+	unsigned int n = v1.size();
 	double varianza;
-	varianza = (difRespecMedia(2)) / n;
+	varianza = (difRespecMedia(v1, 2)) / n;
 	return varianza;
 }
 
-double Calculos1Var::varianzaMuestral() {
-	unsigned int n = longitudVector;
+double varianzaMuestral(Vector &v1) {
+	unsigned int n = v1.size();
 	double varianzaMuestral;
-	varianzaMuestral = (difRespecMedia(2)) / (n - 1);
+	varianzaMuestral = (difRespecMedia(v1, 2)) / (n - 1);
 	return varianzaMuestral;
 }
 
-double Calculos1Var::desviacionTipica() {
+double desviacionTipica(Vector &v1) {
 	double desviacionTipica;
-	desviacionTipica = sqrt(varianza());
+	desviacionTipica = sqrt(varianza(v1));
 	return desviacionTipica;
 }
 
-double Calculos1Var::desviacionTipicaMuestral() {
+double desviacionTipicaMuestral(Vector &v1) {
 	double desviacionTipicaMuestral;
-	desviacionTipicaMuestral = sqrt(varianzaMuestral());
+	desviacionTipicaMuestral = sqrt(varianzaMuestral(v1));
 	return desviacionTipicaMuestral;
 }
 
-double Calculos1Var::momentosNoCentrados(int exponente) {
-	unsigned int n = longitudVector;
+double momentosNoCentrados(Vector &v1, int exponente) {
+	unsigned int n = v1.size();
 	double momento;
-	momento = difRespecMedia(exponente) / n;
+	momento = difRespecMedia(v1, exponente) / n;
 	return momento;
 }
 
-double Calculos1Var::coeficientePearson() {
+double coeficientePearson(Vector &v1) {
 	double coeficientePearson;
-	coeficientePearson = desviacionTipica() / mediaAritmetica();
+	coeficientePearson = desviacionTipica(v1) / mediaAritmetica(v1);
 	return coeficientePearson;
 }
 
-double Calculos1Var::coeficienteAsimetriaFisher() {
+double coeficienteAsimetriaFisher(Vector &v1) {
 	double coeficiente, mu;
 	//unsigned int n = longitudVector;
-	mu = difRespecMedia(3);
-	coeficiente = mu / momentosNoCentrados(3);
+	mu = difRespecMedia(v1, 3);
+	coeficiente = mu / momentosNoCentrados(v1, 3);
 	return coeficiente;
 }
 
-double Calculos1Var::curtosis() {
+double curtosis(Vector &v1) {
 	double curtosis, mu;
-	mu = momentosNoCentrados(4);
+	mu = momentosNoCentrados(v1, 4);
 	/*mu = 
 momentosNoCentrados(4)-4*momentosNoCentrados(1)*momentosNoCentrados(3)+6*
 potencia(momentosNoCentrados(1),2)-3*potencia(momentosNoCentrados(1),4);*/
-	curtosis = (mu / potencia(varianza(), 2)) - 3;
+	curtosis = (mu / potencia(varianza(v1), 2)) - 3;
 	return curtosis;
 }
 
-double Calculos1Var::norma() {
+double norma(Vector &v1) {
 	double norma = 0;
-	norma += sumatoria(2);
+	norma += sumatoria(v1, 2);
 	norma = sqrt(norma);
 	return norma;
 }

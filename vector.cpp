@@ -23,60 +23,32 @@
 #include <fstream>
 #include "vector.hpp"
 
-//======== funciones de vectores ========
-
-Vector::Vector() {}
-
-void Vector::leerArchivo() {
-	std::fstream archivo;
-	archivo.open("datos.dat", std::ios::in | std::ios::binary);
-	double *vectorTemporal = new double [longitudVector];
-	for (unsigned int i = 0; i < longitudVector; i++) {
-		archivo >> vectorTemporal[i];
-		vector.push_back(vectorTemporal[i]);
-	}
-	archivo.close();
+Vector::Vector() {
 }
 
-void Vector::verificarArchivo() {
-	std::fstream archivo;
-	archivo.open("datos.dat", std::ios::in | std::ios::binary);
-	if (archivo.is_open()) {
-		std::cout << "Fichero leído" << '\n';
-	} else {
-		std::cout << "Fichero inexistente" << '\n';
-		exit(-1);
-	}
-	archivo.close();
+Vector::Vector(unsigned int size) {
+	for (unsigned int i = 0; i < size; ++i)
+		vector.insert(vector.end(), 0.0);
+	longitudVector = convierteLongEnInt(vector.size());
 }
 
-
-void Vector::desdeDondeLeeVector() {
-	if (enArchivo == true) {
-		verificarArchivo();
-		leerArchivo();
-	} else {
-		crearVector();
+Vector::Vector(const Vector &aCopy) {
+	std::vector< double >::const_iterator iter;
+	for (iter = aCopy.vector.begin(); iter != aCopy.vector.end(); ++iter) {
+		double d = (*iter);
+		vector.insert(vector.end(), d);
 	}
 }
 
-void Vector::crearVector() {
-	double xi;
-	std::cout << "Introduce los elementos uno a uno" << "\n";
-	std::cout << "separando con un espacio." << "\n";
-	for (unsigned int i = 0; i < longitudVector; i++) {
-		std::cin >> xi;
-		vector.push_back(xi);
-	}
-	std::cout << '\n';
+unsigned int Vector::size() {
+    unsigned int size = static_cast<unsigned int>(vector.size());
+    return size;
 }
 
-void Vector::mostrarVector() {
-	std::cout << "( ";
-	for (unsigned int i = 0; i < longitudVector; i++) {
-		std::cout << vector[i] << " ";
-	}
-	std::cout << ")" << '\n';
+double &Vector::operator[](unsigned int index) {
+    if (index < 0 || index > vector.size())
+        throw "Array Index out of Bounds";
+    return vector[ index ];
 }
 
 void Vector::ordenarVector() {
