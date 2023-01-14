@@ -27,16 +27,15 @@
 #include "funcMatematicasBasicas.hpp"
 #include "matriz.hpp"
 
-double sumatoria(Matriz &m1, unsigned int indiceVariable, short unsigned
+double sumatoria(Matriz &m1, unsigned int indiceVariable, unsigned
                  int exponente);
 double total(Matriz &m1, unsigned int indiceVariable);
 double mediaAritmetica(Matriz &m1, unsigned int indiceVariable);
 double mediaGeometrica(Matriz &m1, unsigned int indiceVariable) ;
 double mediaArmonica(Matriz &m1, unsigned int indiceVariable);
 double mediaCuadratica(Matriz &m1, unsigned int indiceVariable);
-double difRespecMedia(Matriz &m1, unsigned int indiceVariable, short
-                      unsigned
-                      int exponente);
+double difRespecMedia(Matriz &m1, unsigned int indiceVariable,
+                      unsigned int exponente);
 double varianza(Matriz &m1, unsigned int indiceVariable);
 double cuasiVarianza(Matriz &m1, unsigned int indiceVariable);
 double desviacionTipica(Matriz &m1, unsigned int indiceVariable);

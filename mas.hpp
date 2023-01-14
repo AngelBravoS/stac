@@ -22,27 +22,29 @@
 #ifndef MAS_HPP_INCLUDED
 #define MAS_HPP_INCLUDED
 
-#include "calculos1Var.hpp"
+#include "matriz.hpp"
+#include <iostream>
 #include <cmath>
 #include <fstream>
 
-class MAS : public Calculos1Var {
+class MAS {
 	public:
 		//======== constructor ========
 		MAS();
+		MAS(Matriz muestra);
+		MAS(unsigned int filas, unsigned int columnas);
 		MAS(bool archivo, unsigned int tamanoVectorDatos, bool datosAgrupados);
 		MAS(bool archivo, unsigned int tamanoVectorDatos, bool datosAgrupados,
 		    unsigned int estimadorSeleccionado);
-		//========  funciones de muestreo ========
-		void leerDatos();
-		void leerDesdeTeclado();
-		void leerDesdeArchivo();
+		
+		//bool preguntarSiAgrupados();
+		//bool preguntarSiNExiste();
 		void desagruparDesdeTeclado();
 		void desagruparDesdeArchivo();
 		void incorporarXiYXi2();
-		void crearVector();
+		//void crearVector();
 		void setValorN(unsigned int estimadorSeleccionado);
-		unsigned int getSizeVector();
+		//unsigned int getSizeVector();
 		
 		double calcularEstimador();
 		double media();
@@ -53,17 +55,15 @@ class MAS : public Calculos1Var {
 		double estimadorVarianza();
 		double em();
 		double calculoIC();
-
-	protected:
-		bool agrupados;
-		//unsigned int tamanoVectorDatos;
+		
+protected:
+		bool agrupados = false;
 		unsigned int estimador;
 		unsigned int N;
 		double mediaDeX, proporcionDeX, totalDeX;
 		double sumatoriaDeX;
 		double sumatoriaCuadradoDeX;
 		double ic;
-
 		double varianzaDelEstimador;
 		double estimadorDeLaVarianza;
 };

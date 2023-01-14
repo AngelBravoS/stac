@@ -21,8 +21,8 @@
 
 #include "calculosNVar.hpp"
 
-double sumatoria (Matriz &m1, unsigned int indiceVariable, short unsigned
-                 int exponente) {
+double sumatoria(Matriz &m1, unsigned int indiceVariable, unsigned int 
+exponente) {
 	unsigned int n = m1.ColumnCount();
 	double resultado = 0;
 	for(unsigned int j = 0; j < n; j++) {
@@ -31,79 +31,80 @@ double sumatoria (Matriz &m1, unsigned int indiceVariable, short unsigned
 	return resultado;
 }
 
-/*
-double total(int indiceVariable) {
-	unsigned int n = columnas;
+double total(Matriz &m1, unsigned int indiceVariable) {
+	unsigned int n = m1.ColumnCount();;
 	double resultado = 0;
-	resultado = (n* mediaAritmetica(indiceVariable));
+	resultado = (n* mediaAritmetica(m1, indiceVariable));
 	return resultado;
 }
 
-double mediaAritmetica(int indiceVariable) {
-	unsigned int n = columnas;
+double mediaAritmetica(Matriz &m1, unsigned int indiceVariable) {
+	unsigned int n = m1.ColumnCount();;
 	double resultado = 0;
-	resultado = ( sumatoria (indiceVariable, 1) / n);
+	resultado = ( sumatoria (m1, indiceVariable, 1) / n);
 	return resultado;
 }
 
-double mediaGeometrica(int indiceVariable) {
-	unsigned int n = columnas;
+double mediaGeometrica(Matriz &m1, unsigned int indiceVariable) {
+	unsigned int n = m1.ColumnCount();;
 	double mediaGeometrica = 1;
 	for(unsigned int j = 0; j < n; j++) {
-		mediaGeometrica *= matriz[indiceVariable][j];
+		mediaGeometrica *= m1[indiceVariable][j];
 	}
 	mediaGeometrica = pow(mediaGeometrica, 1.0 / n);
 	return mediaGeometrica;
 }
 
-double mediaArmonica(int indiceVariable) {
-	unsigned int n = columnas;
+double mediaArmonica(Matriz &m1, unsigned int indiceVariable) {
+	unsigned int n = m1.ColumnCount();;
 	double mediaArmonica = 0;
 	for(unsigned int j = 0; j < n; j++) {
-		mediaArmonica +=  1 / (potencia(matriz[indiceVariable][j], 1));
+		mediaArmonica +=  1 / (potencia(m1[indiceVariable][j], 1));
 	}
 	mediaArmonica = (n / mediaArmonica);
 	return mediaArmonica;
 }
 
-double mediaCuadratica(int indiceVariable) {
-	unsigned int n = columnas;
+double mediaCuadratica(Matriz &m1, unsigned int indiceVariable) {
+	unsigned int n = m1.ColumnCount();;
 	double mediaCuadratica;
-	mediaCuadratica = sumatoria (indiceVariable, 2) * (1.0 / n);
+	mediaCuadratica = sumatoria (m1, indiceVariable, 2) * (1.0 / n);
 	mediaCuadratica = sqrt(mediaCuadratica);
 	return mediaCuadratica;
 }
 
 //Suma de diferencias respecto a la media con exponente
-double difRespecMedia(int indiceVariable, int exponente) {
-	unsigned int n = columnas;
+double difRespecMedia(Matriz &m1, unsigned int indiceVariable, unsigned int 
+exponente) {
+	unsigned int n = m1.ColumnCount();;
 	double difRespecMedia = 0;
 	for(unsigned int j = 0; j < n; j++) {
-		difRespecMedia += pow(matriz[indiceVariable][j] - mediaAritmetica(indiceVariable), exponente);
+		difRespecMedia += pow(m1[indiceVariable][j] - 
+mediaAritmetica(m1, indiceVariable), exponente);
 	}
 	return difRespecMedia;
 }
 
-double varianza(int indiceVariable) {
-	unsigned int n = columnas;
+double varianza(Matriz &m1, unsigned int indiceVariable) {
+	unsigned int n = m1.ColumnCount();;
 	double resultado;
-	resultado = (difRespecMedia(indiceVariable, 2)) / n;
+	resultado = (difRespecMedia(m1, indiceVariable, 2)) / n;
 	return resultado;
 }
 
-double cuasiVarianza(int indiceVariable) {
-	unsigned int n = columnas;
+double cuasiVarianza(Matriz &m1, unsigned int indiceVariable) {
+	unsigned int n = m1.ColumnCount();;
 	double resultado;
-	resultado = (difRespecMedia(indiceVariable, 2)) / (n - 1);
+	resultado = (difRespecMedia(m1, indiceVariable, 2)) / (n - 1);
 	return resultado;
 }
 
-double desviacionTipica(int indiceVariable) {
+double desviacionTipica(Matriz &m1, unsigned int indiceVariable) {
 	double desviacionTipica;
-	desviacionTipica = sqrt(varianza(indiceVariable));
+	desviacionTipica = sqrt(varianza(m1, indiceVariable));
 	return desviacionTipica;
 }
-
+/*
 double CalculosNVar::cuasiDesviacionTipica(int indiceVariable) {
 	double cuasiDesviacionTipica;
 	cuasiDesviacionTipica = sqrt(cuasiVarianza(indiceVariable));
@@ -153,4 +154,5 @@ void matrizTransicionP(unsigned int n){
 		}
 	x++;
 	}
-}*/
+}
+*/

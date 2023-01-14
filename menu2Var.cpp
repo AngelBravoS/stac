@@ -44,11 +44,9 @@
 }*/
 
 void CLI::menuSecundario2Var() {
-	//char opciones;
 	unsigned int filas, columnas;
 	filas = 2;
 	columnas = preguntarNumeroElementos();
-	bool desdeArchivo;
 	desdeArchivo = preguntarDesdeArchivoOTeclado();
 
 	Matriz varXeY(filas, columnas);
@@ -88,7 +86,7 @@ void CLI::menuSecundario2Var() {
 	std::cout << '\n';
 	std::cout << " ∑XYi = " << sumatoria2Var(varXeY, 1, 1) << '\n';
 	std::cout << '\n';
-	
+
 	std::cout << "Medidas de dispersión" << '\n';
 	std::cout << "                      _ 2" << '\n';
 	std::cout << "                 ∑(Xi-X)" << '\n';
@@ -98,28 +96,29 @@ void CLI::menuSecundario2Var() {
 	std::cout << "                 ∑(Xi-X)" << '\n';
 	std::cout << " varianza de Y = ------- = "  << varianza(varY) << '\n';
 	std::cout << "                    1  " << '\n';
-	
+	std::cout << '\n';
 	std::cout << " Desviación típica de X = " << desviacionTipica(varX) << '\n';
 	std::cout << " Desviación típica de Y = " << desviacionTipica(varY) << '\n';
 	std::cout << " Covarianza de X e Y = " << covarianza(varXeY) << '\n';
-	
+	std::cout << '\n';
 	std::cout << "Regresión" << '\n';
 	std::cout << "	Rectas de regresión:" << '\n';
-	
-	std::cout << "		Recta de Y sobre X: y = " <<	        
-						coeficienteRegresion(varXeY, varX) << "x" << " + (" <<
+
+	std::cout << "		Recta de Y sobre X: y = " <<
+	          coeficienteRegresion(varXeY, varX) << "x" << " + (" <<
 	          rectaRegresion(varXeY, varX) + mediaAritmetica(varY) << ")" << '\n';
-	
+
 	std::cout << "		Recta de X sobre Y: x = " <<
 	          coeficienteRegresion(varXeY, varY) << "y" << " + (" <<
 	          rectaRegresion(varXeY, varY) + mediaAritmetica(varX) << ")" << '\n';
-	
+
 	std::cout << "	Coeficientes de regresión:" << '\n';
-	
-	std::cout << "		Coeficiente de Y sobre X: " << 
-						coeficienteRegresion(varXeY, varX) << '\n';
-	std::cout << "		Coeficiente de X sobre Y: " << 
-						coeficienteRegresion(varXeY, varY) << '\n';
+
+	std::cout << "		Coeficiente de Y sobre X: " <<
+	          coeficienteRegresion(varXeY, varX) << '\n';
+	std::cout << "		Coeficiente de X sobre Y: " <<
+	          coeficienteRegresion(varXeY, varY) << '\n';
+	std::cout << '\n';
 	std::cout << "Correlación" << '\n';
 	std::cout << "	Coeficiente de correlación lineal: " <<
 	          coeficienteCorrelacion(varXeY) << '\n';

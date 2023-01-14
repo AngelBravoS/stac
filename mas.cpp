@@ -21,10 +21,17 @@
 
 
 #include "mas.hpp"
-
-//Límite máximo en unsigned short int: 65535
-//Límite máximo en unsigned int: 4.294.967.295
 MAS::MAS() {}
+
+MAS::MAS(Matriz muestra){
+		
+}
+
+
+MAS::MAS(unsigned int filas, unsigned int columnas) {
+		//Matriz muestra(filas, columnas);
+}
+
 
 MAS::MAS(bool desdeArchivo, unsigned int longitudSelec, bool datosAgrupados) {
 	enArchivo = desdeArchivo;
@@ -43,11 +50,10 @@ MAS::MAS(bool desdeArchivo, unsigned int longitudSelec, bool datosAgrupados,
 void MAS::setValorN(unsigned int valorNObtenido) {
 	N = valorNObtenido;
 }
-
+/*
 unsigned int MAS::getSizeVector() {
 	return	convierteLongEnInt(vector.size());
 }
-
 
 void MAS::leerDatos() {
 	if (enArchivo == true) {
@@ -211,7 +217,7 @@ double MAS::varianzaEstimador() {
 	}
 	return resultado;
 }
-
+*/
 double MAS::em() {
 	double resultado = 0;
 	resultado = sqrt(varianzaEstimador());

@@ -31,10 +31,10 @@ void CLI::menuSinDatos() {
 				menuCombinatoria();
 				break;
 			case '2' :
-				menuCongruencial();
+				menuSimulacion();
 				break;
 			case '3' :
-				menuSecundarioIO();
+				menuColExpo();
 				break;
 			case '4' :
 				menuDistribDiscreta();

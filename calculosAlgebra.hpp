@@ -31,6 +31,8 @@ Matriz operator*(Matriz &m1, double scalar);
 Matriz operator*(double scalar, Matriz &m1);
 Matriz operator*(Matriz &m1, Matriz &m2);
 
+Matriz kronecker(Matriz &m1, Matriz &m2);
+
 Matriz scalar_multiplication(Matriz &m1, double scalar);
 
 Vector vectorDiagonal(Matriz &m1);
@@ -46,8 +48,6 @@ Matriz inversa(Matriz &m1);
 Matriz gauss(Matriz &m1);
 Matriz gaussJordan(Matriz &m1);
 Matriz descomposicionLU(Matriz &m1, bool devolverL);
-Matriz Kronecker();
-
 
 #endif /* _CALCULOSALGEBRA_HPP_ */
 

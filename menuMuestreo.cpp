@@ -20,87 +20,102 @@
  ***************************************************************************/
 
 //CLI => Command Line Interface.
-#include <iostream>
-#include "menuMuestreo.hpp"
+#include "cli.hpp"
+#include "mas.hpp"
+#include "calculos1Var.hpp"
+#include "calculosNVar.hpp"
 
-void MenuMuestreo::menuSecundario() {
-	unsigned int longitudSelec = 0, valorDeN = 0, estimadorSelec = 0;
-	bool agrupados = false, desdeArchivoOTeclado = false;
+void CLI::menuSecundarioMuestreo() {
+	unsigned int valorDeN = 0, estimadorSelec = 0, tipoMuestreo = 0, filas = 1;
+	bool agrupados;
 
-	desdeArchivoOTeclado = preguntarDesdeArchivoOTeclado();
+	tipoMuestreo = preguntarTipoDeMuestreo();
+
+	desdeArchivo = preguntarDesdeArchivoOTeclado();
 	agrupados = preguntarSiAgrupados();
-	longitudSelec = preguntarNumeroColumnas(agrupados);
-	std::cout << "valor de N: ";
-	std::cin >> valorDeN;
+
+	if (agrupados == true) {
+		filas++;
+	}
+
+	if (preguntarSiNExiste() == true) {
+		std::cout << "valor de N: ";
+		std::cin >> valorDeN;
+	}
+
+	tamanyo = preguntarNumeroColumnas(agrupados);
 	estimadorSelec = preguntarEstimador();
 
-	//MAS muestra(desdeArchivoOTeclado, longitudSelec, agrupados);
-	MAS muestra(desdeArchivoOTeclado, longitudSelec, agrupados,
-	            estimadorSelec);
+	Matriz muestra(filas, tamanyo);
 
-	muestra.setValorN(valorDeN);
-	muestra.leerDatos();
-	std::cout << '\n' << "Datos de la muestra" << '\n';
-	std::cout << '\n';
-	muestra.mostrarVector();
-	std::cout << '\n';
+	if (desdeArchivo == true) {
+		verificarArchivo();
+		leerDesdeArchivo(muestra, tamanyo);
+	}
 
-	//if(estimadorSeleccionado==2){}
+	switch (tipoMuestreo) {
+		case 1: {  //MAS
+			if (agrupados == true) {
+				std::cout << "Introduce cada dato de la muestra uno a uno " << "\n";
+				std::cout << "y después pulsa intro para escribir su total" << "\n";
+				std::cout << "\n";
+			} else {
+				std::cout << "Introduce cada dato de la muestra uno a uno " << "\n";
+				std::cout << "\n";
+			}
+			MAS muestreo(muestra);
+			
+		}
+		break;
+		case 2:
+			//MuestreoConReempIguales muestra(filas, tamanyo);
+			if (agrupados == true) {
+				std::cout << "Introduce cada dato de la muestra uno a uno " << "\n";
+				std::cout << "y después pulsa intro para escribir su total" << "\n";
+				std::cout << "\n";
+			} else {
+				std::cout << "Introduce cada dato de la muestra uno a uno " << "\n";
+				std::cout << "\n";
+			}
+			break;
+		case 3:
+			filas ++;
+			//MuestreoSinReempDesigual muestra(filas, tamanyo);
 
+			break;
+		case 4:
+			filas ++;
+			//MuestreoConReempDesigual muestra(filas, tamanyo);
+
+			break;
+	}
+
+	editarMatrizVacia(muestra);
+	mostrarMatriz(muestra);
 	std::cout << '\n';
 	std::cout << "Sumatorias, estadísticos y varianzas" << '\n';
 	std::cout << '\n';
-	std::cout << "∑Xi = " << muestra.sumatoria(1) << '\n';
+	std::cout << "∑Xi = " << sumatoria(muestra, 0, 1) << '\n';
 	std::cout << "   2" << '\n';
-	std::cout << "∑Xi = " << muestra.sumatoria(2) << '\n';
+	std::cout << "∑Xi = " << sumatoria(muestra, 0, 2) << '\n';
 	std::cout << "     _ 2" << '\n';
-	std::cout << "∑(Xi-X) = " << muestra.difRespecMedia(2) << '\n';
-	std::cout << '\n';
-	
-	std::cout << "Estimador = " << muestra.calcularEstimador() << '\n';
-	std::cout << '\n';
-	
-	std::cout << "Var = " << muestra.varianza() << '\n';
-	std::cout << " 2" << '\n';
-	std::cout << "S = " << muestra.varianzaMuestral() << '\n';
+	std::cout << "∑(Xi-X) = " << difRespecMedia(muestra, 0, 2) << '\n';
 	std::cout << '\n';
 
-	std::cout << "Varianzas del estimador = ";
-	std::cout << muestra.varianzaEstimador() << '\n';
-	std::cout << '\n';
+	/*
+		std::cout << "Estimador = " << calcularEstimador() << '\n';
+		std::cout << '\n';
 
-	std::cout << "Error de estimación del parámetro = ";
-	std::cout << muestra.em() << '\n';
-	std::cout << '\n';
-}
+		std::cout << "Var = " << varianza() << '\n';
+		std::cout << " 2" << '\n';
+		std::cout << "S = " << varianzaMuestral() << '\n';
+		std::cout << '\n';
 
-unsigned int MenuMuestreo::preguntarNumeroColumnas(bool agrupados) {
-	unsigned int columna;
-	if (agrupados == true) {
-		std::cout << "Número de datos agrupados que contiene la muestra: ";
-	} else {
-		std::cout << "Tamaño de la muestra: ";
-	}
-	std::cin >> columna;
-	return columna;
-}
+		std::cout << "Varianzas del estimador = ";
+		std::cout << varianzaEstimador() << '\n';
+		std::cout << '\n';
 
-unsigned int MenuMuestreo::preguntarEstimador() {
-	unsigned int estimador;
-	std::cout << "Selecciona el estimador:" << '\n';
-	std::cout << "'1' media" << '\n';
-	std::cout << "'2' total" << '\n';
-	std::cout << "'3' proporción" << '\n';
-	std::cout << "> ";
-	std::cin >> estimador;
-	return estimador;
-}
-
-bool MenuMuestreo::preguntarSiAgrupados() {
-	char respuesta;
-	bool agrupados;
-	std::cout << "¿Los datos están agrupados? s/n: ";
-	std::cin >> respuesta;
-	respuesta == 's' ? agrupados = true : agrupados = false;
-	return agrupados;
+		std::cout << "Error de estimación del parámetro = ";
+		std::cout << em() << '\n';
+		std::cout << '\n';*/
 }

@@ -30,14 +30,14 @@ set(lista_archivos
   menu2Var.cpp
   menuNVar.cpp
   menuAlgebra.cpp
-  #menuMuestreo.cpp
+  menuInferencia.cpp
   menuSinDatos.cpp
   menuCombinatoria.cpp
   menuDistribDiscretas.cpp
-  menuIA.cpp
+  menuSimula.cpp
   #menuTablasCont.cpp  
   generadoresCongruenciales.cpp
-  menuIO.cpp
+  menuColExpo.cpp
   modelo.cpp
   mmi.cpp
   mmik.cpp
@@ -50,11 +50,11 @@ set(lista_archivos
 
 set(CMAKE_BUILD_TYPE Debug)
 
-set(CMAKE_CXX_FLAGS "-ansi -pedantic -Wall -W -Wconversion -O0 -std=gnu++14")
-set(CMAKE_CXX_FLAGS_DEBUG " -ggdb3 -DDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "-ansi -pedantic -Wall -W -Wconversion -O0 -ggdb3 -DDEBUG -std=gnu++11")
+set(CMAKE_CXX_FLAGS_RELEASE "-ansi -pedantic -Wall -O3 -std=gnu++11")
 
 #set(CMAKE_CXX_COMPILER "clang++ -g -W -O2")
 
 add_executable(stac ${lista_archivos})
 
-#install(TARGETS stac RUNTIME DESTINATION bin)
+#install(TARGETS stac RUNTIME DESTINATION /bin)

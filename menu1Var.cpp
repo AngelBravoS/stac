@@ -34,11 +34,10 @@
 }*/
 
 void CLI::menuSecundario1Var() {
-	unsigned int tamanyo;
 	tamanyo = preguntarNumeroElementos();
-	bool desdeArchivo;
 	desdeArchivo = preguntarDesdeArchivoOTeclado();
 	Vector vectorA(tamanyo);
+	
 	if (desdeArchivo == true) {
 		verificarArchivo();
 		leerDesdeArchivo(vectorA);

@@ -19,26 +19,37 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _MENUMUESTREO_HPP_
-#define _MENUMUESTREO_HPP_
-
 #include "cli.hpp"
-#include "mas.hpp"
-#include <fstream>
+#include "calculos1Var.hpp"
 
-class MenuMuestreo : public CLI {
-	public:
-		//========  funciones de muestreo ======== 
-		void menuSecundario();
-		unsigned int preguntarNumeroColumnas (bool agrupados);
-		unsigned int numeroFilas ();
-		
-		unsigned int preguntarEstimador();
-		unsigned int preguntarTipoDeMuestreo();
-		bool preguntarSiAgrupados();
-		void mostrarDatosMuestra();
-	private:
-		int var;
-};
+/*bool Menu1Var::preguntarSiAgrupados(){
+	char respuesta;
+	bool agrupados;
+	std::cout << '\n';
+	std::cout << "¿Los datos están agrupados?" << '\n';
+	std::cout << "s/n:";
+	std::cin >> respuesta;
+	respuesta == 's' ? agrupados = true : agrupados = false;
+	return agrupados;
+}*/
 
-#endif /* _MENUMUESTREO_HPP_ */
+void CLI::menuSecundarioInferencia() {
+	tamanyo = preguntarNumeroElementos();
+	desdeArchivo = preguntarDesdeArchivoOTeclado();
+	Vector vectorA(tamanyo);
+	
+	if (desdeArchivo == true) {
+		verificarArchivo();
+		leerDesdeArchivo(vectorA);
+	} else {
+		std::cout << "Introduce los elementos uno a uno" << "\n";
+		std::cout << "separando con un espacio." << "\n";
+		for (unsigned int i = 0; i < vectorA.size(); i++) {
+			std::cin >> vectorA[i];
+		}
+		std::cout << '\n';
+	}
+	std::cout << '\n';
+	std::cout << ("vector ") << "\n";
+	mostrarVector(vectorA);
+}

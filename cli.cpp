@@ -45,7 +45,7 @@ void CLI::menuPrincipal() {
 				menuSecundarioAlgebra(); 
 				break;
 			case '5' :
-				//menuSecundarioMuestreo();
+				menuSecundarioInferencia();
 				break;
 			case '6' :
 				menuSinDatos();
@@ -56,3 +56,4 @@ void CLI::menuPrincipal() {
 		}
 	} while (opciones[0] != '0');
 }
+

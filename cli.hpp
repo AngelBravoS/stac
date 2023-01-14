@@ -46,31 +46,24 @@ class CLI {
 		void menuTablasCont();
 		void menuSecundarioAlgebra();
 		void menuSecundarioIA();
-		void menuSecundarioIO();
+		void menuColExpo();
 		void menuSecundario1Var();
 		void menuSecundario2Var();
 		void menuSecundarioNvar();
+		void menuSecundarioInferencia();
 		
 		//======== funciones especificas de cada submenu ========
 		void menu1Matriz();
 		void menu2Matrices();
 		void menuInferencia();
 		void menuCombinatoria();
-		void menuCongruencial();
+		void menuSimulacion();
 		void menuColasExponencial();
 		void menuDistribDiscreta();
 		void menuProcesos();
 		void resultadosColasExponencial(double lambdaUsuario, double muUsuario,
 		                                unsigned int nUsuario, unsigned int 
 																		cUsuario, unsigned int modeloSeleccionado);
-		
-		//cosas de 2var
-		//void menuSecundario();
-		//void menuMuestra2Var();
-		//void menuFmp2Var();
-		//unsigned int preguntarNumeroElementos();
-		//bool esMuestra();
-		
 		//======== Textos de menús ========
 		void listadOpcionesPrincipales();
 		void listadOpcionesMuestreo();
@@ -79,13 +72,15 @@ class CLI {
 		void listadOpciones2Matrices();
 		void listadoMenuSinDatos();
 		void listadOpcionesColasExponencial();
-		void listadOpcionesIA();
+		void listadOpcionesSimula();
 		void listadOpcionestipoGenerador();
 		void leerDesdeTeclado();
 
-	protected:
+	private:
 		char opciones[5];
 		bool archivoValido;
+		bool desdeArchivo = false;
+		unsigned int tamanyo = 0;
 };
 
 #endif /* _CLI_HPP_ */
