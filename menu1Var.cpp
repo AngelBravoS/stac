@@ -36,88 +36,105 @@
 void CLI::menuSecundario1Var() {
 	tamanyo = preguntarNumeroElementos();
 	desdeArchivo = preguntarDesdeArchivoOTeclado();
-	Vector vectorA(tamanyo);
+	Vector datos(tamanyo);
 	
 	if (desdeArchivo == true) {
 		verificarArchivo();
-		leerDesdeArchivo(vectorA);
+		leerDesdeArchivo(datos);
 	} else {
 		std::cout << "Introduce los elementos uno a uno" << "\n";
 		std::cout << "separando con un espacio." << "\n";
-		for (unsigned int i = 0; i < vectorA.size(); i++) {
-			std::cin >> vectorA[i];
+		for (unsigned int i = 0; i < datos.size(); i++) {
+			std::cin >> datos[i];
 		}
 		std::cout << '\n';
 	}
 	std::cout << '\n';
 	std::cout << ("vector ") << "\n";
-	mostrarVector(vectorA);
+	mostrarVector(datos);
 
 	std::cout << '\n';
 	std::cout << "Sumatorias" << '\n';
-	std::cout << "∑Xi = " << sumatoria(vectorA, 1) << '\n';
-	std::cout << "∑Xi^2 = " << sumatoria(vectorA, 2) << '\n';
+	std::cout << "∑Xi = " << sumatoria(datos, 1) << '\n';
+	std::cout << "∑Xi^2 = " << sumatoria(datos, 2) << '\n';
 	std::cout << '\n';
 	std::cout << '\n';
 	std::cout << "Medidas de tendencia central" << '\n';
 
 	std::cout << "Medias" << '\n';
 	std::cout << "_" << '\n';
-	std::cout << "Xa = " << mediaAritmetica(vectorA) << '\n';
+	std::cout << "Xa = " << mediaAritmetica(datos) << '\n';
 	std::cout << "_" << '\n';
-	std::cout << "Xg = " << mediaGeometrica(vectorA) << '\n';
+	std::cout << "Xg = " << mediaGeometrica(datos) << '\n';
 	std::cout << "_" << '\n';
-	std::cout << "Xa = " << mediaArmonica(vectorA) << '\n';
+	std::cout << "Xa = " << mediaArmonica(datos) << '\n';
 	std::cout << "_" << '\n';
-	std::cout << "Xc = " << mediaCuadratica(vectorA);
+	std::cout << "Xc = " << mediaCuadratica(datos);
 	std::cout << '\n';
 	std::cout << '\n';
 
-	std::cout << "Mediana = " << mediana(vectorA) << '\n';
+	std::cout << "Mediana = " << mediana(datos) << '\n';
 	std::cout << '\n';
+
+	std::cout << "Moda = " << moda(datos) << '\n';
+	std::cout << '\n';
+
 	std::cout << "Vector ordenado" << '\n';
-	mostrarVector(vectorA);
+	mostrarVector(datos);
 	std::cout << '\n';
 
 	std::cout << "Diferencias respecto a la media ^2 = " <<
-	          difRespecMedia(vectorA, 2) << '\n';
+	          difRespecMedia(datos, 2) << '\n';
 	std::cout << "Diferencias respecto a la media ^3 = " <<
-	          difRespecMedia(vectorA, 3) << '\n';
+	          difRespecMedia(datos, 3) << '\n';
 	std::cout << '\n';
 	std::cout << "Momentos centrados de orden 2 (Varianza) = " <<
-	          momentosNoCentrados(vectorA, 2) << '\n';
+	          momentosNoCentrados(datos, 2) << '\n';
 	std::cout << "Momentos centrados de orden 3 = " <<
-	          momentosNoCentrados(vectorA, 3) << '\n';
+	          momentosNoCentrados(datos, 3) << '\n';
 	std::cout << '\n';
 
 	std::cout << "Medidas de dispersión" << '\n';
 	std::cout << '\n';
 	std::cout << "     _ 2" << '\n';
-	std::cout << "∑(Xi-X) = " << difRespecMedia(vectorA, 2) << '\n';
+	std::cout << "∑(Xi-X) = " << difRespecMedia(datos, 2) << '\n';
 
 	std::cout << "                _ 2" << '\n';
 	std::cout << "           ∑(Xi-X)" << '\n';
-	std::cout << "varianza = ------- = "  << varianza(vectorA) << '\n';
+	std::cout << "varianza = ------- = "  << varianza(datos) << '\n';
 	std::cout << "              1  " << '\n';
 
 	std::cout << "                         _ 2" << '\n';
 	std::cout << "                    ∑(Xi-X)" << '\n';
 	std::cout << "varianza muestral = ------- = "
-	          << varianzaMuestral(vectorA) << '\n';
+	          << varianzaMuestral(datos) << '\n';
 	std::cout << "                     (n-1)  " << '\n';
 	std::cout << '\n';
 	std::cout << "Desviación típica = sqrt(varianza) = "
-	          << desviacionTipica(vectorA) << '\n';
+	          << desviacionTipica(datos) << '\n';
 	std::cout << "Desviación típica muestral = sqrt(varianza muestral) = "
-	          << desviacionTipicaMuestral(vectorA) << '\n';
+	          << desviacionTipicaMuestral(datos) << '\n';
 	std::cout << '\n';
 	std::cout << "Coef. variación Pearson = "
-	          << coeficientePearson(vectorA) << '\n';
-	std::cout << "Norma = " << norma(vectorA) << '\n';
+	          << coeficienteVarPearson(datos) << '\n';
+	std::cout << "Norma = " << norma(datos) << '\n';
 	std::cout << '\n';
+
 	std::cout << "Medidas de forma" << '\n';
 	std::cout << "Coef. asímetría de Fisher = "
-	          << coeficienteAsimetriaFisher(vectorA) << '\n';
-	std::cout << "Curtosis = " << curtosis(vectorA) << '\n';
+	          << coeficienteAsimetriaFisher(datos) << '\n';
+
+	double g2=coefApuntFisher(datos);
+	std::cout << "Coeficiente de apuntamiento de Fisher = " << g2 << '\n';
 	std::cout << '\n';
+	if(g2<0){
+		std::cout << "Coeficiente de apuntamiento de Fisher = ";
+		std::cout << '\n';
+	}else if(g2>0){
+		std::cout << "Coeficiente de apuntamiento de Fisher = ";
+		std::cout << '\n';
+	}else{
+		std::cout << "Coeficiente de apuntamiento de Fisher = ";
+		std::cout << '\n';
+	}
 }

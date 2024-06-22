@@ -25,22 +25,27 @@
 #include <cmath>
 #include "vector.hpp"
 
-double sumatoria(Vector &v1, unsigned int exponente);
-double mediaAritmetica(Vector &v1);
-double mediaGeometrica(Vector &v1);
-double mediaArmonica(Vector &v1);
-double mediaCuadratica(Vector &v1);
-double mediana(Vector &v1);
-double moda(Vector &v1);
-double difRespecMedia(Vector &v1, int exponente);
-double varianza(Vector &v1);
-double varianzaMuestral(Vector &v1);
-double desviacionTipica(Vector &v1);
-double desviacionTipicaMuestral(Vector &v1);
-double momentosNoCentrados(Vector &v1, int exponente);
-double coeficientePearson(Vector &v1);
-double coeficienteAsimetriaFisher(Vector &v1);
-double curtosis(Vector &v1);
-double norma(Vector &v1);
+double sumatoria(Vector &variable, unsigned int exponente);
+double mediaAritmetica(Vector &variable);
+double mediaGeometrica(Vector &variable);
+double mediaArmonica(Vector &variable);
+double mediaCuadratica(Vector &variable);
+double mediana(Vector &variable);
+double moda(Vector &variable);
+
+double difRespecMedia(Vector &variable, int exponente);
+double momentosNoCentrados(Vector &variable, int exponente);
+
+double varianza(Vector &variable);
+double varianzaMuestral(Vector &variable);
+double desviacionTipica(Vector &variable);
+double desviacionTipicaMuestral(Vector &variable);
+
+double coeficienteVarPearson(Vector &variable);
+
+double coeficienteAsimetriaPearson(Vector &variable);
+double coeficienteAsimetriaFisher(Vector &variable);
+double coefApuntFisher(Vector &variable);
+double norma(Vector &variable);
 
 #endif /* _CALCULOS2VAR_HPP_ */

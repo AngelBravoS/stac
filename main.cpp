@@ -20,8 +20,11 @@
  ***************************************************************************/
 
 #include "cli.hpp"
+//#include "windows.h"
 
 auto main() -> int {
+	//SetConsoleOutputCP(1252);
+	//SetConsoleOutputCP(CP_UTF8);
 	CLI menu;
 	std::cout << "\033[2J\033[1;1H";
 	menu.introduccion();

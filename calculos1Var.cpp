@@ -24,141 +24,164 @@
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
 
-double sumatoria(Vector &v1, unsigned int exponente) {
-	unsigned int n = v1.size();
+double sumatoria(Vector &variable, unsigned int exponente) {
+	unsigned int n = variable.size();
 	double sumatoria = 0;
-	for (unsigned int i = 0; i < n; i++) {
-		sumatoria += potencia(v1[i], exponente);
+	for(unsigned int i = 0; i < n; i++) {
+		sumatoria += potencia(variable[i], exponente);
 	}
 	return sumatoria;
 }
 
-double mediaAritmetica(Vector &v1) {
-	unsigned int n = v1.size();
+double mediaAritmetica(Vector &variable) {
+	unsigned int n = variable.size();
 	double media = 0;
-	media = (sumatoria(v1, 1) / n);
+	media = (sumatoria(variable, 1) / n);
 	return media;
 }
 
-double mediaGeometrica(Vector &v1) {
-	unsigned int n = v1.size();
+double mediaGeometrica(Vector &variable) {
+	unsigned int n = variable.size();
 	double mediaGeometrica = 1;
-	for (unsigned int i = 0; i < n; i++) {
-		mediaGeometrica *= v1[i];
+	for(unsigned int i = 0; i < n; i++) {
+		mediaGeometrica *= variable[i];
 	}
 	mediaGeometrica = pow(mediaGeometrica, 1.0 / n);
 	return mediaGeometrica;
 }
 
-double mediaArmonica(Vector &v1) {
-	unsigned int n = v1.size();
+double mediaArmonica(Vector &variable) {
+	unsigned int n = variable.size();
 	double mediaArmonica = 0;
-	for (unsigned int i = 0; i < n; i++) {
-		mediaArmonica +=  1 / (potencia(v1[i], 1));
+	for(unsigned int i = 0; i < n; i++) {
+		mediaArmonica +=  1 / (potencia(variable[i], 1));
 	}
 	mediaArmonica = (n / mediaArmonica);
 	return mediaArmonica;
 }
 
-double mediaCuadratica(Vector &v1) {
-	unsigned int n = v1.size();
+double mediaCuadratica(Vector &variable) {
+	unsigned int n = variable.size();
 	double mediaCuadratica;
-	mediaCuadratica = sumatoria(v1, 2) * (1.0 / n);
+	mediaCuadratica = sumatoria(variable, 2) * (1.0 / n);
 	mediaCuadratica = sqrt(mediaCuadratica);
 	return mediaCuadratica;
 }
 
 //Suma de diferencias respecto a la media con exponente
-double difRespecMedia(Vector &v1, int exponente) {
-	unsigned int n = v1.size();
+double difRespecMedia(Vector &variable, int exponente) {
+	unsigned int n = variable.size();
 	double difRespecMedia = 0;
-	for (unsigned int i = 0; i < n; i++) {
-		difRespecMedia += pow(v1[i] - mediaAritmetica(v1), exponente);
+	for(unsigned int i = 0; i < n; i++) {
+		difRespecMedia += pow(variable[i] - mediaAritmetica(variable), exponente);
 	}
 	return difRespecMedia;
 }
 
-double mediana(Vector &v1) {
+double mediana(Vector &variable) {
 	double mediana;
 	unsigned int n, v;
-	n = v1.size();
-	v1.ordenarVector();
+	n = variable.size();
+	variable.ordenarVector();
 	v = n / 2;
-	if (n % 2 == 0) {
-		mediana = (v1[v] + v1[v - 1]) / 2;
+	if(n % 2 == 0) {
+		mediana = (variable[v] + variable[v - 1]) / 2;
 	} else {
-		mediana = v1[v];
+		mediana = variable[v];
 	}
 	return mediana;
 }
 
-double moda(Vector &v1) {
-	double norma = 0;
-	norma += sumatoria(v1, 2);
-	norma = sqrt(norma);
-	return norma;
+double moda(Vector &variable) {
+	unsigned int valoresDistintos = 1;
+	unsigned int n = variable.size();
+	//unsigned int moda = 0;
+
+	std::vector<unsigned int>frecuencia(n);
+	variable.ordenarVector();
+
+	for(unsigned int i=0; i<(n-1); i++) {
+		if(variable[i] != variable[i+1]) {
+			valoresDistintos++;
+		}
+	}
+	std::vector<double>varAux(valoresDistintos++);
+
+	for(unsigned int i=0; i<(n-1); i++) {
+		if(variable[i] == variable[i+1]) {
+			frecuencia[i]+=1;
+			varAux[i]=variable[i];
+		}
+	}
+
+	//std::sort(frecuencia.begin(), frecuencia.end());
+
+	return valoresDistintos;
 }
 
-double varianza(Vector &v1) {
-	unsigned int n = v1.size();
+double varianza(Vector &variable) {
+	unsigned int n = variable.size();
 	double varianza;
-	varianza = (difRespecMedia(v1, 2)) / n;
+	varianza = (difRespecMedia(variable, 2)) / n;
 	return varianza;
 }
 
-double varianzaMuestral(Vector &v1) {
-	unsigned int n = v1.size();
+double varianzaMuestral(Vector &variable) {
+	unsigned int n = variable.size();
 	double varianzaMuestral;
-	varianzaMuestral = (difRespecMedia(v1, 2)) / (n - 1);
+	varianzaMuestral = (difRespecMedia(variable, 2)) / (n - 1);
 	return varianzaMuestral;
 }
 
-double desviacionTipica(Vector &v1) {
+double desviacionTipica(Vector &variable) {
 	double desviacionTipica;
-	desviacionTipica = sqrt(varianza(v1));
+	desviacionTipica = sqrt(varianza(variable));
 	return desviacionTipica;
 }
 
-double desviacionTipicaMuestral(Vector &v1) {
+double desviacionTipicaMuestral(Vector &variable) {
 	double desviacionTipicaMuestral;
-	desviacionTipicaMuestral = sqrt(varianzaMuestral(v1));
+	desviacionTipicaMuestral = sqrt(varianzaMuestral(variable));
 	return desviacionTipicaMuestral;
 }
 
-double momentosNoCentrados(Vector &v1, int exponente) {
-	unsigned int n = v1.size();
+double momentosNoCentrados(Vector &variable, int exponente) {
+	unsigned int n = variable.size();
 	double momento;
-	momento = difRespecMedia(v1, exponente) / n;
+	momento = difRespecMedia(variable, exponente) / n;
 	return momento;
 }
 
-double coeficientePearson(Vector &v1) {
+double coeficienteVarPearson(Vector &variable) {
 	double coeficientePearson;
-	coeficientePearson = desviacionTipica(v1) / mediaAritmetica(v1);
+	coeficientePearson = desviacionTipica(variable) / mediaAritmetica(variable);
 	return coeficientePearson;
 }
 
-double coeficienteAsimetriaFisher(Vector &v1) {
-	double coeficiente, mu;
-	//unsigned int n = longitudVector;
-	mu = difRespecMedia(v1, 3);
-	coeficiente = mu / momentosNoCentrados(v1, 3);
+double coeficienteAsimetriaPearson(Vector &variable) {
+	double coeficiente=0, numerador=0;
+	numerador = mediaAritmetica(variable)-moda(variable);
+	coeficiente = numerador/desviacionTipica(variable);
 	return coeficiente;
 }
 
-double curtosis(Vector &v1) {
-	double curtosis, mu;
-	mu = momentosNoCentrados(v1, 4);
-	/*mu = 
-momentosNoCentrados(4)-4*momentosNoCentrados(1)*momentosNoCentrados(3)+6*
-potencia(momentosNoCentrados(1),2)-3*potencia(momentosNoCentrados(1),4);*/
-	curtosis = (mu / potencia(varianza(v1), 2)) - 3;
-	return curtosis;
+double coeficienteAsimetriaFisher(Vector &variable) {
+	double coeficiente=0, mu=0;
+	mu = difRespecMedia(variable, 3);
+	coeficiente = mu / momentosNoCentrados(variable, 3);
+	return coeficiente;
 }
 
-double norma(Vector &v1) {
+double coefApuntFisher(Vector &variable) {
+	double coeficiente=0, mu=0;
+	mu = momentosNoCentrados(variable, 4);
+	coeficiente = (mu / potencia(varianza(variable), 2)) - 3;
+	return coeficiente;
+}
+
+double norma(Vector &variable) {
 	double norma = 0;
-	norma += sumatoria(v1, 2);
+	norma += sumatoria(variable, 2);
 	norma = sqrt(norma);
 	return norma;
 }

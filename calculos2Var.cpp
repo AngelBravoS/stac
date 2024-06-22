@@ -83,7 +83,7 @@ double curvaRegresion(Matriz &m1, Vector &v1) {
 
 double coeficienteRegresion(Matriz &m1, Vector &v1) {
 	double resultado;
-	unsigned int n = m1.ColumnCount();
+	//unsigned int n = m1.ColumnCount();
 	resultado = covarianza(m1) / varianza(v1);
 	return resultado;
 }

@@ -22,9 +22,10 @@
 #ifndef _VECTOR_HPP_
 #define _VECTOR_HPP_
 
+#include <iostream>
+#include <fstream>
+#include <vector>
 #include "funcMatematicasBasicas.hpp"
-#include <bits/stdc++.h>
-#include <boost/mpl/push_back.hpp>
 
 class Vector {
 	public:

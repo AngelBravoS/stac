@@ -25,26 +25,36 @@ Matriz::Matriz() {
 }
 
 Matriz::Matriz(unsigned int rows,unsigned  int cols) {
-    rows == cols ? cuadrada = true : cuadrada = false;
-    for (unsigned int i = 0; i < rows; ++i) {
-        Row r(cols);
-        Array.insert(Array.end(), r);
-    }
+	rows == cols ? cuadrada = true : cuadrada = false;
+
+	for(unsigned int i = 0; i < rows; ++i) {
+		Row r(cols);
+		Array.insert(Array.end(), r);
+	}
 }
 
 Row &Matriz::operator[](unsigned int index) {
-    if (index < 0 || index > Array.size())
-        throw "Array Index out of Bounds";
-    return Array[ index ];
+	if(index < 0 || index > Array.size())
+		throw "Índices fuera de rango";
+
+	return Array[ index ];
+}
+
+double &Matriz::operator()(unsigned int i, unsigned int j) {
+	if(i < 0 || i > Array.size() || j < 0  || j > Array.size())
+		throw "Índices fuera de rango";
+
+	return Array[i][j];
 }
 
 unsigned int Matriz::RowCount() {
-    unsigned int size = convierteLongEnInt(Array.size());
-    return size;
+	unsigned int size = convierteLongEnInt(Array.size());
+	return size;
 }
 
 unsigned int Matriz::ColumnCount() {
-    if (Array.size())
-        return Array[0].size();
-    return 0;
+	if(Array.size())
+		return Array[0].size();
+
+	return 0;
 }

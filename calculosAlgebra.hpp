@@ -39,7 +39,9 @@ Vector vectorDiagonal(Matriz &m1);
 
 double traza(Matriz &m1);
 double determinante(Matriz &m1);
+//double cofactor(Matriz &m, unsigned int i, unsigned int j);
 
+Matriz menor(Matriz &m1, unsigned int i, unsigned int j);
 Matriz identidad(unsigned int rows, unsigned int cols);
 Matriz traspuesta(Matriz &m1);
 Matriz adjunta(Matriz &m1);

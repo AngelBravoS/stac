@@ -50,7 +50,7 @@ set(lista_archivos
 
 set(CMAKE_BUILD_TYPE Debug)
 
-set(CMAKE_CXX_FLAGS_DEBUG "-ansi -pedantic -Wall -W -Wconversion -O0 -ggdb3 -DDEBUG -std=gnu++11")
+set(CMAKE_CXX_FLAGS_DEBUG "-ansi -pedantic -Wall -W -Wconversion -O0 -ggdb -std=gnu++11")
 set(CMAKE_CXX_FLAGS_RELEASE "-ansi -pedantic -Wall -O3 -std=gnu++11")
 
 #set(CMAKE_CXX_COMPILER "clang++ -g -W -O2")

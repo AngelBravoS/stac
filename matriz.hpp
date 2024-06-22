@@ -30,6 +30,8 @@ class Matriz {
 		Matriz();
 		Matriz(unsigned int rows, unsigned int cols);
 		Row &operator[](unsigned int index);
+		double &operator()(unsigned int i, unsigned int j);
+
 		unsigned int RowCount() ;
 		unsigned int ColumnCount();
 		bool cuadrada;

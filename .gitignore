@@ -8,3 +8,4 @@ _config.yml
 buildClang/
 matrizOld.?pp
 old/
+.directory
