@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.6)
 project(stac)
 
 set(lista_archivos
@@ -50,10 +50,17 @@ set(lista_archivos
 
 set(CMAKE_BUILD_TYPE Debug)
 
-set(CMAKE_CXX_FLAGS_DEBUG "-ansi -pedantic -Wall -W -Wconversion -O0 -ggdb -std=gnu++11")
-set(CMAKE_CXX_FLAGS_RELEASE "-ansi -pedantic -Wall -O3 -std=gnu++11")
+#set(CMAKE_CXX_FLAGS_DEBUG "-ansi -pedantic -Wall -W -Wconversion -O0 -ggdb -std=gnu++11")
+#set(CMAKE_CXX_FLAGS_RELEASE "-ansi -pedantic -Wall -O3 -std=gnu++11")
 
-#set(CMAKE_CXX_COMPILER "clang++ -g -W -O2")
+# Clang++ especificado en la configuración del IDE
+set(CMAKE_CXX_COMPILER "clang++")
+#SET (CMAKE_AR      "/usr/bin/llvm-ar")
+#SET (CMAKE_LINKER  "/usr/bin/llvm-ld")
+#SET (CMAKE_NM      "/usr/bin/llvm-nm")
+#SET (CMAKE_OBJDUMP "/usr/bin/llvm-objdump")
+#SET (CMAKE_RANLIB  "/usr/bin/llvm-ranlib")
+#SET (CMAKE_CXX_FLAGS_DEBUG "-g -Wall -Wextra -Wnon-gcc -std=gnu++17 -O2")
 
 add_executable(stac ${lista_archivos})
 

@@ -12,5 +12,5 @@ class Row {
 		double &operator[](unsigned int index);
 		Row &operator= (const Row& other) = default;
 	private:
-		std::vector< double > Columns;
+		std::vector<double> Columns;
 };

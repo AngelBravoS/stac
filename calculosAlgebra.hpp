@@ -25,11 +25,11 @@
 #include "vector.hpp"
 #include "matriz.hpp"
 
-Matriz operator+(Matriz &m1, Matriz &m2);
+Matriz operator+(Matriz &m1,  Matriz &m2);
 
 Matriz operator*(Matriz &m1, double scalar);
-Matriz operator*(double scalar, Matriz &m1);
-Matriz operator*(Matriz &m1, Matriz &m2);
+Matriz operator*(double scalar,  Matriz &m1);
+Matriz operator*(Matriz &m1,  Matriz &m2);
 
 Matriz kronecker(Matriz &m1, Matriz &m2);
 
@@ -41,7 +41,7 @@ double traza(Matriz &m1);
 double determinante(Matriz &m1);
 //double cofactor(Matriz &m, unsigned int i, unsigned int j);
 
-Matriz menor(Matriz &m1, unsigned int i, unsigned int j);
+Matriz menor(Matriz &m1, unsigned int fila, unsigned int columna);
 Matriz identidad(unsigned int rows, unsigned int cols);
 Matriz traspuesta(Matriz &m1);
 Matriz adjunta(Matriz &m1);

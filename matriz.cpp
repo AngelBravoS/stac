@@ -47,7 +47,7 @@ double &Matriz::operator()(unsigned int i, unsigned int j) {
 	return Array[i][j];
 }
 
-unsigned int Matriz::RowCount() {
+unsigned int Matriz::RowCount() const {
 	unsigned int size = convierteLongEnInt(Array.size());
 	return size;
 }

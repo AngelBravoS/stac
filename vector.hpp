@@ -35,6 +35,12 @@ class Vector {
 		unsigned int size();
 		double &operator[](unsigned int index);
 
+		Vector &operator=(const Vector &aCopy) {
+    if (this == &aCopy) return *this;  // Evita la autoasignación
+    // Copia los datos de aCopy a este objeto
+    return *this;
+		}
+
 		void ordenarVector();
 	protected:
 		unsigned int longitudVector;

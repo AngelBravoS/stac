@@ -32,7 +32,7 @@ class Matriz {
 		Row &operator[](unsigned int index);
 		double &operator()(unsigned int i, unsigned int j);
 
-		unsigned int RowCount() ;
+		unsigned int RowCount() const;
 		unsigned int ColumnCount();
 		bool cuadrada;
 	private:
