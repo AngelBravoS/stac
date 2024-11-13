@@ -46,22 +46,29 @@ set(lista_archivos
   mgi.cpp
 )
 
-#Debug/Release
+# Especificación de C++ estándar
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF) # Para evitar extensiones específicas del compilador
+set(CMAKE_CXX_COMPILER "clang++") # Alt "g++" GCC
 
+# Configuración de compilación (Debug/Release)
+#set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build: Debug or Release")
 set(CMAKE_BUILD_TYPE Debug)
 
-#set(CMAKE_CXX_FLAGS_DEBUG "-ansi -pedantic -Wall -W -Wconversion -O0 -ggdb -std=gnu++11")
-#set(CMAKE_CXX_FLAGS_RELEASE "-ansi -pedantic -Wall -O3 -std=gnu++11")
 
-# Clang++ especificado en la configuración del IDE
-set(CMAKE_CXX_COMPILER "clang++")
-#SET (CMAKE_AR      "/usr/bin/llvm-ar")
-#SET (CMAKE_LINKER  "/usr/bin/llvm-ld")
-#SET (CMAKE_NM      "/usr/bin/llvm-nm")
-#SET (CMAKE_OBJDUMP "/usr/bin/llvm-objdump")
-#SET (CMAKE_RANLIB  "/usr/bin/llvm-ranlib")
-#SET (CMAKE_CXX_FLAGS_DEBUG "-g -Wall -Wextra -Wnon-gcc -std=gnu++17 -O2")
+# Establecer las banderas de compilación
+add_compile_options(
+  "$<$<CONFIG:Debug>:-pedantic;-Wall;-Wextra;-Wconversion;-Wshadow;-Wcast-qual;-Wwrite-strings;-O0;-ggdb3;-DDEBUG>"
+  "$<$<CONFIG:Release>:-pedantic;-Wall;-O3>"
+)
 
+# Configuración del ejecutable
 add_executable(stac ${lista_archivos})
 
-#install(TARGETS stac RUNTIME DESTINATION /bin)
+# Directorio de salida
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+
+# Instalación
+install(TARGETS stac RUNTIME DESTINATION bin)
