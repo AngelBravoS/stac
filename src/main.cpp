@@ -27,7 +27,7 @@ auto main() -> int {
 	//SetConsoleOutputCP(CP_UTF8);
 	CLI menu;
 	std::cout << "\033[2J\033[1;1H";
-	menu.introduccion();
+	introduccion();
 	menu.menuPrincipal();
 	return 0;
 }

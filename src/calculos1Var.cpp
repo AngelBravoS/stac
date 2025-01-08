@@ -25,7 +25,7 @@
 //Límite máximo en unsigned int: 4.294.967.295
 
 double sumatoria(Vector &variable, unsigned int exponente) {
-	unsigned int n = variable.size();
+	unsigned int n = static_cast<unsigned int>(variable.size());
 	double sumatoria = 0;
 	for(unsigned int i = 0; i < n; i++) {
 		sumatoria += potencia(variable[i], exponente);
@@ -113,9 +113,7 @@ double moda(Vector &variable) {
 			varAux[i]=variable[i];
 		}
 	}
-
 	//std::sort(frecuencia.begin(), frecuencia.end());
-
 	return valoresDistintos;
 }
 

@@ -3,6 +3,7 @@
 #include "vector.hpp"
 #include "matriz.hpp"
 #include "mas.hpp"
+#include "textosMenus.hpp"
 #include <fstream>
 #include <cstdlib>
 
@@ -25,6 +26,7 @@ void verificarArchivo();
 void leerDesdeArchivo(Matriz &m1, unsigned int columnas);
 void leerDesdeArchivo(Vector &v1);
 
+void leerDatosDesdeTeclado(Vector &datos);
 void desagruparDesdeTeclado();
 void desagruparDesdeArchivo();
 

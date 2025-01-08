@@ -60,7 +60,7 @@ void CLI::menuSecundario2Var() {
 		editarMatrizVacia(varXeY);
 	}
 	Vector varX(columnas);
-	varX = extraerVariable(varXeY, 0);
+/*	varX = extraerVariable(varXeY, 0);
 	std::cout << ("Variable X") << "\n";
 	mostrarVector(varX);
 	std::cout << '\n';
@@ -122,6 +122,7 @@ void CLI::menuSecundario2Var() {
 	std::cout << "Correlación" << '\n';
 	std::cout << "	Coeficiente de correlación lineal: " <<
 	          coeficienteCorrelacion(varXeY) << '\n';
+	          */
 }
 
 /*void CLI::menuFmp2Var(){

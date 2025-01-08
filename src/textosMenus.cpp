@@ -20,19 +20,20 @@
  ***************************************************************************/
 
 #include "cli.hpp"
+#include "textosMenus.hpp"
 
-void CLI::introduccion() {
+void introduccion() {
 	std::cout << '\n';
 	std::cout << "	╔══════════════════════════╗" << '\n';
 	std::cout << "	║           STAC           ║" << '\n';
 	std::cout << "	║        Estadística       ║" << '\n';
 	std::cout << "	║   en línea de comandos   ║" << '\n';
 	std::cout << "	╚══════════════════════════╝" << '\n';
-	std::cout << "			       0.90" << '\n';
+	std::cout << "			       0.90.2" << '\n';
 	std::cout << '\n';
 }
 
-void CLI::ayuda() {
+void ayuda() {
 	std::cout << "                      Ayuda" << '\n';
 	std::cout << "-------------------------------------------------" << '\n';
 	std::cout << "Análisis estadístico de una variable:" << '\n';
@@ -85,7 +86,7 @@ void CLI::ayuda() {
 	std::cout << '\n';
 }
 
-void CLI::listadOpcionesPrincipales() {
+void listadOpcionesPrincipales() {
 	std::cout << "		Menú principal" << '\n';
 	std::cout << "	=========================== " << '\n';
 	std::cout << '\n';
@@ -99,7 +100,7 @@ void CLI::listadOpcionesPrincipales() {
 	std::cout << "'0' Salir." << '\n';
 }
 
-void CLI::listadOpcionesMuestreo() {
+void listadOpcionesMuestreo() {
 	std::cout << '\n';
 	std::cout << "Selecciona el tipo de muestreo:" << '\n';
 	std::cout << "'1' MAS (Sin reemplazo y probabilidades iguales)" << '\n';
@@ -114,7 +115,7 @@ void CLI::listadOpcionesMuestreo() {
 	std::cout << "> ";
 }
 
-void CLI::listadOpciones2Variables() {
+void listadOpciones2Variables() {
 	std::cout << '\n';
 	std::cout << "'1' Medidas estadísticas básicas." << '\n';
 	std::cout << "'2' Tablas de contingencia bidimensionales." << '\n';
@@ -122,7 +123,7 @@ void CLI::listadOpciones2Variables() {
 	std::cout << "> ";
 }
 
-void CLI::listadOpciones1Matriz() {
+void listadOpciones1Matriz() {
 	std::cout << "Cálculos de una matriz" << "\n";
 	std::cout << "'1' Traza" << "\n";
 	std::cout << "'2' Determinante" << "\n";
@@ -136,7 +137,7 @@ void CLI::listadOpciones1Matriz() {
 	std::cout << "> ";
 }
 
-void CLI::listadOpciones2Matrices() {
+void listadOpciones2Matrices() {
 	std::cout << "Cálculos de dos matrices" << "\n";
 	std::cout << "'1' Suma" << "\n";
 	std::cout << "'2' Multiplicación" << "\n";
@@ -145,7 +146,7 @@ void CLI::listadOpciones2Matrices() {
 	std::cout << "> ";
 }
 
-void CLI::listadoMenuSinDatos() {
+void listadoMenuSinDatos() {
 	std::cout << "'1' Combinatoria." << '\n';
 	std::cout << "'2' Simulación."  << '\n';
 	std::cout << "'3' Colas exponenciales." << '\n';
@@ -154,7 +155,7 @@ void CLI::listadoMenuSinDatos() {
 	std::cout << "> ";
 }
 
-void CLI::listadOpcionesColasExponencial() {
+void listadOpcionesColasExponencial() {
 	std::cout << '\n';
 	std::cout << "Modelos de colas exponenciales: " << "\n";
 	std::cout << "'1' M/M/1" << "\n";
@@ -166,7 +167,7 @@ void CLI::listadOpcionesColasExponencial() {
 	std::cout << "> ";
 }
 
-void CLI::listadOpcionesSimula() {
+void listadOpcionesSimula() {
 	//std::cout << "	=========================== " << '\n';
 	std::cout << '\n';
 	std::cout << "'1' Calcular la secuencia de generadores congruenciales." << 
@@ -178,15 +179,17 @@ void CLI::listadOpcionesSimula() {
 	std::cout << "> ";
 }
 
-void CLI::listadOpcionestipoGenerador() {
+void listadOpcionestipoGenerador() {
 	std::cout << "'1' Generador congruencial mixto." << '\n';
 	std::cout << "'2' Generador congruencial multiplicativo." << '\n';
 	std::cout << "'0' Menú anterior." << "\n";
 	std::cout << "> ";
 }
 
-void CLI::leerDesdeTeclado() {
-	std::cout << "Introduce los elementos uno a uno " << "\n";
-	std::cout << "pulsa intro para escribir la fila siguiente" << "\n";
-	std::cout << "\n";
+void textoLeerDesdeTeclado() {
+	std::cout << "Introduce los elementos uno a " << "\n"
+	<< "uno separando con un espacio." << "\n"
+	<< "Pulsa intro para terminar o" << "\n"
+	<< "escribir la fila siguiente" << "\n"
+	<< "\n";
 }

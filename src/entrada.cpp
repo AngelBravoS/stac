@@ -36,6 +36,14 @@ void leerDesdeArchivo(Vector &v1) {
 	archivo.close();
 }
 
+void leerDatosDesdeTeclado(Vector &datos) {
+	textoLeerDesdeTeclado();
+	for (unsigned int i = 0; i < datos.size(); i++) {
+		std::cin >> datos[i];
+	}
+	std::cout << std::endl;
+}
+
 unsigned int numeroFilas() {
     unsigned int filas;
     std::cout << "Número de filas: ";

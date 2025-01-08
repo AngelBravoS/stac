@@ -33,108 +33,53 @@
 	return agrupados;
 }*/
 
+void mostrarMedidasTendenciaCentral(Vector &datos) {
+	std::cout << "\nSumatorias" << std::endl;
+	imprimirResultado("∑Xi", sumatoria(datos, 1));
+	imprimirResultado("∑Xi^2", sumatoria(datos, 2));
+
+	std::cout << "\nMedidas de tendencia central" << std::endl;
+	imprimirResultado("Media aritmética", mediaAritmetica(datos));
+	imprimirResultado("Media geométrica", mediaGeometrica(datos));
+	imprimirResultado("Media armónica", mediaArmonica(datos));
+	imprimirResultado("Media cuadrática", mediaCuadratica(datos));
+	imprimirResultado("Mediana", mediana(datos));
+	imprimirResultado("Moda", moda(datos));
+}
+
+void mostrarMedidasDispersion(Vector &datos) {
+	std::cout << "\nMedidas de dispersión" << std::endl;
+	imprimirResultado("Varianza", varianza(datos));
+	imprimirResultado("Varianza muestral", varianzaMuestral(datos));
+	imprimirResultado("Desviación típica", desviacionTipica(datos));
+	imprimirResultado("Desviación típica muestral", desviacionTipicaMuestral(datos));
+	imprimirResultado("Coef. variación Pearson", coeficienteVarPearson(datos));
+	imprimirResultado("Norma", norma(datos));
+
+	std::cout << "\nMedidas de forma" << std::endl;
+	imprimirResultado("Coef. asimetría de Fisher", coeficienteAsimetriaFisher(datos));
+	imprimirResultado("Coeficiente de apuntamiento de Fisher", coefApuntFisher(datos));
+}
+
 void CLI::menuSecundario1Var() {
 	tamanyo = preguntarNumeroElementos();
 	desdeArchivo = preguntarDesdeArchivoOTeclado();
 	Vector datos(tamanyo);
-	
-	if (desdeArchivo == true) {
+
+	// Entrada de datos
+	if (desdeArchivo) {
 		verificarArchivo();
 		leerDesdeArchivo(datos);
 	} else {
-		std::cout << "Introduce los elementos uno a uno" << "\n";
-		std::cout << "separando con un espacio." << "\n";
-		for (unsigned int i = 0; i < datos.size(); i++) {
-			std::cin >> datos[i];
-		}
-		std::cout << '\n';
+		leerDatosDesdeTeclado(datos);
 	}
-	std::cout << '\n';
-	std::cout << ("vector ") << "\n";
+
+	std::cout << "\nVector " << std::endl;
 	mostrarVector(datos);
 
-	std::cout << '\n';
-	std::cout << "Sumatorias" << '\n';
-	std::cout << "∑Xi = " << sumatoria(datos, 1) << '\n';
-	std::cout << "∑Xi^2 = " << sumatoria(datos, 2) << '\n';
-	std::cout << '\n';
-	std::cout << '\n';
-	std::cout << "Medidas de tendencia central" << '\n';
-
-	std::cout << "Medias" << '\n';
-	std::cout << "_" << '\n';
-	std::cout << "Xa = " << mediaAritmetica(datos) << '\n';
-	std::cout << "_" << '\n';
-	std::cout << "Xg = " << mediaGeometrica(datos) << '\n';
-	std::cout << "_" << '\n';
-	std::cout << "Xa = " << mediaArmonica(datos) << '\n';
-	std::cout << "_" << '\n';
-	std::cout << "Xc = " << mediaCuadratica(datos);
-	std::cout << '\n';
-	std::cout << '\n';
-
-	std::cout << "Mediana = " << mediana(datos) << '\n';
-	std::cout << '\n';
-
-	std::cout << "Moda = " << moda(datos) << '\n';
-	std::cout << '\n';
-
-	std::cout << "Vector ordenado" << '\n';
-	mostrarVector(datos);
-	std::cout << '\n';
-
-	std::cout << "Diferencias respecto a la media ^2 = " <<
-	          difRespecMedia(datos, 2) << '\n';
-	std::cout << "Diferencias respecto a la media ^3 = " <<
-	          difRespecMedia(datos, 3) << '\n';
-	std::cout << '\n';
-	std::cout << "Momentos centrados de orden 2 (Varianza) = " <<
-	          momentosNoCentrados(datos, 2) << '\n';
-	std::cout << "Momentos centrados de orden 3 = " <<
-	          momentosNoCentrados(datos, 3) << '\n';
-	std::cout << '\n';
-
-	std::cout << "Medidas de dispersión" << '\n';
-	std::cout << '\n';
-	std::cout << "     _ 2" << '\n';
-	std::cout << "∑(Xi-X) = " << difRespecMedia(datos, 2) << '\n';
-
-	std::cout << "                _ 2" << '\n';
-	std::cout << "           ∑(Xi-X)" << '\n';
-	std::cout << "varianza = ------- = "  << varianza(datos) << '\n';
-	std::cout << "              1  " << '\n';
-
-	std::cout << "                         _ 2" << '\n';
-	std::cout << "                    ∑(Xi-X)" << '\n';
-	std::cout << "varianza muestral = ------- = "
-	          << varianzaMuestral(datos) << '\n';
-	std::cout << "                     (n-1)  " << '\n';
-	std::cout << '\n';
-	std::cout << "Desviación típica = sqrt(varianza) = "
-	          << desviacionTipica(datos) << '\n';
-	std::cout << "Desviación típica muestral = sqrt(varianza muestral) = "
-	          << desviacionTipicaMuestral(datos) << '\n';
-	std::cout << '\n';
-	std::cout << "Coef. variación Pearson = "
-	          << coeficienteVarPearson(datos) << '\n';
-	std::cout << "Norma = " << norma(datos) << '\n';
-	std::cout << '\n';
-
-	std::cout << "Medidas de forma" << '\n';
-	std::cout << "Coef. asímetría de Fisher = "
-	          << coeficienteAsimetriaFisher(datos) << '\n';
-
-	double g2=coefApuntFisher(datos);
-	std::cout << "Coeficiente de apuntamiento de Fisher = " << g2 << '\n';
-	std::cout << '\n';
-	if(g2<0){
-		std::cout << "Coeficiente de apuntamiento de Fisher = ";
-		std::cout << '\n';
-	}else if(g2>0){
-		std::cout << "Coeficiente de apuntamiento de Fisher = ";
-		std::cout << '\n';
-	}else{
-		std::cout << "Coeficiente de apuntamiento de Fisher = ";
-		std::cout << '\n';
-	}
+	// Cálculos y resultados
+	mostrarMedidasTendenciaCentral(datos);
+	mostrarMedidasDispersion(datos);
+	std::cout << std::endl;
 }
+

@@ -28,17 +28,14 @@
 
 #include "entrada.hpp"
 #include "salida.hpp"
+#include "textosMenus.hpp"
 
 class CLI {
 		//Obtener = Get
 		//Establecer = Set
 	public:
 		//======== funciones de menu ========
-		void introduccion();
-		void acercaDe();
-		void ayuda();
 		void eleccion(unsigned int i);
-		void hasElegido();
 
 		//======== subfunciones de menu ========
 		void menuPrincipal();
@@ -64,17 +61,6 @@ class CLI {
 		void resultadosColasExponencial(double lambdaUsuario, double muUsuario,
 		                                unsigned int nUsuario, unsigned int 
 																		cUsuario, unsigned int modeloSeleccionado);
-		//======== Textos de menús ========
-		void listadOpcionesPrincipales();
-		void listadOpcionesMuestreo();
-		void listadOpciones2Variables();
-		void listadOpciones1Matriz();
-		void listadOpciones2Matrices();
-		void listadoMenuSinDatos();
-		void listadOpcionesColasExponencial();
-		void listadOpcionesSimula();
-		void listadOpcionestipoGenerador();
-		void leerDesdeTeclado();
 
 	private:
 		char opciones[5];

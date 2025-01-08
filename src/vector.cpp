@@ -39,7 +39,7 @@ Vector::Vector(const Vector &aCopy) {
 	}
 }
 
-unsigned int Vector::size() {
+unsigned int Vector::size() const {
     unsigned int size = static_cast<unsigned int>(vector.size());
     return size;
 }

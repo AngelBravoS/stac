@@ -4,6 +4,7 @@
 #include "vector.hpp"
 #include "matriz.hpp"
 
-void guardarEnArchivo();
-void mostrarMatriz(Matriz &m1);
+//void guardarEnArchivo(); <- no implementado todavía.
 void mostrarVector(Vector &v1);
+void mostrarMatriz(Matriz &m1);
+void imprimirResultado(const std::string &descripcion, double valor);

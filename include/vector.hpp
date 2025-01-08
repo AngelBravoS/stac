@@ -32,7 +32,7 @@ class Vector {
         Vector();
         Vector ( unsigned int size );
         Vector ( const Vector &aCopy );
-        unsigned int size();
+        unsigned int size() const;
         double &operator[] ( unsigned int index );
 
         Vector &operator= ( const Vector &aCopy ) {
