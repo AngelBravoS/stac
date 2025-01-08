@@ -28,7 +28,7 @@ void CLI::introduccion() {
 	std::cout << "	║        Estadística       ║" << '\n';
 	std::cout << "	║   en línea de comandos   ║" << '\n';
 	std::cout << "	╚══════════════════════════╝" << '\n';
-	std::cout << "			       0.9" << '\n';
+	std::cout << "			       0.90" << '\n';
 	std::cout << '\n';
 }
 

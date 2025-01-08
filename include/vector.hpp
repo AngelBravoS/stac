@@ -28,25 +28,25 @@
 #include "funcMatematicasBasicas.hpp"
 
 class Vector {
-	public:
-		Vector();
-		Vector(unsigned int size);
-		Vector(const Vector &aCopy);
-		unsigned int size();
-		double &operator[](unsigned int index);
+    public:
+        Vector();
+        Vector ( unsigned int size );
+        Vector ( const Vector &aCopy );
+        unsigned int size();
+        double &operator[] ( unsigned int index );
 
-		Vector &operator=(const Vector &aCopy) {
-    if (this == &aCopy) return *this;  // Evita la autoasignación
-    // Copia los datos de aCopy a este objeto
-    return *this;
-		}
+        Vector &operator= ( const Vector &aCopy ) {
+            if ( this == &aCopy ) return *this; // Evita la autoasignación
+            // Copia los datos de aCopy a este objeto
+            return *this;
+            }
 
-		void ordenarVector();
-	protected:
-		unsigned int longitudVector;
-		bool enArchivo;
-		std::vector<double> vector;
-};
+        void ordenarVector();
+    protected:
+        unsigned int longitudVector;
+        bool enArchivo;
+        std::vector<double> vector;
+    };
 
 #endif /* _VECTOR_HPP_ */
 
