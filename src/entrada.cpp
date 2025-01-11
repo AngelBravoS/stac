@@ -36,7 +36,7 @@ void leerDesdeArchivo(Vector &v1) {
 	archivo.close();
 }
 
-void leerDatosDesdeTeclado(Vector &datos) {
+void leerVectorDesdeTeclado(Vector &datos) {
 	textoLeerDesdeTeclado();
 	for (unsigned int i = 0; i < datos.size(); i++) {
 		std::cin >> datos[i];
@@ -76,6 +76,13 @@ unsigned int preguntarNumeroColumnas(bool agrupados) {
 	return columna;
 }
 
+Matriz crearMatrizVacia() {
+  unsigned int filas = numeroFilas();
+  unsigned int columnas = numeroColumnas();
+  Matriz matrizVacia(filas, columnas);
+  return matrizVacia;
+}
+
 Matriz editarMatrizVacia(Matriz &m1) {
     for (unsigned int i = 0; i < m1.RowCount(); i++) {
         for (unsigned int j = 0; j < m1.ColumnCount(); j++) {
@@ -85,6 +92,21 @@ Matriz editarMatrizVacia(Matriz &m1) {
     std::cout << '\n';
     return m1;
 }
+
+Matriz crearMatriz(){
+	Matriz matriz = crearMatrizVacia();
+	bool desdeArchivo = preguntarDesdeArchivoOTeclado();
+	unsigned int size = matriz.ColumnCount();
+	if(desdeArchivo) {
+		verificarArchivo();
+		leerDesdeArchivo(matriz, size);
+	} else {
+		textoLeerDesdeTeclado();
+		editarMatrizVacia(matriz);
+	}
+	return matriz;
+}
+
 
 /* Vector editarVectorVacio(Vector &v1) {
    for (unsigned int i = 0; i < m1.RowCount(); i++) {

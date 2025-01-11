@@ -23,7 +23,7 @@
 
 //Límite máximo en unsigned short int: 65535
 //Límite máximo en unsigned int: 4.294.967.295
-/*
+
 Vector extraerVariable(Matriz &m1, unsigned int variable) {
 	unsigned int n = m1.ColumnCount();
 	Vector resultado(n);
@@ -98,7 +98,7 @@ double coeficienteCorrelacion(Matriz &m1) {
 	resultado = (covarianza(m1)) / (desviacionTipica(x) * desviacionTipica(y));
 	return resultado;
 }
-*/
+
 //Distancias
 /*
 double distanciaEuclidea() {

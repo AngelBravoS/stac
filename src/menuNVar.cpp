@@ -27,7 +27,7 @@ void CLI::menuSecundarioNvar() {
     unsigned int filas, columnas;
     filas = numeroFilas();
     columnas = numeroColumnas();
-    bool desdeArchivo;
+    //bool desdeArchivo;
     desdeArchivo = preguntarDesdeArchivoOTeclado();
     Matriz matrizA(filas, columnas);
     if (desdeArchivo == true) {

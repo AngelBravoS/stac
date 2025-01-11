@@ -17,6 +17,8 @@ bool preguntarSiNExiste();
 unsigned int preguntarEstimador();
 unsigned int preguntarTipoDeMuestreo();
 
+Matriz crearMatriz();
+Matriz crearMatrizVacia();
 Matriz editarMatrizVacia(Matriz &m1);
 //Vector editarVectorVacio(Vector &v1);
 
@@ -26,7 +28,7 @@ void verificarArchivo();
 void leerDesdeArchivo(Matriz &m1, unsigned int columnas);
 void leerDesdeArchivo(Vector &v1);
 
-void leerDatosDesdeTeclado(Vector &datos);
+void leerVectorDesdeTeclado(Vector &datos);
 void desagruparDesdeTeclado();
 void desagruparDesdeArchivo();
 
