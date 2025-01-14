@@ -17,7 +17,7 @@ set(CMAKE_BUILD_TYPE Debug)
 # Configuración específica del compilador
 if (CMAKE_CXX_COMPILER STREQUAL "clang++")
     add_compile_options(
-        "$<$<CONFIG:Debug>:-Wpedantic;-Wall;-Wextra;-Wconversion;-Wshadow;-Wcast-qual;-Wwrite-strings;-DDEBUG>"
+        "$<$<CONFIG:Debug>:-Wpedantic;-Wall;-Wextra;-Wconversion;-Wshadow;-Wcast-qual;-Wwrite-strings;-g3;-O0;-ggdb3>"
         "$<$<CONFIG:Release>:-pedantic;-Wall;-O3>"
     )
 elseif (CMAKE_CXX_COMPILER STREQUAL "g++")
@@ -28,7 +28,7 @@ elseif (CMAKE_CXX_COMPILER STREQUAL "g++")
 
 elseif (CMAKE_CXX_COMPILER STREQUAL "cl")
     add_compile_options(
-        "$<$<CONFIG:Debug>:/W4;/DDEBUG;/Od;/Zi;/Za;/permissive->"
+        "$<$<CONFIG:Debug>:/MDd;/RTC1;/permissive;/W3;/Wall;/DDEBUG;/Od;/Ob0;/Zi;/utf-8;/MP;/wd4820;/wd5045;/wd4668>"
         "$<$<CONFIG:Release>:/O2;/W3>"
    )
 elseif (CMAKE_CXX_COMPILER STREQUAL "icx")

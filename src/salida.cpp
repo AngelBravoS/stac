@@ -125,21 +125,28 @@ void mostrarCalculos1Matriz(Matriz &matrizA) {
       break;
     }
     case '6': {
-      Matriz resultado = descomposicionLU(matrizA, true);
+      Matriz MatrizL = descomposicionLU(matrizA, 'L');
       std::cout << '\n';
       std::cout << ("Matriz L ") << "\n";
-      mostrarMatriz(resultado);
+      mostrarMatriz(MatrizL);
       std::cout << '\n';
-      resultado = descomposicionLU(matrizA, false);
+      Matriz MatrizU = descomposicionLU(matrizA, 'U');
       std::cout << '\n';
       std::cout << ("Matriz U ") << "\n";
-      mostrarMatriz(resultado);
+      mostrarMatriz(MatrizU);
       std::cout << '\n';
       break;
     }
     case '7': {
       Matriz resultado = gauss(matrizA);
       std::cout << ("Matriz A Gauss ") << "\n";
+      mostrarMatriz(resultado);
+      std::cout << '\n';
+      break;
+    }
+    case '8': {
+      Matriz resultado = gaussJordan(matrizA);
+      std::cout << ("Matriz A Gauss-Jordan ") << "\n";
       mostrarMatriz(resultado);
       std::cout << '\n';
       break;

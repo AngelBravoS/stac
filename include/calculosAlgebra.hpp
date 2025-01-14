@@ -22,8 +22,11 @@
 #ifndef _CALCULOSALGEBRA_HPP_
 #define _CALCULOSALGEBRA_HPP_
 
+#include <stdexcept> // Para manejo de excepciones
+#include <cmath>
 #include "vector.hpp"
 #include "matriz.hpp"
+#include <algorithm>
 
 Matriz operator+(Matriz &m1,  Matriz &m2);
 
@@ -49,7 +52,7 @@ Matriz triangular(Matriz &m1);
 Matriz inversa(Matriz &m1);
 Matriz gauss(Matriz &m1);
 Matriz gaussJordan(Matriz &m1);
-Matriz descomposicionLU(Matriz &m1, bool devolverL);
+Matriz descomposicionLU(Matriz &m1, char LoU);
 
 #endif /* _CALCULOSALGEBRA_HPP_ */
 
