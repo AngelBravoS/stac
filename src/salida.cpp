@@ -85,7 +85,7 @@ void mostrarMedidasRegresionCorrelacion(Matriz &varXeY, Vector &varX,
 }
 
 void mostrarCalculos1Matriz(Matriz &matrizA) {
-  char opciones;
+  int opciones;
   do {
     listadOpciones1Matriz();
     std::cin >> opciones;
@@ -93,66 +93,82 @@ void mostrarCalculos1Matriz(Matriz &matrizA) {
     mostrarMatriz(matrizA);
     std::cout << '\n';
     switch (opciones) {
-    case '1': {
+    case 1: {
       std::cout << "Traza: " << traza(matrizA) << "\n";
       std::cout << '\n';
       break;
     }
-    case '2': {
+    case 2: {
       std::cout << "Determinante: " << determinante(matrizA) << "\n";
       std::cout << '\n';
       break;
     }
-    case '3': {
+    case 3: {
       Matriz resultado = traspuesta(matrizA);
       std::cout << ("Matriz A traspuesta ") << "\n";
       mostrarMatriz(resultado);
       std::cout << '\n';
       break;
     }
-    case '4': {
+    case 4: {
       Matriz resultado = adjunta(matrizA);
       std::cout << ("Matriz A adjunta ") << "\n";
       mostrarMatriz(resultado);
       std::cout << '\n';
       break;
     }
-    case '5': {
+    case 5: {
       Matriz resultado = inversa(matrizA);
       std::cout << ("Matriz A inversa ") << "\n";
       mostrarMatriz(resultado);
       std::cout << '\n';
       break;
     }
-    case '6': {
-      Matriz MatrizL = descomposicionLU(matrizA, 'L');
-      std::cout << '\n';
-      std::cout << ("Matriz L ") << "\n";
-      mostrarMatriz(MatrizL);
-      std::cout << '\n';
-      Matriz MatrizU = descomposicionLU(matrizA, 'U');
-      std::cout << '\n';
-      std::cout << ("Matriz U ") << "\n";
-      mostrarMatriz(MatrizU);
-      std::cout << '\n';
-      break;
-    }
-    case '7': {
+    case 6: {
       Matriz resultado = gauss(matrizA);
       std::cout << ("Matriz A Gauss ") << "\n";
       mostrarMatriz(resultado);
       std::cout << '\n';
       break;
     }
-    case '8': {
-      Matriz resultado = gaussJordan(matrizA);
-      std::cout << ("Matriz A Gauss-Jordan ") << "\n";
+    case 7: {
+      Vector resultado = gaussJordan(matrizA);
+      std::cout << ("Soluciones del sistema de ecuaciones: ") << "\n";
+
+      unsigned int n = matrizA.RowCount();
+
+      for (unsigned int i = 0; i <n; i++){
+        std::cout << "X" << i+1 << " = " << resultado[i] << "\n";
+      }
+
+      std::cout << '\n';
+      break;
+    }
+    case 8: {
+      std::cout << '\n';
+      break;
+    }
+    case 9: {
+      Matriz matrizL = descomposicionLU(matrizA, 'L');
+      std::cout << '\n';
+      std::cout << ("Matriz L ") << "\n";
+      mostrarMatriz(matrizL);
+      std::cout << '\n';
+      Matriz matrizU = descomposicionLU(matrizA, 'U');
+      std::cout << '\n';
+      std::cout << ("Matriz U ") << "\n";
+      mostrarMatriz(matrizU);
+      std::cout << '\n';
+      break;
+    }
+    case 10: {
+      Matriz resultado = descomposicionCholesky(matrizA);
       mostrarMatriz(resultado);
       std::cout << '\n';
       break;
     }
     }
-  } while (opciones != '0');
+  } while (opciones != 0);
 }
 
 void mostrarCalculos2Matrices(Matriz &matrizA, Matriz &matrizB) {

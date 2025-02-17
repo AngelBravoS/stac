@@ -320,10 +320,9 @@ Matriz gauss(Matriz &m1) {
   unsigned int i, j, k;
   double temp;
 
-  if (m != m + 1) {
-    throw std::invalid_argument(
-        "Error: La matriz no es compatible.");
-  }
+  /*if (m != m + 1) {
+    throw std::invalid_argument("Error: La matriz no es compatible.");
+  }*/
 
   for (j = 0; j < m; j++) {
     for (i = j + 1; i < m; i++) {
@@ -337,7 +336,7 @@ Matriz gauss(Matriz &m1) {
   return Gauss;
 }
 
-Matriz gaussJordan(Matriz &m1) {
+Vector gaussJordan(Matriz &m1) {
   Matriz matrizGaussJordan = gauss(m1);
   double s;
   unsigned int i, j;
@@ -351,7 +350,7 @@ Matriz gaussJordan(Matriz &m1) {
     }
     soluciones[i] = (matrizGaussJordan[i][m] - s) / matrizGaussJordan[i][i];
   }
-  return matrizGaussJordan;
+  return soluciones;
 }
 
 Matriz descomposicionLU(Matriz &m1, char LoU) {
@@ -382,9 +381,7 @@ Matriz descomposicionLU(Matriz &m1, char LoU) {
   }
 
   for (unsigned int i = 0; i < n; i++) {
-    for (unsigned int j = 0; j < n; j++) {
-      L[i][i] = 1;
-    }
+    L[i][i] = 1;
   }
 
   if (LoU == 'L') {
@@ -392,4 +389,34 @@ Matriz descomposicionLU(Matriz &m1, char LoU) {
   } else {
     return U;
   }
+}
+
+Matriz descomposicionCholesky(Matriz &m1) {
+  if (!m1.cuadrada) {
+    std::cout << "La matriz no es cuadrada." << '\n';
+    exit(-1);
+  }
+
+  unsigned int n = m1.RowCount();
+  Matriz cholesky(n, n);
+
+  for (unsigned int i = 0; i < n; ++i) {
+    for (unsigned int j = 0; j <= i; ++j) {
+      double sum = 0;
+
+      if (j == i) { // Diagonal elements
+        for (unsigned int k = 0; k < j; ++k) {
+          sum += cholesky[j][k] * cholesky[j][k];
+        }
+        cholesky[j][j] = sqrt(m1[j][j] - sum);
+      } else {
+        for (unsigned int k = 0; k < j; ++k) {
+          sum += cholesky[i][k] * cholesky[j][k];
+        }
+        cholesky[i][j] = (m1[i][j] - sum) / cholesky[j][j];
+      }
+    }
+  }
+
+  return cholesky;
 }

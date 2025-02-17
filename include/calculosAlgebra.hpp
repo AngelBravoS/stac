@@ -51,8 +51,9 @@ Matriz adjunta(Matriz &m1);
 Matriz triangular(Matriz &m1);
 Matriz inversa(Matriz &m1);
 Matriz gauss(Matriz &m1);
-Matriz gaussJordan(Matriz &m1);
+Vector gaussJordan(Matriz &m1);
 Matriz descomposicionLU(Matriz &m1, char LoU);
+Matriz descomposicionCholesky(Matriz &m1);
 
 #endif /* _CALCULOSALGEBRA_HPP_ */
 

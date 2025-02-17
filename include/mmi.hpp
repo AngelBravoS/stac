@@ -22,9 +22,9 @@
 #ifndef _MMI_HPP_
 #define _MMI_HPP_
 
-#include "modelo.hpp"
+#include "modeloColas.hpp"
 
-class MMI : public Modelo {
+class MMI : public ModeloColas {
     public:
     //======== Constructores ========
     MMI ();

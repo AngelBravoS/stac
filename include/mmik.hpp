@@ -22,9 +22,9 @@
 #ifndef _MMIK_HPP_
 #define _MMIK_HPP_
 
-#include "modelo.hpp"
+#include "modeloColas.hpp"
 
-class MMIK : public Modelo {
+class MMIK : public ModeloColas {
     protected:
     unsigned int k;
     double r, lambdaA;

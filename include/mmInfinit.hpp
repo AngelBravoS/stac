@@ -22,9 +22,9 @@
 #ifndef _MMINFINIT_HPP_
 #define _MMINFINIT_HPP_
 
-#include "modelo.hpp"
+#include "modeloColas.hpp"
 
-class MMINFINIT : public Modelo {
+class MMINFINIT : public ModeloColas {
     protected:
     double r;
     public:

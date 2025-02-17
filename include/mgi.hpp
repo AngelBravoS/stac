@@ -22,9 +22,9 @@
 #ifndef _MGI_HPP_
 #define _MGI_HPP_
 
-#include "modelo.hpp"
+#include "modeloColas.hpp"
 
-class MGI : public Modelo {
+class MGI : public ModeloColas {
     public:
     //======== Constructores ========
     MGI ();

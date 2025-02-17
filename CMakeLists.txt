@@ -77,7 +77,7 @@ set(lista_archivos
     src/menuSimula.cpp
     src/generadoresCongruenciales.cpp
     src/menuColExpo.cpp
-    src/modelo.cpp
+    src/modeloColas.cpp
     src/mmi.cpp
     src/mmik.cpp
     src/mmc.cpp

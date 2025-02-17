@@ -22,9 +22,9 @@
 #ifndef _MMC_HPP_
 #define _MMC_HPP_
 
-#include "modelo.hpp"
+#include "modeloColas.hpp"
 
-class MMC : public Modelo {
+class MMC : public ModeloColas {
     protected:
     double r;
     unsigned int c;

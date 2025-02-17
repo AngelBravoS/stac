@@ -19,13 +19,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "modelo.hpp"
+#include "modeloColas.hpp"
 
-Modelo::Modelo (){}
+ModeloColas::ModeloColas() {}
 
-Modelo::Modelo (double lambdaUsuario, double muUsuario, unsigned int nUsuario) {
-	lambda = lambdaUsuario;
-	mu = muUsuario;
-	n = nUsuario;
-	ro = lambda/mu;
+ModeloColas::ModeloColas(double lambdaUsuario, double muUsuario, unsigned int nUsuario) {
+  lambda = lambdaUsuario;
+  mu = muUsuario;
+  n = nUsuario;
+  ro = lambda / mu;
 }

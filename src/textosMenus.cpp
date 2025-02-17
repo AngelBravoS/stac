@@ -26,10 +26,8 @@ void introduccion() {
   std::cout << '\n'
             << "	╔══════════════════════════╗" << '\n'
             << "	║           STAC           ║" << '\n'
-            << "	║        Estadística       ║" << '\n'
-            << "	║   en línea de comandos   ║" << '\n'
             << "	╚══════════════════════════╝" << '\n'
-            << "			       0.90.3" << '\n'
+            << "			       0.90.4" << '\n'
             << '\n';
 }
 
@@ -130,10 +128,11 @@ void listadOpciones1Matriz() {
             << "'3' Matriz traspuesta" << "\n"
             << "'4' Matriz adjunta" << "\n"
             << "'5' Matriz inversa" << "\n"
-            << "'6' Descomposicion LU" << "\n"
-            << "'7' Gauss" << "\n"
-			<< "'8' Gauss-Jordan" << "\n"
-            << "'9' Valores y vectores propios" << "\n"
+            << "'6' Gauss" << "\n"
+            << "'7' Gauss-Jordan" << "\n"
+            << "'8' Valores y vectores propios" << "\n"
+            << "'9' Descomposicion LU" << "\n"
+            << "'10' Descomposicion Cholesky" << "\n"
             << "'0' para volver al menu anterior." << "\n"
             << "> ";
 }
@@ -158,14 +157,14 @@ void listadoMenuSinDatos() {
 
 void listadOpcionesColasExponencial() {
   std::cout << '\n'
-  << "Modelos de colas exponenciales: " << "\n"
-  << "'1' M/M/1" << "\n"
-  << "'2' M/M/1/K" << "\n"
-  << "'3' M/M/C" << "\n"
-  << "'4' M/M/Inf" << "\n"
-  << "'5' M/G/I" << "\n"
-  << "'0' Menú anterior." << "\n"
-  << "> ";
+            << "Modelos de colas exponenciales: " << "\n"
+            << "'1' M/M/1" << "\n"
+            << "'2' M/M/1/K" << "\n"
+            << "'3' M/M/C" << "\n"
+            << "'4' M/M/Inf" << "\n"
+            << "'5' M/G/I" << "\n"
+            << "'0' Menú anterior." << "\n"
+            << "> ";
 }
 
 void listadOpcionesSimula() {
