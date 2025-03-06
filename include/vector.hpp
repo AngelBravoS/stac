@@ -22,31 +22,25 @@
 #ifndef _VECTOR_HPP_
 #define _VECTOR_HPP_
 
-#include <iostream>
-#include <fstream>
-#include <vector>
 #include "funcMatematicasBasicas.hpp"
+#include <fstream>
+#include <iostream>
+#include <vector>
 
 class Vector {
-    public:
-        Vector();
-        Vector ( unsigned int size );
-        Vector ( const Vector &aCopy );
-        unsigned int size() const;
-        double &operator[] ( unsigned int index );
+public:
+  Vector();
+  Vector(unsigned int size);
+  Vector(const Vector &aCopy);
+  unsigned int size() const;
+  double &operator[](unsigned int index);
+  Vector &operator= (const Vector &aCopy );
+  void ordenarVector();
 
-        Vector &operator= ( const Vector &aCopy ) {
-            if ( this == &aCopy ) return *this; // Evita la autoasignación
-            // Copia los datos de aCopy a este objeto
-            return *this;
-            }
-
-        void ordenarVector();
-    protected:
-        unsigned int longitudVector;
-        bool enArchivo;
-        std::vector<double> vector;
-    };
+protected:
+  unsigned int longitudVector;
+  //bool enArchivo;
+  std::vector<double> vector;
+};
 
 #endif /* _VECTOR_HPP_ */
-

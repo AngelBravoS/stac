@@ -5,46 +5,51 @@ project(stac)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF) # Para evitar extensiones específicas del compilador
-set(CMAKE_CXX_COMPILER "clang++") # Alt "g++" GCC
+#set(CMAKE_CXX_COMPILER "clang++") # Alt "g++" GCC
 #set(CMAKE_CXX_COMPILER_ID "Clang")
-#set(CMAKE_AR "llvm-ar")
-#set(CMAKE_RANLIB "llvm-ranlib")
+
+# Verificación y configuración del compilador
+find_program(CLANGPP_EXECUTABLE clang++)
+if(CLANGPP_EXECUTABLE)
+  set(CMAKE_CXX_COMPILER "${CLANGPP_EXECUTABLE}")
+endif()
 
 # Configuración de compilación (Debug/Release)
 #set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build: Debug or Release")
 set(CMAKE_BUILD_TYPE Debug)
 
 # Configuración específica del compilador
-if (CMAKE_CXX_COMPILER STREQUAL "clang++")
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    message(STATUS "Configurando para compilador Clang")
     add_compile_options(
-        "$<$<CONFIG:Debug>:-Wpedantic;-Wall;-Wextra;-Wconversion;-Wshadow;-Wcast-qual;-Wwrite-strings;-g3;-O0;-ggdb3>"
-        "$<$<CONFIG:Release>:-pedantic;-Wall;-O3>"
+        "$<$<CONFIG:Debug>:-Wpedantic;-Wall;-Wextra;-Wconversion;-Wshadow;-Wcast-qual;-Wwrite-strings;-g3;-O0;-ggdb3;-DDEBUG>"
+        "$<$<CONFIG:Release>:-Wpedantic;-Wall;-O3>"
     )
-elseif (CMAKE_CXX_COMPILER STREQUAL "g++")
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    message(STATUS "Configurando para compilador GCC")
     add_compile_options(
-        "$<$<CONFIG:Debug>:-pedantic;-Wall;-Wextra;-Wconversion;-Wshadow;-Wcast-qual;-Wwrite-strings;-O0;-ggdb3;-DDEBUG>"
-        "$<$<CONFIG:Release>:-pedantic;-Wall;-O3>"
+        "$<$<CONFIG:Debug>:-Wpedantic;-Wall;-Wextra;-Wconversion;-Wshadow;-Wcast-qual;-Wwrite-strings;-O0;-ggdb3;-DDEBUG>"
+        "$<$<CONFIG:Release>:-Wpedantic;-Wall;-O3>"
     )
-
-elseif (CMAKE_CXX_COMPILER STREQUAL "cl")
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    message(STATUS "Configurando para compilador Microsoft Visual C++")
     add_compile_options(
         "$<$<CONFIG:Debug>:/MDd;/RTC1;/permissive;/W3;/Wall;/DDEBUG;/Od;/Ob0;/Zi;/utf-8;/MP;/wd4820;/wd5045;/wd4668>"
         "$<$<CONFIG:Release>:/O2;/W3>"
    )
-elseif (CMAKE_CXX_COMPILER STREQUAL "icx")
-    if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-        message(STATUS "Configurando para Intel Compiler icx en modo MSVC")
-    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-        message(STATUS "Configurando para Intel Compiler icx en modo Clang")
-    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "icx")
-        message(STATUS "Configurando para Intel Compiler icx en modo icx")
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
+    message(STATUS "Configurando para Intel Compiler")
+    if (MSVC)
+        message(STATUS "Intel Compiler en modo MSVC")
+    else()
+        message(STATUS "Intel Compiler en modo GCC/Clang")
     endif()
     add_compile_options(
-        "$<$<CONFIG:Debug>:-Wpedantic;-Wall;-Wextra;-Wconversion;-Wshadow;-Wcast-qual;-Wwrite-strings;-DDEBUG>"
-        "$<$<CONFIG:Release>:-pedantic;-Wall;-O3>"
+        "$<$<CONFIG:Debug>:-Wpedantic;-Wall;-Wextra;-Wconversion;-Wshadow;-Wcast-qual;-Wwrite-strings;-DDEBUG;-g;-O0>"
+        "$<$<CONFIG:Release>:-Wpedantic;-Wall;-O3>"
     )
 else()
-    message(WARNING "Compilador no soportado. No se aplican banderas específicas.")
+    message(WARNING "Compilador no soportado (${CMAKE_CXX_COMPILER_ID}). No se aplican banderas específicas.")
 endif()
 
 # Verificar compilador activo

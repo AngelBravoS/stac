@@ -19,7 +19,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include "vector.hpp"
 
 Vector::Vector() {
@@ -48,6 +47,13 @@ double &Vector::operator[](unsigned int index) {
     if (index < 0 || index > vector.size())
         throw "Array Index out of Bounds";
     return vector[ index ];
+}
+
+Vector &Vector::operator= (const Vector &aCopy ) {
+    if ( this == &aCopy ) return *this; // Evita la autoasignación
+    vector = aCopy.vector;
+    longitudVector = aCopy.size();
+    return *this;
 }
 
 void Vector::ordenarVector() {

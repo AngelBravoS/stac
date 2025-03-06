@@ -28,7 +28,7 @@
 #include "matriz.hpp"
 #include <algorithm>
 
-Matriz operator+(Matriz &m1,  Matriz &m2);
+Matriz operator+(Matriz &m1, Matriz &m2);
 
 Matriz operator*(Matriz &m1, double scalar);
 Matriz operator*(double scalar,  Matriz &m1);

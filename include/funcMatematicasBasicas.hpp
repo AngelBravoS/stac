@@ -22,7 +22,7 @@
 #define FUNCMATEMATICASBASICAS_HPP_INCLUDED
 
 #include <algorithm> 
-#include <math.h>
+#include <cmath>
 
 double factorial(double n);
 double potencia(double numero, unsigned int potencia);

@@ -326,7 +326,14 @@ Matriz gauss(Matriz &m1) {
 
   for (j = 0; j < m; j++) {
     for (i = j + 1; i < m; i++) {
-      temp = Gauss[i][j] / Gauss[j][j];
+      //temp = Gauss[i][j] / Gauss[j][j];
+      // Falla cuando el pivote superior es 0, probar con matriz
+      //1 2 3 4
+      //0 1 2 4
+      //2 3 4 5
+      //2 0 1 2
+      //¿intercambiar valores i por j? prueba pendiente
+      temp = Gauss[j][j]==0 ? 1 : Gauss[i][j] / Gauss[j][j];
       for (k = 0; k < m + 1; k++) {
         Gauss[i][k] = Gauss[i][k] - temp * Gauss[j][k];
       }
