@@ -21,41 +21,31 @@
 
 #include "vector.hpp"
 
-Vector::Vector() {
+Vector::Vector() {}
+
+Vector::Vector(unsigned int size) : Row(size) {
+  longitudVector = convierteLongEnInt(rowVector.size());
 }
 
-Vector::Vector(unsigned int size) {
-	for (unsigned int i = 0; i < size; ++i)
-		vector.insert(vector.end(), 0.0);
-	longitudVector = convierteLongEnInt(vector.size());
-}
+Vector::Vector(const Vector &aCopy) : Row(aCopy) {}
 
-Vector::Vector(const Vector &aCopy) {
-	std::vector< double >::const_iterator iter;
-	for (iter = aCopy.vector.begin(); iter != aCopy.vector.end(); ++iter) {
-		double d = (*iter);
-		vector.insert(vector.end(), d);
-	}
-}
-
-unsigned int Vector::size() const {
-    unsigned int size = static_cast<unsigned int>(vector.size());
-    return size;
+/*unsigned int Vector::size() const {
+  unsigned int size = static_cast<unsigned int>(vector.size());
+  return size;
 }
 
 double &Vector::operator[](unsigned int index) {
-    if (index < 0 || index > vector.size())
-        throw "Array Index out of Bounds";
-    return vector[ index ];
+  if (index >= vector.size())
+    throw "Array Index out of Bounds";
+  return vector[index];
 }
 
-Vector &Vector::operator= (const Vector &aCopy ) {
-    if ( this == &aCopy ) return *this; // Evita la autoasignación
-    vector = aCopy.vector;
-    longitudVector = aCopy.size();
-    return *this;
-}
+Vector &Vector::operator=(const Vector &aCopy) {
+  if (this == &aCopy)
+    return *this; // Evita la autoasignación
+  vector = aCopy.vector;
+  longitudVector = aCopy.size();
+  return *this;
+}*/
 
-void Vector::ordenarVector() {
-	std::sort(vector.begin(), vector.end());
-}
+void Vector::ordenarVector() { std::sort(rowVector.begin(), rowVector.end()); }

@@ -25,7 +25,7 @@ Matriz editarMatrizVacia(Matriz &m1);
 bool preguntarDesdeArchivoOTeclado();
 
 void verificarArchivo();
-void leerDesdeArchivo(Matriz &m1, unsigned int columnas);
+void leerDesdeArchivo(Matriz &m1);
 void leerDesdeArchivo(Vector &v1);
 
 void leerVectorDesdeTeclado(Vector &datos);

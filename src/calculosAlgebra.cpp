@@ -72,10 +72,10 @@ Matriz operator*(Matriz &m1, Matriz &m2) {
   Matriz m(m1.RowCount(), m2.ColumnCount());
 
   for (unsigned int f = 0; f < m1.RowCount(); ++f) {
-    for (unsigned int c = 0; c < m1.ColumnCount(); ++c) {
+    for (unsigned int c = 0; c < m2.ColumnCount(); ++c) {
       m[f][c] = 0;
 
-      for (unsigned int i = 0; i < m1.RowCount(); ++i) {
+      for (unsigned int i = 0; i < m1.ColumnCount(); ++i) {
         m[f][c] += m1[f][i] * m2[i][c];
       }
     }
@@ -111,9 +111,7 @@ Vector vectorDiagonal(Matriz &m1) {
   Vector resultado(n);
 
   for (unsigned int i = 0; i < n; i++) {
-    for (unsigned int j = 0; j < n; j++) {
-      resultado[i] = m1[i][i];
-    }
+    resultado[i] = m1[i][i];
   }
 
   return resultado;
@@ -122,10 +120,8 @@ Vector vectorDiagonal(Matriz &m1) {
 Matriz identidad(unsigned int rows, unsigned int cols) {
   Matriz m(rows, cols);
 
-  for (unsigned int r = 0; r < rows; ++r) {
-    for (unsigned int c = 0; c < cols; ++c) {
-      m[c][c] = 1;
-    }
+  for (unsigned int i = 0; i < std::min(rows, cols); ++i) {
+    m[i][i] = 1;
   }
 
   return m;
@@ -326,14 +322,14 @@ Matriz gauss(Matriz &m1) {
 
   for (j = 0; j < m; j++) {
     for (i = j + 1; i < m; i++) {
-      //temp = Gauss[i][j] / Gauss[j][j];
-      // Falla cuando el pivote superior es 0, probar con matriz
-      //1 2 3 4
-      //0 1 2 4
-      //2 3 4 5
-      //2 0 1 2
-      //¿intercambiar valores i por j? prueba pendiente
-      temp = Gauss[j][j]==0 ? 1 : Gauss[i][j] / Gauss[j][j];
+      // temp = Gauss[i][j] / Gauss[j][j];
+      //  Falla cuando el pivote superior es 0, probar con matriz
+      // 1 2 3 4
+      // 0 1 2 4
+      // 2 3 4 5
+      // 2 0 1 2
+      // ¿intercambiar valores i por j? prueba pendiente
+      temp = Gauss[j][j] == 0 ? 1 : Gauss[i][j] / Gauss[j][j];
       for (k = 0; k < m + 1; k++) {
         Gauss[i][k] = Gauss[i][k] - temp * Gauss[j][k];
       }

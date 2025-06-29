@@ -84,7 +84,7 @@ void CLI::menuSecundario2Var() {
   Matriz varXeY(filas, columnas);
   if (desdeArchivo == true) {
     verificarArchivo();
-    leerDesdeArchivo(varXeY, columnas);
+    leerDesdeArchivo(varXeY);
   } else {
     textoLeerDesdeTeclado();
     editarMatrizVacia(varXeY);

@@ -21,40 +21,37 @@
 
 #include "matriz.hpp"
 
-Matriz::Matriz() {
-}
+Matriz::Matriz() {}
 
-Matriz::Matriz(unsigned int rows,unsigned  int cols) {
-	rows == cols ? cuadrada = true : cuadrada = false;
+Matriz::Matriz(unsigned int rows, unsigned int cols) {
+  rows == cols ? cuadrada = true : cuadrada = false;
 
-	for(unsigned int i = 0; i < rows; ++i) {
-		Row r(cols);
-		Array.insert(Array.end(), r);
-	}
+  for (unsigned int i = 0; i < rows; ++i) {
+    Row r(cols);
+    Array.insert(Array.end(), r);
+  }
 }
 
 Row &Matriz::operator[](unsigned int index) {
-	if(index < 0 || index > Array.size())
-		throw "Índices fuera de rango";
-
-	return Array[ index ];
+  if (index >= Array.size()) // Verificación correcta
+    throw std::out_of_range("Índice de fila fuera de rango");
+  return Array[index];
 }
 
 double &Matriz::operator()(unsigned int i, unsigned int j) {
-	if(i < 0 || i > Array.size() || j < 0  || j > Array.size())
-		throw "Índices fuera de rango";
-
-	return Array[i][j];
+  if (i >= Array.size() || (Array.size() > 0 && j >= Array[0].size()))
+    throw std::out_of_range("Índices fuera de rango");
+  return Array[i][j];
 }
 
 unsigned int Matriz::RowCount() const {
-	unsigned int size = convierteLongEnInt(Array.size());
-	return size;
+  unsigned int size = convierteLongEnInt(Array.size());
+  return size;
 }
 
 unsigned int Matriz::ColumnCount() {
-	if(Array.size())
-		return Array[0].size();
+  if (Array.size())
+    return Array[0].size();
 
-	return 0;
+  return 0;
 }

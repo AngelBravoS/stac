@@ -5,13 +5,14 @@
 
 class Row {
 public:
-  Row(void);
+  Row();
   Row(unsigned int size);
   Row(const Row &aCopy);
   unsigned int size() const;
   double &operator[](unsigned int index);
-  Row &operator=(const Row &other) = default;
+  Row &operator=(const Row &aCopy);
 
-private:
-  std::vector<double> Columns;
+protected:
+  unsigned int rowSize;
+  std::vector<double> rowVector;
 };

@@ -1,28 +1,26 @@
 #include "row.hpp"
 
-Row::Row(void) {}
+Row::Row() = default;
 
-Row::Row(unsigned int size) {
-  // Initialize the column
-  for (unsigned int i = 0; i < size; ++i)
-    Columns.insert(Columns.end(), 0.0);
-}
+Row::Row(unsigned int size) : rowVector(size, 0.0) {}
 
-Row::Row(const Row &aCopy) {
-  std::vector<double>::const_iterator iter;
-  for (iter = aCopy.Columns.begin(); iter != aCopy.Columns.end(); ++iter) {
-    double d = (*iter);
-    Columns.insert(Columns.end(), d);
-  }
-}
+Row::Row(const Row &aCopy) : rowVector(aCopy.rowVector) {}
 
 unsigned int Row::size() const {
-  unsigned int size = static_cast<unsigned int>(Columns.size());
+  unsigned int size = static_cast<unsigned int>(rowVector.size());
   return size;
 }
 
 double &Row::operator[](unsigned int index) {
-  if (index < 0 || index > Columns.size())
+  if (index >= rowVector.size())
     throw "Array Index out of Bounds";
-  return Columns[index];
+  return rowVector[index];
+}
+
+Row &Row::operator=(const Row &aCopy) {
+  if (this == &aCopy)
+    return *this; // Evita la autoasignación
+  rowVector = aCopy.rowVector;
+  rowSize = aCopy.size();
+  return *this;
 }

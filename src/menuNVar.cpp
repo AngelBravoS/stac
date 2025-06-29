@@ -32,7 +32,7 @@ void CLI::menuSecundarioNvar() {
     Matriz matrizA(filas, columnas);
     if (desdeArchivo == true) {
         verificarArchivo();
-        leerDesdeArchivo(matrizA, columnas);
+        leerDesdeArchivo(matrizA);
     } else {
         std::cout << "Introduce los elementos uno a uno " << "\n";
         std::cout << "pulsa intro para escribir la fila siguiente" << "\n";

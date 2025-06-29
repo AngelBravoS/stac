@@ -19,28 +19,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _VECTOR_HPP_
-#define _VECTOR_HPP_
+#pragma once
 
 #include "funcMatematicasBasicas.hpp"
+#include "row.hpp"
 #include <fstream>
-#include <iostream>
-#include <vector>
 
-class Vector {
+class Vector : public Row {
 public:
   Vector();
   Vector(unsigned int size);
   Vector(const Vector &aCopy);
-  unsigned int size() const;
+  /*unsigned int size() const;
   double &operator[](unsigned int index);
-  Vector &operator= (const Vector &aCopy );
+  Vector &operator= (const Vector &aCopy );*/
   void ordenarVector();
 
 protected:
   unsigned int longitudVector;
   //bool enArchivo;
-  std::vector<double> vector;
+  //std::vector<double> vector;
 };
-
-#endif /* _VECTOR_HPP_ */

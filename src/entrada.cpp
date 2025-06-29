@@ -13,18 +13,20 @@ void verificarArchivo() {
     archivo.close();
 }
 
-void leerDesdeArchivo(Matriz &m1, unsigned int columnas) {
-    std::fstream archivo;
-    archivo.open("datos.dat", std::ios::in | std::ios::binary);
-    unsigned int n = columnas;
-    unsigned int i = 0, j = 0;
-    while (!archivo.eof()) {
-        archivo >> m1[i][j];
-        j++; //avanza en la fila
-        i += j / n; //si pasó de N, le suma a 1 a i (siguiente columna)
-        j = j % n; //se asegura que esté entre 0 y N-1
-    }
-    archivo.close();
+void leerDesdeArchivo(Matriz &m1) {
+	std::fstream archivo;
+	archivo.open("datos.dat", std::ios::in | std::ios::binary);
+	unsigned int filas = m1.RowCount();
+	unsigned int cols = m1.ColumnCount();
+	for (unsigned int i = 0; i < filas; ++i) {
+		for (unsigned int j = 0; j < cols; ++j) {
+			if (!(archivo >> m1[i][j])) {
+				// Si hay un error de lectura, salir del bucle
+				break;
+			}
+		}
+	}
+	archivo.close();
 }
 
 void leerDesdeArchivo(Vector &v1) {
@@ -96,10 +98,9 @@ Matriz editarMatrizVacia(Matriz &m1) {
 Matriz crearMatriz(){
 	Matriz matriz = crearMatrizVacia();
 	bool desdeArchivo = preguntarDesdeArchivoOTeclado();
-	unsigned int size = matriz.ColumnCount();
 	if(desdeArchivo) {
 		verificarArchivo();
-		leerDesdeArchivo(matriz, size);
+		leerDesdeArchivo(matriz);
 	} else {
 		textoLeerDesdeTeclado();
 		editarMatrizVacia(matriz);
