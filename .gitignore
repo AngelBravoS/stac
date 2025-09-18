@@ -3,6 +3,7 @@
 /build
 /Doxygen
 /null
+/.vscode
 
 Makefile
 cmake_install.cmake

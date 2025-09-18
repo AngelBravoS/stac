@@ -1,7 +1,7 @@
 project(
     'stac',
     'cpp',
-    version : '1.0.0',
+    version : '0.90.5',
     default_options : [
         'buildtype=debug',
         'optimization=0',
