@@ -7,36 +7,37 @@
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; version 2 of the License.               *
- *                                                                         *
- *   Stac is distributed in the hope that it will be useful,               *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with Stac; if not, write to the                                 *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
 #pragma once
 
-#include "funcMatematicasBasicas.hpp"
-#include "row.hpp"
-#include <fstream>
+#include <algorithm>
+#include <stdexcept>
+#include <vector>
 
-class Vector : public Row {
+class Vector {
 public:
   Vector();
-  Vector(unsigned int size);
-  Vector(const Vector &aCopy);
-  /*unsigned int size() const;
-  double &operator[](unsigned int index);
-  Vector &operator= (const Vector &aCopy );*/
-  void ordenarVector();
+  explicit Vector(unsigned int size);
+  Vector(const Vector &otro);
 
-protected:
-  unsigned int longitudVector;
-  //bool enArchivo;
-  //std::vector<double> vector;
+  // Interfaz de contenedor
+  double &operator[](unsigned int index);
+  const double &operator[](unsigned int index) const;
+  Vector &operator=(const Vector &otro);
+  unsigned int size() const;
+
+  // Operaciones estadísticas
+  void ordenar();
+
+  // Operadores aritméticos (útiles en regresión, ACP, etc.)
+  Vector operator+(const Vector &otro) const;
+  Vector operator-(const Vector &otro) const;
+  Vector operator*(double escalar) const;
+  friend Vector operator*(double escalar, const Vector &v);
+
+private:
+  std::vector<double> datos;
 };
+
+double productoEscalar(const Vector &v1, const Vector &v2);

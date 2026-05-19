@@ -7,45 +7,70 @@
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; version 2 of the License.               *
- *                                                                         *
- *   Stac is distributed in the hope that it will be useful,               *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with Stac; if not, write to the                                 *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
 #include "vector.hpp"
 
 Vector::Vector() {}
 
-Vector::Vector(unsigned int size) : Row(size) {
-  longitudVector = convierteLongEnInt(rowVector.size());
-}
+Vector::Vector(unsigned int size) : datos(size, 0.0) {}
 
-Vector::Vector(const Vector &aCopy) : Row(aCopy) {}
-
-/*unsigned int Vector::size() const {
-  unsigned int size = static_cast<unsigned int>(vector.size());
-  return size;
-}
+Vector::Vector(const Vector &otro) : datos(otro.datos) {}
 
 double &Vector::operator[](unsigned int index) {
-  if (index >= vector.size())
-    throw "Array Index out of Bounds";
-  return vector[index];
+  if (index >= datos.size())
+    throw std::out_of_range("Índice fuera de rango");
+  return datos[index];
 }
 
-Vector &Vector::operator=(const Vector &aCopy) {
-  if (this == &aCopy)
-    return *this; // Evita la autoasignación
-  vector = aCopy.vector;
-  longitudVector = aCopy.size();
-  return *this;
-}*/
+const double &Vector::operator[](unsigned int index) const {
+  if (index >= datos.size())
+    throw std::out_of_range("Índice fuera de rango");
+  return datos[index];
+}
 
-void Vector::ordenarVector() { std::sort(rowVector.begin(), rowVector.end()); }
+Vector &Vector::operator=(const Vector &otro) {
+  if (this != &otro)
+    datos = otro.datos;
+  return *this;
+}
+
+unsigned int Vector::size() const { return static_cast<unsigned int>(datos.size()); }
+
+void Vector::ordenar() { std::sort(datos.begin(), datos.end()); }
+
+Vector Vector::operator+(const Vector &otro) const {
+  if (size() != otro.size())
+    throw std::invalid_argument("Tamaños incompatibles");
+  Vector resultado(size());
+  for (unsigned int i = 0; i < size(); ++i)
+    resultado[i] = datos[i] + otro.datos[i];
+  return resultado;
+}
+
+Vector Vector::operator-(const Vector &otro) const {
+  if (size() != otro.size())
+    throw std::invalid_argument("Tamaños incompatibles");
+  Vector resultado(size());
+  for (unsigned int i = 0; i < size(); ++i)
+    resultado[i] = datos[i] - otro.datos[i];
+  return resultado;
+}
+
+Vector Vector::operator*(double escalar) const {
+  Vector resultado(size());
+  for (unsigned int i = 0; i < size(); ++i)
+    resultado[i] = datos[i] * escalar;
+  return resultado;
+}
+
+Vector operator*(double escalar, const Vector &v) { return v * escalar; }
+
+double productoEscalar(const Vector &v1, const Vector &v2) {
+  if (v1.size() != v2.size())
+    throw std::invalid_argument("Tamaños incompatibles");
+  double resultado = 0.0;
+  for (unsigned int i = 0; i < v1.size(); ++i)
+    resultado += v1[i] * v2[i];
+  return resultado;
+}

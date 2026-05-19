@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 //======== Textos de menús ========
 void listadOpcionesPrincipales();

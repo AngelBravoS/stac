@@ -22,11 +22,12 @@
 #ifndef _CALCULOSALGEBRA_HPP_
 #define _CALCULOSALGEBRA_HPP_
 
-#include <stdexcept> // Para manejo de excepciones
+//#include <stdexcept> // Para manejo de excepciones
 #include <cmath>
 #include "vector.hpp"
 #include "matriz.hpp"
-#include <algorithm>
+//#include <iostream>
+//#include <algorithm>
 
 Matriz operator+(Matriz &m1, Matriz &m2);
 

@@ -24,6 +24,7 @@
 
 #include <cmath>
 #include "vector.hpp"
+#include "funcMatematicasBasicas.hpp"
 
 double sumatoria(Vector &variable, unsigned int exponente);
 double mediaAritmetica( Vector &variable);

@@ -23,3 +23,5 @@ matrizOld.?pp
 *.out
 
 /.cccc
+/.vscode
+/.cache

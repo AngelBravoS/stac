@@ -7,25 +7,42 @@
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; version 2 of the License.               *
- *                                                                         *
- *   Stac is distributed in the hope that it will be useful,               *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with Stac; if not, write to the                                 *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
 #include "modeloColas.hpp"
 
 ModeloColas::ModeloColas() {}
 
-ModeloColas::ModeloColas(double lambdaUsuario, double muUsuario, unsigned int nUsuario) {
-  lambda = lambdaUsuario;
-  mu = muUsuario;
-  n = nUsuario;
-  ro = lambda / mu;
+ModeloColas::ModeloColas(double lambdaUsuario, double muUsuario,
+                         unsigned int nUsuario)
+    : lambda(lambdaUsuario), mu(muUsuario), n(nUsuario),
+      ro(lambdaUsuario / muUsuario) {}
+
+double ModeloColas::p0() const {
+  return 1.0 - ro;
+}
+
+double ModeloColas::pn() const {
+  return potencia(ro, n) * p0();
+
+}
+
+double ModeloColas::lq() const {
+  return potencia(ro, 2) / (1.0 - ro);
+
+}
+
+double ModeloColas::wq() const {
+  return lq() / lambda;
+
+}
+
+double ModeloColas::w() const {
+  return wq() + 1.0 / mu;
+
+}
+
+double ModeloColas::l() const {
+  return lambda * w();
+
 }

@@ -7,32 +7,38 @@
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; version 2 of the License.               *
- *                                                                         *
- *   Stac is distributed in the hope that it will be useful,               *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with Stac; if not, write to the                                 *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
 #include "mmc.hpp"
 
-MMC::MMC () {}
+MMC::MMC() {}
 
-MMC::MMC ( double lambdaUsuario, double muUsuario, unsigned int nUsuario, unsigned int cUsuario ) {
-    lambda = lambdaUsuario;
-    mu = muUsuario;
-    n = nUsuario;
-    c = cUsuario;
-    r = lambda/mu;
-    ro = lambda/ ( c*mu );
-    if ( ( 1 <= n ) && ( n < c ) ) {
-        nMayorC = false;
-    } else {
-        nMayorC = true;
-    }
+MMC::MMC(double lambda, double mu, unsigned int nUsuario, unsigned int cUsuario)
+    : ModeloColas(lambda, mu, nUsuario), r(lambda / mu), c(cUsuario),
+      nMayorC(!(1 <= nUsuario && nUsuario < cUsuario)) {
+  ro = lambda / (c * mu);
 }
+
+double MMC::p0() const {
+  double suma = 0.0;
+  for (unsigned int i = 0; i < c; ++i)
+    suma += potencia(r, i) / factorial(i);
+  double segundo = (c * potencia(r, c)) / (factorial(c) * (c - r));
+  return 1.0 / (suma + segundo);
+}
+
+double MMC::pn() const {
+  if (!nMayorC)
+    return (1.0 / factorial(n)) * potencia(r, n) * p0();
+  return (1.0 / (potencia(c, n - c) * factorial(c))) * potencia(r, n) * p0();
+}
+
+double MMC::lq() const {
+  return p0() * (ro * potencia(r, c)) / (factorial(c) * potencia(1.0 - ro, 2));
+}
+
+double MMC::wq() const { return lq() / lambda; }
+
+double MMC::w() const { return wq() + 1.0 / mu; }
+
+double MMC::l() const { return lambda * w(); }

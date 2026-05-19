@@ -7,25 +7,23 @@
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; version 2 of the License.               *
- *                                                                         *
- *   Stac is distributed in the hope that it will be useful,               *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with Stac; if not, write to the                                 *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
 #include "mmInfinit.hpp"
 
-MMINFINIT::MMINFINIT () {}
+MMINFINIT::MMINFINIT() {}
 
-MMINFINIT::MMINFINIT ( double lambdaUsuario, double muUsuario, unsigned int nUsuario ) {
-    lambda = lambdaUsuario;
-    mu = muUsuario;
-    n = nUsuario;
-	 r = lambda/mu;
-}
+MMINFINIT::MMINFINIT(double lambda, double mu, unsigned int nUsuario)
+    : ModeloColas(lambda, mu, nUsuario), r(lambda / mu) {}
+
+double MMINFINIT::p0() const { return 1.0 / potencia(e(), convierteDoubleEnInt(r)); }
+
+double MMINFINIT::pn() const { return (1.0 / factorial(n)) * potencia(r, n) * p0(); }
+
+double MMINFINIT::lq() const { return 0.0; }
+
+double MMINFINIT::wq() const { return 0.0; }
+
+double MMINFINIT::w() const { return 1.0 / mu; }
+
+double MMINFINIT::l() const { return r; }

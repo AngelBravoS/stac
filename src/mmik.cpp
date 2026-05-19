@@ -7,28 +7,40 @@
  *   Stac is free software; you can redistribute it and/or modify          *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; version 2 of the License.               *
- *                                                                         *
- *   Stac is distributed in the hope that it will be useful,               *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with Stac; if not, write to the                                 *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
 #include "mmik.hpp"
 
-MMIK::MMIK () {}
+MMIK::MMIK() {}
 
-MMIK::MMIK ( double lambdaUsuario, double muUsuario, unsigned int nUsuario ) {
-    lambda = lambdaUsuario;
-    mu = muUsuario;
-    k = nUsuario;
-    r = lambda/mu;
-    lambdaA = lambda * ( 1 - pn() );
-	 ro = r * ( 1 - pn() );
-    r == 1 ? rIgual1 = true: rIgual1 = false;
+MMIK::MMIK(double lambda, double mu, unsigned int nUsuario)
+    : ModeloColas(lambda, mu, nUsuario), k(nUsuario), r(lambda / mu),
+      lambdaA(lambda * (1.0 - pn())), rIgual1(r == 1.0) {
+  ro = r * (1.0 - pn());
 }
+
+double MMIK::p0() const {
+  if (rIgual1)
+    return 1.0 / (k + 1);
+  return (1.0 - r) / (1.0 - potencia(r, k + 1));
+}
+
+double MMIK::pn() const {
+  if (rIgual1)
+    return 1.0 / (k + 1);
+  return potencia(r, k) * p0();
+}
+
+double MMIK::lq() const {
+  if (rIgual1)
+    return (k / 2.0) - ro;
+  double numerador = r * (k * potencia(r, k + 1) - (k + 1) * potencia(r, k) + 1.0);
+  double denominador = (1.0 - potencia(r, k + 1)) * (1.0 - r);
+  return (numerador / denominador) - ro;
+}
+
+double MMIK::wq() const { return lq() / lambdaA; }
+
+double MMIK::w() const { return wq() + 1.0 / mu; }
+
+double MMIK::l() const { return lambdaA * w(); }
