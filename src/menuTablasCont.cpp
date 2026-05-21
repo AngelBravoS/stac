@@ -23,6 +23,4 @@
 #include "cli.hpp"
 #include "calculosNVar.hpp"
 
-void CLI::menuTablasCont() {
-
-}
+void CLI::menuTablasContingencia() {}

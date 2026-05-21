@@ -46,14 +46,7 @@ set(lista_archivos
     src/calculosAlgebra.cpp
     src/combinatoria.cpp
     src/distribucionesDiscretas.cpp
-    src/menuNVar.cpp
-    src/menuInferencia.cpp
-    src/menuSinDatos.cpp
-    src/menuCombinatoria.cpp
-    src/menuDistribDiscretas.cpp
-    src/menuSimula.cpp
     src/generadoresCongruenciales.cpp
-    src/menuColExpo.cpp
     src/modeloColas.cpp
     src/mmi.cpp
     src/mmik.cpp

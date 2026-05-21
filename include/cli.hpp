@@ -30,6 +30,18 @@
 #include "salida.hpp"
 #include "textosMenus.hpp"
 
+#include "distribucionesDiscretas.hpp"
+#include "funcMatematicasBasicas.hpp"
+#include "combinatoria.hpp"
+#include "generadoresCongruenciales.hpp"
+#include "modelo.hpp"
+#include "mmi.hpp"
+#include "mmik.hpp"
+#include "mmc.hpp"
+#include "mmInfinit.hpp"
+#include "mgi.hpp"
+
+
 class CLI {
 		//Obtener = Get
 		//Establecer = Set
@@ -40,15 +52,15 @@ class CLI {
 		//======== subfunciones de menu ========
 		void menuPrincipal();
 		void menuSinDatos();
-		void menuTablasCont();
-		void menuSecundarioAlgebra();
+		void menuTablasContingencia();
+		void menuAlgebra();
 		void menuSecundarioIA();
 		void menuColExpo();
-		void menuSecundario1Var();
-		void menuSecundario2Var();
-		void menuSecundarioNvar();
+		void menu1Var();
+		void menu2Var();
+		void menuNvar();
 		void menuSecundarioInferencia();
-		
+
 		//======== funciones especificas de cada submenu ========
 		void menu1Matriz();
 		void menu2Matrices();
@@ -59,7 +71,7 @@ class CLI {
 		void menuDistribDiscreta();
 		void menuProcesos();
 		void resultadosColasExponencial(double lambdaUsuario, double muUsuario,
-		                                unsigned int nUsuario, unsigned int 
+		                                unsigned int nUsuario, unsigned int
 																		cUsuario, unsigned int modeloSeleccionado);
 
 	private:
